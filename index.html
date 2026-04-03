@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToonFlow 供应商</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 240 10% 3.9%;
+      --card: 0 0% 100%;
+      --card-foreground: 240 10% 3.9%;
+      --popover: 0 0% 100%;
+      --popover-foreground: 240 10% 3.9%;
+      --primary: 240 5.9% 10%;
+      --primary-foreground: 0 0% 98%;
+      --secondary: 240 4.8% 95.9%;
+      --secondary-foreground: 240 5.9% 10%;
+      --muted: 240 4.8% 95.9%;
+      --muted-foreground: 240 3.8% 46.1%;
+      --accent: 240 4.8% 95.9%;
+      --accent-foreground: 240 5.9% 10%;
+      --destructive: 0 84.2% 60.2%;
+      --border: 240 5.9% 90%;
+      --input: 240 5.9% 90%;
+      --ring: 240 5.9% 10%;
+      --radius: 0.5rem;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: hsl(var(--background));
+      color: hsl(var(--foreground));
+      line-height: 1.5;
+      font-size: 14px;
+      min-height: 100vh;
+    }
+
+    /* Layout */
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: hsl(var(--secondary));
+      border-right: 1px solid hsl(var(--border));
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 50;
+    }
+
+    .sidebar-header {
+      padding: 16px;
+      border-bottom: 1px solid hsl(var(--border));
+    }
+
+    .sidebar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: hsl(var(--foreground));
+    }
+
+    .sidebar-logo-icon {
+      width: 28px;
+      height: 28px;
+      background: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .sidebar-logo-text {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .sidebar-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px;
+    }
+
+    .sidebar-section {
+      margin-bottom: 16px;
+    }
+
+    .sidebar-section-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: hsl(var(--muted-foreground));
+      padding: 0 8px;
+      margin-bottom: 8px;
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 8px;
+      border-radius: 6px;
+      color: hsl(var(--foreground));
+      text-decoration: none;
+      font-size: 13px;
+      transition: background 0.15s;
+    }
+
+    .sidebar-link:hover {
+      background: hsl(var(--accent));
+    }
+
+    .sidebar-link svg {
+      width: 16px;
+      height: 16px;
+      color: hsl(var(--muted-foreground));
+    }
+
+    .sidebar-footer {
+      padding: 12px 16px;
+      border-top: 1px solid hsl(var(--border));
+      font-size: 11px;
+      color: hsl(var(--muted-foreground));
+    }
+
+    /* Main Content */
+    .main {
+      flex: 1;
+      margin-left: 240px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Top Bar */
+    .topbar {
+      height: 48px;
+      border-bottom: 1px solid hsl(var(--border));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      background: hsl(var(--background));
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .topbar-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .topbar-badge {
+      font-size: 11px;
+      padding: 2px 8px;
+      background: hsl(var(--secondary));
+      border: 1px solid hsl(var(--border));
+      border-radius: 9999px;
+      color: hsl(var(--muted-foreground));
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .topbar-stats {
+      display: flex;
+      gap: 16px;
+      font-size: 12px;
+      color: hsl(var(--muted-foreground));
+    }
+
+    .topbar-stat-value {
+      font-weight: 600;
+      color: hsl(var(--foreground));
+    }
+
+    /* Content Area */
+    .content {
+      flex: 1;
+      padding: 24px;
+    }
+
+    /* Filter Tabs */
+    .filter-tabs {
+      display: inline-flex;
+      background: hsl(var(--secondary));
+      border: 1px solid hsl(var(--border));
+      border-radius: 8px;
+      padding: 3px;
+      margin-bottom: 20px;
+      gap: 2px;
+    }
+
+    .filter-tab {
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: hsl(var(--muted-foreground));
+      cursor: pointer;
+      transition: all 0.15s;
+      border: none;
+      background: transparent;
+    }
+
+    .filter-tab:hover {
+      color: hsl(var(--foreground));
+    }
+
+    .filter-tab.active {
+      background: hsl(var(--background));
+      color: hsl(var(--foreground));
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Vendors Grid */
+    .vendors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .vendor-card {
+      background: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.15s;
+      cursor: pointer;
+    }
+
+    .vendor-card:hover {
+      border-color: hsl(var(--ring));
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .vendor-header {
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      border-bottom: 1px solid hsl(var(--border));
+    }
+
+    .vendor-icon {
+      width: 36px;
+      height: 36px;
+      background: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .vendor-title-group {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .vendor-name {
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .vendor-id {
+      font-size: 11px;
+      color: hsl(var(--muted-foreground));
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    }
+
+    .vendor-folder-badge {
+      padding: 3px 8px;
+      background: hsl(var(--secondary));
+      border: 1px solid hsl(var(--border));
+      border-radius: 4px;
+      font-size: 10px;
+      color: hsl(var(--muted-foreground));
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .vendor-body {
+      padding: 12px 16px;
+    }
+
+    .vendor-desc {
+      color: hsl(var(--muted-foreground));
+      font-size: 12px;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Copy URL */
+    .copy-section {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: hsl(var(--secondary));
+      border: 1px solid hsl(var(--border));
+      border-radius: 6px;
+      padding: 6px;
+      margin-bottom: 12px;
+    }
+
+    .copy-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 4px 6px;
+      color: hsl(var(--muted-foreground));
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 11px;
+      outline: none;
+      min-width: 0;
+    }
+
+    .copy-btn {
+      padding: 4px 10px;
+      background: hsl(var(--primary));
+      border: none;
+      border-radius: 4px;
+      color: hsl(var(--primary-foreground));
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .copy-btn:hover {
+      opacity: 0.9;
+    }
+
+    .copy-btn.copied {
+      background: hsl(142 76% 36%);
+    }
+
+    /* Stats Row */
+    .vendor-stats {
+      display: flex;
+      gap: 8px;
+    }
+
+    .vendor-stat {
+      flex: 1;
+      padding: 8px 12px;
+      background: hsl(var(--secondary));
+      border: 1px solid hsl(var(--border));
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .vendor-stat-value {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .vendor-stat-label {
+      font-size: 10px;
+      color: hsl(var(--muted-foreground));
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background: hsl(var(--background));
+      border: 1px solid hsl(var(--border));
+      border-radius: 12px;
+      max-width: 720px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      transform: scale(0.95);
+      transition: transform 0.2s;
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid hsl(var(--border));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .modal-icon {
+      width: 36px;
+      height: 36px;
+      background: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .modal-title h2 {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .modal-title .vendor-id {
+      font-size: 12px;
+    }
+
+    .modal-close {
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: 1px solid hsl(var(--border));
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 18px;
+      color: hsl(var(--muted-foreground));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+    }
+
+    .modal-close:hover {
+      background: hsl(var(--secondary));
+      color: hsl(var(--foreground));
+    }
+
+    .modal-body {
+      padding: 20px 24px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid hsl(var(--border));
+    }
+
+    .description-box {
+      background: hsl(var(--secondary));
+      border: 1px solid hsl(var(--border));
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      color: hsl(var(--muted-foreground));
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .description-box a {
+      color: hsl(var(--foreground));
+      text-decoration: underline;
+    }
+
+    /* Inputs Grid */
+    .inputs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .input-card {
+      background: hsl(var(--secondary));
+      border: 1px solid hsl(var(--border));
+      border-radius: 6px;
+      padding: 10px 12px;
+    }
+
+    .input-label {
+      font-size: 11px;
+      color: hsl(var(--muted-foreground));
+      margin-bottom: 4px;
+    }
+
+    .input-key {
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+
+    .input-badges {
+      display: flex;
+      gap: 4px;
+    }
+
+    .input-badge {
+      font-size: 9px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .input-badge.type {
+      background: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+    }
+
+    .input-badge.required {
+      background: hsl(var(--destructive));
+      color: white;
+    }
+
+    /* Models Grid */
+    .models-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 8px;
+    }
+
+    .model-card {
+      background: hsl(var(--secondary));
+      border: 1px solid hsl(var(--border));
+      border-radius: 6px;
+      padding: 10px 12px;
+    }
+
+    .model-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .model-name {
+      font-weight: 500;
+      font-size: 13px;
+    }
+
+    .model-type {
+      font-size: 9px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      background: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+    }
+
+    .model-id {
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 11px;
+      color: hsl(var(--muted-foreground));
+      margin-bottom: 6px;
+    }
+
+    .model-modes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .mode-tag {
+      font-size: 9px;
+      padding: 2px 6px;
+      background: hsl(var(--background));
+      border: 1px solid hsl(var(--border));
+      border-radius: 4px;
+      color: hsl(var(--muted-foreground));
+    }
+
+    /* Loading & Empty States */
+    .loading, .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .spinner {
+      width: 24px;
+      height: 24px;
+      border: 2px solid hsl(var(--border));
+      border-top-color: hsl(var(--primary));
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      margin: 0 auto 12px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .error {
+      text-align: center;
+      padding: 40px 20px;
+      background: hsl(var(--secondary));
+      border: 1px solid hsl(var(--border));
+      border-radius: 8px;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid hsl(var(--border));
+      padding: 12px 16px;
+      text-align: center;
+      font-size: 11px;
+      color: hsl(var(--muted-foreground));
+    }
+
+    .footer a {
+      color: hsl(var(--foreground));
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+
+      .main {
+        margin-left: 0;
+      }
+
+      .vendors-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .inputs-grid,
+      .models-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar-stats {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="#" class="sidebar-logo">
+          <div class="sidebar-logo-icon">TF</div>
+          <div class="sidebar-logo-text">四零二二·ToonFlow</div>
+        </a>
+      </div>
+      <div class="sidebar-content">
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">导航</div>
+          <a href="#" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            首页
+          </a>
+          <a href="#" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+            供应商列表
+          </a>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">推荐</div>
+          <a href="https://api.4022543.xyz" target="_blank" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            API 中转站
+          </a>
+          <a href="https://4022543.apifox.cn" target="_blank" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+            API 文档
+          </a>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">资源</div>
+          <a href="https://github.com/wwwzhouhui/jimeng-free-api-all" target="_blank" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            即梦API部署
+          </a>
+          <a href="https://github.com/HBAI-Ltd/Toonflow-app" target="_blank" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            TF官方GitHub
+          </a>
+          <a href="#" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+            帮助中心
+          </a>
+          <a href="#" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+            社区
+          </a>
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        ToonFlow v1.0.0
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <!-- Top Bar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="topbar-title">ToonFlow供应商列表</div>
+          <div class="topbar-badge" id="filterBadge">全部</div>
+        </div>
+        <div class="topbar-right">
+          <div class="topbar-stats">
+            <div><span class="topbar-stat-value" id="vendorCount">-</span> 供应商</div>
+            <div><span class="topbar-stat-value" id="modelCount">-</span> 模型</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="content">
+        <!-- Filter Tabs -->
+        <div class="filter-tabs" id="filterTabs">
+          <button class="filter-tab active" data-filter="all">全部</button>
+          <button class="filter-tab" data-filter="text">文本</button>
+          <button class="filter-tab" data-filter="image">图像</button>
+          <button class="filter-tab" data-filter="video">视频</button>
+          <button class="filter-tab" data-filter="tts">语音</button>
+        </div>
+
+        <!-- Vendors Content -->
+        <div id="content">
+          <div class="loading">
+            <div class="spinner"></div>
+            <div>加载中...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        本站非官方，是ToonFlow供应商文件展示站 ｜ <a href="https://toonflow.net" target="_blank">官方网站</a>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-header-left">
+          <div class="modal-icon" id="modalIcon">?</div>
+          <div class="modal-title">
+            <h2 id="modalTitle">-</h2>
+            <div class="vendor-id" id="modalId">-</div>
+          </div>
+        </div>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    let vendorsData = [];
+    let currentFilter = 'all';
+
+    async function loadData() {
+      try {
+        const response = await fetch('data/data.json');
+        if (!response.ok) throw new Error('无法加载数据文件');
+        vendorsData = await response.json();
+        updateStats();
+        renderVendors();
+        setupFilters();
+      } catch (error) {
+        document.getElementById('content').innerHTML = `
+          <div class="error">
+            <div>加载失败</div>
+            <div style="color: hsl(var(--muted-foreground)); font-size: 12px; margin-top: 4px;">${error.message}</div>
+          </div>
+        `;
+      }
+    }
+
+    function updateStats() {
+      document.getElementById('vendorCount').textContent = vendorsData.length;
+      const totalModels = vendorsData.reduce((sum, item) => sum + (item.vendor?.models?.length || 0), 0);
+      document.getElementById('modelCount').textContent = totalModels;
+    }
+
+    function getVendorTypes(vendor) {
+      const types = new Set();
+      vendor.models?.forEach(m => types.add(m.type));
+      return Array.from(types);
+    }
+
+    function setupFilters() {
+      const tabs = document.querySelectorAll('.filter-tab');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          currentFilter = tab.dataset.filter;
+          document.getElementById('filterBadge').textContent = tab.textContent;
+          renderVendors();
+        });
+      });
+    }
+
+    function renderVendors() {
+      let filtered = vendorsData;
+      if (currentFilter !== 'all') {
+        filtered = vendorsData.filter(item =>
+          getVendorTypes(item.vendor).includes(currentFilter)
+        );
+      }
+
+      if (filtered.length === 0) {
+        document.getElementById('content').innerHTML = `
+          <div class="empty-state">
+            <div>暂无数据</div>
+            <div style="color: hsl(var(--muted-foreground)); font-size: 12px; margin-top: 4px;">没有找到符合条件的供应商</div>
+          </div>
+        `;
+        return;
+      }
+
+      document.getElementById('content').innerHTML = `
+        <div class="vendors-grid">
+          ${filtered.map((item, index) => renderVendorCard(item, vendorsData.indexOf(item))).join('')}
+        </div>
+      `;
+    }
+
+    function renderVendorCard(item, index) {
+      const vendor = item.vendor;
+      const firstLetter = vendor.name?.charAt(0).toUpperCase() || '?';
+      const modelCount = vendor.models?.length || 0;
+      const inputCount = vendor.inputs?.length || 0;
+      const shortDesc = vendor.description?.substring(0, 80) + (vendor.description?.length > 80 ? '...' : '') || '暂无描述';
+      const fileUrl = `https://tf.4022543.xyz/store/${item.file}`;
+
+      return `
+        <div class="vendor-card" onclick="openModal(${index})">
+          <div class="vendor-header">
+            <div class="vendor-icon">${firstLetter}</div>
+            <div class="vendor-title-group">
+              <div class="vendor-name">${escapeHtml(vendor.name)}</div>
+              <div class="vendor-id">${escapeHtml(vendor.id)}</div>
+            </div>
+            <div class="vendor-folder-badge">${escapeHtml(item.folder)}</div>
+          </div>
+          <div class="vendor-body">
+            <div class="vendor-desc">${escapeHtml(shortDesc)}</div>
+            <div class="copy-section" onclick="event.stopPropagation();">
+              <input type="text" class="copy-input" value="${escapeHtml(fileUrl)}" readonly>
+              <button class="copy-btn" onclick="copyToClipboard('${fileUrl}', this)">复制</button>
+            </div>
+            <div class="vendor-stats">
+              <div class="vendor-stat">
+                <div class="vendor-stat-value">${modelCount}</div>
+                <div class="vendor-stat-label">模型</div>
+              </div>
+              <div class="vendor-stat">
+                <div class="vendor-stat-value">${inputCount}</div>
+                <div class="vendor-stat-label">配置项</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function openModal(index) {
+      const item = vendorsData[index];
+      const vendor = item.vendor;
+      const firstLetter = vendor.name?.charAt(0).toUpperCase() || '?';
+
+      document.getElementById('modalIcon').textContent = firstLetter;
+      document.getElementById('modalTitle').textContent = vendor.name || '-';
+      document.getElementById('modalId').textContent = vendor.id || '-';
+
+      let bodyHtml = '';
+
+      if (vendor.description) {
+        bodyHtml += `
+          <div class="section-title">描述</div>
+          <div class="description-box">${formatDescription(vendor.description)}</div>
+        `;
+      }
+
+      if (vendor.inputs?.length) {
+        bodyHtml += `
+          <div class="section-title">输入配置 (${vendor.inputs.length})</div>
+          <div class="inputs-grid">
+            ${vendor.inputs.map(input => `
+              <div class="input-card">
+                <div class="input-label">${escapeHtml(input.label)}</div>
+                <div class="input-key">${escapeHtml(input.key)}</div>
+                <div class="input-badges">
+                  <span class="input-badge type">${escapeHtml(input.type)}</span>
+                  ${input.required ? '<span class="input-badge required">必填</span>' : ''}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      if (vendor.models?.length) {
+        bodyHtml += `
+          <div class="section-title">模型列表 (${vendor.models.length})</div>
+          <div class="models-grid">
+            ${vendor.models.map(model => renderModelCard(model)).join('')}
+          </div>
+        `;
+      }
+
+      document.getElementById('modalBody').innerHTML = bodyHtml;
+      document.getElementById('modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function renderModelCard(model) {
+      return `
+        <div class="model-card">
+          <div class="model-header">
+            <span class="model-name">${escapeHtml(model.name)}</span>
+            <span class="model-type">${model.type}</span>
+          </div>
+          <div class="model-id">${escapeHtml(model.modelName)}</div>
+          ${model.mode ? `
+            <div class="model-modes">
+              ${(Array.isArray(model.mode) ? model.mode : [model.mode]).slice(0, 4).map(m =>
+                `<span class="mode-tag">${escapeHtml(String(m))}</span>`
+              ).join('')}
+              ${Array.isArray(model.mode) && model.mode.length > 4 ? `<span class="mode-tag">+${model.mode.length - 4}</span>` : ''}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    async function copyToClipboard(text, btn) {
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.classList.add('copied');
+        btn.textContent = '已复制';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.textContent = '复制';
+        }, 2000);
+      } catch (err) {
+        const input = btn.parentElement.querySelector('.copy-input');
+        input.select();
+        document.execCommand('copy');
+        btn.classList.add('copied');
+        btn.textContent = '已复制';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.textContent = '复制';
+        }, 2000);
+      }
+    }
+
+    function formatDescription(desc) {
+      return escapeHtml(desc)
+        .replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank">$1</a>')
+        .replace(/\n/g, '<br>');
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    document.getElementById('modal').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closeModal();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    loadData();
+  </script>
+</body>
+</html>

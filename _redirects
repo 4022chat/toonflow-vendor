@@ -1,0 +1,5 @@
+# Cloudflare Pages Redirects Configuration
+# https://developers.cloudflare.com/pages/configuration/redirects/
+
+# 所有路由都指向 index.html（SPA 支持）
+/* /index.html 200

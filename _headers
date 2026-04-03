@@ -1,0 +1,21 @@
+# Cloudflare Pages Headers Configuration
+# https://developers.cloudflare.com/pages/configuration/headers/
+
+# 缓存静态资源
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# JSON 数据文件缓存
+data/*.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+
+# 主页面
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# 安全响应头
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin

@@ -1,0 +1,529 @@
+[
+  {
+    "file": "jimeng/jimeng.ts",
+    "folder": "jimeng",
+    "hasVendorConfig": true,
+    "vendor": {
+      "id": "jm.4022543.xyz",
+      "version": 1,
+      "author": "四零二二",
+      "description": "兼容JM2API项目的接口，支持文生图、图生图、普通视频与 SD2.0 多模态视频生成。\n\n 使用该方案，您需要先拥有一个JM的API服务，才能使用该适配器。\n\n API服务部署教程：https://tf.4022543.xyz\n\n⚠️**警告：该方案有可能会被封号，请慎重！！！**",
+      "name": "JM-API",
+      "inputs": [
+        {
+          "key": "apiKey",
+          "label": "SessionID / API密钥",
+          "type": "password",
+          "required": true
+        },
+        {
+          "key": "baseUrl",
+          "label": "基础URL",
+          "type": "text",
+          "required": true,
+          "placeholder": "例如 http://127.0.0.1:8000/v1"
+        },
+        {
+          "key": "image",
+          "label": "图片接口",
+          "type": "url",
+          "required": false,
+          "placeholder": "默认为 {baseUrl}/v1/images/generations"
+        },
+        {
+          "key": "video",
+          "label": "视频接口",
+          "type": "url",
+          "required": false,
+          "placeholder": "默认为 {baseUrl}/v1/videos/generations"
+        },
+        {
+          "key": "videoQuery",
+          "label": "通用视频任务查询",
+          "type": "url",
+          "required": false,
+          "placeholder": "如非必要请勿更改"
+        }
+      ],
+      "inputValues": {
+        "apiKey": "",
+        "baseUrl": "http://127.0.0.1:8000/v1",
+        "image": "http://127.0.0.1:8000/v1/images/generations",
+        "video": "http://127.0.0.1:8000/v1/videos/generations/async",
+        "videoQuery": "http://127.0.0.1:8000/v1/videos/generations/async/{id}"
+      },
+      "models": [
+        {
+          "name": "jm 5.0",
+          "type": "image",
+          "modelName": "jimeng-5.0",
+          "mode": [
+            "text",
+            "singleImage",
+            "multiReference"
+          ],
+          "associationSkills": ""
+        },
+        {
+          "name": "jm 4.6",
+          "type": "image",
+          "modelName": "jimeng-4.6",
+          "mode": [
+            "text",
+            "singleImage",
+            "multiReference"
+          ],
+          "associationSkills": ""
+        },
+        {
+          "name": "jm 4.5",
+          "type": "image",
+          "modelName": "jimeng-4.5",
+          "mode": [
+            "text",
+            "singleImage",
+            "multiReference"
+          ],
+          "associationSkills": ""
+        },
+        {
+          "name": "jm 4.1",
+          "type": "image",
+          "modelName": "jimeng-4.1",
+          "mode": [
+            "text",
+            "singleImage",
+            "multiReference"
+          ],
+          "associationSkills": ""
+        },
+        {
+          "name": "jm 4.0",
+          "type": "image",
+          "modelName": "jimeng-4.0",
+          "mode": [
+            "text",
+            "singleImage",
+            "multiReference"
+          ],
+          "associationSkills": ""
+        },
+        {
+          "name": "SD 2.0",
+          "type": "video",
+          "modelName": "jimeng-video-seedance-2.0",
+          "mode": [
+            "singleImage",
+            "startEndRequired",
+            "endFrameOptional",
+            "startFrameOptional",
+            "text",
+            [
+              "videoReference",
+              "imageReference",
+              "audioReference",
+              "textReference"
+            ]
+          ],
+          "associationSkills": "",
+          "audio": true,
+          "durationResolutionMap": [
+            {
+              "duration": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+              ],
+              "resolution": [
+                "720p",
+                "1080p"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "SD 2.0 Fast",
+          "modelName": "jimeng-video-seedance-2.0-fast",
+          "type": "video",
+          "mode": [
+            "singleImage",
+            "startEndRequired",
+            "endFrameOptional",
+            "startFrameOptional",
+            "text",
+            [
+              "videoReference",
+              "imageReference",
+              "audioReference",
+              "textReference"
+            ]
+          ],
+          "associationSkills": "",
+          "audio": true,
+          "durationResolutionMap": [
+            {
+              "duration": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+              ],
+              "resolution": [
+                "720p",
+                "1080p"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "SD 1.5",
+          "modelName": "jimeng-video-3.5-pro",
+          "type": "video",
+          "mode": [
+            "text",
+            "singleImage",
+            "startEndRequired",
+            "endFrameOptional",
+            "startFrameOptional"
+          ],
+          "associationSkills": "",
+          "audio": false,
+          "durationResolutionMap": [
+            {
+              "duration": [
+                5,
+                10,
+                12
+              ],
+              "resolution": [
+                "720p",
+                "1080p"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "openai/ac2api.ts",
+    "folder": "openai",
+    "hasVendorConfig": true,
+    "vendor": {
+      "id": "aiclient2api.4022543.xyz",
+      "author": "四零二二",
+      "description": "支持所有兼容AIClient2API中openai接口规范的API，仅支持文本\n\n欢迎使用我的其他插件：https://tf.4022543.xyz",
+      "name": "AIClient2API接口",
+      "inputs": [
+        {
+          "key": "apiKey",
+          "label": "API密钥",
+          "type": "password",
+          "required": true
+        },
+        {
+          "key": "baseUrl",
+          "label": "基础URL",
+          "type": "url",
+          "required": true,
+          "placeholder": "默认 https://127.0.0.1:3000/openai-qwen-oauth/v1"
+        }
+      ],
+      "inputValues": {
+        "apiKey": "",
+        "baseUrl": "https://127.0.0.1:3000/openai-qwen-oauth/v1"
+      },
+      "models": [
+        {
+          "name": "qwen3-coder-plus",
+          "type": "text",
+          "modelName": "qwen3-coder-plus",
+          "multimodal": true,
+          "tool": true,
+          "think": true
+        },
+        {
+          "name": "qwen3-coder-flash",
+          "type": "text",
+          "modelName": "qwen3-coder-flash",
+          "multimodal": true,
+          "tool": true,
+          "think": true
+        },
+        {
+          "name": "图片识别vision-model",
+          "type": "text",
+          "modelName": "vision-model",
+          "multimodal": true,
+          "tool": true,
+          "think": true
+        }
+      ]
+    }
+  },
+  {
+    "file": "openai/cpa.ts",
+    "folder": "openai",
+    "hasVendorConfig": true,
+    "vendor": {
+      "id": "cpa.4022543.xyz",
+      "author": "四零二二",
+      "description": "支持所有兼容CPA中openai接口规范的API，仅支持文本\n\n欢迎使用我的其他插件：https://tf.4022543.xyz",
+      "name": "cli-proxy-api接口",
+      "inputs": [
+        {
+          "key": "apiKey",
+          "label": "API密钥",
+          "type": "password",
+          "required": true
+        },
+        {
+          "key": "baseUrl",
+          "label": "基础URL",
+          "type": "url",
+          "required": true,
+          "placeholder": "默认 https://127.0.0.1:8317/v1"
+        }
+      ],
+      "inputValues": {
+        "apiKey": "",
+        "baseUrl": "https://127.0.0.1:8317/v1"
+      },
+      "models": [
+        {
+          "name": "qwen3-coder-plus",
+          "type": "text",
+          "modelName": "qwen3-coder-plus",
+          "multimodal": true,
+          "tool": true,
+          "think": true
+        },
+        {
+          "name": "qwen3-coder-flash",
+          "type": "text",
+          "modelName": "qwen3-coder-flash",
+          "multimodal": true,
+          "tool": true,
+          "think": true
+        },
+        {
+          "name": "图片识别vision-model",
+          "type": "text",
+          "modelName": "vision-model",
+          "multimodal": true,
+          "tool": true,
+          "think": true
+        }
+      ]
+    }
+  },
+  {
+    "file": "openai/openai.ts",
+    "folder": "openai",
+    "hasVendorConfig": true,
+    "vendor": {
+      "id": "openai.4022543.xyz",
+      "author": "四零二二",
+      "description": "支持所有兼容 OpenAI 官方接口规范的API，支持文本、图像、视频和语音能力。\n\n欢迎使用我的其他插件：https://tf.4022543.xyz",
+      "name": "OpenAI 官方接口",
+      "inputs": [
+        {
+          "key": "apiKey",
+          "label": "API密钥",
+          "type": "password",
+          "required": true
+        },
+        {
+          "key": "baseUrl",
+          "label": "基础URL",
+          "type": "url",
+          "required": true,
+          "placeholder": "默认 https://api.openai.com/v1"
+        },
+        {
+          "key": "text",
+          "label": "文本接口地址",
+          "type": "url",
+          "required": false,
+          "placeholder": "默认为空，系统会自动拼接，如： https://api.openai.com/v1/chat/completions"
+        },
+        {
+          "key": "image",
+          "label": "图片生成地址",
+          "type": "url",
+          "required": false,
+          "placeholder": "默认为空，系统会自动拼接，如： https://api.openai.com/v1/images/generations"
+        },
+        {
+          "key": "imageEdit",
+          "label": "图片编辑地址",
+          "type": "url",
+          "required": false,
+          "placeholder": "默认为空，系统会自动拼接，如： https://api.openai.com/v1/images/edits"
+        },
+        {
+          "key": "videoCreate",
+          "label": "视频任务创建",
+          "type": "url",
+          "required": false,
+          "placeholder": "默认为空，系统会自动拼接，如： https://api.openai.com/v1/videos"
+        },
+        {
+          "key": "videoQuery",
+          "label": "视频任务查询",
+          "type": "url",
+          "required": false,
+          "placeholder": "默认为空，系统会自动拼接，如： https://api.openai.com/v1/videos/{id}"
+        },
+        {
+          "key": "videoDownload",
+          "label": "视频文件下载",
+          "type": "url",
+          "required": false,
+          "placeholder": "默认为空，系统会自动拼接，如： https://api.openai.com/v1/videos/{id}/content"
+        },
+        {
+          "key": "tts",
+          "label": "语音合成地址",
+          "type": "url",
+          "required": false,
+          "placeholder": "默认为空，系统会自动拼接，如： https://api.openai.com/v1/audio/speech"
+        }
+      ],
+      "inputValues": {
+        "apiKey": "",
+        "baseUrl": "https://api.openai.com/v1",
+        "text": "",
+        "image": "",
+        "imageEdit": "",
+        "videoCreate": "",
+        "videoQuery": "",
+        "videoDownload": "",
+        "tts": ""
+      },
+      "models": [
+        {
+          "name": "GPT-5.4",
+          "type": "text",
+          "modelName": "gpt-5.4",
+          "multimodal": true,
+          "tool": true,
+          "think": true
+        },
+        {
+          "name": "GPT-5.4 Mini",
+          "type": "text",
+          "modelName": "gpt-5.4-mini",
+          "multimodal": true,
+          "tool": true,
+          "think": true
+        },
+        {
+          "name": "GPT-5.4 Nano",
+          "type": "text",
+          "modelName": "gpt-5.4-nano",
+          "multimodal": true,
+          "tool": true,
+          "think": true
+        },
+        {
+          "name": "GPT Image 1.5",
+          "type": "image",
+          "modelName": "gpt-image-1.5",
+          "mode": [
+            "text",
+            "singleImage",
+            "multiReference"
+          ]
+        },
+        {
+          "name": "GPT Image 1",
+          "type": "image",
+          "modelName": "gpt-image-1",
+          "mode": [
+            "text",
+            "singleImage",
+            "multiReference"
+          ]
+        },
+        {
+          "name": "GPT Image 1-mini",
+          "type": "image",
+          "modelName": "gpt-image-1-mini",
+          "mode": [
+            "text",
+            "singleImage",
+            "multiReference"
+          ]
+        },
+        {
+          "name": "Sora-2",
+          "type": "video",
+          "modelName": "sora-2",
+          "mode": [
+            "singleImage",
+            "text"
+          ],
+          "audio": "optional",
+          "durationResolutionMap": [
+            {
+              "duration": [
+                4,
+                8,
+                12
+              ],
+              "resolution": [
+                "720x1280",
+                "1280x720",
+                "1024x1792",
+                "1792x1024"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "sora-2-pro",
+          "type": "video",
+          "modelName": "sora-2-pro",
+          "mode": [
+            "singleImage",
+            "text"
+          ],
+          "audio": "optional",
+          "durationResolutionMap": [
+            {
+              "duration": [
+                4,
+                8,
+                12
+              ],
+              "resolution": [
+                "720x1280",
+                "1280x720",
+                "1024x1792",
+                "1792x1024"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
