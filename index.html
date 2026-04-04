@@ -895,7 +895,7 @@
       const modelCount = vendor.models?.length || 0;
       const inputCount = vendor.inputs?.length || 0;
       const shortDesc = vendor.description?.substring(0, 80) + (vendor.description?.length > 80 ? '...' : '') || '暂无描述';
-      const fileUrl = `https://tf.4022543.xyz/store/${item.file}`;
+      const fileUrl = `/store/${item.file}`;
 
       return `
         <div class="vendor-card" onclick="openModal(${index})">

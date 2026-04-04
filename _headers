@@ -10,6 +10,10 @@ data/*.json
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *
 
+# 访问 store 下的 TypeScript 文件时强制下载
+/store/*.ts
+  Content-Disposition: attachment
+
 # 主页面
 /index.html
   Cache-Control: public, max-age=0, must-revalidate
