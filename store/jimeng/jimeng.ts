@@ -69,7 +69,7 @@ const vendor: VendorConfig = {
   id: "jimeng",
   version: 1,
   author: "四零二二",
-  description: "兼容JM2API项目的接口，支持文生图、图生图、普通视频与 SD2.0 多模态视频生成。\n\n 使用该方案，您需要先拥有一个JM的API服务，才能使用该适配器。\n\n 建议在 github上搜索：如：[jimeng-free-api-all](https://github.com/wwwzhouhui/jimeng-free-api-all)\n\n⚠️**警告：此类项目有违官方使用规则，该方案有可能会被封号，请慎重！！！建议使用官方接口。**\n\n更多供应商：https://tf.4022543.xyz/",
+  description: "兼容JM2API项目的接口，支持文生图、图生图、普通视频与 SD2.0 多模态视频生成。\n\n 使用该方案，您需要先拥有一个JM的API服务，才能使用该适配器。\n\n 可以在github上搜索：例如：[jimeng-free-api-all](https://github.com/wwwzhouhui/jimeng-free-api-all)\n\n⚠️**警告：此类项目有违官方使用规则，该方案有可能会被封号，请慎重！！！建议使用官方接口。**\n\n更多供应商：https://tf.4022543.xyz/",
   name: "JM-API",
   inputs: [
     { key: "apiKey", label: "SessionID / API密钥", type: "password", required: true },
