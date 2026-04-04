@@ -69,18 +69,18 @@ const vendor: VendorConfig = {
   id: "jimeng",
   version: 1,
   author: "四零二二",
-  description: "兼容JM2API项目的接口，支持文生图、图生图、普通视频与 SD2.0 多模态视频生成。\n\n 使用该方案，您需要先拥有一个JM的API服务，才能使用该适配器。\n\n API服务部署教程：https://tf.4022543.xyz\n\n⚠️**警告：该方案有可能会被封号，请慎重！！！**",
+  description: "兼容JM2API项目的接口，支持文生图、图生图、普通视频与 SD2.0 多模态视频生成。\n\n 使用该方案，您需要先拥有一个JM的API服务，才能使用该适配器。\n\n 建议在 github上搜索：如：[jimeng-free-api-all](https://github.com/wwwzhouhui/jimeng-free-api-all)\n\n⚠️**警告：此类项目有违官方使用规则，该方案有可能会被封号，请慎重！！！建议使用官方接口。**\n\n更多供应商：https://tf.4022543.xyz/",
   name: "JM-API",
   inputs: [
     { key: "apiKey", label: "SessionID / API密钥", type: "password", required: true },
-    { key: "baseUrl", label: "基础URL", type: "text", required: true, placeholder: "例如 http://127.0.0.1:8000/v1" },
+    { key: "baseUrl", label: "基础URL", type: "text", required: true, placeholder: "例如 http://127.0.0.1:8000" },
     { key: "image", label: "图片接口", type: "url", required: false, placeholder: "默认为 {baseUrl}/v1/images/generations" },
-    { key: "video", label: "视频接口", type: "url", required: false, placeholder: "默认为 {baseUrl}/v1/videos/generations" },
+    { key: "video", label: "视频接口", type: "url", required: false, placeholder: "默认为 {baseUrl}/v1/videos/generations/async" },
     { key: "videoQuery", label: "通用视频任务查询", type: "url", required: false, placeholder: "默认为 {baseUrl}/v1/videos/generations/async/{id}" },
   ],
   inputValues: {
   "apiKey": "",
-  "baseUrl": "http://127.0.0.1:8000/v1",
+  "baseUrl": "http://127.0.0.1:8000",
   "image": "",
   "video": "",
   "videoQuery": ""
@@ -438,10 +438,11 @@ interface ImageConfig {
 const imageRequest = async (imageConfig: ImageConfig, imageModel: ImageModel) => {
   const headers = { Authorization: getAuthorization() };
   const hasImages = Array.isArray(imageConfig.imageBase64) && imageConfig.imageBase64.length > 0;
-  const resolution = imageConfig.size.toLowerCase();
+  let resolution = imageConfig.size.toLowerCase();
 
   if(resolution == "1k"){
-    throw new Error(`JM-4.0以上系列不支持 1K 分辨率，请选择 2K 或 4K`);
+    // throw new Error(`JM-4.0以上系列不支持 1K 分辨率，请选择 2K 或 4K`);
+    resolution = "2k";
   }
 
   if (hasImages) {
