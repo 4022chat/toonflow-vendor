@@ -11,4 +11,6 @@ Toonflow 是一款 AI 短剧漫剧工具，能够利用 AI 技术将小说自动
 - [CPA项目](./store/openai)
 - [AIClient-2-API项目](./store/openai)
 
+# 供应商一键导入
 在线浏览：[https://tf.4022543.xyz/](https://tf.4022543.xyz/)
+支持一键复制供应商文件 URL导入到 Toonflow 中。
