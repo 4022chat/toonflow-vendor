@@ -1,0 +1,42 @@
+# Netlify Configuration
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # 纯静态站点，不需要构建命令
+  command = ""
+  # 发布目录
+  publish = "."
+
+# 重定向规则（SPA 支持）
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# HTTP 响应头
+[[headers]]
+  # 静态资源缓存
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # JSON 数据文件
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  # TypeScript 文件下载
+  for = "/store/*.ts"
+  [headers.values]
+    Content-Disposition = "attachment"
+
+[[headers]]
+  # 安全响应头
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
