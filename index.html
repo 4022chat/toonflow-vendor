@@ -895,7 +895,8 @@
       const modelCount = vendor.models?.length || 0;
       const inputCount = vendor.inputs?.length || 0;
       const shortDesc = vendor.description?.substring(0, 80) + (vendor.description?.length > 80 ? '...' : '') || '暂无描述';
-      const fileUrl = `/store/${item.file}`;
+      const protocolAndHost = window.location.protocol + "//" + window.location.host;
+      const fileUrl = `${protocolAndHost}/store/${item.file}`;
 
       return `
         <div class="vendor-card" onclick="openModal(${index})">
