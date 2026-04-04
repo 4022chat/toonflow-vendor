@@ -62,7 +62,7 @@ interface VendorConfig {
 
 // ==================== 供应商数据 ====================
 const vendor: VendorConfig = {
-  id: "cpa.4022543.xyz",
+  id: "cpa",
   author: "四零二二",
   description: "支持所有兼容CPA中openai接口规范的API，仅支持文本\n\n欢迎使用我的其他插件：https://tf.4022543.xyz",
   name: "cli-proxy-api接口",

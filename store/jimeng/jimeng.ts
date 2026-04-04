@@ -66,7 +66,7 @@ interface VendorConfig {
 
 // ==================== 供应商数据 ====================
 const vendor: VendorConfig = {
-  id: "jm.4022543.xyz",
+  id: "jimeng",
   version: 1,
   author: "四零二二",
   description: "兼容JM2API项目的接口，支持文生图、图生图、普通视频与 SD2.0 多模态视频生成。\n\n 使用该方案，您需要先拥有一个JM的API服务，才能使用该适配器。\n\n API服务部署教程：https://tf.4022543.xyz\n\n⚠️**警告：该方案有可能会被封号，请慎重！！！**",
@@ -74,17 +74,16 @@ const vendor: VendorConfig = {
   inputs: [
     { key: "apiKey", label: "SessionID / API密钥", type: "password", required: true },
     { key: "baseUrl", label: "基础URL", type: "text", required: true, placeholder: "例如 http://127.0.0.1:8000/v1" },
-    // { key: "text", label: "文本接口", type: "url", required: false, placeholder: "默认为 {baseUrl}/v1" },
     { key: "image", label: "图片接口", type: "url", required: false, placeholder: "默认为 {baseUrl}/v1/images/generations" },
     { key: "video", label: "视频接口", type: "url", required: false, placeholder: "默认为 {baseUrl}/v1/videos/generations" },
-    { key: "videoQuery", label: "通用视频任务查询", type: "url", required: false, placeholder: "如非必要请勿更改" },
+    { key: "videoQuery", label: "通用视频任务查询", type: "url", required: false, placeholder: "默认为 {baseUrl}/v1/videos/generations/async/{id}" },
   ],
   inputValues: {
   "apiKey": "",
   "baseUrl": "http://127.0.0.1:8000/v1",
-  "image": "http://127.0.0.1:8000/v1/images/generations",
-  "video": "http://127.0.0.1:8000/v1/videos/generations/async",
-  "videoQuery": "http://127.0.0.1:8000/v1/videos/generations/async/{id}"
+  "image": "",
+  "video": "",
+  "videoQuery": ""
 },
   models: [
   {
@@ -217,11 +216,85 @@ const vendor: VendorConfig = {
     ]
   },
   {
+    "name": "SD 2.0 VIP",
+    "type": "video",
+    "modelName": "jimeng-video-seedance-2.0-vip",
+    "mode": [
+      "singleImage",
+      "startEndRequired",
+      "endFrameOptional",
+      "startFrameOptional",
+      "text",
+      ["videoReference", "imageReference", "audioReference", "textReference"]
+    ],
+    "associationSkills": "",
+    "audio": true,
+    "durationResolutionMap": [
+      {
+        "duration": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "resolution": [
+          "720p",
+          "1080p"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SD 2.0 Fast VIP",
+    "modelName": "jimeng-video-seedance-2.0-fast-vip",
+    "type": "video",
+    "mode": [
+      "singleImage",
+      "startEndRequired",
+      "endFrameOptional",
+      "startFrameOptional",
+      "text",
+      ["videoReference", "imageReference", "audioReference", "textReference"]
+    ],
+    "associationSkills": "",
+    "audio": true,
+    "durationResolutionMap": [
+      {
+        "duration": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "resolution": [
+          "720p",
+          "1080p"
+        ]
+      }
+    ]
+  },
+  {
     "name": "SD 1.5",
     "modelName": "jimeng-video-3.5-pro",
     "type": "video",
     "mode": [
-      "text","singleImage","startEndRequired","endFrameOptional","startFrameOptional"
+      "text","startEndRequired"
     ],
     "associationSkills": "",
     "audio": false,
@@ -368,24 +441,38 @@ const imageRequest = async (imageConfig: ImageConfig, imageModel: ImageModel) =>
   const resolution = imageConfig.size.toLowerCase();
 
   if(resolution == "1k"){
-    throw new Error(`JM-4.0以上系列不支持 1K 尺寸`);
+    throw new Error(`JM-4.0以上系列不支持 1K 分辨率，请选择 2K 或 4K`);
   }
 
   if (hasImages) {
-    const formData = new FormData();
-    formData.append("model", imageModel.modelName);
-    formData.append("prompt", imageConfig.prompt);
-    formData.append("ratio", imageConfig.aspectRatio);
-    formData.append("resolution", resolution);
-    formData.append("response_format", "url");
-    formData.append("sample_strength", "0.5");
-    appendBase64Files(formData, "images", imageConfig.imageBase64, "image");
-
-    const response = await axios.post(getImageUrl(), formData, {
-      headers: { ...headers, ...(typeof formData.getHeaders === "function" ? formData.getHeaders() : {}) },
+    const images = imageConfig.imageBase64.map((base64) => {
+      const normalized = normalizeBase64(base64);
+      const meta = getFileMeta(base64, "image");
+      return `data:${meta.mimeType};base64,${normalized}`;
     });
-    const result = extractResult(response.data);
-    if (!result) throw new Error(`图片生成成功但未返回可用结果: ${JSON.stringify(response.data)}`);
+
+    const response = await fetch(getImageUrl(), {
+      method: "POST",
+      headers: { ...headers, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: imageModel.modelName,
+        prompt: imageConfig.prompt,
+        ratio: imageConfig.aspectRatio,
+        resolution,
+        response_format: "url",
+        sample_strength: 0.5,
+        images,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`图片请求失败，状态码: ${response.status}, 错误信息: ${errorText}`);
+    }
+
+    const data = await parseJsonResponse(response);
+    const result = extractResult(data);
+    if (!result) throw new Error(`图片生成成功但未返回可用结果: ${JSON.stringify(data)}`);
     return result;
   }
 
@@ -418,7 +505,7 @@ interface VideoConfig {
   resolution: string; // 视频分辨率"480p" | "720p" | "1080p"
   aspectRatio: "16:9" | "9:16"; // 视频长宽比
   prompt: string; // 视频提示词
-  fileBase64?: string[]; // 文件base64，包含图片/视频/音频
+  imageBase64?: string[]; // 文件base64，包含图片/视频/音频
   audio?: boolean;
   mode:
     | "singleImage" // 单图
@@ -433,7 +520,7 @@ interface VideoConfig {
 
 const videoRequest = async (videoConfig: VideoConfig, videoModel: VideoModel) => {
   const headers = { Authorization: getAuthorization() };
-  const hasFiles = Array.isArray(videoConfig.fileBase64) && videoConfig.fileBase64.length > 0;
+  const hasFiles = Array.isArray(videoConfig.imageBase64) && videoConfig.imageBase64.length > 0;
 
   // 第一步：提交异步任务
   let taskId: string;
@@ -445,7 +532,7 @@ const videoRequest = async (videoConfig: VideoConfig, videoModel: VideoModel) =>
     formData.append("ratio", videoConfig.aspectRatio);
     formData.append("resolution", videoConfig.resolution);
     formData.append("duration", String(videoConfig.duration));
-    appendBase64Files(formData, "files", videoConfig.fileBase64 || [], "material");
+    appendBase64Files(formData, "files", videoConfig.imageBase64 || [], "material");
 
     const response = await axios.post(getVideoUrl(), formData, {
       headers: { ...headers, ...(typeof formData.getHeaders === "function" ? formData.getHeaders() : {}) },
@@ -454,6 +541,7 @@ const videoRequest = async (videoConfig: VideoConfig, videoModel: VideoModel) =>
     taskId = data?.task_id ?? data?.taskId ?? data?.id;
     if (!taskId) throw new Error(`视频任务提交失败: ${JSON.stringify(data)}`);
   } else {
+    // 纯文本生视频，不包含任何文件
     const response = await fetch(getVideoUrl(), {
       method: "POST",
       headers: { ...headers, "Content-Type": "application/json" },
@@ -463,7 +551,6 @@ const videoRequest = async (videoConfig: VideoConfig, videoModel: VideoModel) =>
         ratio: videoConfig.aspectRatio,
         resolution: videoConfig.resolution,
         duration: videoConfig.duration,
-        ...(videoConfig.fileBase64?.length ? { file_paths: videoConfig.fileBase64 } : {}),
       }),
     });
 

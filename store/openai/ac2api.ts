@@ -62,7 +62,7 @@ interface VendorConfig {
 
 // ==================== 供应商数据 ====================
 const vendor: VendorConfig = {
-  id: "aiclient2api.4022543.xyz",
+  id: "aiclient2api",
   author: "四零二二",
   description: "支持所有兼容AIClient2API中openai接口规范的API，仅支持文本\n\n欢迎使用我的其他插件：https://tf.4022543.xyz",
   name: "AIClient2API接口",
@@ -95,6 +95,78 @@ const vendor: VendorConfig = {
       name: "图片识别vision-model",
       type: "text",
       modelName: "vision-model",
+      multimodal: true,
+      tool: true,
+      think:true
+    },
+    {
+      name: "gemini-3-flash",
+      type: "text",
+      modelName: "gemini-3-flash",
+      multimodal: true,
+      tool: true,
+      think:true
+    },
+    {
+      name: "gemini-3.1-pro-high",
+      type: "text",
+      modelName: "gemini-3.1-pro-high",
+      multimodal: true,
+      tool: true,
+      think:true
+    },
+    {
+      name: "claude-haiku-4-5",
+      type: "text",
+      modelName: "claude-haiku-4-5",
+      multimodal: true,
+      tool: true,
+      think:true
+    },
+    {
+      name: "claude-opus-4-6",
+      type: "text",
+      modelName: "claude-opus-4-6",
+      multimodal: true,
+      tool: true,
+      think:true
+    },
+    {
+      name: "claude-sonnet-4-6",
+      type: "text",
+      modelName: "claude-sonnet-4-6",
+      multimodal: true,
+      tool: true,
+      think:true
+    },
+    {
+      name: "claude-opus-4-5",
+      type: "text",
+      modelName: "claude-opus-4-5",
+      multimodal: true,
+      tool: true,
+      think:true
+    },
+    {
+      name: "gpt-5.4",
+      type: "text",
+      modelName: "gpt-5.4",
+      multimodal: true,
+      tool: true,
+      think:true
+    },
+    {
+      name: "grok-3",
+      type: "text",
+      modelName: "grok-3",
+      multimodal: true,
+      tool: true,
+      think:true
+    },
+    {
+      name: "grok-4",
+      type: "text",
+      modelName: "grok-4",
       multimodal: true,
       tool: true,
       think:true

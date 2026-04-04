@@ -65,7 +65,7 @@ interface VendorConfig {
 
 // ==================== 供应商数据 ====================
 const vendor: VendorConfig = {
-  id: "openai.4022543.xyz",
+  id: "openai",
   author: "四零二二",
   description: "支持所有兼容 OpenAI 官方接口规范的API，支持文本、图像、视频和语音能力。\n\n欢迎使用我的其他插件：https://tf.4022543.xyz",
   name: "OpenAI 官方接口",
