@@ -2,3 +2,4 @@
 # 部署时跳过 workers 目录
 workers/
 data.js
+push.sh

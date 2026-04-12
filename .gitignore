@@ -1,6 +1,7 @@
 # Data
 data.js
 store/demo/
+push.sh
 
 # Dependencies
 node_modules/

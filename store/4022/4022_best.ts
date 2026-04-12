@@ -135,14 +135,24 @@ declare const Buffer: any;
 
 const vendor: VendorConfig = {
   id: "best",
-  version: "2.1",
+  version: "2.2",
   author: "四零二二",
   name: "最强组合-四零二二API",
   description:
     "最强组合，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\n\n四零二二API中转站，支持所有的模型接入，一个 key 搞定所有。\n\n源头供货，稳定价低，支持[免费试用](https://api.4022543.xyz/register?aff=3Y0U)\n\n新站上线，限时优惠，充0.55=1刀乐，邀请好友可返点。[点这里去注册](https://api.4022543.xyz/register?aff=3Y0U)\n\n如遇bug请联系微信：jxppro",
-  inputs: [{ key: "apiKey", label: "API密钥", type: "password", required: true, placeholder: "到上面的网站注册并复制 key 填入" }],
+  inputs: [
+    { key: "apiKey", label: "API密钥", type: "password", required: true, placeholder: "到上面的网站注册并复制 key 填入" },
+    { key: "imageKey", label: "图像API密钥", type: "password", required: false, placeholder: "不填则使用API密钥" },
+    { key: "videoKey", label: "视频API密钥", type: "password", required: false, placeholder: "不填则使用API密钥" },
+    { key: "textKey", label: "文本API密钥", type: "password", required: false, placeholder: "不填则使用API密钥" },
+    { key: "ttsKey", label: "语音API密钥", type: "password", required: false, placeholder: "不填则使用API密钥" },
+  ],
   inputValues: {
     apiKey: "",
+    imageKey: "",
+    videoKey: "",
+    textKey: "",
+    ttsKey: "",
   },
   models: [
     { name: "gemini-3.1-pro-preview", type: "text", modelName: "gemini-3.1-pro-preview", think: true },
@@ -185,7 +195,7 @@ const vendor: VendorConfig = {
     { name: "claude-opus-4-6", type: "text", modelName: "claude-opus-4-6", think: true },
     { name: "claude-opus-4-5-20251101", type: "text", modelName: "claude-opus-4-5-20251101", think: true },
     { name: "claude-haiku-4-5-20251001", type: "text", modelName: "claude-haiku-4-5-20251001", think: true },
-    { name: "kimi-2.5", type: "text", modelName: "kimi-2.5", think: true },
+    { name: "kimi-k2.5", type: "text", modelName: "kimi-k2.5", think: true },
     { name: "MiniMax-M2.7", type: "text", modelName: "minimax-m2.7", think: true },
     { name: "GLM-5", type: "text", modelName: "glm-5", think: true },
     { name: "GPT Image 1.5", type: "image", modelName: "gpt-image-1.5", mode: ["text", "singleImage", "multiReference"] },
@@ -310,9 +320,21 @@ const getKlingOmniVideoQueryUrl = (taskId: string) => `${getBaseUrl()}/kling/v1/
 const getDoubaoVideoCreateUrl = () => `${getBaseUrl()}/volc/v1/contents/generations/tasks`;
 const getDoubaoVideoQueryUrl = (taskId: string) => `${getBaseUrl()}/volc/v1/contents/generations/tasks/${taskId}`;
 
-const getAuthorization = () => {
-  if (!vendor.inputValues.apiKey) throw new Error("请到 api.4022543.xyz 获取 API Key");
-  return vendor.inputValues.apiKey.startsWith("Bearer ") ? vendor.inputValues.apiKey : `Bearer ${vendor.inputValues.apiKey}`;
+const getApiKey = (type?: "image" | "video" | "text" | "tts"): string => {
+  const keyMap: Record<string, string> = {
+    image: "imageKey",
+    video: "videoKey",
+    text: "textKey",
+    tts: "ttsKey",
+  };
+  const specificKey = type ? vendor.inputValues[keyMap[type]] : "";
+  return specificKey || vendor.inputValues.apiKey;
+};
+
+const getAuthorization = (type?: "image" | "video" | "text" | "tts") => {
+  const apiKey = getApiKey(type);
+  if (!apiKey) throw new Error("请到 api.4022543.xyz 获取 API Key");
+  return apiKey.startsWith("Bearer ") ? apiKey : `Bearer ${apiKey}`;
 };
 
 const normalizeBase64 = (completeBase64: string) => completeBase64.replace(/^data:[^;]+;base64,/, "");
@@ -471,10 +493,11 @@ const getTaskStatus = (data: any) => String(data?.status || data?.data?.status |
 // ============================================================
 
 const textRequest = (model: TextModel, think: boolean, thinkLevel: 0 | 1 | 2 | 3) => {
-  if (!vendor.inputValues.apiKey) throw new Error("缺少 API Key");
+  const apiKey = getApiKey("text");
+  if (!apiKey) throw new Error("缺少 API Key");
   return createOpenAI({
     baseURL: getTextUrl(),
-    apiKey: vendor.inputValues.apiKey.replace(/^Bearer\s+/, ""),
+    apiKey: apiKey.replace(/^Bearer\s+/, ""),
   }).chat(model.modelName);
 };
 
@@ -524,7 +547,7 @@ const imageRequest = async (config: ImageConfig, model: ImageModel): Promise<str
   const response = await fetch(getImageUrl(), {
     method: "POST",
     headers: {
-      Authorization: getAuthorization(),
+      Authorization: getAuthorization("image"),
       "Content-Type": "application/json",
     },
     body: JSON.stringify(body),
@@ -541,7 +564,7 @@ const imageRequest = async (config: ImageConfig, model: ImageModel): Promise<str
 
 // ==================== Gemini 图像生成 ====================
 const geminiImageRequest = async (config: ImageConfig, model: ImageModel, imageRefs: string[]): Promise<string> => {
-  const apiKey = vendor.inputValues.apiKey.replace(/^Bearer\s+/, "");
+  const apiKey = getApiKey("image").replace(/^Bearer\s+/, "");
   const baseUrl = getBaseUrl();
   const url = `${baseUrl}/v1beta/models/${model.modelName}:generateContent?key=${apiKey}`;
 
@@ -637,7 +660,7 @@ const veoVideoRequest = async (config: VideoConfig, model: VideoModel): Promise<
   const createResponse = await fetch(getVeoVideoCreateUrl(), {
     method: "POST",
     headers: {
-      Authorization: getAuthorization(),
+      Authorization: getAuthorization("video"),
       "Content-Type": "application/json",
     },
     body: JSON.stringify(createBody),
@@ -653,7 +676,7 @@ const veoVideoRequest = async (config: VideoConfig, model: VideoModel): Promise<
   const result = await pollTask(async () => {
     const queryResponse = await fetch(getQueryUrlWithId(getVeoVideoQueryUrl(), taskId), {
       method: "GET",
-      headers: { Authorization: getAuthorization() },
+      headers: { Authorization: getAuthorization("video") },
     });
     await throwIfNotOk(queryResponse, "Veo视频查询");
 
@@ -701,7 +724,7 @@ const viduVideoRequest = async (config: VideoConfig, model: VideoModel): Promise
   const response = await fetch(url, {
     method: "POST",
     headers: {
-      Authorization: getAuthorization(),
+      Authorization: getAuthorization("video"),
       "Content-Type": "application/json",
     },
     body: JSON.stringify(body),
@@ -717,7 +740,7 @@ const viduVideoRequest = async (config: VideoConfig, model: VideoModel): Promise
   const result = await pollTask(async () => {
     const queryResponse = await fetch(getViduVideoQueryUrl(taskId), {
       method: "GET",
-      headers: { Authorization: getAuthorization() },
+      headers: { Authorization: getAuthorization("video") },
     });
     await throwIfNotOk(queryResponse, "Vidu视频查询");
 
@@ -780,7 +803,7 @@ const klingVideoRequest = async (config: VideoConfig, model: VideoModel): Promis
   const response = await fetch(url, {
     method: "POST",
     headers: {
-      Authorization: getAuthorization(),
+      Authorization: getAuthorization("video"),
       "Content-Type": "application/json",
     },
     body: JSON.stringify(body),
@@ -808,7 +831,7 @@ const klingVideoRequest = async (config: VideoConfig, model: VideoModel): Promis
   const result = await pollTask(async () => {
     const queryResponse = await fetch(queryUrl(taskId), {
       method: "GET",
-      headers: { Authorization: getAuthorization() },
+      headers: { Authorization: getAuthorization("video") },
     });
     await throwIfNotOk(queryResponse, "Kling视频查询");
 
@@ -889,7 +912,7 @@ const doubaoVideoRequest = async (config: VideoConfig, model: VideoModel): Promi
   const createResponse = await fetch(getDoubaoVideoCreateUrl(), {
     method: "POST",
     headers: {
-      Authorization: getAuthorization(),
+      Authorization: getAuthorization("video"),
       "Content-Type": "application/json",
       Accept: "application/json",
     },
@@ -907,7 +930,7 @@ const doubaoVideoRequest = async (config: VideoConfig, model: VideoModel): Promi
     const queryResponse = await fetch(getDoubaoVideoQueryUrl(taskId), {
       method: "GET",
       headers: {
-        Authorization: getAuthorization(),
+        Authorization: getAuthorization("video"),
         "Content-Type": "application/json",
         Accept: "application/json",
       },
