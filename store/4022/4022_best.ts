@@ -139,7 +139,7 @@ const vendor: VendorConfig = {
   author: "四零二二",
   name: "最强组合-四零二二API",
   description:
-    "最强组合模型组合，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\n\n四零二二API中转站，支持所有的模型接入，一个 key 搞定所有。\n\n源头供货，稳定价低，支持[免费试用](https://api.4022543.xyz/register?aff=3Y0U)\n\n新站上线，限时优惠，充0.55=1刀乐，邀请好友可返点。[点这里去注册](https://api.4022543.xyz/register?aff=3Y0U)",
+    "最强组合，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\n\n四零二二API中转站，支持所有的模型接入，一个 key 搞定所有。\n\n源头供货，稳定价低，支持[免费试用](https://api.4022543.xyz/register?aff=3Y0U)\n\n新站上线，限时优惠，充0.55=1刀乐，邀请好友可返点。[点这里去注册](https://api.4022543.xyz/register?aff=3Y0U)\n\n如遇bug请联系微信：jxppro",
   inputs: [{ key: "apiKey", label: "API密钥", type: "password", required: true, placeholder: "到上面的网站注册并复制 key 填入" }],
   inputValues: {
     apiKey: "",
