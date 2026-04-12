@@ -1,339 +1,113 @@
-// ==================== 类型定义 ====================
-// 文本模型
+/**
+ * JM-API 供应商适配
+ * @version 2.0
+ */
+
+// ============================================================
+// 类型定义
+// ============================================================
+
+type VideoMode =
+  | "singleImage"
+  | "startEndRequired"
+  | "endFrameOptional"
+  | "startFrameOptional"
+  | "text"
+  | (`videoReference:${number}` | `imageReference:${number}` | `audioReference:${number}`)[];
+
 interface TextModel {
-  name: string; // 显示名称
+  name: string;
   modelName: string;
   type: "text";
-  multimodal: boolean; // 前端显示用
-  tool: boolean; // 前端显示用
+  think: boolean;
 }
 
-// 图像模型
 interface ImageModel {
-  name: string; // 显示名称
+  name: string;
   modelName: string;
   type: "image";
   mode: ("text" | "singleImage" | "multiReference")[];
-  associationSkills?: string; // 关联技能，多个技能用逗号分隔
+  associationSkills?: string;
 }
 
-// 视频模型
 interface VideoModel {
-  name: string; // 显示名称
-  modelName: string; // 全局唯一
+  name: string;
+  modelName: string;
   type: "video";
-  mode: (
-    | "singleImage" // 单图
-    | "startEndRequired" // 首尾帧（两张都得有）
-    | "endFrameOptional" // 首尾帧（尾帧可选）
-    | "startFrameOptional" // 首尾帧（首帧可选）
-    | "text" // 文本生视频
-    | ("videoReference" | "imageReference" | "audioReference" | "textReference")[] // 混合参考
-  )[];
-  associationSkills?: string; // 关联技能，多个技能用逗号分隔
-  audio: "optional" | false | true; // 音频配置
+  mode: VideoMode[];
+  associationSkills?: string;
+  audio: "optional" | false | true;
   durationResolutionMap: { duration: number[]; resolution: string[] }[];
 }
 
 interface TTSModel {
-  name: string; // 显示名称
+  name: string;
   modelName: string;
   type: "tts";
-  voices: {
-    title: string; // 显示名称
-    voice: string; // 说话人
-  }[];
+  voices: { title: string; voice: string }[];
 }
 
-// 供应商配置
 interface VendorConfig {
   id: string;
-  version: number;
-  icon?: string; // 仅支持 base64 格式
-  author: string;
-  description?: string; // md5 格式
+  version: string;
   name: string;
-  inputs: {
-    key: string;
-    label: string;
-    type: "text" | "password" | "url";
-    required: boolean;
-    placeholder?: string;
-  }[];
+  author: string;
+  description?: string;
+  icon?: string;
+  inputs: { key: string; label: string; type: "text" | "password" | "url"; required: boolean; placeholder?: string }[];
   inputValues: Record<string, string>;
-  models: (ImageModel | VideoModel)[];
+  models: (TextModel | ImageModel | VideoModel | TTSModel)[];
 }
 
-// ==================== 供应商数据 ====================
-const vendor: VendorConfig = {
-  id: "jimeng",
-  version: 1,
-  author: "四零二二",
-  description: "兼容JM2API项目的接口，支持文生图、图生图、普通视频与 SD2.0 多模态视频生成。\n\n 使用该方案，您需要先拥有一个JM的API服务，才能使用该适配器。\n\n 可以在github上搜索：例如：[jimeng-free-api-all](https://github.com/wwwzhouhui/jimeng-free-api-all)\n\n⚠️**警告：此类项目有违官方使用规则，该方案有可能会被封号，请慎重！！！建议使用官方接口。**\n\n更多供应商：https://tf.4022543.xyz/",
-  name: "JM-API",
-  inputs: [
-    { key: "apiKey", label: "SessionID / API密钥", type: "password", required: true },
-    { key: "baseUrl", label: "基础URL", type: "text", required: true, placeholder: "例如 http://127.0.0.1:8000" },
-    { key: "image", label: "图片接口", type: "url", required: false, placeholder: "默认为 {baseUrl}/v1/images/generations" },
-    { key: "video", label: "视频接口", type: "url", required: false, placeholder: "默认为 {baseUrl}/v1/videos/generations/async" },
-    { key: "videoQuery", label: "通用视频任务查询", type: "url", required: false, placeholder: "默认为 {baseUrl}/v1/videos/generations/async/{id}" },
-  ],
-  inputValues: {
-  "apiKey": "",
-  "baseUrl": "http://127.0.0.1:8000",
-  "image": "",
-  "video": "",
-  "videoQuery": ""
-},
-  models: [
-  {
-    "name": "jm 5.0",
-    "type": "image",
-    "modelName": "jimeng-5.0",
-    "mode": [
-      "text",
-      "singleImage",
-      "multiReference"
-    ],
-    "associationSkills": ""
-  },
-  {
-    "name": "jm 4.6",
-    "type": "image",
-    "modelName": "jimeng-4.6",
-    "mode": [
-      "text",
-      "singleImage",
-      "multiReference"
-    ],
-    "associationSkills": ""
-  },
-  {
-    "name": "jm 4.5",
-    "type": "image",
-    "modelName": "jimeng-4.5",
-    "mode": [
-      "text",
-      "singleImage",
-      "multiReference"
-    ],
-    "associationSkills": ""
-  },
-  {
-    "name": "jm 4.1",
-    "type": "image",
-    "modelName": "jimeng-4.1",
-    "mode": [
-      "text",
-      "singleImage",
-      "multiReference"
-    ],
-    "associationSkills": ""
-  },
-  {
-    "name": "jm 4.0",
-    "type": "image",
-    "modelName": "jimeng-4.0",
-    "mode": [
-      "text",
-      "singleImage",
-      "multiReference"
-    ],
-    "associationSkills": ""
-  },
-  {
-    "name": "SD 2.0",
-    "type": "video",
-    "modelName": "jimeng-video-seedance-2.0",
-    "mode": [
-      "singleImage",
-      "startEndRequired",
-      "endFrameOptional",
-      "startFrameOptional",
-      "text",
-      ["videoReference", "imageReference", "audioReference", "textReference"]
-    ],
-    "associationSkills": "",
-    "audio": true,
-    "durationResolutionMap": [
-      {
-        "duration": [
-          4,
-          5,
-          6,
-          7,
-          8,
-          9,
-          10,
-          11,
-          12,
-          13,
-          14,
-          15
-        ],
-        "resolution": [
-          "720p",
-          "1080p"
-        ]
-      }
-    ]
-  },
-  {
-    "name": "SD 2.0 Fast",
-    "modelName": "jimeng-video-seedance-2.0-fast",
-    "type": "video",
-    "mode": [
-      "singleImage",
-      "startEndRequired",
-      "endFrameOptional",
-      "startFrameOptional",
-      "text",
-      ["videoReference", "imageReference", "audioReference", "textReference"]
-    ],
-    "associationSkills": "",
-    "audio": true,
-    "durationResolutionMap": [
-      {
-        "duration": [
-          4,
-          5,
-          6,
-          7,
-          8,
-          9,
-          10,
-          11,
-          12,
-          13,
-          14,
-          15
-        ],
-        "resolution": [
-          "720p",
-          "1080p"
-        ]
-      }
-    ]
-  },
-  {
-    "name": "SD 2.0 VIP",
-    "type": "video",
-    "modelName": "jimeng-video-seedance-2.0-vip",
-    "mode": [
-      "singleImage",
-      "startEndRequired",
-      "endFrameOptional",
-      "startFrameOptional",
-      "text",
-      ["videoReference", "imageReference", "audioReference", "textReference"]
-    ],
-    "associationSkills": "",
-    "audio": true,
-    "durationResolutionMap": [
-      {
-        "duration": [
-          4,
-          5,
-          6,
-          7,
-          8,
-          9,
-          10,
-          11,
-          12,
-          13,
-          14,
-          15
-        ],
-        "resolution": [
-          "720p",
-          "1080p"
-        ]
-      }
-    ]
-  },
-  {
-    "name": "SD 2.0 Fast VIP",
-    "modelName": "jimeng-video-seedance-2.0-fast-vip",
-    "type": "video",
-    "mode": [
-      "singleImage",
-      "startEndRequired",
-      "endFrameOptional",
-      "startFrameOptional",
-      "text",
-      ["videoReference", "imageReference", "audioReference", "textReference"]
-    ],
-    "associationSkills": "",
-    "audio": true,
-    "durationResolutionMap": [
-      {
-        "duration": [
-          4,
-          5,
-          6,
-          7,
-          8,
-          9,
-          10,
-          11,
-          12,
-          13,
-          14,
-          15
-        ],
-        "resolution": [
-          "720p",
-          "1080p"
-        ]
-      }
-    ]
-  },
-  {
-    "name": "SD 1.5",
-    "modelName": "jimeng-video-3.5-pro",
-    "type": "video",
-    "mode": [
-      "text","startEndRequired"
-    ],
-    "associationSkills": "",
-    "audio": false,
-    "durationResolutionMap": [
-      {
-        "duration": [
-          5,
-          10,
-          12
-        ],
-        "resolution": [
-          "720p",
-          "1080p"
-        ]
-      }
-    ]
-  }
-],
-};
-exports.vendor = vendor;
+type ReferenceList =
+  | { type: "image"; sourceType: "base64"; base64: string }
+  | { type: "audio"; sourceType: "base64"; base64: string }
+  | { type: "video"; sourceType: "base64"; base64: string };
 
-// ==================== 全局工具函数 ====================
-// Axios实例
-// 压缩图片大小(1MB = 1 * 1024 * 1024)
-declare const zipImage: (completeBase64: string, size: number) => Promise<string>;
-// 压缩图片分辨率
-declare const zipImageResolution: (completeBase64: string, width: number, height: number) => Promise<string>;
-// 多图拼接乘单图 maxSize 最大输出大小，默认为 10mb
-declare const mergeImages: (completeBase64: string[], maxSize?: string) => Promise<string>;
-// Url转Base64
+interface ImageConfig {
+  prompt: string;
+  referenceList?: Extract<ReferenceList, { type: "image" }>[];
+  size: "1K" | "2K" | "4K";
+  aspectRatio: `${number}:${number}`;
+}
+
+interface VideoConfig {
+  duration: number;
+  resolution: string;
+  aspectRatio: "16:9" | "9:16";
+  prompt: string;
+  referenceList?: ReferenceList[];
+  audio?: boolean;
+  mode: VideoMode[];
+}
+
+interface TTSConfig {
+  text: string;
+  voice: string;
+  speechRate: number;
+  pitchRate: number;
+  volume: number;
+  referenceList?: Extract<ReferenceList, { type: "audio" }>[];
+}
+
+interface PollResult {
+  completed: boolean;
+  data?: string;
+  error?: string;
+}
+
+// ============================================================
+// 全局声明
+// ============================================================
+
+declare const axios: any;
+declare const logger: (msg: string) => void;
+declare const jsonwebtoken: any;
+declare const zipImage: (base64: string, size: number) => Promise<string>;
+declare const zipImageResolution: (base64: string, w: number, h: number) => Promise<string>;
+declare const mergeImages: (base64Arr: string[], maxSize?: string) => Promise<string>;
 declare const urlToBase64: (url: string) => Promise<string>;
-// 轮询函数
-declare const pollTask: (
-  fn: () => Promise<{ completed: boolean; data?: string; error?: string }>,
-  interval?: number,
-  timeout?: number,
-) => Promise<{ completed: boolean; data?: string; error?: string }>;
-
-// 供应商文档：https://ai-sdk.dev/providers/ai-sdk-providers
+declare const pollTask: (fn: () => Promise<PollResult>, interval?: number, timeout?: number) => Promise<PollResult>;
 declare const createOpenAI: any;
 declare const createDeepSeek: any;
 declare const createZhipu: any;
@@ -341,20 +115,191 @@ declare const createQwen: any;
 declare const createAnthropic: any;
 declare const createOpenAICompatible: any;
 declare const createXai: any;
+declare const createMinimax: any;
 declare const createGoogleGenerativeAI: any;
-declare const exports: any;
+declare const exports: {
+  vendor: VendorConfig;
+  textRequest: (m: TextModel, t: boolean, tl: 0 | 1 | 2 | 3) => any;
+  imageRequest: (c: ImageConfig, m: ImageModel) => Promise<string>;
+  videoRequest: (c: VideoConfig, m: VideoModel) => Promise<string>;
+  ttsRequest: (c: TTSConfig, m: TTSModel) => Promise<string>;
+  checkForUpdates?: () => Promise<{ hasUpdate: boolean; latestVersion: string; notice: string }>;
+  updateVendor?: () => Promise<string>;
+};
 declare const FormData: any;
 declare const Buffer: any;
 
-// 请求方法
-declare const axios: any;
+// ============================================================
+// 供应商配置
+// ============================================================
 
-// ==================== 工具函数 ====================
+const vendor: VendorConfig = {
+  id: "jimeng",
+  version: "2.0",
+  author: "四零二二",
+  name: "JM-API",
+  description:
+    "兼容JM2API项目的接口，支持文生图、图生图、普通视频与 SD2.0 多模态视频生成。\n\n 使用该方案，您需要先拥有一个JM的API服务，才能使用该适配器。\n\n 可以在github上搜索：例如：[jimeng-free-api-all](https://github.com/wwwzhouhui/jimeng-free-api-all)\n\n⚠️**警告：此类项目有违官方使用规则，该方案有可能会被封号，请慎重！！！建议使用官方接口。**\n\n更多供应商：https://tf.4022543.xyz/",
+  inputs: [
+    { key: "apiKey", label: "SessionID / API密钥", type: "password", required: true },
+    { key: "baseUrl", label: "基础URL", type: "url", required: true, placeholder: "例如 http://127.0.0.1:8000" },
+    { key: "image", label: "图片接口", type: "url", required: false, placeholder: "默认为 {baseUrl}/v1/images/generations" },
+    { key: "video", label: "视频接口", type: "url", required: false, placeholder: "默认为 {baseUrl}/v1/videos/generations/async" },
+    { key: "videoQuery", label: "通用视频任务查询", type: "url", required: false, placeholder: "默认为 {baseUrl}/v1/videos/generations/async/{id}" },
+  ],
+  inputValues: {
+    apiKey: "",
+    baseUrl: "http://127.0.0.1:8000",
+    image: "",
+    video: "",
+    videoQuery: "",
+  },
+  models: [
+    {
+      name: "jm 5.0",
+      type: "image",
+      modelName: "jimeng-5.0",
+      mode: ["text", "singleImage", "multiReference"],
+      associationSkills: "",
+    },
+    {
+      name: "jm 4.6",
+      type: "image",
+      modelName: "jimeng-4.6",
+      mode: ["text", "singleImage", "multiReference"],
+      associationSkills: "",
+    },
+    {
+      name: "jm 4.5",
+      type: "image",
+      modelName: "jimeng-4.5",
+      mode: ["text", "singleImage", "multiReference"],
+      associationSkills: "",
+    },
+    {
+      name: "jm 4.1",
+      type: "image",
+      modelName: "jimeng-4.1",
+      mode: ["text", "singleImage", "multiReference"],
+      associationSkills: "",
+    },
+    {
+      name: "jm 4.0",
+      type: "image",
+      modelName: "jimeng-4.0",
+      mode: ["text", "singleImage", "multiReference"],
+      associationSkills: "",
+    },
+    {
+      name: "SD 2.0",
+      type: "video",
+      modelName: "jimeng-video-seedance-2.0",
+      mode: [
+        "singleImage",
+        "startEndRequired",
+        "endFrameOptional",
+        "startFrameOptional",
+        "text",
+        ["videoReference:1", "imageReference:9", "audioReference:1"],
+      ],
+      associationSkills: "",
+      audio: true,
+      durationResolutionMap: [
+        {
+          duration: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+          resolution: ["720p", "1080p"],
+        },
+      ],
+    },
+    {
+      name: "SD 2.0 Fast",
+      modelName: "jimeng-video-seedance-2.0-fast",
+      type: "video",
+      mode: [
+        "singleImage",
+        "startEndRequired",
+        "endFrameOptional",
+        "startFrameOptional",
+        "text",
+        ["videoReference:9", "imageReference:9", "audioReference:3"],
+      ],
+      associationSkills: "",
+      audio: true,
+      durationResolutionMap: [
+        {
+          duration: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+          resolution: ["720p", "1080p"],
+        },
+      ],
+    },
+    {
+      name: "SD 2.0 VIP",
+      type: "video",
+      modelName: "jimeng-video-seedance-2.0-vip",
+      mode: [
+        "singleImage",
+        "startEndRequired",
+        "endFrameOptional",
+        "startFrameOptional",
+        "text",
+        ["videoReference:9", "imageReference:9", "audioReference:3"],
+      ],
+      associationSkills: "",
+      audio: true,
+      durationResolutionMap: [
+        {
+          duration: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+          resolution: ["720p", "1080p"],
+        },
+      ],
+    },
+    {
+      name: "SD 2.0 Fast VIP",
+      modelName: "jimeng-video-seedance-2.0-fast-vip",
+      type: "video",
+      mode: [
+        "singleImage",
+        "startEndRequired",
+        "endFrameOptional",
+        "startFrameOptional",
+        "text",
+        ["videoReference:9", "imageReference:9", "audioReference:3"],
+      ],
+      associationSkills: "",
+      audio: true,
+      durationResolutionMap: [
+        {
+          duration: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+          resolution: ["720p", "1080p"],
+        },
+      ],
+    },
+    {
+      name: "SD 1.5",
+      modelName: "jimeng-video-3.5-pro",
+      type: "video",
+      mode: ["text", "startEndRequired"],
+      associationSkills: "",
+      audio: false,
+      durationResolutionMap: [
+        {
+          duration: [5, 10, 12],
+          resolution: ["720p", "1080p"],
+        },
+      ],
+    },
+  ],
+};
+
+// ============================================================
+// 辅助工具
+// ============================================================
+
 const getBaseUrl = () => vendor.inputValues.baseUrl.replace(/\/+$/, "");
-const getTextUrl = () => vendor.inputValues.text || `${getBaseUrl()}/v1`;
 const getImageUrl = () => vendor.inputValues.image || `${getBaseUrl()}/v1/images/generations`;
 const getVideoUrl = () => vendor.inputValues.video || `${getBaseUrl()}/v1/videos/generations/async`;
 const getVideoQueryUrl = () => vendor.inputValues.videoQuery || `${getBaseUrl()}/v1/videos/generations/async/{id}`;
+
 const getAuthorization = () => {
   if (!vendor.inputValues.apiKey) throw new Error("未填写 SessionID / API密钥");
   return vendor.inputValues.apiKey.startsWith("Bearer ") ? vendor.inputValues.apiKey : `Bearer ${vendor.inputValues.apiKey}`;
@@ -419,46 +364,39 @@ const parseJsonResponse = async (response: any) => {
   }
 };
 
-// ==================== 适配器函数 ====================
+// ============================================================
+// 适配器函数
+// ============================================================
 
-// 文本请求函数
-const textRequest: (textModel: TextModel) => { url: string; model: string } = (textModel) => {
+const textRequest = (model: TextModel, think: boolean, thinkLevel: 0 | 1 | 2 | 3) => {
   throw new Error("不支持文本请求，可以更换其他供应商");
 };
-exports.textRequest = textRequest;
 
-// 图片请求函数
-interface ImageConfig {
-  prompt: string; // 图片提示词
-  imageBase64: string[]; // 输入图片
-  size: "1K" | "2K" | "4K"; // 图片尺寸
-  aspectRatio: `${number}:${number}`; // 长宽比
-}
-
-const imageRequest = async (imageConfig: ImageConfig, imageModel: ImageModel) => {
+const imageRequest = async (config: ImageConfig, model: ImageModel): Promise<string> => {
   const headers = { Authorization: getAuthorization() };
-  const hasImages = Array.isArray(imageConfig.imageBase64) && imageConfig.imageBase64.length > 0;
-  let resolution = imageConfig.size.toLowerCase();
+  const imageRefs = (config.referenceList ?? []).map((r) => r.base64);
+  const hasImages = imageRefs.length > 0;
 
-  if(resolution == "1k"){
-    // throw new Error(`JM-4.0以上系列不支持 1K 分辨率，请选择 2K 或 4K`);
+  let resolution = config.size.toLowerCase();
+  if (resolution === "1k") {
     resolution = "2k";
   }
 
   if (hasImages) {
-    const images = imageConfig.imageBase64.map((base64) => {
+    const images = imageRefs.map((base64) => {
       const normalized = normalizeBase64(base64);
       const meta = getFileMeta(base64, "image");
       return `data:${meta.mimeType};base64,${normalized}`;
     });
 
+    logger(`[imageRequest] 提交图生图任务，模型: ${model.modelName}`);
     const response = await fetch(getImageUrl(), {
       method: "POST",
       headers: { ...headers, "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: imageModel.modelName,
-        prompt: imageConfig.prompt,
-        ratio: imageConfig.aspectRatio,
+        model: model.modelName,
+        prompt: config.prompt,
+        ratio: config.aspectRatio,
         resolution,
         response_format: "url",
         sample_strength: 0.5,
@@ -477,13 +415,14 @@ const imageRequest = async (imageConfig: ImageConfig, imageModel: ImageModel) =>
     return result;
   }
 
+  logger(`[imageRequest] 提交文生图任务，模型: ${model.modelName}`);
   const response = await fetch(getImageUrl(), {
     method: "POST",
     headers: { ...headers, "Content-Type": "application/json" },
     body: JSON.stringify({
-      model: imageModel.modelName,
-      prompt: imageConfig.prompt,
-      ratio: imageConfig.aspectRatio,
+      model: model.modelName,
+      prompt: config.prompt,
+      ratio: config.aspectRatio,
       resolution,
       response_format: "url",
     }),
@@ -499,42 +438,28 @@ const imageRequest = async (imageConfig: ImageConfig, imageModel: ImageModel) =>
   if (!result) throw new Error(`图片生成成功但未返回可用结果: ${JSON.stringify(data)}`);
   return result;
 };
-exports.imageRequest = imageRequest;
 
-interface VideoConfig {
-  duration: number; // 视频时长，单位秒
-  resolution: string; // 视频分辨率"480p" | "720p" | "1080p"
-  aspectRatio: "16:9" | "9:16"; // 视频长宽比
-  prompt: string; // 视频提示词
-  imageBase64?: string[]; // 文件base64，包含图片/视频/音频
-  audio?: boolean;
-  mode:
-    | "singleImage" // 单图
-    | "multiImage" // 多图模式
-    | "gridImage" // 网格单图（传入一张图片，但该图片是网格图）
-    | "startEndRequired" // 首尾帧（两张都得有）
-    | "endFrameOptional" // 首尾帧（尾帧可选）
-    | "startFrameOptional" // 首尾帧（首帧可选）
-    | "text" // 文本生视频
-    | ("videoReference" | "imageReference" | "audioReference" | "textReference")[] // 混合参考
-}
-
-const videoRequest = async (videoConfig: VideoConfig, videoModel: VideoModel) => {
+const videoRequest = async (config: VideoConfig, model: VideoModel): Promise<string> => {
   const headers = { Authorization: getAuthorization() };
-  const hasFiles = Array.isArray(videoConfig.imageBase64) && videoConfig.imageBase64.length > 0;
 
-  // 第一步：提交异步任务
+  const imageRefs = (config.referenceList ?? []).filter((r) => r.type === "image").map((r) => r.base64);
+  const videoRefs = (config.referenceList ?? []).filter((r) => r.type === "video").map((r) => r.base64);
+  const audioRefs = (config.referenceList ?? []).filter((r) => r.type === "audio").map((r) => r.base64);
+  const allRefs = [...imageRefs, ...videoRefs, ...audioRefs];
+  const hasFiles = allRefs.length > 0;
+
   let taskId: string;
 
   if (hasFiles) {
     const formData = new FormData();
-    formData.append("model", videoModel.modelName);
-    if (videoConfig.prompt) formData.append("prompt", videoConfig.prompt);
-    formData.append("ratio", videoConfig.aspectRatio);
-    formData.append("resolution", videoConfig.resolution);
-    formData.append("duration", String(videoConfig.duration));
-    appendBase64Files(formData, "files", videoConfig.imageBase64 || [], "material");
+    formData.append("model", model.modelName);
+    if (config.prompt) formData.append("prompt", config.prompt);
+    formData.append("ratio", config.aspectRatio);
+    formData.append("resolution", config.resolution);
+    formData.append("duration", String(config.duration));
+    appendBase64Files(formData, "files", allRefs, "material");
 
+    logger(`[videoRequest] 提交视频任务（含参考文件），模型: ${model.modelName}`);
     const response = await axios.post(getVideoUrl(), formData, {
       headers: { ...headers, ...(typeof formData.getHeaders === "function" ? formData.getHeaders() : {}) },
     });
@@ -542,16 +467,16 @@ const videoRequest = async (videoConfig: VideoConfig, videoModel: VideoModel) =>
     taskId = data?.task_id ?? data?.taskId ?? data?.id;
     if (!taskId) throw new Error(`视频任务提交失败: ${JSON.stringify(data)}`);
   } else {
-    // 纯文本生视频，不包含任何文件
+    logger(`[videoRequest] 提交文本生视频任务，模型: ${model.modelName}`);
     const response = await fetch(getVideoUrl(), {
       method: "POST",
       headers: { ...headers, "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: videoModel.modelName,
-        prompt: videoConfig.prompt,
-        ratio: videoConfig.aspectRatio,
-        resolution: videoConfig.resolution,
-        duration: videoConfig.duration,
+        model: model.modelName,
+        prompt: config.prompt,
+        ratio: config.aspectRatio,
+        resolution: config.resolution,
+        duration: config.duration,
       }),
     });
 
@@ -565,7 +490,7 @@ const videoRequest = async (videoConfig: VideoConfig, videoModel: VideoModel) =>
     if (!taskId) throw new Error(`视频任务提交失败: ${JSON.stringify(data)}`);
   }
 
-  // 第二步：轮询查询任务结果
+  logger(`[videoRequest] 任务ID: ${taskId}，开始轮询`);
   const queryUrl = getVideoQueryUrl();
   const res = await pollTask(async () => {
     const queryResponse = await fetch(queryUrl.replace("{id}", taskId), {
@@ -581,7 +506,6 @@ const videoRequest = async (videoConfig: VideoConfig, videoModel: VideoModel) =>
     const queryData = await parseJsonResponse(queryResponse);
     const status = queryData?.status;
 
-    // 根据 API 文档，status 可能是 succeeded/processing/failed
     switch (status) {
       case "succeeded":
       case "completed":
@@ -591,7 +515,6 @@ const videoRequest = async (videoConfig: VideoConfig, videoModel: VideoModel) =>
         if (result) {
           return { completed: true, data: result };
         }
-        // 如果没有提取到结果，可能是 data 结构不同，尝试其他字段
         const url = queryData?.data?.[0]?.url ?? queryData?.data?.url ?? queryData?.result_url;
         if (url) {
           return { completed: true, data: url };
@@ -602,7 +525,7 @@ const videoRequest = async (videoConfig: VideoConfig, videoModel: VideoModel) =>
       case "FAILURE":
       case "failure": {
         const errorMsg = queryData?.error ?? queryData?.data?.error ?? queryData?.message ?? "视频生成失败";
-        return { completed: false, error: errorMsg };
+        return { completed: true, error: errorMsg };
       }
       case "processing":
       case "pending":
@@ -615,17 +538,89 @@ const videoRequest = async (videoConfig: VideoConfig, videoModel: VideoModel) =>
   if (!res.data) throw new Error("视频生成超时或返回结果为空");
   return res.data;
 };
-exports.videoRequest = videoRequest;
 
-interface TTSConfig {
-  text: string;
-  voice: string;
-  speechRate: number;
-  pitchRate: number;
-  volume: number;
-}
-
-const ttsRequest = async (ttsConfig: TTSConfig, ttsModel: TTSModel) => {
-  return null;
+const ttsRequest = async (config: TTSConfig, model: TTSModel): Promise<string> => {
+  return "";
 };
+
+const checkForUpdates = async (): Promise<{ hasUpdate: boolean; latestVersion: string; notice: string }> => {
+  try {
+    const apiVendorUrl = `https://tf-api.4022543.xyz/api/vendor/${vendor.id}`;
+    const response = await axios.get(apiVendorUrl, {
+      timeout: 10000,
+      headers: {
+        "Accept": "application/json",
+        "Cache-Control": "no-cache"
+      }
+    });
+
+    const data = response.data;
+
+    if (!data || !data.success || !data.vendor) {
+      // throw new Error("API 返回数据格式错误");
+      return {
+        hasUpdate: false,
+        latestVersion: vendor.version,
+        notice: ""
+      };
+    }
+
+    const remoteVersion = data.vendor.version;
+    const currentVersion = vendor.version;
+    const hasUpdate = remoteVersion !== currentVersion;
+
+    return {
+      hasUpdate,
+      latestVersion: remoteVersion,
+      notice: hasUpdate ? `发现新版本 ${remoteVersion}，当前版本 ${currentVersion}` : "已是最新版本"
+    };
+  } catch (error: any) {
+    return {
+      hasUpdate: false,
+      latestVersion: vendor.version,
+      notice: `检查更新失败: ${error.message || "未知错误"}`
+    };
+  }
+};
+
+const updateVendor = async (): Promise<string> => {
+  try {
+    const remoteVendorUrl = `https://tf.4022543.xyz/store/${vendor.id}/${vendor.id}.ts`;
+    const response = await axios.get(remoteVendorUrl, {
+      timeout: 30000,
+      headers: {
+        "Accept": "text/plain",
+        "Cache-Control": "no-cache"
+      }
+    });
+
+    const remoteCode = response.data as string;
+
+    if (!remoteCode || remoteCode.length < 100) {
+      throw new Error("获取到的代码内容无效");
+    }
+
+    // 验证代码基本结构
+    if (!remoteCode.includes("const vendor:") || !remoteCode.includes("exports.vendor")) {
+      throw new Error("获取到的代码结构不完整");
+    }
+
+    return remoteCode;
+  } catch (error: any) {
+    throw new Error(`更新失败: ${error.message || "未知错误"}`);
+  }
+};
+
+// ============================================================
+// 导出
+// ============================================================
+
+exports.vendor = vendor;
+exports.textRequest = textRequest;
+exports.imageRequest = imageRequest;
+exports.videoRequest = videoRequest;
 exports.ttsRequest = ttsRequest;
+exports.checkForUpdates = checkForUpdates;
+exports.updateVendor = updateVendor;
+
+export {};

@@ -266,6 +266,58 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
+    .vendor-card.recommended {
+      border-color: #3b82f6;
+      background: linear-gradient(135deg, hsl(var(--card)) 0%, #eff6ff 100%);
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
+    }
+
+    .vendor-card.recommended:hover {
+      border-color: #2563eb;
+      box-shadow: 0 4px 16px rgba(59, 130, 246, 0.25);
+    }
+
+    .vendor-card.invalid {
+      border-color: hsl(var(--destructive));
+      background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(0 84.2% 95%) 100%);
+    }
+
+    .vendor-card.invalid:hover {
+      border-color: hsl(var(--destructive));
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
+    }
+
+    .vendor-invalid-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      color: hsl(var(--destructive));
+      background: hsl(0 84.2% 95%);
+      padding: 2px 8px;
+      border-radius: 9999px;
+      margin-left: 8px;
+    }
+
+    .vendor-recommended-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #2563eb;
+      background: #dbeafe;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      margin-left: 8px;
+    }
+
+    .vendor-recommended-badge::before {
+      content: "★";
+      font-size: 10px;
+    }
+
     .vendor-header {
       padding: 16px;
       display: flex;
@@ -405,6 +457,24 @@
       letter-spacing: 0.05em;
     }
 
+    .vendor-type-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid hsl(var(--border));
+    }
+
+    .type-tag {
+      font-size: 10px;
+      padding: 3px 8px;
+      background: hsl(var(--secondary));
+      border: 1px solid hsl(var(--border));
+      border-radius: 4px;
+      color: hsl(var(--muted-foreground));
+    }
+
     /* Modal */
     .modal-overlay {
       position: fixed;
@@ -527,6 +597,81 @@
       text-decoration: underline;
     }
 
+    /* Validation Box */
+    .validation-box {
+      background: hsl(var(--secondary));
+      border: 1px solid hsl(var(--border));
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+    }
+
+    .validation-success {
+      color: hsl(142 76% 36%);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .validation-error {
+      color: hsl(var(--destructive));
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .validation-section {
+      margin-top: 10px;
+    }
+
+    .validation-section-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: hsl(var(--muted-foreground));
+      margin-bottom: 6px;
+    }
+
+    .validation-item {
+      font-size: 12px;
+      padding: 4px 0;
+      color: hsl(var(--foreground));
+    }
+
+    .validation-item.error {
+      color: hsl(var(--destructive));
+    }
+
+    .validation-item.warning {
+      color: hsl(38 92% 50%);
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .stat-item {
+      background: hsl(var(--secondary));
+      border: 1px solid hsl(var(--border));
+      border-radius: 6px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 18px;
+      font-weight: 600;
+      color: hsl(var(--foreground));
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: hsl(var(--muted-foreground));
+      margin-top: 2px;
+    }
+
     /* Inputs Grid */
     .inputs-grid {
       display: grid;
@@ -633,6 +778,30 @@
       border: 1px solid hsl(var(--border));
       border-radius: 4px;
       color: hsl(var(--muted-foreground));
+    }
+
+    .model-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 6px;
+    }
+
+    .feature-tag {
+      font-size: 9px;
+      padding: 2px 6px;
+      background: hsl(142 76% 95%);
+      border: 1px solid hsl(142 76% 85%);
+      border-radius: 4px;
+      color: hsl(142 76% 30%);
+      font-weight: 500;
+    }
+
+    .model-voices,
+    .model-duration {
+      font-size: 10px;
+      color: hsl(var(--muted-foreground));
+      margin-top: 4px;
     }
 
     /* Loading & Empty States */
@@ -828,8 +997,10 @@
       try {
         const response = await fetch('data/data.json');
         if (!response.ok) throw new Error('无法加载数据文件');
-        vendorsData = await response.json();
-        updateStats();
+        const data = await response.json();
+        // 适配新的数据结构：{ meta: {...}, vendors: [...] }
+        vendorsData = data.vendors || data;
+        updateStats(data.meta);
         renderVendors();
         setupFilters();
       } catch (error) {
@@ -842,9 +1013,11 @@
       }
     }
 
-    function updateStats() {
-      document.getElementById('vendorCount').textContent = vendorsData.length;
-      const totalModels = vendorsData.reduce((sum, item) => sum + (item.vendor?.models?.length || 0), 0);
+    function updateStats(meta) {
+      // 使用 meta 数据或计算
+      const vendorCount = meta?.validVendors || vendorsData.length;
+      const totalModels = meta?.totalModels || vendorsData.reduce((sum, item) => sum + (item.stats?.total || item.vendor?.models?.length || 0), 0);
+      document.getElementById('vendorCount').textContent = vendorCount;
       document.getElementById('modelCount').textContent = totalModels;
     }
 
@@ -894,20 +1067,31 @@
 
     function renderVendorCard(item, index) {
       const vendor = item.vendor;
+      const stats = item.stats || {};
       const firstLetter = vendor.name?.charAt(0).toUpperCase() || '?';
-      const modelCount = vendor.models?.length || 0;
+      const modelCount = stats.total || vendor.models?.length || 0;
       const inputCount = vendor.inputs?.length || 0;
-      const shortDesc = vendor.description?.substring(0, 80) + (vendor.description?.length > 80 ? '...' : '') || '暂无描述';
+      const rawDesc = (vendor.description || '暂无描述').replace(/\n/g, '');
+      const shortDesc = rawDesc.length > 80 ? rawDesc.substring(0, 80) + '...' : rawDesc;
       const protocolAndHost = window.location.protocol + "//" + window.location.host;
       const fileUrl = `${protocolAndHost}/store/${item.file}`;
+      const isRecommended = item.isRecommended;
+      const hasValidation = item.validation && !item.validation.valid;
+
+      // 构建类型统计标签
+      const typeTags = [];
+      if (stats.text) typeTags.push(`文本 ${stats.text}`);
+      if (stats.image) typeTags.push(`图像 ${stats.image}`);
+      if (stats.video) typeTags.push(`视频 ${stats.video}`);
+      if (stats.tts) typeTags.push(`语音 ${stats.tts}`);
 
       return `
-        <div class="vendor-card" onclick="openModal(${index})">
+        <div class="vendor-card ${isRecommended ? 'recommended' : ''} ${hasValidation ? 'invalid' : ''}" onclick="openModal(${index})">
           <div class="vendor-header">
             <div class="vendor-icon">${firstLetter}</div>
             <div class="vendor-title-group">
-              <div class="vendor-name">${escapeHtml(vendor.name)}</div>
-              <div class="vendor-id">${escapeHtml(vendor.id)}</div>
+              <div class="vendor-name">${escapeHtml(vendor.name)}${isRecommended ? '<span class="vendor-recommended-badge">推荐</span>' : ''}${hasValidation ? '<span class="vendor-invalid-badge">配置错误</span>' : ''}</div>
+              <div class="vendor-id">${escapeHtml(vendor.id)} · v${escapeHtml(vendor.version || '1.0')}</div>
             </div>
             <div class="vendor-folder-badge">${escapeHtml(item.folder)}</div>
           </div>
@@ -926,7 +1110,14 @@
                 <div class="vendor-stat-value">${inputCount}</div>
                 <div class="vendor-stat-label">配置项</div>
               </div>
+              ${stats.thinkEnabled ? `
+              <div class="vendor-stat">
+                <div class="vendor-stat-value">${stats.thinkEnabled}</div>
+                <div class="vendor-stat-label">思考</div>
+              </div>
+              ` : ''}
             </div>
+            ${typeTags.length > 0 ? `<div class="vendor-type-tags">${typeTags.map(t => `<span class="type-tag">${t}</span>`).join('')}</div>` : ''}
           </div>
         </div>
       `;
@@ -935,18 +1126,57 @@
     function openModal(index) {
       const item = vendorsData[index];
       const vendor = item.vendor;
+      const stats = item.stats || {};
+      const validation = item.validation || {};
       const firstLetter = vendor.name?.charAt(0).toUpperCase() || '?';
 
       document.getElementById('modalIcon').textContent = firstLetter;
       document.getElementById('modalTitle').textContent = vendor.name || '-';
-      document.getElementById('modalId').textContent = vendor.id || '-';
+      document.getElementById('modalId').textContent = `${vendor.id || '-'} · v${vendor.version || '1.0'} · ${item.folder}`;
 
       let bodyHtml = '';
+
+      // 验证状态
+      if (validation.errors?.length > 0 || validation.warnings?.length > 0) {
+        bodyHtml += `
+          <div class="section-title">验证状态</div>
+          <div class="validation-box">
+            ${validation.valid ? '<div class="validation-success">✓ 配置有效</div>' : '<div class="validation-error">✗ 配置有误</div>'}
+            ${validation.errors?.length > 0 ? `
+              <div class="validation-section">
+                <div class="validation-section-title">错误 (${validation.errors.length})</div>
+                ${validation.errors.map(e => `<div class="validation-item error">• ${escapeHtml(e)}</div>`).join('')}
+              </div>
+            ` : ''}
+            ${validation.warnings?.length > 0 ? `
+              <div class="validation-section">
+                <div class="validation-section-title">警告 (${validation.warnings.length})</div>
+                ${validation.warnings.map(w => `<div class="validation-item warning">• ${escapeHtml(w)}</div>`).join('')}
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }
 
       if (vendor.description) {
         bodyHtml += `
           <div class="section-title">描述</div>
           <div class="description-box">${formatDescription(vendor.description)}</div>
+        `;
+      }
+
+      // 统计信息
+      if (stats.total > 0) {
+        bodyHtml += `
+          <div class="section-title">模型统计</div>
+          <div class="stats-grid">
+            ${stats.text ? `<div class="stat-item"><span class="stat-value">${stats.text}</span><span class="stat-label">文本</span></div>` : ''}
+            ${stats.image ? `<div class="stat-item"><span class="stat-value">${stats.image}</span><span class="stat-label">图像</span></div>` : ''}
+            ${stats.video ? `<div class="stat-item"><span class="stat-value">${stats.video}</span><span class="stat-label">视频</span></div>` : ''}
+            ${stats.tts ? `<div class="stat-item"><span class="stat-value">${stats.tts}</span><span class="stat-label">语音</span></div>` : ''}
+            ${stats.thinkEnabled ? `<div class="stat-item"><span class="stat-value">${stats.thinkEnabled}</span><span class="stat-label">支持思考</span></div>` : ''}
+            ${stats.audioSupport ? `<div class="stat-item"><span class="stat-value">${stats.audioSupport}</span><span class="stat-label">支持音频</span></div>` : ''}
+          </div>
         `;
       }
 
@@ -983,6 +1213,13 @@
     }
 
     function renderModelCard(model) {
+      // 构建模型特性标签
+      const featureTags = [];
+      if (model.think) featureTags.push('思考');
+      if (model.audio === true) featureTags.push('音频');
+      if (model.audio === 'optional') featureTags.push('音频可选');
+      if (model.associationSkills) featureTags.push('关联技能');
+
       return `
         <div class="model-card">
           <div class="model-header">
@@ -990,6 +1227,11 @@
             <span class="model-type">${model.type}</span>
           </div>
           <div class="model-id">${escapeHtml(model.modelName)}</div>
+          ${featureTags.length > 0 ? `
+            <div class="model-features">
+              ${featureTags.map(f => `<span class="feature-tag">${f}</span>`).join('')}
+            </div>
+          ` : ''}
           ${model.mode ? `
             <div class="model-modes">
               ${(Array.isArray(model.mode) ? model.mode : [model.mode]).slice(0, 4).map(m =>
@@ -998,6 +1240,8 @@
               ${Array.isArray(model.mode) && model.mode.length > 4 ? `<span class="mode-tag">+${model.mode.length - 4}</span>` : ''}
             </div>
           ` : ''}
+          ${model.voices?.length ? `<div class="model-voices">${model.voices.length} 种声音</div>` : ''}
+          ${model.durationResolutionMap?.length ? `<div class="model-duration">支持 ${model.durationResolutionMap.length} 种时长/分辨率配置</div>` : ''}
         </div>
       `;
     }
@@ -1030,9 +1274,36 @@
     }
 
     function formatDescription(desc) {
-      return escapeHtml(desc)
-        .replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank">$1</a>')
-        .replace(/\n/g, '<br>');
+      if (!desc) return '';
+
+      // 先转义 HTML，防止 XSS
+      let html = escapeHtml(desc);
+
+      // 处理转义的换行符 \\n（来自 JSON 的转义字符串）
+      html = html.replace(/\\n/g, '\n');
+
+      // 解析 Markdown 链接 [text](url)
+      html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\s<>)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+
+      // 解析纯 URL（未被链接包裹的）
+      html = html.replace(/(?<!["'>])(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank">$1</a>');
+
+      // 解析 Markdown 加粗 **text**
+      html = html.replace(/\*\*([^\*]+)\*\*/g, '<strong>$1</strong>');
+
+      // 解析 Markdown 斜体 *text* (不与加粗冲突)
+      html = html.replace(/(?<!\*)\*([^\*]+)\*(?!\*)/g, '<em>$1</em>');
+
+      // 解析 Markdown 行内代码 `code`
+      html = html.replace(/`([^`]+)`/g, '<code style="background: hsl(var(--muted)); padding: 2px 4px; border-radius: 3px; font-family: ui-monospace, monospace; font-size: 0.9em;">$1</code>');
+
+      // 解析 Markdown 删除线 ~~text~~
+      html = html.replace(/~~([^~]+)~~/g, '<del>$1</del>');
+
+      // 换行符转 <br>
+      html = html.replace(/\n/g, '<br>');
+
+      return html;
     }
 
     function escapeHtml(text) {

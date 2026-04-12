@@ -1,1291 +1,952 @@
-[
-  {
-    "file": "4022/4022_best.ts",
-    "folder": "4022",
-    "hasVendorConfig": true,
-    "vendor": {
-      "id": "best",
-      "version": 1,
-      "author": "四零二二",
-      "description": "最强组合模型组合，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\n\n四零二二API中转站，支持所有的模型接入，一个 key 搞定所有。\n\n源头供货，稳定价低，支持[免费试用](https://api.4022543.xyz/register?aff=3Y0U)\n\n新站上线，限时优惠，充0.55=1刀乐，邀请好友可返[点击注册](https://api.4022543.xyz/register?aff=3Y0U)",
-      "name": "最强组合-四零二二API",
-      "inputs": [
-        {
-          "key": "apiKey",
-          "label": "API密钥",
-          "type": "password",
-          "required": true,
-          "placeholder": "到上面的网站注册并复制 key 填入"
-        }
-      ],
-      "inputValues": {
-        "apiKey": ""
-      },
-      "models": [
-        {
-          "name": "gemini-3.1-pro-preview",
-          "type": "text",
-          "modelName": "gemini-3.1-pro-preview",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "豆包 Seedream 5.0",
-          "type": "image",
-          "modelName": "doubao-seedream-5-0-260128",
-          "mode": [
-            "text",
-            "singleImage",
-            "multiReference"
-          ]
-        },
-        {
-          "name": "豆包 Seedream 4.5",
-          "type": "image",
-          "modelName": "doubao-seedream-4-5-251128",
-          "mode": [
-            "text",
-            "singleImage",
-            "multiReference"
-          ]
-        },
-        {
-          "name": "gemini-3.1-flash-image-preview",
-          "type": "image",
-          "modelName": "gemini-3.1-flash-image-preview",
-          "mode": [
-            "text",
-            "singleImage",
-            "multiReference"
-          ]
-        },
-        {
-          "name": "gemini-3-pro-image-preview",
-          "type": "image",
-          "modelName": "gemini-3-pro-image-preview",
-          "mode": [
-            "text",
-            "singleImage",
-            "multiReference"
-          ]
-        },
-        {
-          "name": "doubao-seedance-1-5-pro",
-          "type": "video",
-          "modelName": "doubao-seedance-1-5-pro-251215",
-          "mode": [
-            "text",
-            "startEndRequired",
-            "endFrameOptional"
-          ],
-          "audio": true,
-          "durationResolutionMap": [
-            {
-              "duration": [
-                5,
-                10,
-                15
-              ],
-              "resolution": [
-                "720P"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "viduq3-turbo",
-          "type": "video",
-          "modelName": "viduq3-turbo",
-          "mode": [
-            "text",
-            "startEndRequired",
-            "endFrameOptional",
-            "startFrameOptional"
-          ],
-          "audio": true,
-          "durationResolutionMap": [
-            {
-              "duration": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10,
-                11,
-                12,
-                13,
-                14,
-                15
-              ],
-              "resolution": [
-                "540P",
-                "720P",
-                "1080P"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "viduq3-pro",
-          "type": "video",
-          "modelName": "viduq3-pro",
-          "mode": [
-            "text",
-            "startEndRequired",
-            "endFrameOptional",
-            "startFrameOptional"
-          ],
-          "audio": true,
-          "durationResolutionMap": [
-            {
-              "duration": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10,
-                11,
-                12,
-                13,
-                14,
-                15
-              ],
-              "resolution": [
-                "540P",
-                "720P",
-                "1080P"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "gemini-3.1-flash-lite",
-          "type": "text",
-          "modelName": "gemini-3.1-flash-lite-preview",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "gemini-3.1-flash-preview",
-          "type": "text",
-          "modelName": "gemini-3-flash-preview",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "doubao-seed-2-0-code",
-          "type": "text",
-          "modelName": "doubao-seed-2-0-code-preview-260215",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "doubao-seed-2-0-lite",
-          "type": "text",
-          "modelName": "doubao-seed-2-0-lite-260215",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "GPT-5.4-mini",
-          "type": "text",
-          "modelName": "gpt-5.4-mini",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "gpt-5.4",
-          "type": "text",
-          "modelName": "gpt-5.4",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "gpt-5.4-pro",
-          "type": "text",
-          "modelName": "gpt-5.4-pro",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "Claude Sonnet 4.6",
-          "type": "text",
-          "modelName": "claude-sonnet-4-6",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "claude-opus-4-6",
-          "type": "text",
-          "modelName": "claude-opus-4-6",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "claude-opus-4-5-20251101",
-          "type": "text",
-          "modelName": "claude-opus-4-5-20251101",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "claude-haiku-4-5-20251001",
-          "type": "text",
-          "modelName": "claude-haiku-4-5-20251001",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "kimi-2.5",
-          "type": "text",
-          "modelName": "kimi-2.5",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "MiniMax-M2.7",
-          "type": "text",
-          "modelName": "minimax-m2.7",
-          "multimodal": false,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "GLM-5",
-          "type": "text",
-          "modelName": "glm-5",
-          "multimodal": false,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "GPT Image 1.5",
-          "type": "image",
-          "modelName": "gpt-image-1.5",
-          "mode": [
-            "text",
-            "singleImage",
-            "multiReference"
-          ]
-        },
-        {
-          "name": "GPT Image 1",
-          "type": "image",
-          "modelName": "gpt-image-1",
-          "mode": [
-            "text",
-            "singleImage",
-            "multiReference"
-          ]
-        },
-        {
-          "name": "veo3.1-4k",
-          "type": "video",
-          "modelName": "veo3.1-4k",
-          "mode": [
-            "text",
-            "singleImage",
-            "startEndRequired",
-            "endFrameOptional",
-            "startFrameOptional"
-          ],
-          "audio": true,
-          "durationResolutionMap": [
-            {
-              "duration": [
-                5,
-                10,
-                15
-              ],
-              "resolution": [
-                "720P"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "veo3.1-pro-4k",
-          "type": "video",
-          "modelName": "veo3.1-pro-4k",
-          "mode": [
-            "text",
-            "singleImage",
-            "startEndRequired",
-            "endFrameOptional",
-            "startFrameOptional"
-          ],
-          "audio": true,
-          "durationResolutionMap": [
-            {
-              "duration": [
-                5,
-                10,
-                15
-              ],
-              "resolution": [
-                "720P"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "veo3.1-pro",
-          "type": "video",
-          "modelName": "veo3.1-pro",
-          "mode": [
-            "text",
-            "startEndRequired",
-            "endFrameOptional",
-            "startFrameOptional"
-          ],
-          "audio": true,
-          "durationResolutionMap": [
-            {
-              "duration": [
-                5,
-                10,
-                15
-              ],
-              "resolution": [
-                "720P"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "veo3.1-components",
-          "type": "video",
-          "modelName": "veo3.1-components",
-          "mode": [
-            "endFrameOptional"
-          ],
-          "audio": true,
-          "durationResolutionMap": [
-            {
-              "duration": [
-                5,
-                10,
-                15
-              ],
-              "resolution": [
-                "720P"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "veo3.1-components-4k",
-          "type": "video",
-          "modelName": "veo3.1-components-4k",
-          "mode": [
-            "endFrameOptional"
-          ],
-          "audio": true,
-          "durationResolutionMap": [
-            {
-              "duration": [
-                5,
-                10,
-                15
-              ],
-              "resolution": [
-                "720P"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "viduq2-pro",
-          "type": "video",
-          "modelName": "viduq2-pro",
-          "mode": [
-            "text",
-            "startEndRequired",
-            "endFrameOptional",
-            "startFrameOptional"
-          ],
-          "audio": true,
-          "durationResolutionMap": [
-            {
-              "duration": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10
-              ],
-              "resolution": [
-                "540P",
-                "720P",
-                "1080P"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "viduq2",
-          "type": "video",
-          "modelName": "viduq2",
-          "mode": [
-            "text",
-            "singleImage"
-          ],
-          "audio": true,
-          "durationResolutionMap": [
-            {
-              "duration": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10
-              ],
-              "resolution": [
-                "540P",
-                "720P",
-                "1080P"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "kling-v3-omni",
-          "type": "video",
-          "modelName": "kling-v3-omni",
-          "mode": [
-            "text",
-            "singleImage",
-            "startEndRequired",
-            "endFrameOptional",
-            [
-              "videoReference",
-              "imageReference"
-            ]
-          ],
-          "audio": true,
-          "durationResolutionMap": [
-            {
-              "duration": [
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10,
-                11,
-                12,
-                13,
-                14,
-                15
-              ],
-              "resolution": [
-                "720P",
-                "1080P"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "kling-video-o1",
-          "type": "video",
-          "modelName": "kling-video-o1",
-          "mode": [
-            "text",
-            "singleImage",
-            "startEndRequired",
-            "endFrameOptional"
-          ],
-          "audio": true,
-          "durationResolutionMap": [
-            {
-              "duration": [
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10,
-                11,
-                12,
-                13,
-                14,
-                15
-              ],
-              "resolution": [
-                "720P",
-                "1080P"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "kling-v3",
-          "type": "video",
-          "modelName": "kling-v3",
-          "mode": [
-            "text",
-            "singleImage",
-            "startEndRequired",
-            "endFrameOptional",
-            "startFrameOptional"
-          ],
-          "audio": true,
-          "durationResolutionMap": [
-            {
-              "duration": [
-                5,
-                10
-              ],
-              "resolution": [
-                "720P",
-                "1080P"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "kling-v2-6",
-          "type": "video",
-          "modelName": "kling-v2-6",
-          "mode": [
-            "text",
-            "singleImage",
-            "startEndRequired",
-            "endFrameOptional",
-            "startFrameOptional"
-          ],
-          "audio": true,
-          "durationResolutionMap": [
-            {
-              "duration": [
-                5,
-                10
-              ],
-              "resolution": [
-                "720P",
-                "1080P"
-              ]
-            }
-          ]
-        }
-      ]
-    }
+{
+  "meta": {
+    "generatedAt": "2026-04-11T02:40:24.121Z",
+    "totalFiles": 5,
+    "validVendors": 5,
+    "invalidVendors": 0,
+    "totalModels": 68
   },
-  {
-    "file": "jimeng/jimeng.ts",
-    "folder": "jimeng",
-    "hasVendorConfig": true,
-    "vendor": {
-      "id": "jimeng",
-      "version": 1,
-      "author": "四零二二",
-      "description": "兼容JM2API项目的接口，支持文生图、图生图、普通视频与 SD2.0 多模态视频生成。\n\n 使用该方案，您需要先拥有一个JM的API服务，才能使用该适配器。\n\n 建议在 github上搜索：如：[jimeng-free-api-all](https://github.com/wwwzhouhui/jimeng-free-api-all)\n\n⚠️**警告：此类有违官方使用规则，该方案有可能会被封号，请慎重！！！建议使用官方接口。**\n\n更多供应商：https://tf.4022543.xyz/",
-      "name": "JM-API",
-      "inputs": [
-        {
-          "key": "apiKey",
-          "label": "SessionID / API密钥",
-          "type": "password",
-          "required": true
-        },
-        {
-          "key": "baseUrl",
-          "label": "基础URL",
-          "type": "text",
-          "required": true,
-          "placeholder": "例如 http://127.0.0.1:8000"
-        },
-        {
-          "key": "image",
-          "label": "图片接口",
-          "type": "url",
-          "required": false,
-          "placeholder": "默认为 {baseUrl}/v1/images/generations"
-        },
-        {
-          "key": "video",
-          "label": "视频接口",
-          "type": "url",
-          "required": false,
-          "placeholder": "默认为 {baseUrl}/v1/videos/generations/async"
-        },
-        {
-          "key": "videoQuery",
-          "label": "通用视频任务查询",
-          "type": "url",
-          "required": false,
-          "placeholder": "默认为 {baseUrl}/v1/videos/generations/async/{id}"
-        }
-      ],
-      "inputValues": {
-        "apiKey": "",
-        "baseUrl": "http://127.0.0.1:8000",
-        "image": "",
-        "video": "",
-        "videoQuery": ""
+  "vendors": [
+    {
+      "file": "4022/4022_best.ts",
+      "folder": "4022",
+      "hasVendorConfig": true,
+      "isRecommended": true,
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "warnings": []
       },
-      "models": [
-        {
-          "name": "jm 5.0",
-          "type": "image",
-          "modelName": "jimeng-5.0",
-          "mode": [
-            "text",
-            "singleImage",
-            "multiReference"
-          ],
-          "associationSkills": ""
-        },
-        {
-          "name": "jm 4.6",
-          "type": "image",
-          "modelName": "jimeng-4.6",
-          "mode": [
-            "text",
-            "singleImage",
-            "multiReference"
-          ],
-          "associationSkills": ""
-        },
-        {
-          "name": "jm 4.5",
-          "type": "image",
-          "modelName": "jimeng-4.5",
-          "mode": [
-            "text",
-            "singleImage",
-            "multiReference"
-          ],
-          "associationSkills": ""
-        },
-        {
-          "name": "jm 4.1",
-          "type": "image",
-          "modelName": "jimeng-4.1",
-          "mode": [
-            "text",
-            "singleImage",
-            "multiReference"
-          ],
-          "associationSkills": ""
-        },
-        {
-          "name": "jm 4.0",
-          "type": "image",
-          "modelName": "jimeng-4.0",
-          "mode": [
-            "text",
-            "singleImage",
-            "multiReference"
-          ],
-          "associationSkills": ""
-        },
-        {
-          "name": "SD 2.0",
-          "type": "video",
-          "modelName": "jimeng-video-seedance-2.0",
-          "mode": [
-            "singleImage",
-            "startEndRequired",
-            "endFrameOptional",
-            "startFrameOptional",
-            "text",
-            [
-              "videoReference",
-              "imageReference",
-              "audioReference",
-              "textReference"
-            ]
-          ],
-          "associationSkills": "",
-          "audio": true,
-          "durationResolutionMap": [
-            {
-              "duration": [
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10,
-                11,
-                12,
-                13,
-                14,
-                15
-              ],
-              "resolution": [
-                "720p",
-                "1080p"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "SD 2.0 Fast",
-          "modelName": "jimeng-video-seedance-2.0-fast",
-          "type": "video",
-          "mode": [
-            "singleImage",
-            "startEndRequired",
-            "endFrameOptional",
-            "startFrameOptional",
-            "text",
-            [
-              "videoReference",
-              "imageReference",
-              "audioReference",
-              "textReference"
-            ]
-          ],
-          "associationSkills": "",
-          "audio": true,
-          "durationResolutionMap": [
-            {
-              "duration": [
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10,
-                11,
-                12,
-                13,
-                14,
-                15
-              ],
-              "resolution": [
-                "720p",
-                "1080p"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "SD 2.0 VIP",
-          "type": "video",
-          "modelName": "jimeng-video-seedance-2.0-vip",
-          "mode": [
-            "singleImage",
-            "startEndRequired",
-            "endFrameOptional",
-            "startFrameOptional",
-            "text",
-            [
-              "videoReference",
-              "imageReference",
-              "audioReference",
-              "textReference"
-            ]
-          ],
-          "associationSkills": "",
-          "audio": true,
-          "durationResolutionMap": [
-            {
-              "duration": [
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10,
-                11,
-                12,
-                13,
-                14,
-                15
-              ],
-              "resolution": [
-                "720p",
-                "1080p"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "SD 2.0 Fast VIP",
-          "modelName": "jimeng-video-seedance-2.0-fast-vip",
-          "type": "video",
-          "mode": [
-            "singleImage",
-            "startEndRequired",
-            "endFrameOptional",
-            "startFrameOptional",
-            "text",
-            [
-              "videoReference",
-              "imageReference",
-              "audioReference",
-              "textReference"
-            ]
-          ],
-          "associationSkills": "",
-          "audio": true,
-          "durationResolutionMap": [
-            {
-              "duration": [
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10,
-                11,
-                12,
-                13,
-                14,
-                15
-              ],
-              "resolution": [
-                "720p",
-                "1080p"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "SD 1.5",
-          "modelName": "jimeng-video-3.5-pro",
-          "type": "video",
-          "mode": [
-            "text",
-            "startEndRequired"
-          ],
-          "associationSkills": "",
-          "audio": false,
-          "durationResolutionMap": [
-            {
-              "duration": [
-                5,
-                10,
-                12
-              ],
-              "resolution": [
-                "720p",
-                "1080p"
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  },
-  {
-    "file": "openai/ac2api.ts",
-    "folder": "openai",
-    "hasVendorConfig": true,
-    "vendor": {
-      "id": "aiclient2api",
-      "author": "四零二二",
-      "description": "支持所有兼容AIClient2API中openai接口规范的API，仅支持文本\n\n欢迎使用我的其他插件：https://tf.4022543.xyz",
-      "name": "AIClient2API接口",
-      "inputs": [
-        {
-          "key": "apiKey",
-          "label": "API密钥",
-          "type": "password",
-          "required": true
-        },
-        {
-          "key": "baseUrl",
-          "label": "基础URL",
-          "type": "url",
-          "required": true,
-          "placeholder": "默认 https://127.0.0.1:3000/openai-qwen-oauth/v1"
-        }
-      ],
-      "inputValues": {
-        "apiKey": "",
-        "baseUrl": "https://127.0.0.1:3000/openai-qwen-oauth/v1"
+      "stats": {
+        "total": 35,
+        "text": 15,
+        "image": 6,
+        "video": 14,
+        "tts": 0,
+        "thinkEnabled": 15,
+        "audioSupport": 14
       },
-      "models": [
-        {
-          "name": "qwen3-coder-plus",
-          "type": "text",
-          "modelName": "qwen3-coder-plus",
-          "multimodal": true,
-          "tool": true,
-          "think": true
+      "vendor": {
+        "id": "best",
+        "version": "2.0",
+        "name": "最强组合-四零二二API",
+        "author": "四零二二",
+        "description": "最强组合模型组合，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\\n\\n四零二二API中转站，支持所有的模型接入，一个 key 搞定所有。\\n\\n源头供货，稳定价低，支持[免费试用](https://api.4022543.xyz/register?aff=3Y0U)\\n\\n新站上线，限时优惠，充0.55=1刀乐，邀请好友可返[点击注册](https://api.4022543.xyz/register?aff=3Y0U)",
+        "icon": null,
+        "inputs": [
+          {
+            "key": "apiKey",
+            "label": "API密钥",
+            "type": "password",
+            "required": true
+          }
+        ],
+        "inputValues": {
+          "apiKey": ""
         },
-        {
-          "name": "qwen3-coder-flash",
-          "type": "text",
-          "modelName": "qwen3-coder-flash",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "图片识别vision-model",
-          "type": "text",
-          "modelName": "vision-model",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "gemini-3-flash",
-          "type": "text",
-          "modelName": "gemini-3-flash",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "gemini-3.1-pro-high",
-          "type": "text",
-          "modelName": "gemini-3.1-pro-high",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "claude-haiku-4-5",
-          "type": "text",
-          "modelName": "claude-haiku-4-5",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "claude-opus-4-6",
-          "type": "text",
-          "modelName": "claude-opus-4-6",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "claude-sonnet-4-6",
-          "type": "text",
-          "modelName": "claude-sonnet-4-6",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "claude-opus-4-5",
-          "type": "text",
-          "modelName": "claude-opus-4-5",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "gpt-5.4",
-          "type": "text",
-          "modelName": "gpt-5.4",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "grok-3",
-          "type": "text",
-          "modelName": "grok-3",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "grok-4",
-          "type": "text",
-          "modelName": "grok-4",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        }
-      ]
-    }
-  },
-  {
-    "file": "openai/cpa.ts",
-    "folder": "openai",
-    "hasVendorConfig": true,
-    "vendor": {
-      "id": "cpa",
-      "author": "四零二二",
-      "description": "支持所有兼容CPA中openai接口规范的API，仅支持文本\n\n欢迎使用我的其他插件：https://tf.4022543.xyz",
-      "name": "cli-proxy-api接口",
-      "inputs": [
-        {
-          "key": "apiKey",
-          "label": "API密钥",
-          "type": "password",
-          "required": true
-        },
-        {
-          "key": "baseUrl",
-          "label": "基础URL",
-          "type": "url",
-          "required": true,
-          "placeholder": "默认 https://127.0.0.1:8317/v1"
-        }
-      ],
-      "inputValues": {
-        "apiKey": "",
-        "baseUrl": "https://127.0.0.1:8317/v1"
-      },
-      "models": [
-        {
-          "name": "qwen3-coder-plus",
-          "type": "text",
-          "modelName": "qwen3-coder-plus",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "qwen3-coder-flash",
-          "type": "text",
-          "modelName": "qwen3-coder-flash",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "图片识别vision-model",
-          "type": "text",
-          "modelName": "vision-model",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        }
-      ]
-    }
-  },
-  {
-    "file": "openai/openai.ts",
-    "folder": "openai",
-    "hasVendorConfig": true,
-    "vendor": {
-      "id": "openai",
-      "author": "四零二二",
-      "description": "支持所有兼容 OpenAI 官方接口规范的API，支持文本、图像、视频和语音能力。\n\n欢迎使用我的其他插件：https://tf.4022543.xyz",
-      "name": "OpenAI 官方接口",
-      "inputs": [
-        {
-          "key": "apiKey",
-          "label": "API密钥",
-          "type": "password",
-          "required": true
-        },
-        {
-          "key": "baseUrl",
-          "label": "基础URL",
-          "type": "url",
-          "required": true,
-          "placeholder": "默认 https://api.openai.com/v1"
-        },
-        {
-          "key": "text",
-          "label": "文本接口地址",
-          "type": "url",
-          "required": false,
-          "placeholder": "默认为空，系统会自动拼接，如： https://api.openai.com/v1/chat/completions"
-        },
-        {
-          "key": "image",
-          "label": "图片生成地址",
-          "type": "url",
-          "required": false,
-          "placeholder": "默认为空，系统会自动拼接，如： https://api.openai.com/v1/images/generations"
-        },
-        {
-          "key": "imageEdit",
-          "label": "图片编辑地址",
-          "type": "url",
-          "required": false,
-          "placeholder": "默认为空，系统会自动拼接，如： https://api.openai.com/v1/images/edits"
-        },
-        {
-          "key": "videoCreate",
-          "label": "视频任务创建",
-          "type": "url",
-          "required": false,
-          "placeholder": "默认为空，系统会自动拼接，如： https://api.openai.com/v1/videos"
-        },
-        {
-          "key": "videoQuery",
-          "label": "视频任务查询",
-          "type": "url",
-          "required": false,
-          "placeholder": "默认为空，系统会自动拼接，如： https://api.openai.com/v1/videos/{id}"
-        },
-        {
-          "key": "videoDownload",
-          "label": "视频文件下载",
-          "type": "url",
-          "required": false,
-          "placeholder": "默认为空，系统会自动拼接，如： https://api.openai.com/v1/videos/{id}/content"
-        },
-        {
-          "key": "tts",
-          "label": "语音合成地址",
-          "type": "url",
-          "required": false,
-          "placeholder": "默认为空，系统会自动拼接，如： https://api.openai.com/v1/audio/speech"
-        }
-      ],
-      "inputValues": {
-        "apiKey": "",
-        "baseUrl": "https://api.openai.com/v1",
-        "text": "",
-        "image": "",
-        "imageEdit": "",
-        "videoCreate": "",
-        "videoQuery": "",
-        "videoDownload": "",
-        "tts": ""
-      },
-      "models": [
-        {
-          "name": "GPT-5.4",
-          "type": "text",
-          "modelName": "gpt-5.4",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "GPT-5.4 Mini",
-          "type": "text",
-          "modelName": "gpt-5.4-mini",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "GPT-5.4 Nano",
-          "type": "text",
-          "modelName": "gpt-5.4-nano",
-          "multimodal": true,
-          "tool": true,
-          "think": true
-        },
-        {
-          "name": "GPT Image 1.5",
-          "type": "image",
-          "modelName": "gpt-image-1.5",
-          "mode": [
-            "text",
-            "singleImage",
-            "multiReference"
-          ]
-        },
-        {
-          "name": "GPT Image 1",
-          "type": "image",
-          "modelName": "gpt-image-1",
-          "mode": [
-            "text",
-            "singleImage",
-            "multiReference"
-          ]
-        },
-        {
-          "name": "GPT Image 1-mini",
-          "type": "image",
-          "modelName": "gpt-image-1-mini",
-          "mode": [
-            "text",
-            "singleImage",
-            "multiReference"
-          ]
-        },
-        {
-          "name": "Sora-2",
-          "type": "video",
-          "modelName": "sora-2",
-          "mode": [
-            "singleImage",
-            "text"
-          ],
-          "audio": "optional",
-          "durationResolutionMap": [
-            {
-              "duration": [
-                4,
-                8,
-                12
-              ],
-              "resolution": [
-                "720x1280",
-                "1280x720",
-                "1024x1792",
-                "1792x1024"
+        "models": [
+          {
+            "name": "gemini-3.1-pro-preview",
+            "modelName": "gemini-3.1-pro-preview",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "豆包 Seedream 5.0",
+            "modelName": "doubao-seedream-5-0-260128",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "豆包 Seedream 4.5",
+            "modelName": "doubao-seedream-4-5-251128",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "gemini-3.1-flash-image-preview",
+            "modelName": "gemini-3.1-flash-image-preview",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "gemini-3-pro-image-preview",
+            "modelName": "gemini-3-pro-image-preview",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "doubao-seedance-1-5-pro",
+            "modelName": "doubao-seedance-1-5-pro-251215",
+            "type": "video",
+            "mode": [
+              "text",
+              "startEndRequired",
+              "endFrameOptional"
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "viduq3-turbo",
+            "modelName": "viduq3-turbo",
+            "type": "video",
+            "mode": [
+              "text",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional"
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "viduq3-pro",
+            "modelName": "viduq3-pro",
+            "type": "video",
+            "mode": [
+              "text",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional"
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "gemini-3.1-flash-lite",
+            "modelName": "gemini-3.1-flash-lite-preview",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "gemini-3.1-flash-preview",
+            "modelName": "gemini-3-flash-preview",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "doubao-seed-2-0-code",
+            "modelName": "doubao-seed-2-0-code-preview-260215",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "doubao-seed-2-0-lite",
+            "modelName": "doubao-seed-2-0-lite-260215",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "GPT-5.4-mini",
+            "modelName": "gpt-5.4-mini",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "gpt-5.4",
+            "modelName": "gpt-5.4",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "gpt-5.4-pro",
+            "modelName": "gpt-5.4-pro",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "Claude Sonnet 4.6",
+            "modelName": "claude-sonnet-4-6",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "claude-opus-4-6",
+            "modelName": "claude-opus-4-6",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "claude-opus-4-5-20251101",
+            "modelName": "claude-opus-4-5-20251101",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "claude-haiku-4-5-20251001",
+            "modelName": "claude-haiku-4-5-20251001",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "kimi-2.5",
+            "modelName": "kimi-2.5",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "MiniMax-M2.7",
+            "modelName": "minimax-m2.7",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "GLM-5",
+            "modelName": "glm-5",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "GPT Image 1.5",
+            "modelName": "gpt-image-1.5",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "GPT Image 1",
+            "modelName": "gpt-image-1",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "veo3.1-4k",
+            "modelName": "veo3.1-4k",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional"
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "veo3.1-pro-4k",
+            "modelName": "veo3.1-pro-4k",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional"
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "veo3.1-pro",
+            "modelName": "veo3.1-pro",
+            "type": "video",
+            "mode": [
+              "text",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional"
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "veo3.1-components",
+            "modelName": "veo3.1-components",
+            "type": "video",
+            "mode": [
+              "endFrameOptional"
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "veo3.1-components-4k",
+            "modelName": "veo3.1-components-4k",
+            "type": "video",
+            "mode": [
+              "endFrameOptional"
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "viduq2-pro",
+            "modelName": "viduq2-pro",
+            "type": "video",
+            "mode": [
+              "text",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional"
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "viduq2",
+            "modelName": "viduq2",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage"
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "kling-v3-omni",
+            "modelName": "kling-v3-omni",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              [
+                "videoReference:3",
+                "imageReference:3"
               ]
-            }
-          ]
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "kling-video-o1",
+            "modelName": "kling-video-o1",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional"
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "kling-v3",
+            "modelName": "kling-v3",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional"
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "kling-v2-6",
+            "modelName": "kling-v2-6",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional"
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          }
+        ]
+      }
+    },
+    {
+      "file": "jimeng/jimeng.ts",
+      "folder": "jimeng",
+      "hasVendorConfig": true,
+      "isRecommended": true,
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      },
+      "stats": {
+        "total": 10,
+        "text": 0,
+        "image": 5,
+        "video": 5,
+        "tts": 0,
+        "thinkEnabled": 0,
+        "audioSupport": 4
+      },
+      "vendor": {
+        "id": "jimeng",
+        "version": "2.0",
+        "name": "JM-API",
+        "author": "四零二二",
+        "description": "兼容JM2API项目的接口，支持文生图、图生图、普通视频与 SD2.0 多模态视频生成。\\n\\n 使用该方案，您需要先拥有一个JM的API服务，才能使用该适配器。\\n\\n 可以在github上搜索：例如：[jimeng-free-api-all](https://github.com/wwwzhouhui/jimeng-free-api-all)\\n\\n⚠️**警告：此类项目有违官方使用规则，该方案有可能会被封号，请慎重！！！建议使用官方接口。**\\n\\n更多供应商：https://tf.4022543.xyz/",
+        "icon": null,
+        "inputs": [
+          {
+            "key": "apiKey",
+            "label": "SessionID / API密钥",
+            "type": "password",
+            "required": true
+          },
+          {
+            "key": "baseUrl",
+            "label": "基础URL",
+            "type": "url",
+            "required": true
+          },
+          {
+            "key": "image",
+            "label": "图片接口",
+            "type": "url",
+            "required": false
+          },
+          {
+            "key": "video",
+            "label": "视频接口",
+            "type": "url",
+            "required": false
+          },
+          {
+            "key": "videoQuery",
+            "label": "通用视频任务查询",
+            "type": "url",
+            "required": false
+          }
+        ],
+        "inputValues": {
+          "apiKey": "",
+          "baseUrl": "http://127.0.0.1:8000",
+          "image": "",
+          "video": "",
+          "videoQuery": ""
         },
-        {
-          "name": "sora-2-pro",
-          "type": "video",
-          "modelName": "sora-2-pro",
-          "mode": [
-            "singleImage",
-            "text"
-          ],
-          "audio": "optional",
-          "durationResolutionMap": [
-            {
-              "duration": [
-                4,
-                8,
-                12
-              ],
-              "resolution": [
-                "720x1280",
-                "1280x720",
-                "1024x1792",
-                "1792x1024"
+        "models": [
+          {
+            "name": "jm 5.0",
+            "modelName": "jimeng-5.0",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "associationSkills": ""
+          },
+          {
+            "name": "jm 4.6",
+            "modelName": "jimeng-4.6",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "associationSkills": ""
+          },
+          {
+            "name": "jm 4.5",
+            "modelName": "jimeng-4.5",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "associationSkills": ""
+          },
+          {
+            "name": "jm 4.1",
+            "modelName": "jimeng-4.1",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "associationSkills": ""
+          },
+          {
+            "name": "jm 4.0",
+            "modelName": "jimeng-4.0",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "associationSkills": ""
+          },
+          {
+            "name": "SD 2.0",
+            "modelName": "jimeng-video-seedance-2.0",
+            "type": "video",
+            "mode": [
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional",
+              "text",
+              [
+                "videoReference:1",
+                "imageReference:9",
+                "audioReference:1"
               ]
-            }
-          ]
-        }
-      ]
+            ],
+            "audio": true,
+            "durationResolutionMap": [],
+            "associationSkills": ""
+          },
+          {
+            "name": "SD 2.0 Fast",
+            "modelName": "jimeng-video-seedance-2.0-fast",
+            "type": "video",
+            "mode": [
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional",
+              "text",
+              [
+                "videoReference:9",
+                "imageReference:9",
+                "audioReference:3"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": [],
+            "associationSkills": ""
+          },
+          {
+            "name": "SD 2.0 VIP",
+            "modelName": "jimeng-video-seedance-2.0-vip",
+            "type": "video",
+            "mode": [
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional",
+              "text",
+              [
+                "videoReference:9",
+                "imageReference:9",
+                "audioReference:3"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": [],
+            "associationSkills": ""
+          },
+          {
+            "name": "SD 2.0 Fast VIP",
+            "modelName": "jimeng-video-seedance-2.0-fast-vip",
+            "type": "video",
+            "mode": [
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional",
+              "text",
+              [
+                "videoReference:9",
+                "imageReference:9",
+                "audioReference:3"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": [],
+            "associationSkills": ""
+          },
+          {
+            "name": "SD 1.5",
+            "modelName": "jimeng-video-3.5-pro",
+            "type": "video",
+            "mode": [
+              "text",
+              "startEndRequired"
+            ],
+            "audio": false,
+            "durationResolutionMap": [],
+            "associationSkills": ""
+          }
+        ]
+      }
+    },
+    {
+      "file": "openai/ac2api.ts",
+      "folder": "openai",
+      "hasVendorConfig": true,
+      "isRecommended": false,
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      },
+      "stats": {
+        "total": 12,
+        "text": 12,
+        "image": 0,
+        "video": 0,
+        "tts": 0,
+        "thinkEnabled": 12,
+        "audioSupport": 0
+      },
+      "vendor": {
+        "id": "aiclient2api",
+        "version": "2.0",
+        "name": "AIClient2API接口",
+        "author": "四零二二",
+        "description": "支持所有兼容AIClient2API中openai接口规范的API，仅支持文本\\n\\n欢迎使用我的其他插件：https://tf.4022543.xyz",
+        "icon": null,
+        "inputs": [
+          {
+            "key": "apiKey",
+            "label": "API密钥",
+            "type": "password",
+            "required": true
+          },
+          {
+            "key": "baseUrl",
+            "label": "基础URL",
+            "type": "url",
+            "required": true
+          }
+        ],
+        "inputValues": {
+          "apiKey": "",
+          "baseUrl": "https://127.0.0.1:3000/openai-qwen-oauth/v1"
+        },
+        "models": [
+          {
+            "name": "qwen3-coder-plus",
+            "modelName": "qwen3-coder-plus",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "qwen3-coder-flash",
+            "modelName": "qwen3-coder-flash",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "图片识别vision-model",
+            "modelName": "vision-model",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "gemini-3-flash",
+            "modelName": "gemini-3-flash",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "gemini-3.1-pro-high",
+            "modelName": "gemini-3.1-pro-high",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "claude-haiku-4-5",
+            "modelName": "claude-haiku-4-5",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "claude-opus-4-6",
+            "modelName": "claude-opus-4-6",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "claude-sonnet-4-6",
+            "modelName": "claude-sonnet-4-6",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "claude-opus-4-5",
+            "modelName": "claude-opus-4-5",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "gpt-5.4",
+            "modelName": "gpt-5.4",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "grok-3",
+            "modelName": "grok-3",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "grok-4",
+            "modelName": "grok-4",
+            "type": "text",
+            "think": true
+          }
+        ]
+      }
+    },
+    {
+      "file": "openai/cpa.ts",
+      "folder": "openai",
+      "hasVendorConfig": true,
+      "isRecommended": false,
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      },
+      "stats": {
+        "total": 3,
+        "text": 3,
+        "image": 0,
+        "video": 0,
+        "tts": 0,
+        "thinkEnabled": 3,
+        "audioSupport": 0
+      },
+      "vendor": {
+        "id": "cpa",
+        "version": "2.0",
+        "name": "cli-proxy-api接口",
+        "author": "四零二二",
+        "description": "支持所有兼容CPA中openai接口规范的API，仅支持文本\\n\\n欢迎使用我的其他插件：https://tf.4022543.xyz",
+        "icon": null,
+        "inputs": [
+          {
+            "key": "apiKey",
+            "label": "API密钥",
+            "type": "password",
+            "required": true
+          },
+          {
+            "key": "baseUrl",
+            "label": "基础URL",
+            "type": "url",
+            "required": true
+          }
+        ],
+        "inputValues": {
+          "apiKey": "",
+          "baseUrl": "https://127.0.0.1:8317/v1"
+        },
+        "models": [
+          {
+            "name": "qwen3-coder-plus",
+            "modelName": "qwen3-coder-plus",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "qwen3-coder-flash",
+            "modelName": "qwen3-coder-flash",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "图片识别vision-model",
+            "modelName": "vision-model",
+            "type": "text",
+            "think": true
+          }
+        ]
+      }
+    },
+    {
+      "file": "openai/openai.ts",
+      "folder": "openai",
+      "hasVendorConfig": true,
+      "isRecommended": false,
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      },
+      "stats": {
+        "total": 8,
+        "text": 3,
+        "image": 3,
+        "video": 2,
+        "tts": 0,
+        "thinkEnabled": 3,
+        "audioSupport": 2
+      },
+      "vendor": {
+        "id": "openai",
+        "version": "2.0",
+        "name": "OpenAI 官方接口",
+        "author": "四零二二",
+        "description": "支持所有兼容 OpenAI 官方接口规范的API，支持文本、图像、视频和语音能力。\\n\\n欢迎使用我的其他插件：https://tf.4022543.xyz",
+        "icon": null,
+        "inputs": [
+          {
+            "key": "apiKey",
+            "label": "API密钥",
+            "type": "password",
+            "required": true
+          },
+          {
+            "key": "baseUrl",
+            "label": "基础URL",
+            "type": "url",
+            "required": true
+          },
+          {
+            "key": "text",
+            "label": "文本接口地址",
+            "type": "url",
+            "required": false
+          },
+          {
+            "key": "image",
+            "label": "图片生成地址",
+            "type": "url",
+            "required": false
+          },
+          {
+            "key": "imageEdit",
+            "label": "图片编辑地址",
+            "type": "url",
+            "required": false
+          },
+          {
+            "key": "videoCreate",
+            "label": "视频任务创建",
+            "type": "url",
+            "required": false
+          },
+          {
+            "key": "videoQuery",
+            "label": "视频任务查询",
+            "type": "url",
+            "required": false
+          },
+          {
+            "key": "videoDownload",
+            "label": "视频文件下载",
+            "type": "url",
+            "required": false
+          },
+          {
+            "key": "tts",
+            "label": "语音合成地址",
+            "type": "url",
+            "required": false
+          }
+        ],
+        "inputValues": {
+          "apiKey": "",
+          "baseUrl": "https://api.openai.com/v1",
+          "text": "",
+          "image": "",
+          "imageEdit": "",
+          "videoCreate": "",
+          "videoQuery": "",
+          "videoDownload": "",
+          "tts": ""
+        },
+        "models": [
+          {
+            "name": "GPT-5.4",
+            "modelName": "gpt-5.4",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "GPT-5.4 Mini",
+            "modelName": "gpt-5.4-mini",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "GPT-5.4 Nano",
+            "modelName": "gpt-5.4-nano",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "GPT Image 1.5",
+            "modelName": "gpt-image-1.5",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "GPT Image 1",
+            "modelName": "gpt-image-1",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "GPT Image 1-mini",
+            "modelName": "gpt-image-1-mini",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "Sora-2",
+            "modelName": "sora-2",
+            "type": "video",
+            "mode": [
+              "singleImage",
+              "text"
+            ],
+            "audio": "optional",
+            "durationResolutionMap": []
+          },
+          {
+            "name": "sora-2-pro",
+            "modelName": "sora-2-pro",
+            "type": "video",
+            "mode": [
+              "singleImage",
+              "text"
+            ],
+            "audio": "optional",
+            "durationResolutionMap": []
+          }
+        ]
+      }
     }
-  }
-]
+  ]
+}
