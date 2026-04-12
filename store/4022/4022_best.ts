@@ -135,7 +135,7 @@ declare const Buffer: any;
 
 const vendor: VendorConfig = {
   id: "best",
-  version: "2.0",
+  version: "2.1",
   author: "四零二二",
   name: "最强组合-四零二二API",
   description:
@@ -963,11 +963,71 @@ const ttsRequest = async (config: TTSConfig, model: TTSModel): Promise<string> =
 };
 
 const checkForUpdates = async (): Promise<{ hasUpdate: boolean; latestVersion: string; notice: string }> => {
-  return { hasUpdate: false, latestVersion: "2.0", notice: "" };
+  try {
+    const apiVendorUrl = `https://tf-api.4022543.xyz/api/vendor/4022_best`;
+    const response = await axios.get(apiVendorUrl, {
+      timeout: 10000,
+      headers: {
+        "Accept": "application/json",
+        "Cache-Control": "no-cache"
+      }
+    });
+
+    const data = response.data;
+
+    if (!data || !data.success || !data.vendor) {
+      // throw new Error("API 返回数据格式错误");
+      return {
+        hasUpdate: false,
+        latestVersion: vendor.version,
+        notice: ""
+      };
+    }
+
+    const remoteVersion = data.vendor.version;
+    const currentVersion = vendor.version;
+    const hasUpdate = remoteVersion !== currentVersion;
+
+    return {
+      hasUpdate,
+      latestVersion: remoteVersion,
+      notice: hasUpdate ? `发现新版本 ${remoteVersion}，当前版本 ${currentVersion}` : "已是最新版本"
+    };
+  } catch (error: any) {
+    return {
+      hasUpdate: false,
+      latestVersion: vendor.version,
+      notice: `检查更新失败: ${error.message || "未知错误"}`
+    };
+  }
 };
 
 const updateVendor = async (): Promise<string> => {
-  return "";
+  try {
+    const remoteVendorUrl = `https://tf.4022543.xyz/store/4022/4022_best.ts`;
+    const response = await axios.get(remoteVendorUrl, {
+      timeout: 30000,
+      headers: {
+        "Accept": "text/plain",
+        "Cache-Control": "no-cache"
+      }
+    });
+
+    const remoteCode = response.data as string;
+
+    if (!remoteCode || remoteCode.length < 100) {
+      throw new Error("获取到的代码内容无效");
+    }
+
+    // 验证代码基本结构
+    if (!remoteCode.includes("const vendor:") || !remoteCode.includes("exports.vendor")) {
+      throw new Error("获取到的代码结构不完整");
+    }
+
+    return remoteCode;
+  } catch (error: any) {
+    throw new Error(`更新失败: ${error.message || "未知错误"}`);
+  }
 };
 
 // ============================================================
