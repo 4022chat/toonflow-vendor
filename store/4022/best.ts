@@ -1209,4 +1209,3 @@ exports.checkForUpdates = checkForUpdates;
 exports.updateVendor = updateVendor;
 
 export {};
-
