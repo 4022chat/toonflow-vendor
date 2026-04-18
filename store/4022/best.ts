@@ -135,7 +135,7 @@ declare const Buffer: any;
 
 const vendor: VendorConfig = {
   id: "best",
-  version: "2.3",
+  version: "2.4",
   author: "四零二二",
   name: "最强组合-四零二二API",
   description:
