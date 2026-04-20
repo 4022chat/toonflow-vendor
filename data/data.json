@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-04-18T13:01:58.411Z",
-    "totalFiles": 5,
-    "validVendors": 5,
+    "generatedAt": "2026-04-20T01:49:21.887Z",
+    "totalFiles": 6,
+    "validVendors": 6,
     "invalidVendors": 0,
-    "totalModels": 70
+    "totalModels": 103
   },
   "vendors": [
     {
@@ -644,6 +644,432 @@
             "audio": false,
             "durationResolutionMap": [],
             "associationSkills": ""
+          }
+        ]
+      }
+    },
+    {
+      "file": "bltcy/bltcy.ts",
+      "folder": "bltcy",
+      "hasVendorConfig": true,
+      "isRecommended": false,
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      },
+      "stats": {
+        "total": 33,
+        "text": 9,
+        "image": 7,
+        "video": 17,
+        "tts": 0,
+        "thinkEnabled": 7,
+        "audioSupport": 17
+      },
+      "vendor": {
+        "id": "bltcy",
+        "version": "2.0",
+        "name": "柏拉图",
+        "author": "四零二二",
+        "description": "支持seedance2.0视频生成，价格比官方更低\\n\\n已接入最新的GPT Image 2.0生图模型\\n\\n内置claude/GPT/gemini等模型\\n\\n香蕉4K生图最低只要0.1/次，[注册即送体验次数](https://api.bltcy.ai/register?aff=ppJQ120196)\\n\\n 只需一个key即可接入所有模型，邀请好友可返点。[点这里去注册](https://api.bltcy.ai/register?aff=ppJQ120196)",
+        "icon": null,
+        "inputs": [
+          {
+            "key": "apiKey",
+            "label": "API密钥",
+            "type": "password",
+            "required": true
+          },
+          {
+            "key": "textKey",
+            "label": "文本 API 密钥",
+            "type": "password",
+            "required": false
+          },
+          {
+            "key": "imageKey",
+            "label": "图像 API 密钥",
+            "type": "password",
+            "required": false
+          },
+          {
+            "key": "videoKey",
+            "label": "视频 API 密钥",
+            "type": "password",
+            "required": false
+          },
+          {
+            "key": "ttsKey",
+            "label": "语音 API 密钥",
+            "type": "password",
+            "required": false
+          },
+          {
+            "key": "baseUrl",
+            "label": "请求地址",
+            "type": "text",
+            "required": false
+          }
+        ],
+        "inputValues": {
+          "apiKey": "",
+          "textKey": "",
+          "imageKey": "",
+          "videoKey": "",
+          "ttsKey": "",
+          "baseUrl": "https://api.bltcy.ai"
+        },
+        "models": [
+          {
+            "name": "Seedance 2.0",
+            "modelName": "doubao-seedance-2-0-260128",
+            "type": "video",
+            "mode": [
+              "text",
+              "endFrameOptional",
+              "startEndRequired",
+              [
+                "videoReference:1",
+                "imageReference:9",
+                "audioReference:1"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "Seedance 2.0 Fast",
+            "modelName": "doubao-seedance-2-0-fast-260128",
+            "type": "video",
+            "mode": [
+              "text",
+              "endFrameOptional",
+              "startEndRequired",
+              [
+                "videoReference:1",
+                "imageReference:9",
+                "audioReference:1"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "GPT Image 2.0",
+            "modelName": "gpt-image-2",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "Gemini-3.1-flash-image",
+            "modelName": "gemini-3.1-flash-image-preview",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "Gemini-3-pro-image",
+            "modelName": "gemini-3-pro-image-preview",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "Nano Banana Pro",
+            "modelName": "nano-banana-pro",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "豆包 Seedream 5.0",
+            "modelName": "doubao-seedream-5-0-260128",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "豆包 Seedream 4.5",
+            "modelName": "doubao-seedream-4-5-251128",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "GPT Image 1.5",
+            "modelName": "gpt-image-1.5",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "Gemini-3.1-flash-lite-preview",
+            "modelName": "gemini-3.1-flash-lite-preview",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "Gemini-3.1-pro-preview",
+            "modelName": "gemini-3.1-pro-preview",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "Gemini-3.1-pro-preview-customtools",
+            "modelName": "gemini-3.1-pro-preview-customtools",
+            "type": "text",
+            "think": false
+          },
+          {
+            "name": "GPT-5-codex",
+            "modelName": "gpt-5-codex",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "GPT-5",
+            "modelName": "gpt-5",
+            "type": "text",
+            "think": false
+          },
+          {
+            "name": "claude-sonnet-4-5",
+            "modelName": "claude-sonnet-4-5-20250929",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "claude-opus-4-6",
+            "modelName": "claude-opus-4-6",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "claude-sonnet-4-6",
+            "modelName": "claude-sonnet-4-6",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "claude-opus-4-7",
+            "modelName": "claude-opus-4-7",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "Seedance 1.5 Pro",
+            "modelName": "doubao-seedance-1-5-pro-251215",
+            "type": "video",
+            "mode": [
+              "text",
+              "endFrameOptional",
+              "startEndRequired"
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "veo3.1-pro-4k",
+            "modelName": "veo3.1-pro-4k",
+            "type": "video",
+            "mode": [
+              "text",
+              "endFrameOptional"
+            ],
+            "audio": "optional",
+            "durationResolutionMap": []
+          },
+          {
+            "name": "veo3.1-pro",
+            "modelName": "veo3.1-pro",
+            "type": "video",
+            "mode": [
+              "text",
+              "endFrameOptional"
+            ],
+            "audio": "optional",
+            "durationResolutionMap": []
+          },
+          {
+            "name": "kling-v3-omni",
+            "modelName": "kling-v3-omni",
+            "type": "video",
+            "mode": [
+              "text",
+              "endFrameOptional",
+              [
+                "videoReference:1",
+                "imageReference:4"
+              ]
+            ],
+            "audio": "optional",
+            "durationResolutionMap": []
+          },
+          {
+            "name": "kling-video-o1",
+            "modelName": "kling-video-o1",
+            "type": "video",
+            "mode": [
+              "text",
+              "endFrameOptional",
+              [
+                "videoReference:1",
+                "imageReference:4"
+              ]
+            ],
+            "audio": "optional",
+            "durationResolutionMap": []
+          },
+          {
+            "name": "kling-v2-6",
+            "modelName": "kling-v2-6",
+            "type": "video",
+            "mode": [
+              "text",
+              "endFrameOptional"
+            ],
+            "audio": "optional",
+            "durationResolutionMap": []
+          },
+          {
+            "name": "kling-v2-5-turbo",
+            "modelName": "kling-v2-5-turbo",
+            "type": "video",
+            "mode": [
+              "text",
+              "endFrameOptional"
+            ],
+            "audio": "optional",
+            "durationResolutionMap": []
+          },
+          {
+            "name": "viduq3-pro",
+            "modelName": "viduq3-pro",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              "endFrameOptional",
+              [
+                "imageReference:3"
+              ]
+            ],
+            "audio": "optional",
+            "durationResolutionMap": []
+          },
+          {
+            "name": "viduq3-turbo",
+            "modelName": "viduq3-turbo",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              "endFrameOptional",
+              [
+                "imageReference:3",
+                "videoReference:1"
+              ]
+            ],
+            "audio": "optional",
+            "durationResolutionMap": []
+          },
+          {
+            "name": "viduq3-pro-fast",
+            "modelName": "viduq3-pro-fast",
+            "type": "video",
+            "mode": [
+              "singleImage"
+            ],
+            "audio": "optional",
+            "durationResolutionMap": []
+          },
+          {
+            "name": "viduq2-pro",
+            "modelName": "viduq2-pro",
+            "type": "video",
+            "mode": [
+              "singleImage",
+              "endFrameOptional",
+              [
+                "imageReference:3"
+              ]
+            ],
+            "audio": "optional",
+            "durationResolutionMap": []
+          },
+          {
+            "name": "viduq2-turbo",
+            "modelName": "viduq2-turbo",
+            "type": "video",
+            "mode": [
+              "singleImage",
+              "endFrameOptional"
+            ],
+            "audio": "optional",
+            "durationResolutionMap": []
+          },
+          {
+            "name": "viduq2-pro-fast",
+            "modelName": "viduq2-pro-fast",
+            "type": "video",
+            "mode": [
+              "singleImage"
+            ],
+            "audio": "optional",
+            "durationResolutionMap": []
+          },
+          {
+            "name": "万象 2.5",
+            "modelName": "wan2.5-i2v-preview",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              [
+                "imageReference:1",
+                "audioReference:1"
+              ]
+            ],
+            "audio": "optional",
+            "durationResolutionMap": []
+          },
+          {
+            "name": "万象 2.6-r2v",
+            "modelName": "wan2.6-r2v",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              [
+                "imageReference:1",
+                "audioReference:1"
+              ]
+            ],
+            "audio": "optional",
+            "durationResolutionMap": []
           }
         ]
       }
