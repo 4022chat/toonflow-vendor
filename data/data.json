@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-04-20T01:49:21.887Z",
-    "totalFiles": 6,
-    "validVendors": 6,
+    "generatedAt": "2026-04-22T01:14:59.575Z",
+    "totalFiles": 8,
+    "validVendors": 8,
     "invalidVendors": 0,
-    "totalModels": 103
+    "totalModels": 119
   },
   "vendors": [
     {
@@ -433,226 +433,10 @@
       }
     },
     {
-      "file": "jimeng/jimeng.ts",
-      "folder": "jimeng",
-      "hasVendorConfig": true,
-      "isRecommended": true,
-      "validation": {
-        "valid": true,
-        "errors": [],
-        "warnings": []
-      },
-      "stats": {
-        "total": 10,
-        "text": 0,
-        "image": 5,
-        "video": 5,
-        "tts": 0,
-        "thinkEnabled": 0,
-        "audioSupport": 4
-      },
-      "vendor": {
-        "id": "jimeng",
-        "version": "2.0",
-        "name": "JM-API",
-        "author": "四零二二",
-        "description": "兼容JM2API项目的接口，支持文生图、图生图、普通视频与 SD2.0 多模态视频生成。\\n\\n 使用该方案，您需要先拥有一个JM的API服务，才能使用该适配器。\\n\\n 可以在github上搜索：例如：[jimeng-free-api-all](https://github.com/wwwzhouhui/jimeng-free-api-all)\\n\\n⚠️**警告：此类项目有违官方使用规则，该方案有可能会被封号，请慎重！！！建议使用官方接口。**\\n\\n更多供应商：https://tf.4022543.xyz/",
-        "icon": null,
-        "inputs": [
-          {
-            "key": "apiKey",
-            "label": "SessionID / API密钥",
-            "type": "password",
-            "required": true
-          },
-          {
-            "key": "baseUrl",
-            "label": "基础URL",
-            "type": "url",
-            "required": true
-          },
-          {
-            "key": "image",
-            "label": "图片接口",
-            "type": "url",
-            "required": false
-          },
-          {
-            "key": "video",
-            "label": "视频接口",
-            "type": "url",
-            "required": false
-          },
-          {
-            "key": "videoQuery",
-            "label": "通用视频任务查询",
-            "type": "url",
-            "required": false
-          }
-        ],
-        "inputValues": {
-          "apiKey": "",
-          "baseUrl": "http://127.0.0.1:8000",
-          "image": "",
-          "video": "",
-          "videoQuery": ""
-        },
-        "models": [
-          {
-            "name": "jm 5.0",
-            "modelName": "jimeng-5.0",
-            "type": "image",
-            "mode": [
-              "text",
-              "singleImage",
-              "multiReference"
-            ],
-            "associationSkills": ""
-          },
-          {
-            "name": "jm 4.6",
-            "modelName": "jimeng-4.6",
-            "type": "image",
-            "mode": [
-              "text",
-              "singleImage",
-              "multiReference"
-            ],
-            "associationSkills": ""
-          },
-          {
-            "name": "jm 4.5",
-            "modelName": "jimeng-4.5",
-            "type": "image",
-            "mode": [
-              "text",
-              "singleImage",
-              "multiReference"
-            ],
-            "associationSkills": ""
-          },
-          {
-            "name": "jm 4.1",
-            "modelName": "jimeng-4.1",
-            "type": "image",
-            "mode": [
-              "text",
-              "singleImage",
-              "multiReference"
-            ],
-            "associationSkills": ""
-          },
-          {
-            "name": "jm 4.0",
-            "modelName": "jimeng-4.0",
-            "type": "image",
-            "mode": [
-              "text",
-              "singleImage",
-              "multiReference"
-            ],
-            "associationSkills": ""
-          },
-          {
-            "name": "SD 2.0",
-            "modelName": "jimeng-video-seedance-2.0",
-            "type": "video",
-            "mode": [
-              "singleImage",
-              "startEndRequired",
-              "endFrameOptional",
-              "startFrameOptional",
-              "text",
-              [
-                "videoReference:1",
-                "imageReference:9",
-                "audioReference:1"
-              ]
-            ],
-            "audio": true,
-            "durationResolutionMap": [],
-            "associationSkills": ""
-          },
-          {
-            "name": "SD 2.0 Fast",
-            "modelName": "jimeng-video-seedance-2.0-fast",
-            "type": "video",
-            "mode": [
-              "singleImage",
-              "startEndRequired",
-              "endFrameOptional",
-              "startFrameOptional",
-              "text",
-              [
-                "videoReference:9",
-                "imageReference:9",
-                "audioReference:3"
-              ]
-            ],
-            "audio": true,
-            "durationResolutionMap": [],
-            "associationSkills": ""
-          },
-          {
-            "name": "SD 2.0 VIP",
-            "modelName": "jimeng-video-seedance-2.0-vip",
-            "type": "video",
-            "mode": [
-              "singleImage",
-              "startEndRequired",
-              "endFrameOptional",
-              "startFrameOptional",
-              "text",
-              [
-                "videoReference:9",
-                "imageReference:9",
-                "audioReference:3"
-              ]
-            ],
-            "audio": true,
-            "durationResolutionMap": [],
-            "associationSkills": ""
-          },
-          {
-            "name": "SD 2.0 Fast VIP",
-            "modelName": "jimeng-video-seedance-2.0-fast-vip",
-            "type": "video",
-            "mode": [
-              "singleImage",
-              "startEndRequired",
-              "endFrameOptional",
-              "startFrameOptional",
-              "text",
-              [
-                "videoReference:9",
-                "imageReference:9",
-                "audioReference:3"
-              ]
-            ],
-            "audio": true,
-            "durationResolutionMap": [],
-            "associationSkills": ""
-          },
-          {
-            "name": "SD 1.5",
-            "modelName": "jimeng-video-3.5-pro",
-            "type": "video",
-            "mode": [
-              "text",
-              "startEndRequired"
-            ],
-            "audio": false,
-            "durationResolutionMap": [],
-            "associationSkills": ""
-          }
-        ]
-      }
-    },
-    {
       "file": "bltcy/bltcy.ts",
       "folder": "bltcy",
       "hasVendorConfig": true,
-      "isRecommended": false,
+      "isRecommended": true,
       "validation": {
         "valid": true,
         "errors": [],
@@ -1075,6 +859,312 @@
       }
     },
     {
+      "file": "jimeng/jimeng.ts",
+      "folder": "jimeng",
+      "hasVendorConfig": true,
+      "isRecommended": false,
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      },
+      "stats": {
+        "total": 10,
+        "text": 0,
+        "image": 5,
+        "video": 5,
+        "tts": 0,
+        "thinkEnabled": 0,
+        "audioSupport": 4
+      },
+      "vendor": {
+        "id": "jimeng",
+        "version": "2.0",
+        "name": "JM-API",
+        "author": "四零二二",
+        "description": "兼容JM2API项目的接口，支持文生图、图生图、普通视频与 SD2.0 多模态视频生成。\\n\\n 使用该方案，您需要先拥有一个JM的API服务，才能使用该适配器。\\n\\n 可以在github上搜索：例如：[jimeng-free-api-all](https://github.com/wwwzhouhui/jimeng-free-api-all)\\n\\n⚠️**警告：此类项目有违官方使用规则，该方案有可能会被封号，请慎重！！！建议使用官方接口。**\\n\\n更多供应商：https://tf.4022543.xyz/",
+        "icon": null,
+        "inputs": [
+          {
+            "key": "apiKey",
+            "label": "SessionID / API密钥",
+            "type": "password",
+            "required": true
+          },
+          {
+            "key": "baseUrl",
+            "label": "基础URL",
+            "type": "url",
+            "required": true
+          },
+          {
+            "key": "image",
+            "label": "图片接口",
+            "type": "url",
+            "required": false
+          },
+          {
+            "key": "video",
+            "label": "视频接口",
+            "type": "url",
+            "required": false
+          },
+          {
+            "key": "videoQuery",
+            "label": "通用视频任务查询",
+            "type": "url",
+            "required": false
+          }
+        ],
+        "inputValues": {
+          "apiKey": "",
+          "baseUrl": "http://127.0.0.1:8000",
+          "image": "",
+          "video": "",
+          "videoQuery": ""
+        },
+        "models": [
+          {
+            "name": "jm 5.0",
+            "modelName": "jimeng-5.0",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "associationSkills": ""
+          },
+          {
+            "name": "jm 4.6",
+            "modelName": "jimeng-4.6",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "associationSkills": ""
+          },
+          {
+            "name": "jm 4.5",
+            "modelName": "jimeng-4.5",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "associationSkills": ""
+          },
+          {
+            "name": "jm 4.1",
+            "modelName": "jimeng-4.1",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "associationSkills": ""
+          },
+          {
+            "name": "jm 4.0",
+            "modelName": "jimeng-4.0",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "associationSkills": ""
+          },
+          {
+            "name": "SD 2.0",
+            "modelName": "jimeng-video-seedance-2.0",
+            "type": "video",
+            "mode": [
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional",
+              "text",
+              [
+                "videoReference:1",
+                "imageReference:9",
+                "audioReference:1"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": [],
+            "associationSkills": ""
+          },
+          {
+            "name": "SD 2.0 Fast",
+            "modelName": "jimeng-video-seedance-2.0-fast",
+            "type": "video",
+            "mode": [
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional",
+              "text",
+              [
+                "videoReference:9",
+                "imageReference:9",
+                "audioReference:3"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": [],
+            "associationSkills": ""
+          },
+          {
+            "name": "SD 2.0 VIP",
+            "modelName": "jimeng-video-seedance-2.0-vip",
+            "type": "video",
+            "mode": [
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional",
+              "text",
+              [
+                "videoReference:9",
+                "imageReference:9",
+                "audioReference:3"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": [],
+            "associationSkills": ""
+          },
+          {
+            "name": "SD 2.0 Fast VIP",
+            "modelName": "jimeng-video-seedance-2.0-fast-vip",
+            "type": "video",
+            "mode": [
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional",
+              "text",
+              [
+                "videoReference:9",
+                "imageReference:9",
+                "audioReference:3"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": [],
+            "associationSkills": ""
+          },
+          {
+            "name": "SD 1.5",
+            "modelName": "jimeng-video-3.5-pro",
+            "type": "video",
+            "mode": [
+              "text",
+              "startEndRequired"
+            ],
+            "audio": false,
+            "durationResolutionMap": [],
+            "associationSkills": ""
+          }
+        ]
+      }
+    },
+    {
+      "file": "longchat/longchat.ts",
+      "folder": "longchat",
+      "hasVendorConfig": true,
+      "isRecommended": false,
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      },
+      "stats": {
+        "total": 7,
+        "text": 7,
+        "image": 0,
+        "video": 0,
+        "tts": 0,
+        "thinkEnabled": 3,
+        "audioSupport": 0
+      },
+      "vendor": {
+        "id": "longchat",
+        "version": "2.1",
+        "name": "美团龙猫LongChat",
+        "author": "四零二二",
+        "description": "支持 LongCat OpenAI 兼容接口，已预置官方文本模型。\\n\\n每个账号每日限量50万Token，用完可以申请提升到500万Token。\\n\\n[点击这里获取API密钥](https://longcat.chat/platform/api_keys)\\n\\n欢迎使用我的其他插件：https://tf.4022543.xyz",
+        "icon": null,
+        "inputs": [
+          {
+            "key": "apiKey",
+            "label": "API密钥",
+            "type": "password",
+            "required": true
+          },
+          {
+            "key": "baseUrl",
+            "label": "请求地址",
+            "type": "url",
+            "required": true
+          }
+        ],
+        "inputValues": {
+          "apiKey": "",
+          "baseUrl": "https://api.longcat.chat/openai"
+        },
+        "models": [
+          {
+            "name": "LongCat-Flash-Chat",
+            "modelName": "LongCat-Flash-Chat",
+            "type": "text",
+            "think": false
+          },
+          {
+            "name": "LongCat-Flash-Thinking",
+            "modelName": "LongCat-Flash-Thinking",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "LongCat-Flash-Thinking-2601",
+            "modelName": "LongCat-Flash-Thinking-2601",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "LongCat-Flash-Lite",
+            "modelName": "LongCat-Flash-Lite",
+            "type": "text",
+            "think": false
+          },
+          {
+            "name": "LongCat-Flash-Omni-2603",
+            "modelName": "LongCat-Flash-Omni-2603",
+            "type": "text",
+            "think": false
+          },
+          {
+            "name": "LongCat-Flash-Chat-2602-Exp",
+            "modelName": "LongCat-Flash-Chat-2602-Exp",
+            "type": "text",
+            "think": false
+          },
+          {
+            "name": "Sphynx",
+            "modelName": "Sphynx",
+            "type": "text",
+            "think": true
+          }
+        ]
+      }
+    },
+    {
       "file": "openai/ac2api.ts",
       "folder": "openai",
       "hasVendorConfig": true,
@@ -1423,6 +1513,122 @@
             ],
             "audio": "optional",
             "durationResolutionMap": []
+          }
+        ]
+      }
+    },
+    {
+      "file": "qiniu/qiniu.ts",
+      "folder": "qiniu",
+      "hasVendorConfig": true,
+      "isRecommended": false,
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      },
+      "stats": {
+        "total": 9,
+        "text": 5,
+        "image": 4,
+        "video": 0,
+        "tts": 0,
+        "thinkEnabled": 0,
+        "audioSupport": 0
+      },
+      "vendor": {
+        "id": "qiniu",
+        "version": "2.0",
+        "name": "七牛云大模型推理服务",
+        "author": "四零二二",
+        "description": "支持七牛云大模型推理服务的 OpenAI 兼容文本模型与 Kling 系列图片生成模型。\\n\\n欢迎使用我的其他插件：https://tf.4022543.xyz",
+        "icon": null,
+        "inputs": [
+          {
+            "key": "apiKey",
+            "label": "API密钥",
+            "type": "password",
+            "required": true
+          },
+          {
+            "key": "baseUrl",
+            "label": "请求地址",
+            "type": "url",
+            "required": true
+          }
+        ],
+        "inputValues": {
+          "apiKey": "",
+          "baseUrl": "https://api.qnaigc.com/v1"
+        },
+        "models": [
+          {
+            "name": "Kimi K2.5",
+            "modelName": "moonshotai/kimi-k2.5",
+            "type": "text",
+            "think": false
+          },
+          {
+            "name": "GLM-5",
+            "modelName": "z-ai/glm-5",
+            "type": "text",
+            "think": false
+          },
+          {
+            "name": "Mimo V2 Flash",
+            "modelName": "xiaomi/mimo-v2-flash",
+            "type": "text",
+            "think": false
+          },
+          {
+            "name": "LongCat Flash Lite",
+            "modelName": "meituan/longcat-flash-lite",
+            "type": "text",
+            "think": false
+          },
+          {
+            "name": "DeepSeek V3.2 251201",
+            "modelName": "deepseek/deepseek-v3.2-251201",
+            "type": "text",
+            "think": false
+          },
+          {
+            "name": "Kling V1.5",
+            "modelName": "kling-v1-5",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage"
+            ]
+          },
+          {
+            "name": "Kling V2",
+            "modelName": "kling-v2",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "Kling V2 New",
+            "modelName": "kling-v2-new",
+            "type": "image",
+            "mode": [
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "Kling V2.1",
+            "modelName": "kling-v2-1",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
           }
         ]
       }
