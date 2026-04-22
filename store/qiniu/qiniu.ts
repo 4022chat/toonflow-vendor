@@ -136,7 +136,7 @@ const vendor: VendorConfig = {
   version: "2.0",
   author: "四零二二",
   name: "七牛云大模型推理服务",
-  description: "支持七牛云大模型推理服务的 OpenAI 兼容文本模型与 Kling 系列图片生成模型。\n\n欢迎使用我的其他插件：https://tf.4022543.xyz",
+  description: "支持七牛云大模型推理服务的 OpenAI 兼容文本模型与 Kling 系列图片生成模型。\n\n注册即送 300 万 token，[点击注册七牛](https://s.qiniu.com/Qv6Rrm)\n\n欢迎使用我的其他插件：https://tf.4022543.xyz",
   inputs: [
     { key: "apiKey", label: "API密钥", type: "password", required: true },
     { key: "baseUrl", label: "请求地址", type: "url", required: true, placeholder: "示例：https://api.qnaigc.com/v1" },

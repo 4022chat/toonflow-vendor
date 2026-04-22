@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-04-22T01:14:59.575Z",
+    "generatedAt": "2026-04-22T01:17:32.377Z",
     "totalFiles": 8,
     "validVendors": 8,
     "invalidVendors": 0,
@@ -1541,7 +1541,7 @@
         "version": "2.0",
         "name": "七牛云大模型推理服务",
         "author": "四零二二",
-        "description": "支持七牛云大模型推理服务的 OpenAI 兼容文本模型与 Kling 系列图片生成模型。\\n\\n欢迎使用我的其他插件：https://tf.4022543.xyz",
+        "description": "支持七牛云大模型推理服务的 OpenAI 兼容文本模型与 Kling 系列图片生成模型。\\n\\n注册即送 300 万 token，[点击注册七牛](https://s.qiniu.com/Qv6Rrm)\\n\\n欢迎使用我的其他插件：https://tf.4022543.xyz",
         "icon": null,
         "inputs": [
           {
