@@ -135,7 +135,7 @@ declare const Buffer: any;
 
 const vendor: VendorConfig = {
   id: "best",
-  version: "2.4",
+  version: "2.5",
   author: "四零二二",
   name: "最强组合-四零二二API",
   description:
@@ -155,11 +155,12 @@ const vendor: VendorConfig = {
     ttsKey: "",
   },
   models: [
-    { name: "gemini-3.1-pro-preview", type: "text", modelName: "gemini-3.1-pro-preview", think: true },
+    { name: "GPT-image-2-all", type: "image", modelName: "gpt-image-2-all", mode: ["text", "singleImage", "multiReference"] },
+    { name: "Gemini-3.1-pro-preview", type: "text", modelName: "gemini-3.1-pro-preview", think: true },
     { name: "豆包 Seedream 5.0", type: "image", modelName: "doubao-seedream-5-0-260128", mode: ["text", "singleImage", "multiReference"] },
     { name: "豆包 Seedream 4.5", type: "image", modelName: "doubao-seedream-4-5-251128", mode: ["text", "singleImage", "multiReference"] },
-    { name: "gemini-3.1-flash-image-preview", type: "image", modelName: "gemini-3.1-flash-image-preview", mode: ["text", "singleImage", "multiReference"] },
-    { name: "gemini-3-pro-image-preview", type: "image", modelName: "gemini-3-pro-image-preview", mode: ["text", "singleImage", "multiReference"] },
+    { name: "Gemini-3.1-flash-image-preview", type: "image", modelName: "gemini-3.1-flash-image-preview", mode: ["text", "singleImage", "multiReference"] },
+    { name: "Gemini-3-pro-image-preview", type: "image", modelName: "gemini-3-pro-image-preview", mode: ["text", "singleImage", "multiReference"] },
     {
       name: "Seedance 1.5 pro",
       type: "video",
@@ -314,6 +315,7 @@ const vendor: VendorConfig = {
 const getBaseUrl = () => "https://api.4022543.xyz";
 const getTextUrl = () => `${getBaseUrl()}/v1`;
 const getImageUrl = () => `${getBaseUrl()}/v1/images/generations`;
+const getImageEditUrl = () => `${getBaseUrl()}/v1/images/edits`;
 
 // 视频接口配置 - 不同模型使用不同接口
 const getVeoVideoCreateUrl = () => `${getBaseUrl()}/v1/video/create`;
@@ -480,7 +482,7 @@ const getDoubaoImageSize = (imageConfig: ImageConfig, modelName: string) => {
   if (modelName === "doubao-seedream-3-0-t2i-250415") {
     return pixelMap["1K"][imageConfig.aspectRatio] || "1024x1024";
   }
-  if (modelName === "doubao-seedream-5-0-260128") {
+  if (modelName.startsWith("doubao-seedream-5-0-")) {
     const size = imageConfig.size === "4K" ? "3K" : "2K";
     return pixelMap[size][imageConfig.aspectRatio] || pixelMap[size]["1:1"];
   }
@@ -494,11 +496,16 @@ const getDoubaoImageSize = (imageConfig: ImageConfig, modelName: string) => {
 
 const getGenericImageSize = (imageConfig: ImageConfig, modelName: string) => {
   const normalizedAspectRatio = imageConfig.aspectRatio === "9:16" ? "9:16" : imageConfig.aspectRatio === "16:9" ? "16:9" : "1:1";
-
+  if (modelName === "dall-e-2") {
+    // 对于 dall-e-2 必须是 256x256 、 512x512 或 1024x1024 之一，
+    return normalizedAspectRatio === "16:9" ? "256x256" : normalizedAspectRatio === "9:16" ? "256x256" : "1024x1024";
+  }
   if (modelName === "dall-e-3") {
+    // 对于 dall-e-3 必须是 1024x1024 、 1792x1024 或 1024x1792 之一。
     return normalizedAspectRatio === "16:9" ? "1792x1024" : normalizedAspectRatio === "9:16" ? "1024x1792" : "1024x1024";
   }
-  if (modelName === "gpt-image-1" || modelName === "gpt-image-1.5") {
+  if (modelName.startsWith("gpt-image-")) {
+    // 生成图像的尺寸。对于 GPT 图像模型，必须是 1024x1024 、 1536x1024 （横版）、 1024x1536 （竖版）或 auto （默认值）之一，
     return normalizedAspectRatio === "16:9" ? "1536x1024" : normalizedAspectRatio === "9:16" ? "1024x1536" : "1024x1024";
   }
   if (modelName === "grok-3-image") {
@@ -523,19 +530,67 @@ const getTaskStatus = (data: any) => String(data?.status || data?.data?.status |
 
 const textRequest = (model: TextModel, think: boolean, thinkLevel: 0 | 1 | 2 | 3) => {
   const apiKey = getAuthorization("text").replace(/^Bearer\s+/, "");
-  logger(`[textRequest] 使用模型: ${model.modelName}`);
   return createOpenAI({ baseURL: getTextUrl(), apiKey }).chat(model.modelName);
 };
 
 const imageRequest = async (config: ImageConfig, model: ImageModel): Promise<string> => {
   const imageRefs = (config.referenceList ?? []).map((r) => r.base64);
-  logger(`[imageRequest] 提交图像生成任务，模型: ${model.modelName}`);
 
-  // Gemini 图像生成模型使用 Google generateContent API
+  logger(`[imageRequest] 提交图像生成任务，模型: ${model.modelName}`);
   if (model.modelName.startsWith("gemini-") && model.modelName.includes("image")) {
     return geminiImageRequest(config, model, imageRefs);
   }
+  const qualityMap: Record<string, string> = {
+    "1K": "low",
+    "2K": "medium",
+    "4K": "high",
+  };
+  const dellQualityMap: Record<string, string> = {
+    "1K": "standard",
+    "2K": "hd",
+    "4K": "hd",
+  };
+  if ((model.modelName.startsWith("gpt-image-") || model.modelName.startsWith("flux-")  || model.modelName.startsWith("dall-e-") || model.modelName.startsWith("grok-")) && imageRefs.length > 0) {
+    // 走 /v1/images/edits 端点且multipart/form-data提交方式
 
+    const formData = new FormData();
+    formData.append("model", model.modelName);
+    formData.append("prompt", config.prompt);
+    formData.append("n", "1");
+
+    if(model.modelName.startsWith("grok-")){
+      formData.append("aspect_ratio", config.aspectRatio);
+      formData.append("quality", qualityMap[config.size] || "medium");//文档有点奇怪，这 2 个正常只使用 1 个的
+      formData.append("resolution", config.size);//文档有点奇怪，这 2 个正常只使用 1 个的
+
+    }else if(model.modelName.startsWith("flux-")){
+      formData.append("aspect_ratio", config.aspectRatio);
+      formData.append("quality", qualityMap[config.size] || "medium");
+    }else{
+      formData.append("size", getGenericImageSize(config, model.modelName));
+
+      formData.append("quality", qualityMap[config.size] || "medium");
+    }
+
+    for (const [index, completeBase64] of imageRefs.entries()) {
+      const normalized = normalizeBase64(completeBase64);
+      const { filename } = getFileMeta(completeBase64, `image-${index + 1}`);
+      formData.append("image", base64ToBuffer(normalized), filename);
+    }
+
+    const response = await axios.post(getImageEditUrl(), formData, {
+      headers: {
+        Authorization: getAuthorization("image"),
+        ...(typeof formData.getHeaders === "function" ? formData.getHeaders() : {}),
+      },
+    });
+
+    const data = response?.data;
+    const result = extractResult(data);
+    if (!result) throw new Error(`${model.modelName} 图片编辑成功但未返回可用结果: ${JSON.stringify(data)}`);
+    return result;
+  }
+  // 其他模型使用 v1/images/generations 端点
   const body: Record<string, any> = {
     model: model.modelName,
     prompt: config.prompt,
@@ -555,12 +610,25 @@ const imageRequest = async (config: ImageConfig, model: ImageModel): Promise<str
   } else {
     body.size = getGenericImageSize(config, model.modelName);
     body.n = 1;
-    if (model.modelName === "dall-e-3") {
-      body.quality = "standard";
+
+    //gpt 文生图没有quality参数
+
+    if (model.modelName === "dall-e-3" || model.modelName.startsWith("flux-")) {
+      body.quality = dellQualityMap[config.size] || "hd";
       body.style = "vivid";
+    }else if(model.modelName.startsWith("gpt-image-")){
+      body.quality = qualityMap[config.size] || "medium";
     }
+
     if (model.modelName === "qwen-image-max") {
       body.size = "1024x1024";
+    }
+    if(imageRefs.length > 0){
+      body.image = imageRefs;
+
+      if(!body.quality && !body.resolution){
+        body.quality = qualityMap[config.size] || "medium";
+      }
     }
   }
 
@@ -1209,4 +1277,3 @@ exports.checkForUpdates = checkForUpdates;
 exports.updateVendor = updateVendor;
 
 export {};
-
