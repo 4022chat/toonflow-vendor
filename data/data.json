@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-04-22T02:23:08.811Z",
+    "generatedAt": "2026-04-24T02:26:46.182Z",
     "totalFiles": 8,
     "validVendors": 8,
     "invalidVendors": 0,
-    "totalModels": 120
+    "totalModels": 122
   },
   "vendors": [
     {
@@ -18,20 +18,20 @@
         "warnings": []
       },
       "stats": {
-        "total": 38,
-        "text": 15,
-        "image": 7,
+        "total": 40,
+        "text": 16,
+        "image": 8,
         "video": 16,
         "tts": 0,
-        "thinkEnabled": 15,
+        "thinkEnabled": 16,
         "audioSupport": 16
       },
       "vendor": {
         "id": "best",
-        "version": "2.5",
+        "version": "2.6",
         "name": "最强组合-四零二二API",
         "author": "四零二二",
-        "description": "最强组合，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\\n\\n四零二二API中转站，支持所有的模型接入，一个 key 搞定所有。\\n\\n源头供货，稳定价低，支持[免费试用](https://api.4022543.xyz/register?aff=3Y0U)\\n\\n新站上线，限时优惠，充0.55=1刀乐，邀请好友可返点。[点这里去注册](https://api.4022543.xyz/register?aff=3Y0U)\\n\\n如遇bug请联系微信：jxppro",
+        "description": "最强组合，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\\n\\n四零二二API中转站，支持所有的模型接入，一个 key 搞定所有。\\n\\n源头供货，稳定价低，支持[免费试用](https://api.4022543.xyz/register?aff=3Y0U)\\n\\n邀请好友可返点。[点这里去注册](https://api.4022543.xyz/register?aff=3Y0U)\\n\\n如遇bug请联系微信：jxppro",
         "icon": null,
         "inputs": [
           {
@@ -74,7 +74,17 @@
         },
         "models": [
           {
-            "name": "GPT-image-2-all",
+            "name": "GPT-image-2",
+            "modelName": "gpt-image-2",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "GPT-image-2-all(仅支持1k)",
             "modelName": "gpt-image-2-all",
             "type": "image",
             "mode": [
@@ -128,6 +138,12 @@
               "singleImage",
               "multiReference"
             ]
+          },
+          {
+            "name": "GPT-5.5",
+            "modelName": "gpt-5.5",
+            "type": "text",
+            "think": true
           },
           {
             "name": "Seedance 1.5 pro",
@@ -204,13 +220,13 @@
             "think": true
           },
           {
-            "name": "gpt-5.4",
+            "name": "GPT-5.4",
             "modelName": "gpt-5.4",
             "type": "text",
             "think": true
           },
           {
-            "name": "gpt-5.4-pro",
+            "name": "GPT-5.4-pro",
             "modelName": "gpt-5.4-pro",
             "type": "text",
             "think": true
@@ -463,7 +479,7 @@
       },
       "vendor": {
         "id": "bltcy",
-        "version": "2.0",
+        "version": "2.1",
         "name": "柏拉图",
         "author": "四零二二",
         "description": "支持seedance2.0视频生成，价格比官方更低\\n\\n已接入最新的GPT Image 2.0生图模型\\n\\n内置claude/GPT/gemini等模型\\n\\n香蕉4K生图最低只要0.1/次，[注册即送体验次数](https://api.bltcy.ai/register?aff=ppJQ120196)\\n\\n 只需一个key即可接入所有模型，邀请好友可返点。[点这里去注册](https://api.bltcy.ai/register?aff=ppJQ120196)",

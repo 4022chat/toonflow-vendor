@@ -135,11 +135,11 @@ declare const Buffer: any;
 
 const vendor: VendorConfig = {
   id: "best",
-  version: "2.5",
+  version: "2.6",
   author: "四零二二",
   name: "最强组合-四零二二API",
   description:
-    "最强组合，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\n\n四零二二API中转站，支持所有的模型接入，一个 key 搞定所有。\n\n源头供货，稳定价低，支持[免费试用](https://api.4022543.xyz/register?aff=3Y0U)\n\n新站上线，限时优惠，充0.55=1刀乐，邀请好友可返点。[点这里去注册](https://api.4022543.xyz/register?aff=3Y0U)\n\n如遇bug请联系微信：jxppro",
+    "最强组合，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\n\n四零二二API中转站，支持所有的模型接入，一个 key 搞定所有。\n\n源头供货，稳定价低，支持[免费试用](https://api.4022543.xyz/register?aff=3Y0U)\n\n邀请好友可返点。[点这里去注册](https://api.4022543.xyz/register?aff=3Y0U)\n\n如遇bug请联系微信：jxppro",
   inputs: [
     { key: "apiKey", label: "API密钥", type: "password", required: true, placeholder: "到上面的网站注册并复制 key 填入" },
     { key: "imageKey", label: "图像API密钥", type: "password", required: false, placeholder: "不填则使用API密钥" },
@@ -155,12 +155,14 @@ const vendor: VendorConfig = {
     ttsKey: "",
   },
   models: [
-    { name: "GPT-image-2-all", type: "image", modelName: "gpt-image-2-all", mode: ["text", "singleImage", "multiReference"] },
+    { name: "GPT-image-2", type: "image", modelName: "gpt-image-2", mode: ["text", "singleImage", "multiReference"] },
+    { name: "GPT-image-2-all(仅支持1k)", type: "image", modelName: "gpt-image-2-all", mode: ["text", "singleImage", "multiReference"] },
     { name: "Gemini-3.1-pro-preview", type: "text", modelName: "gemini-3.1-pro-preview", think: true },
     { name: "豆包 Seedream 5.0", type: "image", modelName: "doubao-seedream-5-0-260128", mode: ["text", "singleImage", "multiReference"] },
     { name: "豆包 Seedream 4.5", type: "image", modelName: "doubao-seedream-4-5-251128", mode: ["text", "singleImage", "multiReference"] },
     { name: "Gemini-3.1-flash-image-preview", type: "image", modelName: "gemini-3.1-flash-image-preview", mode: ["text", "singleImage", "multiReference"] },
     { name: "Gemini-3-pro-image-preview", type: "image", modelName: "gemini-3-pro-image-preview", mode: ["text", "singleImage", "multiReference"] },
+    { name: "GPT-5.5", type: "text", modelName: "gpt-5.5", think: true },
     {
       name: "Seedance 1.5 pro",
       type: "video",
@@ -190,8 +192,8 @@ const vendor: VendorConfig = {
     { name: "doubao-seed-2-0-code", type: "text", modelName: "doubao-seed-2-0-code-preview-260215", think: true },
     { name: "doubao-seed-2-0-lite", type: "text", modelName: "doubao-seed-2-0-lite-260215", think: true },
     { name: "GPT-5.4-mini", type: "text", modelName: "gpt-5.4-mini", think: true },
-    { name: "gpt-5.4", type: "text", modelName: "gpt-5.4", think: true },
-    { name: "gpt-5.4-pro", type: "text", modelName: "gpt-5.4-pro", think: true },
+    { name: "GPT-5.4", type: "text", modelName: "gpt-5.4", think: true },
+    { name: "GPT-5.4-pro", type: "text", modelName: "gpt-5.4-pro", think: true },
     { name: "Claude Sonnet 4.6", type: "text", modelName: "claude-sonnet-4-6", think: true },
     { name: "claude-opus-4-6", type: "text", modelName: "claude-opus-4-6", think: true },
     { name: "claude-opus-4-5-20251101", type: "text", modelName: "claude-opus-4-5-20251101", think: true },
@@ -504,7 +506,18 @@ const getGenericImageSize = (imageConfig: ImageConfig, modelName: string) => {
     // 对于 dall-e-3 必须是 1024x1024 、 1792x1024 或 1024x1792 之一。
     return normalizedAspectRatio === "16:9" ? "1792x1024" : normalizedAspectRatio === "9:16" ? "1024x1792" : "1024x1024";
   }
-  if (modelName.startsWith("gpt-image-")) {
+  if(modelName.startsWith("gpt-image-2")){
+    // 1024x1024 正方形 1536x1024 横版 1024x1536 竖版
+    // 2048x2048 2K正方形 2048x1152 2K横版
+    // 3840x2160 4K横版 2160x3840 4K竖版
+    const gptImage2SizeMap: Record<string, Record<string, string>> = {
+        "1:1": { "1k": "1024x1024", "2k": "2048x2048", "4k": "3840x3840" },
+        "16:9": { "1k": "1536x1024", "2k": "2048x1152", "4k": "3840x2160" },
+        "9:16": { "1k": "1024x1536", "2k": "1152x2048", "4k": "2160x3840" },
+    };
+    return gptImage2SizeMap[normalizedAspectRatio]?.[imageConfig.size.toLowerCase()] || gptImage2SizeMap["1:1"]["1k"];
+
+  }else if (modelName.startsWith("gpt-image-")) {
     // 生成图像的尺寸。对于 GPT 图像模型，必须是 1024x1024 、 1536x1024 （横版）、 1024x1536 （竖版）或 auto （默认值）之一，
     return normalizedAspectRatio === "16:9" ? "1536x1024" : normalizedAspectRatio === "9:16" ? "1024x1536" : "1024x1024";
   }
@@ -530,6 +543,25 @@ const getTaskStatus = (data: any) => String(data?.status || data?.data?.status |
 
 const textRequest = (model: TextModel, think: boolean, thinkLevel: 0 | 1 | 2 | 3) => {
   const apiKey = getAuthorization("text").replace(/^Bearer\s+/, "");
+  if (think && thinkLevel > 0) {
+      // 模型名称变体，根据思考等级转换，1=low,2=medium, 3=high
+      const think_lv = thinkLevel === 1 ? "low" : thinkLevel === 2 ? "medium" : "high";
+      if(model.modelName.startsWith("gpt-5") && model.modelName.includes("-codex")){
+          model.modelName = `${model.modelName}-${think_lv}`;
+      // }else if (model.modelName.includes("gemini-3.1-pro-preview") || model.modelName.includes("gemini-3.1-flash-lite-preview")) {
+      //     model.modelName = `${model.modelName}-thinking-${think_lv}`;
+      }else{
+        //有思考模式，但暂不支持等级的模型
+        const thinkingModel = ["claude-", "gemini-3-pro-preview","deepseek-v3.2"]
+        for(const model_item of thinkingModel){
+          if(model.modelName.startsWith(model_item)){
+            //暂不支持等级
+            model.modelName = `${model.modelName}-thinking`;
+            break;
+          }
+        }
+      }
+  }
   return createOpenAI({ baseURL: getTextUrl(), apiKey }).chat(model.modelName);
 };
 
@@ -545,7 +577,7 @@ const imageRequest = async (config: ImageConfig, model: ImageModel): Promise<str
     "2K": "medium",
     "4K": "high",
   };
-  const dellQualityMap: Record<string, string> = {
+  const dallQualityMap: Record<string, string> = {
     "1K": "standard",
     "2K": "hd",
     "4K": "hd",
@@ -568,7 +600,6 @@ const imageRequest = async (config: ImageConfig, model: ImageModel): Promise<str
       formData.append("quality", qualityMap[config.size] || "medium");
     }else{
       formData.append("size", getGenericImageSize(config, model.modelName));
-
       formData.append("quality", qualityMap[config.size] || "medium");
     }
 
@@ -611,13 +642,13 @@ const imageRequest = async (config: ImageConfig, model: ImageModel): Promise<str
     body.size = getGenericImageSize(config, model.modelName);
     body.n = 1;
 
-    //gpt 文生图没有quality参数
-
     if (model.modelName === "dall-e-3" || model.modelName.startsWith("flux-")) {
-      body.quality = dellQualityMap[config.size] || "hd";
+      body.quality = dallQualityMap[config.size] || "hd";
       body.style = "vivid";
     }else if(model.modelName.startsWith("gpt-image-")){
-      body.quality = qualityMap[config.size] || "medium";
+      //gpt-image-2-all仅支持 1k
+
+      body.quality = qualityMap[config.size] || "medium";//可选：low 、 medium 、 high 、 auto（默认）
     }
 
     if (model.modelName === "qwen-image-max") {

@@ -158,7 +158,7 @@ declare const exports: {
 
 const vendor: VendorConfig = {
     id: "bltcy",
-    version: "2.0",
+    version: "2.1",
     author: "四零二二",
     name: "柏拉图",
     description:"支持seedance2.0视频生成，价格比官方更低\n\n已接入最新的GPT Image 2.0生图模型\n\n内置claude/GPT/gemini等模型\n\n香蕉4K生图最低只要0.1/次，[注册即送体验次数](https://api.bltcy.ai/register?aff=ppJQ120196)\n\n 只需一个key即可接入所有模型，邀请好友可返点。[点这里去注册](https://api.bltcy.ai/register?aff=ppJQ120196)",
@@ -427,18 +427,6 @@ const throwIfNotOk = async (response: any, action: string) => {
 
 const getGenericImageSize = (config: ImageConfig, modelName: string) => {
     const normalizedAspectRatio = ["9:16", "16:9"].includes(config.aspectRatio) ? config.aspectRatio : "1:1";
-    let size = config.size.toLowerCase();
-    if(modelName.startsWith("gpt-image-")){
-        size = "1k";//gpt系列只有三个尺寸，通过quality参数设置质量
-    }
-    // 根据 size (1K/2K/4K) 和比例计算分辨率
-    const sizeMap: Record<string, Record<string, string>> = {
-        "1:1": { "1k": "1024x1024", "2k": "2048x2048", "4k": "4096x4096" },
-        "16:9": { "1k": "1536x1024", "2k": "2048x1152", "4k": "3840x2160" },
-        "9:16": { "1k": "1024x1536", "2k": "1152x2048", "4k": "2160x3840" },
-    };
-
-    // dall-e-3 使用固定分辨率
     if (modelName === "dall-e-3") {
         return normalizedAspectRatio === "16:9"
             ? "1792x1024"
@@ -446,12 +434,27 @@ const getGenericImageSize = (config: ImageConfig, modelName: string) => {
                 ? "1024x1792"
                 : "1024x1024";
     }
-    // 强制某些模型只使用 1k 分辨率
-    // if (modelName === "gpt-image-1.5" || modelName === "gpt-image-2") {
-    //     return "1k";
-    // }
+    // gpt-image- 特定尺寸，目前好像是一样的
+    if(modelName.startsWith("gpt-image-2")){
+        const gptImage2SizeMap: Record<string, Record<string, string>> = {
+            "1:1": { "1k": "1024x1024", "2k": "2048x2048", "4k": "3840x3840" },
+            "16:9": { "1k": "1536x1024", "2k": "2048x1152", "4k": "3840x2160" },
+            "9:16": { "1k": "1024x1536", "2k": "1152x2048", "4k": "2160x3840" },
+        };
+        return gptImage2SizeMap[normalizedAspectRatio]?.[config.size.toLowerCase()] || gptImage2SizeMap["1:1"]["1k"];
+    }
     
-    return sizeMap[normalizedAspectRatio]?.[size] || sizeMap["1:1"]["1k"];
+    // 其他模型通用尺寸
+    // if(modelName.startsWith("gpt-image-") && modelName !== "gpt-image-2"){
+    //     size = "1k";//某些gpt系列只有三个尺寸，通过quality参数设置质量
+    // }
+    const sizeMap: Record<string, Record<string, string>> = {
+        "1:1": { "1k": "1024x1024", "2k": "2048x2048", "4k": "4096x4096" },
+        "16:9": { "1k": "1536x1024", "2k": "2048x1152", "4k": "3840x2160" },
+        "9:16": { "1k": "1024x1536", "2k": "1152x2048", "4k": "2160x3840" },
+    };
+
+    return sizeMap[normalizedAspectRatio]?.[config.size.toLowerCase()] || sizeMap["1:1"]["1k"];
 };
 
 const extractTaskId = (data: any): string | undefined => {
@@ -478,7 +481,7 @@ const textRequest = (
         const think_lv = thinkLevel === 1 ? "low" : thinkLevel === 2 ? "medium" : "high";
         if (model.modelName.includes("gemini-3.1-pro-preview") || model.modelName.includes("gemini-3.1-flash-lite-preview")) {
             model.modelName = `${model.modelName}-thinking-${think_lv}`;
-        }else if(model.modelName.includes("gpt-5-codex")){
+        }else if(model.modelName.startsWith("gpt-5") && model.modelName.includes("-codex")){
             model.modelName = `${model.modelName}-${think_lv}`;
         }else if(model.modelName.includes("claude-")){
             //暂不支持等级

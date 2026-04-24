@@ -1,4 +1,4 @@
-# 使用说明
+# 推荐使用
 
 最强组合模型组合，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts
 
