@@ -135,7 +135,7 @@ declare const Buffer: any;
 
 const vendor: VendorConfig = {
   id: "best",
-  version: "2.6",
+  version: "2.7",
   author: "四零二二",
   name: "最强组合-四零二二API",
   description:
@@ -162,6 +162,8 @@ const vendor: VendorConfig = {
     { name: "豆包 Seedream 4.5", type: "image", modelName: "doubao-seedream-4-5-251128", mode: ["text", "singleImage", "multiReference"] },
     { name: "Gemini-3.1-flash-image-preview", type: "image", modelName: "gemini-3.1-flash-image-preview", mode: ["text", "singleImage", "multiReference"] },
     { name: "Gemini-3-pro-image-preview", type: "image", modelName: "gemini-3-pro-image-preview", mode: ["text", "singleImage", "multiReference"] },
+    { name: "deepseek-v4-flash", type: "text", modelName: "deepseek-v4-flash", think: false },
+    { name: "deepseek-v4-pro", type: "text", modelName: "deepseek-v4-pro", think: false },
     { name: "GPT-5.5", type: "text", modelName: "gpt-5.5", think: true },
     {
       name: "Seedance 1.5 pro",

@@ -1,6 +1,6 @@
 /**
  * 柏拉图 API 供应商适配
- * @version 1.0
+ * @version 2.0
  */
 
 // ============================================================
@@ -161,7 +161,7 @@ const vendor: VendorConfig = {
     version: "2.1",
     author: "四零二二",
     name: "柏拉图",
-    description:"支持seedance2.0视频生成，价格比官方更低\n\n已接入最新的GPT Image 2.0生图模型\n\n内置claude/GPT/gemini等模型\n\n香蕉4K生图最低只要0.1/次，[注册即送体验次数](https://api.bltcy.ai/register?aff=ppJQ120196)\n\n 只需一个key即可接入所有模型，邀请好友可返点。[点这里去注册](https://api.bltcy.ai/register?aff=ppJQ120196)",
+    description:"支持seedance2.0视频生成，价格比官方更低\n\n已接入最新的GPT5.5 和GPT Image 2.0生图模型\n\n内置claude/GPT/gemini等模型\n\n香蕉4K生图最低只要0.1/次，[注册即送体验次数](https://api.bltcy.ai/register?aff=ppJQ120196)\n\n 只需一个key即可接入所有模型，邀请好友可返点。[点这里去注册](https://api.bltcy.ai/register?aff=ppJQ120196)",
     inputs: [
         {
             key: "apiKey",
@@ -227,6 +227,7 @@ const vendor: VendorConfig = {
         {name: "Gemini-3.1-flash-lite-preview",type: "text",modelName: "gemini-3.1-flash-lite-preview",think: true},
         {name: "Gemini-3.1-pro-preview",type: "text",modelName: "gemini-3.1-pro-preview",think: true},
         {name: "Gemini-3.1-pro-preview-customtools",type: "text",modelName: "gemini-3.1-pro-preview-customtools",think: false},
+        {name: "GPT-5.5",type: "text",modelName: "gpt-5.5",think: true},
         {name: "GPT-5-codex",type: "text",modelName: "gpt-5-codex",think: true,},
         {name: "GPT-5",type: "text",modelName: "gpt-5",think: false},
         {name: "claude-sonnet-4-5",type: "text",modelName: "claude-sonnet-4-5-20250929",think: true},
