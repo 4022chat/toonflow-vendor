@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-04-24T06:08:54.286Z",
+    "generatedAt": "2026-04-27T16:27:35.331Z",
     "totalFiles": 8,
     "validVendors": 8,
     "invalidVendors": 0,
-    "totalModels": 125
+    "totalModels": 124
   },
   "vendors": [
     {
@@ -18,17 +18,17 @@
         "warnings": []
       },
       "stats": {
-        "total": 42,
-        "text": 18,
-        "image": 8,
+        "total": 39,
+        "text": 16,
+        "image": 7,
         "video": 16,
         "tts": 0,
-        "thinkEnabled": 16,
+        "thinkEnabled": 12,
         "audioSupport": 16
       },
       "vendor": {
         "id": "best",
-        "version": "2.7",
+        "version": "2.7.3",
         "name": "最强组合-四零二二API",
         "author": "四零二二",
         "description": "最强组合，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\\n\\n四零二二API中转站，支持所有的模型接入，一个 key 搞定所有。\\n\\n源头供货，稳定价低，支持[免费试用](https://api.4022543.xyz/register?aff=3Y0U)\\n\\n邀请好友可返点。[点这里去注册](https://api.4022543.xyz/register?aff=3Y0U)\\n\\n如遇bug请联系微信：jxppro",
@@ -94,12 +94,6 @@
             ]
           },
           {
-            "name": "Gemini-3.1-pro-preview",
-            "modelName": "gemini-3.1-pro-preview",
-            "type": "text",
-            "think": true
-          },
-          {
             "name": "豆包 Seedream 5.0",
             "modelName": "doubao-seedream-5-0-260128",
             "type": "image",
@@ -140,20 +134,38 @@
             ]
           },
           {
-            "name": "deepseek-v4-flash",
+            "name": "Deepseek-v4-flash",
             "modelName": "deepseek-v4-flash",
             "type": "text",
-            "think": false
+            "think": true
           },
           {
-            "name": "deepseek-v4-pro",
+            "name": "Deepseek-v4-pro",
             "modelName": "deepseek-v4-pro",
             "type": "text",
-            "think": false
+            "think": true
+          },
+          {
+            "name": "GPT-5.4",
+            "modelName": "gpt-5.4",
+            "type": "text",
+            "think": true
           },
           {
             "name": "GPT-5.5",
             "modelName": "gpt-5.5",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "GLM-5.1",
+            "modelName": "glm-5.1",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "GPT-5.4-pro",
+            "modelName": "gpt-5.4-pro",
             "type": "text",
             "think": true
           },
@@ -202,16 +214,16 @@
             "durationResolutionMap": []
           },
           {
-            "name": "gemini-3.1-flash-lite",
-            "modelName": "gemini-3.1-flash-lite-preview",
+            "name": "Gemini-3.1-pro-preview",
+            "modelName": "gemini-3.1-pro-preview",
             "type": "text",
             "think": true
           },
           {
-            "name": "gemini-3.1-flash-preview",
+            "name": "gemini-3-flash-preview",
             "modelName": "gemini-3-flash-preview",
             "type": "text",
-            "think": true
+            "think": false
           },
           {
             "name": "doubao-seed-2-0-code",
@@ -220,26 +232,8 @@
             "think": true
           },
           {
-            "name": "doubao-seed-2-0-lite",
-            "modelName": "doubao-seed-2-0-lite-260215",
-            "type": "text",
-            "think": true
-          },
-          {
-            "name": "GPT-5.4-mini",
-            "modelName": "gpt-5.4-mini",
-            "type": "text",
-            "think": true
-          },
-          {
-            "name": "GPT-5.4",
-            "modelName": "gpt-5.4",
-            "type": "text",
-            "think": true
-          },
-          {
-            "name": "GPT-5.4-pro",
-            "modelName": "gpt-5.4-pro",
+            "name": "Claude-opus-4.7",
+            "modelName": "claude-opus-4-7",
             "type": "text",
             "think": true
           },
@@ -262,42 +256,26 @@
             "think": true
           },
           {
-            "name": "claude-haiku-4-5-20251001",
-            "modelName": "claude-haiku-4-5-20251001",
-            "type": "text",
-            "think": true
-          },
-          {
             "name": "kimi-k2.5",
             "modelName": "kimi-k2.5",
             "type": "text",
-            "think": true
+            "think": false
           },
           {
             "name": "MiniMax-M2.7",
             "modelName": "minimax-m2.7",
             "type": "text",
-            "think": true
+            "think": false
           },
           {
             "name": "GLM-5",
             "modelName": "glm-5",
             "type": "text",
-            "think": true
+            "think": false
           },
           {
             "name": "GPT Image 1.5",
             "modelName": "gpt-image-1.5",
-            "type": "image",
-            "mode": [
-              "text",
-              "singleImage",
-              "multiReference"
-            ]
-          },
-          {
-            "name": "GPT Image 1",
-            "modelName": "gpt-image-1",
             "type": "image",
             "mode": [
               "text",
@@ -481,17 +459,17 @@
         "warnings": []
       },
       "stats": {
-        "total": 34,
-        "text": 10,
+        "total": 36,
+        "text": 12,
         "image": 7,
         "video": 17,
         "tts": 0,
-        "thinkEnabled": 8,
+        "thinkEnabled": 10,
         "audioSupport": 17
       },
       "vendor": {
         "id": "bltcy",
-        "version": "2.1",
+        "version": "2.1.3",
         "name": "柏拉图",
         "author": "四零二二",
         "description": "支持seedance2.0视频生成，价格比官方更低\\n\\n已接入最新的GPT5.5 和GPT Image 2.0生图模型\\n\\n内置claude/GPT/gemini等模型\\n\\n香蕉4K生图最低只要0.1/次，[注册即送体验次数](https://api.bltcy.ai/register?aff=ppJQ120196)\\n\\n 只需一个key即可接入所有模型，邀请好友可返点。[点这里去注册](https://api.bltcy.ai/register?aff=ppJQ120196)",
@@ -646,6 +624,18 @@
               "singleImage",
               "multiReference"
             ]
+          },
+          {
+            "name": "deepseek-v4-flash",
+            "modelName": "deepseek-v4-flash",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "deepseek-v4-pro",
+            "modelName": "deepseek-v4-pro",
+            "type": "text",
+            "think": true
           },
           {
             "name": "Gemini-3.1-flash-lite-preview",

@@ -135,7 +135,7 @@ declare const Buffer: any;
 
 const vendor: VendorConfig = {
   id: "best",
-  version: "2.7",
+  version: "2.7.3",
   author: "四零二二",
   name: "最强组合-四零二二API",
   description:
@@ -157,158 +157,43 @@ const vendor: VendorConfig = {
   models: [
     { name: "GPT-image-2", type: "image", modelName: "gpt-image-2", mode: ["text", "singleImage", "multiReference"] },
     { name: "GPT-image-2-all(仅支持1k)", type: "image", modelName: "gpt-image-2-all", mode: ["text", "singleImage", "multiReference"] },
-    { name: "Gemini-3.1-pro-preview", type: "text", modelName: "gemini-3.1-pro-preview", think: true },
     { name: "豆包 Seedream 5.0", type: "image", modelName: "doubao-seedream-5-0-260128", mode: ["text", "singleImage", "multiReference"] },
     { name: "豆包 Seedream 4.5", type: "image", modelName: "doubao-seedream-4-5-251128", mode: ["text", "singleImage", "multiReference"] },
     { name: "Gemini-3.1-flash-image-preview", type: "image", modelName: "gemini-3.1-flash-image-preview", mode: ["text", "singleImage", "multiReference"] },
     { name: "Gemini-3-pro-image-preview", type: "image", modelName: "gemini-3-pro-image-preview", mode: ["text", "singleImage", "multiReference"] },
-    { name: "Deepseek-v4-flash", type: "text", modelName: "deepseek-v4-flash", think: false },
-    { name: "Deepseek-v4-pro", type: "text", modelName: "deepseek-v4-pro", think: false },
-    { name: "GPT-5.5", type: "text", modelName: "gpt-5.5", think: true },
-    {
-      name: "Seedance 1.5 pro",
-      type: "video",
-      modelName: "doubao-seedance-1-5-pro-251215",
-      mode: ["text", "startEndRequired", "endFrameOptional"],
-      audio: true,
-      durationResolutionMap: [{ duration: [5, 10, 15], resolution: ["720p"] }],
-    },
-    {
-      name: "viduq3-turbo",
-      type: "video",
-      modelName: "viduq3-turbo",
-      mode: ["text", "startEndRequired", "endFrameOptional", "singleImage",["imageReference:3"]],
-      audio: true,
-      durationResolutionMap: [{ duration: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16], resolution: ["540p", "720p", "1080p"] }],
-    },
-    {
-      name: "viduq3-pro",
-      type: "video",
-      modelName: "viduq3-pro",
-      mode: ["text", "startEndRequired", "endFrameOptional", "singleImage",["imageReference:3"]],
-      audio: true,
-      durationResolutionMap: [{ duration: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16], resolution: ["540p", "720p", "1080p"] }],
-    },
-    { name: "gemini-3.1-flash-lite", type: "text", modelName: "gemini-3.1-flash-lite-preview", think: true },
-    { name: "gemini-3.1-flash-preview", type: "text", modelName: "gemini-3-flash-preview", think: true },
-    { name: "doubao-seed-2-0-code", type: "text", modelName: "doubao-seed-2-0-code-preview-260215", think: true },
-    { name: "doubao-seed-2-0-lite", type: "text", modelName: "doubao-seed-2-0-lite-260215", think: true },
-    { name: "GPT-5.4-mini", type: "text", modelName: "gpt-5.4-mini", think: true },
+    { name: "Deepseek-v4-flash", type: "text", modelName: "deepseek-v4-flash", think: true },
+    { name: "Deepseek-v4-pro", type: "text", modelName: "deepseek-v4-pro", think: true },
     { name: "GPT-5.4", type: "text", modelName: "gpt-5.4", think: true },
+    { name: "GPT-5.5", type: "text", modelName: "gpt-5.5", think: true },
+    { name: "GLM-5.1", type: "text", modelName: "glm-5.1", think: true },
     { name: "GPT-5.4-pro", type: "text", modelName: "gpt-5.4-pro", think: true },
+    { name: "Seedance 1.5 pro", type: "video", modelName: "doubao-seedance-1-5-pro-251215", mode: ["text", "startEndRequired", "endFrameOptional"], audio: true, durationResolutionMap: [{ duration: [5, 10, 15], resolution: ["720p"] }]},
+    { name: "viduq3-turbo", type: "video", modelName: "viduq3-turbo", mode: ["text", "startEndRequired", "endFrameOptional", "singleImage",["imageReference:3"]], audio: true, durationResolutionMap: [{ duration: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16], resolution: ["540p", "720p", "1080p"] }]},
+    { name: "viduq3-pro", type: "video", modelName: "viduq3-pro", mode: ["text", "startEndRequired", "endFrameOptional", "singleImage",["imageReference:3"]], audio: true, durationResolutionMap: [{ duration: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16], resolution: ["540p", "720p", "1080p"] }]},
+    { name: "Gemini-3.1-pro-preview", type: "text", modelName: "gemini-3.1-pro-preview", think: true },
+    { name: "gemini-3-flash-preview", type: "text", modelName: "gemini-3-flash-preview", think: false },
+    { name: "doubao-seed-2-0-code", type: "text", modelName: "doubao-seed-2-0-code-preview-260215", think: true },
+    { name: "Claude-opus-4.7", type: "text", modelName: "claude-opus-4-7", think: true },
     { name: "Claude Sonnet 4.6", type: "text", modelName: "claude-sonnet-4-6", think: true },
     { name: "claude-opus-4-6", type: "text", modelName: "claude-opus-4-6", think: true },
     { name: "claude-opus-4-5-20251101", type: "text", modelName: "claude-opus-4-5-20251101", think: true },
-    { name: "claude-haiku-4-5-20251001", type: "text", modelName: "claude-haiku-4-5-20251001", think: true },
-    { name: "kimi-k2.5", type: "text", modelName: "kimi-k2.5", think: true },
-    { name: "MiniMax-M2.7", type: "text", modelName: "minimax-m2.7", think: true },
-    { name: "GLM-5", type: "text", modelName: "glm-5", think: true },
+    { name: "kimi-k2.5", type: "text", modelName: "kimi-k2.5", think: false },
+    { name: "MiniMax-M2.7", type: "text", modelName: "minimax-m2.7", think: false },
+    { name: "GLM-5", type: "text", modelName: "glm-5", think: false },
     { name: "GPT Image 1.5", type: "image", modelName: "gpt-image-1.5", mode: ["text", "singleImage", "multiReference"] },
-    { name: "GPT Image 1", type: "image", modelName: "gpt-image-1", mode: ["text", "singleImage", "multiReference"] },
-    {
-      name: "veo3.1-4k",
-      type: "video",
-      modelName: "veo3.1-4k",
-      mode: ["text", "singleImage", "startEndRequired", "endFrameOptional"],
-      audio: true,
-      durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }],
-    },
-    {
-      name: "veo3.1-pro-4k",
-      type: "video",
-      modelName: "veo3.1-pro-4k",
-      mode: ["text", "singleImage", "startEndRequired", "endFrameOptional"],
-      audio: true,
-      durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }],
-    },
-    {
-      name: "veo3.1-pro",
-      type: "video",
-      modelName: "veo3.1-pro",
-      mode: ["text", "startEndRequired", "endFrameOptional","singleImage"],
-      audio: true,
-      durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }],
-    },
-    {
-      name: "veo3.1-components",
-      type: "video",
-      modelName: "veo3.1-components",
-      mode: ["endFrameOptional"],
-      audio: true,
-      durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }],
-    },
-    {
-      name: "veo3.1-components-4k",
-      type: "video",
-      modelName: "veo3.1-components-4k",
-      mode: ["endFrameOptional","singleImage"],
-      audio: true,
-      durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }],
-    },
-    {
-      name: "veo_3_1-lite",
-      type: "video",
-      modelName: "veo_3_1-lite",
-      mode: ["singleImage"],
-      audio: true,
-      durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }],
-    },
-    {
-      name: "veo_3_1-lite-4K",
-      type: "video",
-      modelName: "veo_3_1-lite-4K",
-      mode: ["singleImage"],
-      audio: true,
-      durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }],
-    },
-    {
-      name: "viduq2-pro",
-      type: "video",
-      modelName: "viduq2-pro",
-      mode: ["text", "startEndRequired", "endFrameOptional", "singleImage"],
-      audio: true,
-      durationResolutionMap: [{ duration: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], resolution: ["540p", "720p", "1080p"] }],
-    },
-    {
-      name: "viduq2-turbo",
-      type: "video",
-      modelName: "viduq2-turbo",
-      mode: ["text", "startEndRequired", "endFrameOptional", "singleImage"],
-      audio: true,
-      durationResolutionMap: [{ duration: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], resolution: ["540p", "720p", "1080p"] }],
-    },
-    {
-      name: "kling-v3-omni",
-      type: "video",
-      modelName: "kling-v3-omni",
-      mode: ["text", "singleImage", "startEndRequired", "endFrameOptional", ["videoReference:3", "imageReference:3"]],
-      audio: true,
-      durationResolutionMap: [{ duration: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], resolution: ["720p", "1080p"] }],
-    },
-    {
-      name: "kling-video-o1",
-      type: "video",
-      modelName: "kling-video-o1",
-      mode: ["text", "singleImage", "startEndRequired", "endFrameOptional"],
-      audio: true,
-      durationResolutionMap: [{ duration: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], resolution: ["720p", "1080p"] }],
-    },
-    {
-      name: "kling-v3",
-      type: "video",
-      modelName: "kling-v3",
-      mode: ["text", "singleImage", "startEndRequired", "endFrameOptional"],
-      audio: true,
-      durationResolutionMap: [{ duration: [5, 10], resolution: ["720p", "1080p"] }],
-    },
-    {
-      name: "kling-v2-6",
-      type: "video",
-      modelName: "kling-v2-6",
-      mode: ["text", "singleImage", "startEndRequired", "endFrameOptional"],
-      audio: true,
-      durationResolutionMap: [{ duration: [5, 10], resolution: ["720p", "1080p"] }],
-    },
+    { name: "veo3.1-4k",type: "video",modelName: "veo3.1-4k",mode: ["text", "singleImage", "startEndRequired", "endFrameOptional"],audio: true,durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }]},
+    { name: "veo3.1-pro-4k",type: "video",modelName: "veo3.1-pro-4k",mode: ["text", "singleImage", "startEndRequired", "endFrameOptional"],audio: true,durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }]},
+    { name: "veo3.1-pro",type: "video",modelName: "veo3.1-pro",mode: ["text", "startEndRequired", "endFrameOptional","singleImage"],audio: true,durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }]},
+    { name: "veo3.1-components",type: "video",modelName: "veo3.1-components",mode: ["endFrameOptional"],audio: true,durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }]},
+    { name: "veo3.1-components-4k",type: "video",modelName: "veo3.1-components-4k",mode: ["endFrameOptional","singleImage"],audio: true,durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }]},
+    { name: "veo_3_1-lite",type: "video",modelName: "veo_3_1-lite",mode: ["singleImage"],audio: true,durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }]},
+    { name: "veo_3_1-lite-4K",type: "video",modelName: "veo_3_1-lite-4K",mode: ["singleImage"],audio: true,durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }]},
+    { name: "viduq2-pro",type: "video",modelName: "viduq2-pro",mode: ["text", "startEndRequired", "endFrameOptional", "singleImage"],audio: true,durationResolutionMap: [{ duration: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], resolution: ["540p", "720p", "1080p"] }]},
+    { name: "viduq2-turbo",type: "video",modelName: "viduq2-turbo",mode: ["text", "startEndRequired", "endFrameOptional", "singleImage"],audio: true,durationResolutionMap: [{ duration: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], resolution: ["540p", "720p", "1080p"] }]},
+    { name: "kling-v3-omni",type: "video",modelName: "kling-v3-omni",mode: ["text", "singleImage", "startEndRequired", "endFrameOptional", ["videoReference:3", "imageReference:3"]],audio: true,durationResolutionMap: [{ duration: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], resolution: ["720p", "1080p"] }]},
+    { name: "kling-video-o1",type: "video",modelName: "kling-video-o1",mode: ["text", "singleImage", "startEndRequired", "endFrameOptional"],audio: true,durationResolutionMap: [{ duration: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], resolution: ["720p", "1080p"] }]},
+    { name: "kling-v3",type: "video",modelName: "kling-v3",mode: ["text", "singleImage", "startEndRequired", "endFrameOptional"],audio: true,durationResolutionMap: [{ duration: [5, 10], resolution: ["720p", "1080p"] }]},
+    { name: "kling-v2-6",type: "video",modelName: "kling-v2-6",mode: ["text", "singleImage", "startEndRequired", "endFrameOptional"],audio: true,durationResolutionMap: [{ duration: [5, 10], resolution: ["720p", "1080p"] }]},
   ],
 };
 
@@ -318,6 +203,8 @@ const vendor: VendorConfig = {
 
 const getBaseUrl = () => "https://api.4022543.xyz";
 const getTextUrl = () => `${getBaseUrl()}/v1`;
+const getMinimaxTextUrl = () => `${getBaseUrl()}/v1/messages`;
+const getAnthropicTextUrl = () => `${getTextUrl()}`;
 const getImageUrl = () => `${getBaseUrl()}/v1/images/generations`;
 const getImageEditUrl = () => `${getBaseUrl()}/v1/images/edits`;
 
@@ -545,26 +432,115 @@ const getTaskStatus = (data: any) => String(data?.status || data?.data?.status |
 
 const textRequest = (model: TextModel, think: boolean, thinkLevel: 0 | 1 | 2 | 3) => {
   const apiKey = getAuthorization("text").replace(/^Bearer\s+/, "");
-  if (think && thinkLevel > 0) {
-      // 模型名称变体，根据思考等级转换，1=low,2=medium, 3=high
-      const think_lv = thinkLevel === 1 ? "low" : thinkLevel === 2 ? "medium" : "high";
-      if(model.modelName.startsWith("gpt-5") && model.modelName.includes("-codex")){
-          model.modelName = `${model.modelName}-${think_lv}`;
-      // }else if (model.modelName.includes("gemini-3.1-pro-preview") || model.modelName.includes("gemini-3.1-flash-lite-preview")) {
-      //     model.modelName = `${model.modelName}-thinking-${think_lv}`;
+  if(model.modelName.startsWith("deepseek-v4")){
+    // DeepSeek 思考强度仅支持 high / max（low、medium 会被映射为 high，xhigh 会被映射为 max）
+    // thinkLevel: 0/1/2 → high, 3 → max
+    const effortMap: Record<0 | 1 | 2 | 3, "high" | "max"> = {
+      0: "high",
+      1: "high",
+      2: "high",
+      3: "max",
+    };
+    const enableThinking = model.think && think && thinkLevel !== 0;
+    const extraBody: Record<string, any> = {
+      thinking: { type: enableThinking ? "enabled" : "disabled" },
+    };
+    if (enableThinking) {
+      extraBody.reasoning_effort = effortMap[thinkLevel];
+    }
+    return createDeepSeek({
+      baseURL: getTextUrl(),
+      apiKey,
+      extraBody,
+    }).chat(model.modelName);
+
+  }else if(model.modelName.startsWith("minimax-")){
+    return createMinimax({
+      baseURL: getMinimaxTextUrl(),
+      apiKey,
+    }).chat(model.modelName);
+  }else if(model.modelName.startsWith("claude-")){
+    // thinkLevel: 0/1/2 → high, 3 → max
+    const effortMap: Record<0 | 1 | 2 | 3, "high" | "xhigh" | "max"> = {
+      0: "high",
+      1: "high",
+      2: "xhigh",
+      3: "max",
+    };
+    const enableThinking = model.think && think && thinkLevel !== 0;
+    const extraBody: Record<string, any> = {};
+    if(model.modelName.includes("4.5")){
+      extraBody.thinking = { type: enableThinking ? "enabled" : "disabled" }
+      if(enableThinking){
+        extraBody.budget_tokens = Math.min(1024 * (thinkLevel * 2),31999);
+      }
+    }else if (enableThinking) {
+      extraBody.thinking = { type: "adaptive" };
+      extraBody.effort = effortMap[thinkLevel];
+    }
+    return createAnthropic({
+      baseURL: getAnthropicTextUrl(),
+      apiKey,
+      extraBody
+    }).chat(model.modelName);
+
+  }else if(model.modelName.startsWith("gemini-3")){
+    const generateContentUrl = `${getBaseUrl()}/v1beta/models/${model.modelName}:generateContent`;
+    const effortMap: Record<0 | 1 | 2 | 3, "low" | "low" | "medium" | "high"> = {
+      0: "low",
+      1: "low",
+      2: "medium",
+      3: "high",
+    };
+    const enableThinking = model.think && think && thinkLevel !== 0;
+    const generationConfig: Record<string, any> = {
+      thinkingConfig: { includeThoughts: enableThinking ? true : false },
+    };
+    if (enableThinking) {
+      generationConfig.thinkingLevel = effortMap[thinkLevel];
+    }
+    return createGoogleGenerativeAI({
+      baseURL: generateContentUrl,
+      apiKey,
+      generationConfig
+    }).chat(model.modelName);
+
+  }else if (think && thinkLevel > 0) {
+      // 暂不可用
+      const effortMap: Record<0 | 1 | 2 | 3, "none" | "low" | "medium" | "high"> = {
+        0: "none",
+        1: "low",
+        2: "medium",
+        3: "high",//xhigh
+      };
+      // 模型名称变体，根据思考等级转换，1=low,2=medium, 3=high，需要 xhigh的可以自己改一下
+      let reasoning_effort = effortMap[thinkLevel];
+      if(model.modelName === "gpt-5-pro"){
+        reasoning_effort = "high";
+      }
+      if(model.modelName == "gpt-5.4"){
+          model.modelName = `${model.modelName}-${reasoning_effort}`;
       }else{
-        //有思考模式，但暂不支持等级的模型
-        const thinkingModel = ["claude-", "gemini-3-pro-preview","deepseek-v3.2"]
+        //特定思考模式模型
+        const thinkingModel = ["claude-sonnet-4-6","claude-opus-4-6","claude-sonnet-4-5","claude-opus-4-5-20251101", "gemini-3-pro-preview"]
         for(const model_item of thinkingModel){
           if(model.modelName.startsWith(model_item)){
-            //暂不支持等级
             model.modelName = `${model.modelName}-thinking`;
             break;
           }
         }
       }
+      const enableThinking = model.think && think && thinkLevel !== 0;
+      const extraBody: Record<string, any> = {
+        thinking: { type: enableThinking ? "enabled" : "disabled" },//google兼容一
+      };
+      extraBody.extra_body = { enable_thinking: enableThinking ? true : false };//chatgpt
+      if (enableThinking) {
+        extraBody.reasoning_effort = reasoning_effort;
+      }
+      return createOpenAI({ baseURL: getTextUrl(), apiKey, extraBody}).chat(model.modelName);
   }
-  return createOpenAI({ baseURL: getTextUrl(), apiKey }).chat(model.modelName);
+  return createOpenAI({ baseURL: getTextUrl(), apiKey}).chat(model.modelName);
 };
 
 const imageRequest = async (config: ImageConfig, model: ImageModel): Promise<string> => {
@@ -1310,3 +1286,4 @@ exports.checkForUpdates = checkForUpdates;
 exports.updateVendor = updateVendor;
 
 export {};
+

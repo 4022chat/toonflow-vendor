@@ -158,7 +158,7 @@ declare const exports: {
 
 const vendor: VendorConfig = {
     id: "bltcy",
-    version: "2.1",
+    version: "2.1.3",
     author: "四零二二",
     name: "柏拉图",
     description:"支持seedance2.0视频生成，价格比官方更低\n\n已接入最新的GPT5.5 和GPT Image 2.0生图模型\n\n内置claude/GPT/gemini等模型\n\n香蕉4K生图最低只要0.1/次，[注册即送体验次数](https://api.bltcy.ai/register?aff=ppJQ120196)\n\n 只需一个key即可接入所有模型，邀请好友可返点。[点这里去注册](https://api.bltcy.ai/register?aff=ppJQ120196)",
@@ -224,6 +224,8 @@ const vendor: VendorConfig = {
         {name: "豆包 Seedream 5.0",type: "image",modelName: "doubao-seedream-5-0-260128",mode: ["text", "singleImage", "multiReference"]},
         {name: "豆包 Seedream 4.5",type: "image",modelName: "doubao-seedream-4-5-251128",mode: ["text", "singleImage", "multiReference"]},
         {name: "GPT Image 1.5",type: "image",modelName: "gpt-image-1.5",mode: ["text", "singleImage", "multiReference"]},
+        {name: "deepseek-v4-flash",type: "text",modelName: "deepseek-v4-flash",think: true},
+        {name: "deepseek-v4-pro",type: "text",modelName: "deepseek-v4-pro",think: true},
         {name: "Gemini-3.1-flash-lite-preview",type: "text",modelName: "gemini-3.1-flash-lite-preview",think: true},
         {name: "Gemini-3.1-pro-preview",type: "text",modelName: "gemini-3.1-pro-preview",think: true},
         {name: "Gemini-3.1-pro-preview-customtools",type: "text",modelName: "gemini-3.1-pro-preview-customtools",think: false},
@@ -477,7 +479,30 @@ const textRequest = (
 ) => {
     const apiKey = getAuthorization("text");
     if (!apiKey) throw new Error("缺少文本 API Key");
-    if (think && thinkLevel > 0) {
+    if(model.modelName.startsWith("deepseek-v")){
+        // DeepSeek 思考强度仅支持 high / max（low、medium 会被映射为 high，xhigh 会被映射为 max）
+        // thinkLevel: 0/1/2 → high, 3 → max
+        const effortMap: Record<0 | 1 | 2 | 3, "high" | "max"> = {
+        0: "high",
+        1: "high",
+        2: "high",
+        3: "max",
+        };
+        const enableThinking = model.think && think && thinkLevel !== 0;
+        const extraBody: Record<string, any> = {
+        thinking: { type: enableThinking ? "enabled" : "disabled" },
+        };
+        if (enableThinking) {
+        extraBody.reasoning_effort = effortMap[thinkLevel];
+        }
+        logger(JSON.stringify(extraBody));
+        return createDeepSeek({
+        baseURL: getTextUrl(),
+        apiKey,
+        extraBody,
+        }).chat(model.modelName);
+
+    }else if (think && thinkLevel > 0) {
         // 模型名称变体，根据思考等级转换，1=low,2=medium, 3=high
         const think_lv = thinkLevel === 1 ? "low" : thinkLevel === 2 ? "medium" : "high";
         if (model.modelName.includes("gemini-3.1-pro-preview") || model.modelName.includes("gemini-3.1-flash-lite-preview")) {
