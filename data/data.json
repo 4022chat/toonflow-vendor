@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-04-27T16:27:35.331Z",
+    "generatedAt": "2026-05-04T15:39:51.273Z",
     "totalFiles": 8,
     "validVendors": 8,
     "invalidVendors": 0,
-    "totalModels": 124
+    "totalModels": 127
   },
   "vendors": [
     {
@@ -18,17 +18,17 @@
         "warnings": []
       },
       "stats": {
-        "total": 39,
+        "total": 42,
         "text": 16,
         "image": 7,
-        "video": 16,
+        "video": 19,
         "tts": 0,
         "thinkEnabled": 12,
-        "audioSupport": 16
+        "audioSupport": 19
       },
       "vendor": {
         "id": "best",
-        "version": "2.7.3",
+        "version": "2.7.4",
         "name": "最强组合-四零二二API",
         "author": "四零二二",
         "description": "最强组合，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\\n\\n四零二二API中转站，支持所有的模型接入，一个 key 搞定所有。\\n\\n源头供货，稳定价低，支持[免费试用](https://api.4022543.xyz/register?aff=3Y0U)\\n\\n邀请好友可返点。[点这里去注册](https://api.4022543.xyz/register?aff=3Y0U)\\n\\n如遇bug请联系微信：jxppro",
@@ -356,6 +356,36 @@
           {
             "name": "veo_3_1-lite-4K",
             "modelName": "veo_3_1-lite-4K",
+            "type": "video",
+            "mode": [
+              "singleImage"
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "grok-video-3",
+            "modelName": "grok-video-3",
+            "type": "video",
+            "mode": [
+              "singleImage"
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "grok-video-3-10s",
+            "modelName": "grok-video-3-10s",
+            "type": "video",
+            "mode": [
+              "singleImage"
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "grok-videos",
+            "modelName": "grok-videos",
             "type": "video",
             "mode": [
               "singleImage"

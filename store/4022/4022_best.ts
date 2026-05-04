@@ -135,7 +135,7 @@ declare const Buffer: any;
 
 const vendor: VendorConfig = {
   id: "best",
-  version: "2.7.3",
+  version: "2.7.4",
   author: "四零二二",
   name: "最强组合-四零二二API",
   description:
@@ -188,6 +188,9 @@ const vendor: VendorConfig = {
     { name: "veo3.1-components-4k",type: "video",modelName: "veo3.1-components-4k",mode: ["endFrameOptional","singleImage"],audio: true,durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }]},
     { name: "veo_3_1-lite",type: "video",modelName: "veo_3_1-lite",mode: ["singleImage"],audio: true,durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }]},
     { name: "veo_3_1-lite-4K",type: "video",modelName: "veo_3_1-lite-4K",mode: ["singleImage"],audio: true,durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }]},
+    { name: "grok-video-3",type: "video",modelName: "grok-video-3",mode: ["singleImage"],audio: true,durationResolutionMap: [{ duration: [6,10], resolution: ["720p"] }]},
+    { name: "grok-video-3-10s",type: "video",modelName: "grok-video-3-10s",mode: ["singleImage"],audio: true,durationResolutionMap: [{ duration: [10], resolution: ["720p"] }]},
+    // { name: "grok-videos",type: "video",modelName: "grok-videos",mode: ["singleImage"],audio: true,durationResolutionMap: [{ duration: [6,10], resolution: ["720p"] }]},
     { name: "viduq2-pro",type: "video",modelName: "viduq2-pro",mode: ["text", "startEndRequired", "endFrameOptional", "singleImage"],audio: true,durationResolutionMap: [{ duration: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], resolution: ["540p", "720p", "1080p"] }]},
     { name: "viduq2-turbo",type: "video",modelName: "viduq2-turbo",mode: ["text", "startEndRequired", "endFrameOptional", "singleImage"],audio: true,durationResolutionMap: [{ duration: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], resolution: ["540p", "720p", "1080p"] }]},
     { name: "kling-v3-omni",type: "video",modelName: "kling-v3-omni",mode: ["text", "singleImage", "startEndRequired", "endFrameOptional", ["videoReference:3", "imageReference:3"]],audio: true,durationResolutionMap: [{ duration: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], resolution: ["720p", "1080p"] }]},
@@ -215,6 +218,9 @@ const getVeoVideoQueryUrl = () => `${getBaseUrl()}/v1/video/query?id={id}`;
 // OpenAI 格式的 veo 接口 (veo_ 开头的模型)
 const getVeoOpenAIVideoCreateUrl = () => `${getBaseUrl()}/v1/videos`;
 const getVeoOpenAIVideoQueryUrl = (taskId: string) => `${getBaseUrl()}/v1/videos/${taskId}`;
+
+// Grok 视频接口配置 - 不同模型使用不同接口
+const getGrokVideoQueryUrl = (taskId: string) => `${getBaseUrl()}/v1/video/query?id=${taskId}`;
 
 // Vidu 视频接口 - v2 版本
 const getViduText2VideoUrl = () => `${getBaseUrl()}/ent/v2/text2video`;//文生视频
@@ -739,14 +745,22 @@ const veoOpenAIFormatVideoRequest = async (config: VideoConfig, model: VideoMode
   formData.append("prompt", config.prompt);
   formData.append("seconds", String(config.duration));
   formData.append("size", config.aspectRatio.replace(":", "x"));
-  formData.append("watermark", "false");
+  if(model.modelName.startsWith("veo")){
+    formData.append("watermark", "false");
+  }
 
   const imageRefs = (config.referenceList ?? []).filter((r) => r.type === "image");
   if (imageRefs.length > 0) {
-    const { filename } = getFileMeta(imageRefs[0].base64, "reference");
-    const base64Data = normalizeBase64(imageRefs[0].base64);
-    const buffer = base64ToBuffer(base64Data);
-    formData.append("input_reference", buffer, filename);
+    if(model.modelName === "grok-videos"){
+      //grok-videos模型的 input_reference 必须是 url
+      throw new Error("grok-videos模型因为需要图片 url暂未支持，你可以通过自建图床程序实现");
+    }else{
+      const { filename } = getFileMeta(imageRefs[0].base64, "reference");
+      const base64Data = normalizeBase64(imageRefs[0].base64);
+      const buffer = base64ToBuffer(base64Data);
+      formData.append("input_reference", buffer, filename);
+    }
+
   }
 
   const createResponse = await axios.post(getVeoOpenAIVideoCreateUrl(), formData, {
@@ -761,7 +775,10 @@ const veoOpenAIFormatVideoRequest = async (config: VideoConfig, model: VideoMode
   if (!taskId) throw new Error(`${model.modelName}视频任务创建失败: ${JSON.stringify(createData)}`);
 
   const result = await pollTask(async () => {
-    const queryResponse = await fetch(getVeoOpenAIVideoQueryUrl(taskId), {
+    const queryUrl = model.modelName === "grok-videos"
+      ? getGrokVideoQueryUrl(taskId)
+      : getVeoOpenAIVideoQueryUrl(taskId);
+    const queryResponse = await fetch(queryUrl, {
       method: "GET",
       headers: { Authorization: getAuthorization("video") },
     });
@@ -791,12 +808,19 @@ const veoVideoRequest = async (config: VideoConfig, model: VideoModel): Promise<
     model: model.modelName,
     prompt: config.prompt,
     duration: config.duration,
-    resolution: config.resolution,
     aspect_ratio: config.aspectRatio,//仅veo3支持，“16:9”或“9:16”
   };
   if(model.modelName.startsWith("veo2") && config.duration === 4){
     //veo2 支持 5,6,8 秒视频
     createBody.duration = 5;
+  }
+  if(model.modelName.startsWith("grok-video-3")){
+    createBody.size = config.resolution;
+    // createBody.aspect_ratio = config.aspectRatio === "16:9" ? "3:2" : "2:3";//应该已经支持 16:9 了，所以这里不设置
+    // 720P或者1080P 暂只支持720P
+
+  }else{
+    createBody.resolution = config.resolution;
   }
   // 从 referenceList 提取图片
   const imageRefs = (config.referenceList ?? []).filter((r) => r.type === "image").map((r) => r.base64);
@@ -804,7 +828,7 @@ const veoVideoRequest = async (config: VideoConfig, model: VideoModel): Promise<
   if(typeof config.audio === "boolean"){
     createBody.audio = config.audio
   }
-  if (config.resolution === "1080p") {
+  if (model.modelName.startsWith("veo") && config.resolution === "1080p") {
     createBody.enable_upsample = true;
   }
   // createBody.enhance_prompt = false;//由于 veo 只支持英文提示词，所以如果需要中文自动转成英文提示词，可以开启此开关
@@ -830,7 +854,10 @@ const veoVideoRequest = async (config: VideoConfig, model: VideoModel): Promise<
   }
 
   const result = await pollTask(async () => {
-    const queryResponse = await fetch(getQueryUrlWithId(getVeoVideoQueryUrl(), taskId), {
+    const queryUrl = model.modelName.startsWith("grok-video")
+      ? getGrokVideoQueryUrl(taskId)
+      : getQueryUrlWithId(getVeoVideoQueryUrl(), taskId);
+    const queryResponse = await fetch(queryUrl, {
       method: "GET",
       headers: { Authorization: getAuthorization("video") },
     });
@@ -1183,10 +1210,10 @@ const videoRequest = async (config: VideoConfig, model: VideoModel): Promise<str
   const modelName = model.modelName;
 
   // 根据模型名称分发到不同的处理函数
-  if (modelName.startsWith("veo_")) {
+  if (modelName.startsWith("veo_") || modelName == "grok-videos") {
     // veo_ 开头的模型使用 OpenAI 格式接口 (/v1/videos)
     return veoOpenAIFormatVideoRequest(config, model);
-  } else if (modelName.startsWith("veo")) {
+  } else if (modelName.startsWith("veo") || modelName.startsWith("grok-video-3")) {
     // 其他 veo 开头的模型使用原有格式接口
     return veoVideoRequest(config, model);
   } else if (modelName.startsWith("viduq") || modelName.startsWith("vidu")) {
