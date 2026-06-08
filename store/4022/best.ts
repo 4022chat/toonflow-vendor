@@ -135,7 +135,7 @@ declare const Buffer: any;
 
 const vendor: VendorConfig = {
   id: "best",
-  version: "2.7.5",
+  version: "2.7.6",
   author: "四零二二",
   name: "最强组合-四零二二API",
   description:
@@ -163,24 +163,23 @@ const vendor: VendorConfig = {
     { name: "Gemini-3-pro-image-preview", type: "image", modelName: "gemini-3-pro-image-preview", mode: ["text", "singleImage", "multiReference"] },
     { name: "Deepseek-v4-flash", type: "text", modelName: "deepseek-v4-flash", think: true },
     { name: "Deepseek-v4-pro", type: "text", modelName: "deepseek-v4-pro", think: true },
-    { name: "GPT-5.4", type: "text", modelName: "gpt-5.4", think: true },
     { name: "GPT-5.5", type: "text", modelName: "gpt-5.5", think: true },
-    { name: "GLM-5.1", type: "text", modelName: "glm-5.1", think: true },
+    { name: "GPT-5.4", type: "text", modelName: "gpt-5.4", think: true },
     { name: "GPT-5.4-pro", type: "text", modelName: "gpt-5.4-pro", think: true },
     { name: "Seedance 1.5 pro", type: "video", modelName: "doubao-seedance-1-5-pro-251215", mode: ["text", "startEndRequired", "endFrameOptional"], audio: true, durationResolutionMap: [{ duration: [5, 10, 15], resolution: ["720p"] }]},
     { name: "viduq3-turbo", type: "video", modelName: "viduq3-turbo", mode: ["text", "startEndRequired", "endFrameOptional", "singleImage",["imageReference:3"]], audio: true, durationResolutionMap: [{ duration: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16], resolution: ["540p", "720p", "1080p"] }]},
     { name: "viduq3-pro", type: "video", modelName: "viduq3-pro", mode: ["text", "startEndRequired", "endFrameOptional", "singleImage",["imageReference:3"]], audio: true, durationResolutionMap: [{ duration: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16], resolution: ["540p", "720p", "1080p"] }]},
     { name: "Gemini-3.1-pro-preview", type: "text", modelName: "gemini-3.1-pro-preview", think: true },
-    { name: "gemini-3-flash-preview", type: "text", modelName: "gemini-3-flash-preview", think: false },
+    { name: "gemini-3.5-flash", type: "text", modelName: "gemini-3.5-flash", think: false },
     { name: "doubao-seed-2-0-code", type: "text", modelName: "doubao-seed-2-0-code-preview-260215", think: true },
+    { name: "claude-opus-4-8", type: "text", modelName: "claude-opus-4-8", think: true },
     { name: "Claude-opus-4.7", type: "text", modelName: "claude-opus-4-7", think: true },
     { name: "Claude Sonnet 4.6", type: "text", modelName: "claude-sonnet-4-6", think: true },
-    { name: "claude-opus-4-6", type: "text", modelName: "claude-opus-4-6", think: true },
-    { name: "claude-opus-4-5-20251101", type: "text", modelName: "claude-opus-4-5-20251101", think: true },
     { name: "kimi-k2.5", type: "text", modelName: "kimi-k2.5", think: false },
     { name: "MiniMax-M2.7", type: "text", modelName: "minimax-m2.7", think: false },
     { name: "GLM-5", type: "text", modelName: "glm-5", think: false },
     { name: "GPT Image 1.5", type: "image", modelName: "gpt-image-1.5", mode: ["text", "singleImage", "multiReference"] },
+    { name: "Google Omni Flash",type: "video",modelName: "omni-flash",mode: ["text", "singleImage", "startEndRequired", "endFrameOptional", ["videoReference:3", "imageReference:3"]],audio: true,durationResolutionMap: [{ duration: [6,8,10], resolution: ["720p", "1080p"] }]},
     { name: "veo3.1-4k",type: "video",modelName: "veo3.1-4k",mode: ["text", "singleImage", "startEndRequired", "endFrameOptional"],audio: true,durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }]},
     { name: "veo3.1-pro-4k",type: "video",modelName: "veo3.1-pro-4k",mode: ["text", "singleImage", "startEndRequired", "endFrameOptional"],audio: true,durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }]},
     { name: "veo3.1-pro",type: "video",modelName: "veo3.1-pro",mode: ["text", "startEndRequired", "endFrameOptional","singleImage"],audio: true,durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }]},
@@ -189,7 +188,8 @@ const vendor: VendorConfig = {
     { name: "veo_3_1-lite",type: "video",modelName: "veo_3_1-lite",mode: ["singleImage"],audio: true,durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }]},
     { name: "veo_3_1-lite-4K",type: "video",modelName: "veo_3_1-lite-4K",mode: ["singleImage"],audio: true,durationResolutionMap: [{ duration: [4,6,8], resolution: ["720p"] }]},
     { name: "grok-video-3",type: "video",modelName: "grok-video-3",mode: ["singleImage",["imageReference:7"]],audio: true,durationResolutionMap: [{ duration: [6,10], resolution: ["720p"] }]},
-    // { name: "grok-videos",type: "video",modelName: "grok-videos",mode: ["singleImage"],audio: true,durationResolutionMap: [{ duration: [6,10], resolution: ["720p"] }]},
+    { name: "grok-imagine-image", type: "image", modelName: "grok-imagine-image", mode: ["text", "singleImage", "multiReference"] },
+    { name: "grok-imagine-image-pro", type: "image", modelName: "grok-imagine-image-pro", mode: ["text", "singleImage", "multiReference"] },
     { name: "viduq2-pro",type: "video",modelName: "viduq2-pro",mode: ["text", "startEndRequired", "endFrameOptional", "singleImage"],audio: true,durationResolutionMap: [{ duration: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], resolution: ["540p", "720p", "1080p"] }]},
     { name: "viduq2-turbo",type: "video",modelName: "viduq2-turbo",mode: ["text", "startEndRequired", "endFrameOptional", "singleImage"],audio: true,durationResolutionMap: [{ duration: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], resolution: ["540p", "720p", "1080p"] }]},
     { name: "kling-v3-omni",type: "video",modelName: "kling-v3-omni",mode: ["text", "singleImage", "startEndRequired", "endFrameOptional", ["videoReference:3", "imageReference:3"]],audio: true,durationResolutionMap: [{ duration: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], resolution: ["720p", "1080p"] }]},
@@ -265,6 +265,10 @@ const getAuthorization = (type?: "image" | "video" | "text" | "tts") => {
 };
 
 const normalizeBase64 = (completeBase64: string) => completeBase64.replace(/^data:[^;]+;base64,/, "");
+
+const isValidBase64Ref = (ref: Partial<ReferenceList> | undefined): ref is ReferenceList => {
+  return typeof ref?.base64 === "string" && ref.base64.length > 0;
+};
 
 const base64ToBuffer = (base64: string) => {
   return Buffer.from(base64, "base64");
@@ -422,7 +426,8 @@ const getGenericImageSize = (imageConfig: ImageConfig, modelName: string) => {
     // 生成图像的尺寸。对于 GPT 图像模型，必须是 1024x1024 、 1536x1024 （横版）、 1024x1536 （竖版）或 auto （默认值）之一，
     return normalizedAspectRatio === "16:9" ? "1536x1024" : normalizedAspectRatio === "9:16" ? "1024x1536" : "1024x1024";
   }
-  if (modelName === "grok-3-image") {
+  if (modelName.startsWith("grok-")) {
+    //生成图像的尺寸：960x960、720x1280、1280x720、1168x784、784x1168
     return normalizedAspectRatio === "16:9" ? "1280x720" : normalizedAspectRatio === "9:16" ? "720x1280" : "960x960";
   }
   return normalizedAspectRatio === "16:9" ? "1536x1024" : normalizedAspectRatio === "9:16" ? "1024x1536" : "1024x1024";
@@ -556,7 +561,7 @@ const textRequest = (model: TextModel, think: boolean, thinkLevel: 0 | 1 | 2 | 3
 };
 
 const imageRequest = async (config: ImageConfig, model: ImageModel): Promise<string> => {
-  const imageRefs = (config.referenceList ?? []).map((r) => r.base64);
+  const imageRefs = (config.referenceList ?? []).filter(isValidBase64Ref).map((r) => r.base64);
 
   logger(`[imageRequest] 提交图像生成任务，模型: ${model.modelName}`);
   if (model.modelName.startsWith("gemini-") && model.modelName.includes("image")) {
@@ -572,9 +577,9 @@ const imageRequest = async (config: ImageConfig, model: ImageModel): Promise<str
     "2K": "hd",
     "4K": "hd",
   };
-  if ((model.modelName.startsWith("gpt-image-") || model.modelName.startsWith("flux-")  || model.modelName.startsWith("dall-e-") || model.modelName.startsWith("grok-")) && imageRefs.length > 0) {
-    // 走 /v1/images/edits 端点且multipart/form-data提交方式
 
+  // 走 /v1/images/edits 端点且multipart/form-data提交方式
+  if ((model.modelName.startsWith("gpt-image-") || model.modelName.startsWith("flux-")  || model.modelName.startsWith("dall-e-") || model.modelName.startsWith("grok-")) && imageRefs.length > 0) {
     const formData = new FormData();
     formData.append("model", model.modelName);
     formData.append("prompt", config.prompt);
@@ -635,10 +640,19 @@ const imageRequest = async (config: ImageConfig, model: ImageModel): Promise<str
     if (model.modelName === "dall-e-3" || model.modelName.startsWith("flux-")) {
       body.quality = dallQualityMap[config.size] || "hd";
       body.style = "vivid";
-    }else if(model.modelName.startsWith("gpt-image-")){
+    }else if(model.modelName.startsWith("gpt-image-") || model.modelName.startsWith("gpt-image-")){
       //gpt-image-2-all仅支持 1k
-
       body.quality = qualityMap[config.size] || "medium";//可选：low 、 medium 、 high 、 auto（默认）
+    }else if(model.modelName.startsWith("grok-")){
+      const grokResolutionMap: Record<ImageConfig["size"], string> = {
+        "1K": "1k",
+        "2K": "2k",
+        "4K": "2k",
+      };
+      const toGrokParamValue = (value: string) => body.n === 1 ? value : Array.from({ length: body.n }, (_, index) => index === body.n - 1 ? value : null);
+      body.aspect_ratio = toGrokParamValue(config.aspectRatio);
+      body.quality = toGrokParamValue(config.size == "1K" ? "medium" : "high");//可选：low 、 medium 、 high
+      body.resolution = toGrokParamValue(grokResolutionMap[config.size]);
     }
 
     if (model.modelName === "qwen-image-max") {
@@ -755,7 +769,7 @@ const veoOpenAIFormatVideoRequest = async (config: VideoConfig, model: VideoMode
     formData.append("watermark", "false");
   }
 
-  const imageRefs = (config.referenceList ?? []).filter((r) => r.type === "image");
+  const imageRefs = (config.referenceList ?? []).filter((r) => r.type === "image" && isValidBase64Ref(r));
   if (imageRefs.length > 0) {
     if(model.modelName === "grok-videos"){
       //grok-videos模型的 input_reference 必须是 url
@@ -832,12 +846,39 @@ const videoCreateRequest = async (config: VideoConfig, model: VideoModel): Promi
   }
   // 从 referenceList 提取图片
   const imageRefs = (config.referenceList ?? []).filter((r) => r.type === "image").map((r) => r.base64);
-
+  const audioRefs = (config.referenceList ?? []).filter((r) => r.type === "audio").map((r) => r.base64);
+  const videoRefs = (config.referenceList ?? []).filter((r) => r.type === "video").map((r) => r.base64);
+  const activeMode = Array.isArray(config.mode) ? config.mode[0] : config.mode;
+  const isStartEndMode = activeMode === "startEndRequired" || activeMode === "endFrameOptional";
+  const isMultiReferenceMode = Array.isArray(config.mode) && typeof activeMode === "string" && activeMode.startsWith("imageReference");
   if(typeof config.audio === "boolean"){
     createBody.audio = config.audio
   }
   if (model.modelName.startsWith("veo") && config.resolution === "1080p") {
     createBody.enable_upsample = true;
+  }
+  if(model.modelName === "omni-flash"){
+    createBody.seconds = config.duration;
+    if(config.resolution === "1080p"){
+      createBody.enable_sample = true;
+    }
+    createBody.type = 3;
+    // 生成类型：1=文生视频, 2=首尾帧, 3=垫图参考, 4=Omni-Flash 视频编辑
+    if((imageRefs.length < 1 && videoRefs.length < 1) || activeMode == "text"){
+      createBody.type = 1;
+    }else if(imageRefs.length <= 2 && videoRefs.length < 1 && isStartEndMode){
+      createBody.type = 2;
+    }else if(videoRefs.length >= 1){
+      createBody.type = 4;
+      createBody.input_reference = videoRefs[0];//Omni-Flash edit 参考视频（JSON 场景传 URL 或 dataURI）
+    }else if(imageRefs.length > 0 && imageRefs.length <= 3){
+      //3=垫图参,考图片 URL 数组（type=2 需 1-2 张，type=3 需 1-3 张）
+      createBody.type = 3;
+    }
+    if(isMultiReferenceMode && imageRefs.length > 3){
+      //抛出错误
+      throw new Error("Omni-Flash 模型最多支持 3 张垫图参考");
+    }
   }
   // createBody.enhance_prompt = false;//由于 veo 只支持英文提示词，所以如果需要中文自动转成英文提示词，可以开启此开关
 
@@ -1337,7 +1378,7 @@ const videoRequest = async (config: VideoConfig, model: VideoModel): Promise<str
   if (modelName.startsWith("veo_") || modelName == "grok-videos") {
     // veo_ 开头的模型使用 OpenAI 格式接口 (/v1/videos)
     return veoOpenAIFormatVideoRequest(config, model);
-  } else if (modelName.startsWith("veo") || modelName.startsWith("grok-video-3")) {
+  } else if (modelName.startsWith("veo") || modelName.startsWith("grok-video-3") || modelName == "omni-flash") {
     // 统一格式视频生成 v1/video/create 格式接口，兼容所有/v1/video/create格式的模型
     return videoCreateRequest(config, model);
   } else if (modelName.startsWith("viduq") || modelName.startsWith("vidu")) {
