@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-06-11T06:13:15.007Z",
+    "generatedAt": "2026-07-09T06:25:06.879Z",
     "totalFiles": 7,
     "validVendors": 7,
     "invalidVendors": 0,
-    "totalModels": 91
+    "totalModels": 92
   },
   "vendors": [
     {
@@ -18,17 +18,17 @@
         "warnings": []
       },
       "stats": {
-        "total": 42,
-        "text": 14,
-        "image": 9,
-        "video": 19,
+        "total": 43,
+        "text": 15,
+        "image": 8,
+        "video": 20,
         "tts": 0,
         "thinkEnabled": 10,
-        "audioSupport": 18
+        "audioSupport": 19
       },
       "vendor": {
         "id": "best",
-        "version": "2.7.6",
+        "version": "2.7.7",
         "name": "最强组合-四零二二API",
         "author": "四零二二",
         "description": "最强组合，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\\n\\n四零二二API中转站，支持所有的模型接入，一个 key 搞定所有。\\n\\n源头供货，稳定价低，支持[免费试用](https://api.4022543.xyz/register?aff=3Y0U)\\n\\n邀请好友可返点。[点这里去注册](https://api.4022543.xyz/register?aff=3Y0U)\\n\\n如遇bug请联系微信：jxppro",
@@ -76,16 +76,6 @@
           {
             "name": "GPT-image-2",
             "modelName": "gpt-image-2",
-            "type": "image",
-            "mode": [
-              "text",
-              "singleImage",
-              "multiReference"
-            ]
-          },
-          {
-            "name": "GPT-image-2-all(仅支持1k)",
-            "modelName": "gpt-image-2-all",
             "type": "image",
             "mode": [
               "text",
@@ -250,6 +240,12 @@
             "think": false
           },
           {
+            "name": "grok-4.5",
+            "modelName": "grok-4.5",
+            "type": "text",
+            "think": false
+          },
+          {
             "name": "MiniMax-M2.7",
             "modelName": "minimax-m2.7",
             "type": "text",
@@ -369,14 +365,24 @@
             "durationResolutionMap": []
           },
           {
-            "name": "grok-video-3",
-            "modelName": "grok-video-3",
+            "name": "grok-imagine-video",
+            "modelName": "grok-imagine-video",
             "type": "video",
             "mode": [
               "singleImage",
               [
                 "imageReference:7"
               ]
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "grok-imagine-video-1.5-preview",
+            "modelName": "grok-imagine-video-1.5-preview",
+            "type": "video",
+            "mode": [
+              "singleImage"
             ],
             "audio": true,
             "durationResolutionMap": []

@@ -6,7 +6,7 @@
 
 源头供货，稳定价低，支持[免费试用](https://api.4022543.xyz/register?aff=3Y0U)
 
-新站上线，限时优惠，充0.55=1刀乐，邀请好友可返点。[点击注册](https://api.4022543.xyz/register?aff=3Y0U)
+新站上线，限时优惠，充0.6=1刀乐，邀请好友可返点。[点击注册](https://api.4022543.xyz/register?aff=3Y0U)
 
 ## 供应商导入
 

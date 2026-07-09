@@ -9,10 +9,10 @@ Toonflow 是一款 AI 短剧漫剧工具，能够利用 AI 技术将小说自动
 
 - 【首推】4022低价API：
 > 只需要在[4022低价API](https://api.4022543.xyz/register?aff=3Y0U)网站上注册一个账号即可使用全网的模型。
-> 支持免费试用，注册即送金额，充0.55💰=1🔪使用金额。
+> 支持免费试用，注册即送金额，最低充0.6💰=1🔪使用金额。
 > 模型全，配置易，一个 KEY 即可搞定全部。
-> Nano banana 生图 最低低至 5 分钱。
-
+> gpt-image-2 生图 最低只要 1 分钱。
+> Nano banana 生图 最低只要 1 毛钱。
 
 - jimeng2api：
 > 支持即梦官网账号的调用，老会员=免费5.0生图。seedance2.0 只要 45 积分。
@@ -21,7 +21,7 @@ Toonflow 是一款 AI 短剧漫剧工具，能够利用 AI 技术将小说自动
 https://tf.4022543.xyz/store/jimeng/jimeng.ts
 ```
 
-使用该供应商，需要提前部署 [Jimeng Free API All](https://github.com/wwwzhouhui/jimeng-free-api-all) 项目。
+使用该供应商，需要提前部署类似 [Jimeng Free API All](https://github.com/wwwzhouhui/jimeng-free-api-all) 的项目，请自行搜索相关项目并部署。
 
 
 
@@ -31,13 +31,7 @@ https://tf.4022543.xyz/store/jimeng/jimeng.ts
 
 - [4022低价API](./store/4022)【首推供应商】
 
-- [柏拉图中转站](./store/bltcy)
-
 - [Jimeng Free API](./store/jimeng)
-
-- [CPA项目](./store/openai)
-
-- [AIClient-2-API项目](./store/openai)
 
 - [OpenAI API](./store/openai)
 
