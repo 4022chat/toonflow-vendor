@@ -7,33 +7,33 @@ Toonflow 是一款 AI 短剧漫剧工具，能够利用 AI 技术将小说自动
 
 支持一键复制供应商文件 URL导入到 Toonflow 中。
 
-- 【首推】4022低价API：
-> 只需要在[4022低价API](https://api.4022543.xyz/register?aff=3Y0U)网站上注册一个账号即可使用全网的模型。
-> 支持免费试用，注册即送金额，最低充0.6💰=1🔪使用金额。
-> 模型全，配置易，一个 KEY 即可搞定全部。
-> gpt-image-2 生图 最低只要 1 分钱。
-> Nano banana 生图 最低只要 1 毛钱。
+- 【内测尝鲜】OOPC API：
+只需要在[OOPC](https://www.oopc.top)网站上注册一个账号即可使用全网的模型。
+支持免费试用，注册即送2🔪使用金额。可免费做50张gpt-image-2。
+模型全，配置易，一个 KEY 即可搞定全部。
+多渠道接入，稳定可靠。价格实惠！
+gpt-image-2 生图 最低只要 4 分钱。
+Nano banana 生图 最低只要 1 毛钱。
 
-- jimeng2api：
-> 支持即梦官网账号的调用，老会员=免费5.0生图。seedance2.0 只要 45 积分。
+> 新站内测中，暂不开放注册，联系微信`jxppro`获取内测账号。
 
-```ts
-https://tf.4022543.xyz/store/jimeng/jimeng.ts
-```
-
-使用该供应商，需要提前部署类似 [Jimeng Free API All](https://github.com/wwwzhouhui/jimeng-free-api-all) 的项目，请自行搜索相关项目并部署。
-
+- 【稳定推荐】4022低价API：
+只需要在[4022低价API](https://api.4022543.xyz/register?aff=3Y0U)网站上注册一个账号即可使用全网的模型。
+支持免费试用，注册即送金额，最低充0.6💰=1🔪使用金额。
+模型全，配置易，一个 KEY 即可搞定全部。
+gpt-image-2 生图 最低只要 1 分钱。
+Nano banana 生图 最低只要 1 毛钱。
 
 
 ## 供应商列表
 
 供应商文件储存在`/store`目录下。目前已经开发的供应商有：
 
-- [4022低价API](./store/4022)【首推供应商】
-
-- [Jimeng Free API](./store/jimeng)
-
-- [OpenAI API](./store/openai)
-
+- [4022低价API](./store/4022)【稳定供应商】
 
 更多供应商在线浏览：[https://tf.4022543.xyz/](https://tf.4022543.xyz/)
+
+## 相关推荐
+
+- [开拍漫剧导航](https://www.kaipai.vip)
+- [OPC工具箱](https://www.oopc.top)

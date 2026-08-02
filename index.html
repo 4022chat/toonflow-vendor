@@ -106,6 +106,52 @@
       margin-bottom: 16px;
     }
 
+    .sidebar-qr-section {
+      padding: 10px;
+      background: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: 10px;
+    }
+
+    .sidebar-qr-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sidebar-qr-img {
+      width: 72px;
+      height: 72px;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .sidebar-qr-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .sidebar-qr-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: hsl(var(--foreground));
+      margin-bottom: 2px;
+    }
+
+    .sidebar-qr-desc {
+      font-size: 11px;
+      color: hsl(var(--muted-foreground));
+    }
+
+    .sidebar-qr-tip {
+      font-size: 11px;
+      color: hsl(var(--muted-foreground));
+      line-height: 1.5;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed hsl(var(--border));
+    }
+
     .sidebar-section-title {
       font-size: 11px;
       font-weight: 600;
@@ -394,7 +440,49 @@
       border: 1px solid hsl(var(--border));
       border-radius: 6px;
       padding: 6px;
-      margin-bottom: 12px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .website-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 12px;
+      background: hsl(var(--primary));
+      border: none;
+      border-radius: 6px;
+      color: hsl(var(--primary-foreground));
+      font-size: 12px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .website-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .vendor-hint {
+      font-size: 11px;
+      color: hsl(var(--muted-foreground));
+      line-height: 1.5;
+      margin-bottom: 10px;
+      padding: 6px 10px;
+      background: hsl(var(--secondary));
+      border-radius: 6px;
+      border-left: 2px solid hsl(var(--primary));
     }
 
     .copy-input {
@@ -519,6 +607,37 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+    }
+
+    .info-alert {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 10px 12px;
+      background: hsl(var(--secondary));
+      border: 1px solid hsl(var(--border));
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: hsl(var(--foreground));
+      margin-bottom: 16px;
+    }
+
+    .info-alert-icon {
+      color: hsl(var(--primary));
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .info-alert-link {
+      color: #0959f8;
+      text-decoration: none;
+      font-weight: 500;
+      margin-left: 4px;
+    }
+
+    .info-alert-link:hover {
+      text-decoration: underline;
     }
 
     .modal-header-left {
@@ -846,8 +965,290 @@
       text-decoration: underline;
     }
 
-    /* Responsive */
+    .qr-float {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 60;
+    }
+
+    .qr-float-button {
+      width: 48px;
+      height: 48px;
+      border: 1px solid hsl(var(--border));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+    }
+
+    .qr-float-button:hover {
+      background: hsl(240 5.9% 18%);
+    }
+
+    .qr-float-button svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .qr-float-panel {
+      position: absolute;
+      right: 0;
+      bottom: 60px;
+      width: 236px;
+      padding: 14px;
+      border: 1px solid hsl(var(--border));
+      border-radius: 8px;
+      background: hsl(var(--card));
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(6px);
+      transition: opacity 0.15s, transform 0.15s;
+    }
+
+    .qr-float:hover .qr-float-panel,
+    .qr-float.is-open .qr-float-panel {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .qr-float-panel p {
+      margin-bottom: 10px;
+      color: hsl(var(--foreground));
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .qr-float-panel img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    .tutorial-section {
+      margin-top: 32px;
+      background: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .tutorial-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: hsl(var(--foreground));
+      margin-bottom: 20px;
+    }
+
+    .tutorial-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .tutorial-step {
+      position: relative;
+      padding: 20px 16px 16px;
+      border: 1px solid hsl(var(--border));
+      border-radius: 10px;
+      background: hsl(var(--background));
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .tutorial-step:hover {
+      border-color: hsl(var(--primary));
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .tutorial-step-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .tutorial-step-badge {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .tutorial-step-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: hsl(var(--secondary));
+      color: hsl(var(--secondary-foreground));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .tutorial-step-icon svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .tutorial-step-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: hsl(var(--foreground));
+      line-height: 1.4;
+    }
+
+    .tutorial-step-desc {
+      font-size: 12px;
+      color: hsl(var(--muted-foreground));
+      line-height: 1.5;
+    }
+
+    /* QQ 交流群卡片 */
+    #qqGroupsContainer {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .qq-group-card {
+      padding: 16px;
+      background: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: 12px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .qq-group-card:hover {
+      border-color: hsl(var(--primary));
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .qq-group-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .qq-group-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.7));
+      color: hsl(var(--primary-foreground));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .qq-group-avatar svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .qq-group-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .qq-group-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: hsl(var(--foreground));
+      line-height: 1.3;
+    }
+
+    .qq-group-number {
+      font-size: 12px;
+      color: hsl(var(--muted-foreground));
+      margin-top: 2px;
+    }
+
+    .qq-group-badge {
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: hsl(var(--primary));
+      background: hsl(var(--primary) / 0.1);
+      border-radius: 999px;
+      flex-shrink: 0;
+    }
+
+    .qq-group-desc {
+      font-size: 13px;
+      color: hsl(var(--muted-foreground));
+      line-height: 1.5;
+      margin-top: 10px;
+    }
+
+    .qq-group-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .qq-group-copy-btn,
+    .qq-group-join-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 7px 14px;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      border: 1px solid hsl(var(--border));
+      background: hsl(var(--background));
+      color: hsl(var(--foreground));
+      transition: all 0.15s;
+    }
+
+    .qq-group-copy-btn:hover {
+      border-color: hsl(var(--primary));
+      color: hsl(var(--primary));
+    }
+
+    .qq-group-join-btn {
+      background: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      border-color: transparent;
+    }
+
+    .qq-group-join-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
     @media (max-width: 768px) {
+      .qr-float {
+        right: 16px;
+        bottom: 16px;
+      }
+
+      .qr-float-panel {
+        width: 212px;
+      }
+
       .sidebar {
         display: none;
       }
@@ -857,6 +1258,10 @@
       }
 
       .vendors-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tutorial-steps {
         grid-template-columns: 1fr;
       }
 
@@ -884,24 +1289,29 @@
       <div class="sidebar-content">
         <div class="sidebar-section">
           <div class="sidebar-section-title">导航</div>
-          <a href="#" class="sidebar-link">
+          <a href="./" class="sidebar-link">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             首页
           </a>
-          <a href="#" class="sidebar-link">
+          <a href="https://www.oopc.top" class="sidebar-link">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
-            供应商列表
+            OPC工具导航
+          </a>
+          <a href="https://www.kaipai.vip" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+            开拍·漫剧导航
           </a>
         </div>
         <div class="sidebar-section">
           <div class="sidebar-section-title">推荐</div>
           <a href="https://api.4022543.xyz/register?aff=3Y0U" target="_blank" class="sidebar-link">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-            API 聚合站
+            <svg t="1785303521439" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1710" width="180" height="180"><path d="M917.7 148.8l-42.4-42.4c-1.6-1.6-3.6-2.3-5.7-2.3s-4.1 0.8-5.7 2.3l-76.1 76.1c-33.7-22.9-72.9-34.3-112.1-34.3-51.2 0-102.4 19.5-141.5 58.6L432.3 308.7c-3.1 3.1-3.1 8.2 0 11.3L704 591.7c1.6 1.6 3.6 2.3 5.7 2.3 2 0 4.1-0.8 5.7-2.3l101.9-101.9c68.9-69 77-175.7 24.3-253.5l76.1-76.1c3.1-3.2 3.1-8.3 0-11.4zM769.1 441.7l-59.4 59.4-186.8-186.8 59.4-59.4c24.9-24.9 58.1-38.7 93.4-38.7 35.3 0 68.4 13.7 93.4 38.7 24.9 24.9 38.7 58.1 38.7 93.4 0 35.3-13.8 68.4-38.7 93.4zM578.9 546.7c-3.1-3.1-8.2-3.1-11.3 0L501 613.3 410.7 523l66.7-66.7c3.1-3.1 3.1-8.2 0-11.3L441 408.6c-3.1-3.1-8.2-3.1-11.3 0L363 475.3l-43-43c-1.6-1.6-3.6-2.3-5.7-2.3-2 0-4.1 0.8-5.7 2.3L206.8 534.2c-68.9 69-77 175.7-24.3 253.5l-76.1 76.1c-3.1 3.1-3.1 8.2 0 11.3l42.4 42.4c1.6 1.6 3.6 2.3 5.7 2.3s4.1-0.8 5.7-2.3l76.1-76.1c33.7 22.9 72.9 34.3 112.1 34.3 51.2 0 102.4-19.5 141.5-58.6l101.9-101.9c3.1-3.1 3.1-8.2 0-11.3l-43-43 66.7-66.7c3.1-3.1 3.1-8.2 0-11.3l-36.6-36.2zM441.7 769.1c-24.9 24.9-58.1 38.7-93.4 38.7-35.3 0-68.4-13.7-93.4-38.7-24.9-24.9-38.7-58.1-38.7-93.4 0-35.3 13.7-68.4 38.7-93.4l59.4-59.4 186.8 186.8-59.4 59.4z" p-id="1711"></path></svg>            4022 API 聚合站
+          </a>
+          <a href="https://api.oopc.top" target="_blank" class="sidebar-link">
+            <svg t="1785303521439" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1710" width="180" height="180"><path d="M917.7 148.8l-42.4-42.4c-1.6-1.6-3.6-2.3-5.7-2.3s-4.1 0.8-5.7 2.3l-76.1 76.1c-33.7-22.9-72.9-34.3-112.1-34.3-51.2 0-102.4 19.5-141.5 58.6L432.3 308.7c-3.1 3.1-3.1 8.2 0 11.3L704 591.7c1.6 1.6 3.6 2.3 5.7 2.3 2 0 4.1-0.8 5.7-2.3l101.9-101.9c68.9-69 77-175.7 24.3-253.5l76.1-76.1c3.1-3.2 3.1-8.3 0-11.4zM769.1 441.7l-59.4 59.4-186.8-186.8 59.4-59.4c24.9-24.9 58.1-38.7 93.4-38.7 35.3 0 68.4 13.7 93.4 38.7 24.9 24.9 38.7 58.1 38.7 93.4 0 35.3-13.8 68.4-38.7 93.4zM578.9 546.7c-3.1-3.1-8.2-3.1-11.3 0L501 613.3 410.7 523l66.7-66.7c3.1-3.1 3.1-8.2 0-11.3L441 408.6c-3.1-3.1-8.2-3.1-11.3 0L363 475.3l-43-43c-1.6-1.6-3.6-2.3-5.7-2.3-2 0-4.1 0.8-5.7 2.3L206.8 534.2c-68.9 69-77 175.7-24.3 253.5l-76.1 76.1c-3.1 3.1-3.1 8.2 0 11.3l42.4 42.4c1.6 1.6 3.6 2.3 5.7 2.3s4.1-0.8 5.7-2.3l76.1-76.1c33.7 22.9 72.9 34.3 112.1 34.3 51.2 0 102.4-19.5 141.5-58.6l101.9-101.9c3.1-3.1 3.1-8.2 0-11.3l-43-43 66.7-66.7c3.1-3.1 3.1-8.2 0-11.3l-36.6-36.2zM441.7 769.1c-24.9 24.9-58.1 38.7-93.4 38.7-35.3 0-68.4-13.7-93.4-38.7-24.9-24.9-38.7-58.1-38.7-93.4 0-35.3 13.7-68.4 38.7-93.4l59.4-59.4 186.8 186.8-59.4 59.4z" p-id="1711"></path></svg>            OOPC API 内测站
           </a>
           <a href="https://i.ibb.co/FqXwfzxB/20260412141801-434-1.jpg" target="_blank" class="sidebar-link">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-            漫剧交流群
+            <svg t="1785303561559" class="icon" viewBox="0 0 1194 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2703" width="180" height="180"><path d="M728.064 535.296a35.498667 35.498667 0 1 1-70.912 0 35.498667 35.498667 0 0 1 70.912 0M974.08 535.296a35.498667 35.498667 0 1 1-70.997333 0 35.498667 35.498667 0 0 1 70.997333 0" fill="#515151" p-id="2704"></path><path d="M902.144 930.133333l-6.656 1.450667a594.176 594.176 0 0 1-18.602667 3.669333c-26.453333 4.778667-44.629333 6.826667-64 6.144-167.850667-5.546667-298.666667-87.893333-351.061333-218.709333a446.464 446.464 0 0 1-6.826667-19.114667l-1.962666-6.058666a199.68 199.68 0 0 1-3.84-13.653334 338.858667 338.858667 0 0 1-9.216-75.690666c0-171.008 157.013333-305.92 354.304-314.709334l8.874666-0.682666c7.850667-0.597333 12.970667-0.853333 18.773334-0.853334H836.693333l9.301334 0.170667c188.16 14.677333 340.394667 156.672 340.394666 323.925333 0 78.336-38.826667 155.733333-109.653333 222.293334a303.530667 303.530667 0 0 1-7.082667 6.4l9.984 71.082666a49.152 49.152 0 0 1-69.12 58.453334l-98.816-46.421334a582.485333 582.485333 0 0 1-9.472 2.304z m220.16-314.026666c0-131.754667-124.586667-247.978667-279.125333-260.096H821.930667c-3.754667 0-7.68 0.085333-13.994667 0.597333l-10.666667 0.768C631.466667 364.8 503.978667 474.453333 503.978667 608.256c0 18.773333 2.730667 40.874667 7.509333 60.842667 0.597333 2.474667 1.450667 5.632 2.56 9.216l1.706667 4.949333c2.133333 6.570667 4.266667 12.629333 5.632 15.957333 42.325333 105.728 149.930667 173.397333 293.717333 178.176 13.738667 0.512 28.16-1.109333 50.346667-5.12a531.626667 531.626667 0 0 0 16.64-3.242666l5.632-1.28c4.693333-1.109333 8.448-1.962667 19.370666-4.778667a32 32 0 0 1 21.418667 2.133333l85.248 40.106667-9.984-69.290667a32 32 0 0 1 13.909333-31.232c1.194667-0.853333 8.618667-6.912 15.189334-13.056 58.709333-55.210667 89.429333-116.394667 89.429333-175.616z m-1109.333333-237.909334C12.970667 171.52 206.677333 5.376 442.709333 5.376c208.384 0 394.24 130.304 431.872 306.090667 1.28 5.973333 1.28 11.264 0.512 16.896a32 32 0 0 1-63.658666-5.973334C779.178667 179.2 621.482667 69.376 442.709333 69.376 240.042667 69.376 76.970667 209.152 76.970667 378.282667c0 89.941333 46.165333 171.52 136.021333 237.568a32 32 0 0 1 11.434667 35.84l-23.296 69.973333 104.96-48.896a32 32 0 0 1 22.442666-1.706667l5.461334 1.706667c54.357333 11.093333 76.288 14.506667 108.714666 14.506667a200.789333 200.789333 0 0 0 32.256-4.010667c-0.512 0.170667-1.536 0.512-2.730666 1.536a33.109333 33.109333 0 0 1 39.253333 1.109333 32 32 0 0 1 5.376 44.970667c-11.776 14.848-47.36 20.309333-74.24 20.309333-37.12 0-62.037333-3.584-119.893333-15.530666L198.570667 793.6a49.493333 49.493333 0 0 1-68.949334-59.733333l26.88-80.64C62.976 577.706667 12.970667 482.986667 12.970667 378.197333z" fill="#515151" p-id="2705"></path><path d="M344.576 254.378667a44.373333 44.373333 0 1 1-88.746667 0.085333 44.373333 44.373333 0 0 1 88.746667 0M636.586667 254.378667a44.373333 44.373333 0 1 1-88.746667 0.085333 44.373333 44.373333 0 0 1 88.746667 0" fill="#515151" p-id="2706"></path></svg>            漫剧交流群
           </a>
           <a href="https://4022543.apifox.cn" target="_blank" class="sidebar-link">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
@@ -910,22 +1320,30 @@
         </div>
         <div class="sidebar-section">
           <div class="sidebar-section-title">资源</div>
-          <a href="https://github.com/wwwzhouhui/jimeng-free-api-all" target="_blank" class="sidebar-link">
+          <a href="https://my.feishu.cn/wiki/TXE1wM0PfiDtRzkbWrocRibJnud?from=from_copylink" target="_blank" class="sidebar-link">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-            即梦API部署
+            seedance2.0即梦API
           </a>
           <a href="https://github.com/HBAI-Ltd/Toonflow-app" target="_blank" class="sidebar-link">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
             TF官方GitHub
           </a>
-          <a href="#" class="sidebar-link">
+          <a href="https://i.ibb.co/C3b8w948/4.png" target="_blank" class="sidebar-link">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
             帮助中心
           </a>
-          <a href="#" class="sidebar-link">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-            社区
-          </a>
+        </div>
+        <!-- 群二维码卡片 -->
+        <div class="sidebar-section sidebar-qr-section">
+          <div class="sidebar-section-title">加入交流</div>
+          <div class="sidebar-qr-card">
+            <img src="https://free.boltp.com/2026/07/30/6a6ae2dc67c33.webp" alt="扫码加入交流群" class="sidebar-qr-img">
+            <div class="sidebar-qr-text">
+              <div class="sidebar-qr-title">扫码进群</div>
+              <div class="sidebar-qr-desc">备注「漫剧群」</div>
+            </div>
+          </div>
+          <div class="sidebar-qr-tip">没有 API 账号？扫码备注「内测申请」</div>
         </div>
       </div>
       <div class="sidebar-footer">
@@ -938,7 +1356,7 @@
       <!-- Top Bar -->
       <header class="topbar">
         <div class="topbar-left">
-          <div class="topbar-title">ToonFlow供应商列表</div>
+          <div class="topbar-title">ToonFlow漫剧API供应商列表</div>
           <div class="topbar-badge" id="filterBadge">全部</div>
         </div>
         <div class="topbar-right">
@@ -968,12 +1386,54 @@
           </div>
         </div>
 
-        <!-- 群二维码卡片 -->
-        <div class="qr-card" style="margin-top: 24px; background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: 12px; padding: 24px; text-align: center;">
-          <div style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: hsl(var(--foreground));">扫码加入交流群，记得备注：漫剧群</div>
-          <img src="https://i.ibb.co/FqXwfzxB/20260412141801-434-1.jpg" alt="扫码加漫剧交流群，记得备注：漫剧群" style="max-width: 200px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-          <div style="margin-top: 12px; font-size: 13px; color: hsl(var(--muted-foreground));">微信扫码加入，与更多创作者交流</div>
+        <!-- 使用教程 -->
+        <div class="tutorial-section">
+          <div class="tutorial-title">📖 使用教程</div>
+          <div class="tutorial-steps">
+            <div class="tutorial-step">
+              <div class="tutorial-step-header">
+                <div class="tutorial-step-badge">1</div>
+                <div class="tutorial-step-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <div class="tutorial-step-title">打开供应商网站注册</div>
+              </div>
+              <div class="tutorial-step-desc">选择您需要的供应商，点击卡片上的链接跳转至对应平台完成账号注册</div>
+            </div>
+            <div class="tutorial-step">
+              <div class="tutorial-step-header">
+                <div class="tutorial-step-badge">2</div>
+                <div class="tutorial-step-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+                </div>
+                <div class="tutorial-step-title">创建 API Key</div>
+              </div>
+              <div class="tutorial-step-desc">登录后进入控制台，在 API 管理页面创建新的 API 密钥并妥善保存</div>
+            </div>
+            <div class="tutorial-step">
+              <div class="tutorial-step-header">
+                <div class="tutorial-step-badge">3</div>
+                <div class="tutorial-step-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </div>
+                <div class="tutorial-step-title">复制 TS 文件链接</div>
+              </div>
+              <div class="tutorial-step-desc">在本页面供应商卡片上点击「复制」按钮，获取供应商配置文件的完整 URL</div>
+            </div>
+            <div class="tutorial-step">
+              <div class="tutorial-step-header">
+                <div class="tutorial-step-badge">4</div>
+                <div class="tutorial-step-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <div class="tutorial-step-title">打开软件导入</div>
+              </div>
+              <div class="tutorial-step-desc">启动 ToonFlow 客户端，在供应商管理中粘贴链接并填入 API Key 即可使用</div>
+            </div>
+          </div>
         </div>
+        <!-- QQ 交流群 -->
+        <div id="qqGroupsContainer"></div>
       </div>
 
       <!-- Footer -->
@@ -981,6 +1441,17 @@
         本站非官方，是ToonFlow供应商文件展示站 ｜ <a href="https://toonflow.net" target="_blank">官方网站</a>
       </footer>
     </main>
+  </div>
+
+  <div class="qr-float" id="qrFloat">
+    <button class="qr-float-button" id="qrFloatButton" type="button" aria-label="显示交流群二维码" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14h1v3M14 20h3M20 20h1"/></svg>
+    </button>
+    <div class="qr-float-panel" role="dialog" aria-label="交流群二维码">
+      <p>扫码加入交流群</p>
+      <img src="https://i.ibb.co/FqXwfzxB/20260412141801-434-1.jpg" alt="扫码加入交流群，记得备注：漫剧群">
+      <p>记得备注：漫剧群</p>
+    </div>
   </div>
 
   <!-- Modal -->
@@ -1002,7 +1473,24 @@
 
   <script>
     let vendorsData = [];
+    let qqGroupsData = [];
     let currentFilter = 'all';
+
+    const qrFloat = document.getElementById('qrFloat');
+    const qrFloatButton = document.getElementById('qrFloatButton');
+
+    qrFloatButton.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const isOpen = qrFloat.classList.toggle('is-open');
+      qrFloatButton.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!qrFloat.contains(event.target)) {
+        qrFloat.classList.remove('is-open');
+        qrFloatButton.setAttribute('aria-expanded', 'false');
+      }
+    });
 
     async function loadData() {
       try {
@@ -1011,8 +1499,10 @@
         const data = await response.json();
         // 适配新的数据结构：{ meta: {...}, vendors: [...] }
         vendorsData = data.vendors || data;
+        qqGroupsData = data.qqGroups || [];
         updateStats(data.meta);
         renderVendors();
+        renderQQGroups();
         setupFilters();
       } catch (error) {
         document.getElementById('content').innerHTML = `
@@ -1036,6 +1526,37 @@
       const types = new Set();
       vendor.models?.forEach(m => types.add(m.type));
       return Array.from(types);
+    }
+
+    function renderQQGroups() {
+      const container = document.getElementById('qqGroupsContainer');
+      if (!container || !qqGroupsData?.length) return;
+
+      container.innerHTML = qqGroupsData.map(group => `
+        <div class="qq-group-card">
+          <div class="qq-group-header">
+            <div class="qq-group-avatar">
+              <svg t="1785573366137" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5853" width="180" height="180"><path d="M706.519 1000.53c-67.857 0-129.229-16.711-164.195-44.674-1.447-1.147-3.509-1.815-5.707-1.815-22.118 1.434-36.673 1.434-57.235 0-3.126 0.014-4.875 0.56-6.431 1.815-35.061 27.989-96.461 44.674-164.277 44.674-111.056 0-194.805-42.954-194.805-99.902 0-32.276 27.511-61.331 75.489-79.708 2.102-0.819 3.632-2.281 4.11-3.946 0.492-1.747-0.259-3.126-0.97-3.959-14.063-16.603-26.583-34.42-37.205-53.003-1.078-1.898-3.509-3.291-6.144-3.55-3.659 0.245-6.13 0.928-7.66 2.608-22.405 24.931-45.289 34.571-65.291 28.208-7.987-2.54-19.47-9.202-28.262-26.474-19.948-39.213-17.599-112.503 5.871-182.381 18.446-55.077 54.695-97.089 81.852-122.635 0.697-0.655 1.911-2.13 1.584-4.014-1.161-6.854-1.721-13.189-1.721-19.415 0-26.528 8.206-52.469 24.371-77.087 0.56-0.847 0.791-1.761 0.723-2.717-0.164-2.471-0.301-4.983-0.301-7.455 0-180.115 155.921-326.67 347.573-326.67 191.665 0 347.586 146.541 347.586 326.67 0 2.307-0.123 4.602-0.301 6.895-0.041 0.791 0.191 1.693 0.737 2.498 16.493 24.726 24.863 50.913 24.863 77.878 0 6.608-0.601 13.189-1.829 20.125-0.355 1.966 0.833 3.399 1.57 4.11 26.883 25.463 62.723 67.257 81.033 121.91 23.456 69.823 25.819 143.087 5.871 182.326-8.793 17.285-20.261 23.948-28.331 26.501a41.074 41.074 0 0 1-12.165 1.843c-21.408 0-40.619-16.247-52.947-29.873-1.516-1.693-3.782-2.622-6.267-2.622-3.959 0.314-6.308 1.666-7.401 3.578-10.732 18.665-23.293 36.468-37.328 52.934-0.518 0.628-1.488 2.13-0.97 3.973 0.45 1.584 2.034 3.113 4.205 3.946 48.429 18.691 75.121 46.954 75.121 79.571 0 56.894-83.749 99.834-194.819 99.834z m-169.902-87.449c11.373 0 22.474 3.809 31.212 10.718 27.198 21.763 81.593 35.772 138.69 35.772 93.921 0 153.859-34.898 153.859-58.914 0-13.653-19.211-29.887-48.947-41.37-14.049-5.447-24.821-17.012-28.822-30.953-4.068-14.513-0.655-30.037 9.107-41.643 12.507-14.663 23.606-30.393 33.055-46.859 7.714-13.462 21.886-22.419 37.86-23.893 1.556-0.177 3.317-0.259 5.066-0.259 14.117 0 27.484 5.899 36.7 16.165 10.758 11.892 19.524 16.343 22.514 16.343 10.117-5.762 25.273-68.881-4.219-156.686-15.633-46.654-46.871-82.944-70.342-105.171-11.36-10.718-16.507-26.118-13.735-41.165 0.779-4.397 1.174-8.642 1.174-12.82 0-18.719-6.035-37.26-17.954-55.105-5.598-8.356-8.206-18.091-7.537-28.14 0.109-1.447 0.191-2.731 0.191-4.028 0-157.532-137.557-285.71-306.626-285.71S201.25 187.54 201.25 345.073c0 1.53 0.096 3.1 0.205 4.588 0.71 9.953-1.829 19.661-7.359 28.071-11.701 17.845-17.641 36.209-17.641 54.613 0 3.905 0.369 8.001 1.133 12.521 2.554 14.828-2.622 30.051-13.83 40.673-23.797 22.391-55.392 58.874-71.134 105.895-29.505 87.873-14.336 151.006-3.741 156.905 1.829-0.109 9.953-3.1 22.214-16.753 10.459-11.497 25.996-17.449 41.875-15.92 15.892 1.474 30.065 10.431 37.834 23.934 9.407 16.452 20.48 32.208 32.918 46.899 9.83 11.591 13.258 27.156 9.134 41.629-3.959 13.995-14.759 25.614-28.863 31.007-29.873 11.455-49.18 27.716-49.18 41.466 0 24.044 59.924 58.942 153.845 58.942 57.071 0 111.507-14.009 138.704-35.717 9.995-8.001 22.201-11.782 35.226-10.636 17.872 1.229 31.744 1.257 50.517-0.028a70.953 70.953 0 0 1 3.509-0.082z" p-id="5854" fill="#ffffff"></path></svg>
+            </div>
+            <div class="qq-group-info">
+              <div class="qq-group-name">${escapeHtml(group.name)}</div>
+              <div class="qq-group-number">群号：${escapeHtml(group.number)}</div>
+            </div>
+            ${group.badge ? `<div class="qq-group-badge">${escapeHtml(group.badge)}</div>` : ''}
+          </div>
+          ${group.description ? `<div class="qq-group-desc">${escapeHtml(group.description)}</div>` : ''}
+          <div class="qq-group-actions">
+            <button class="qq-group-copy-btn" onclick="copyText('${escapeHtml(group.number)}')">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              复制群号
+            </button>
+            ${group.joinUrl ? `<a class="qq-group-join-btn" href="${escapeHtml(group.joinUrl)}" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M15 3h6v6"/><path d="M10 14L21 3"/><path d="M21 14v7H3V3h7"/></svg>
+              加入群聊
+            </a>` : ''}
+          </div>
+        </div>
+      `).join('');
     }
 
     function setupFilters() {
@@ -1082,12 +1603,14 @@
       const firstLetter = vendor.name?.charAt(0).toUpperCase() || '?';
       const modelCount = stats.total || vendor.models?.length || 0;
       const inputCount = vendor.inputs?.length || 0;
-      const rawDesc = (vendor.description || '暂无描述').replace(/\n/g, '');
+      const rawDesc = (vendor.description || '暂无描述').replace(/\\n/g, ' ').replace(/\n/g, ' ');
       const shortDesc = rawDesc.length > 80 ? rawDesc.substring(0, 80) + '...' : rawDesc;
       const protocolAndHost = window.location.protocol + "//" + window.location.host;
       const fileUrl = `${protocolAndHost}/store/${item.file}`;
       const isRecommended = item.isRecommended;
       const hasValidation = item.validation && !item.validation.valid;
+      const websiteUrl = item.websiteUrl;
+      const isOpenSource = item.isOpenSource;
 
       // 构建类型统计标签
       const typeTags = [];
@@ -1108,10 +1631,13 @@
           </div>
           <div class="vendor-body">
             <div class="vendor-desc">${escapeHtml(shortDesc)}</div>
-            <div class="copy-section" onclick="event.stopPropagation();">
-              <input type="text" class="copy-input" value="${escapeHtml(fileUrl)}" readonly>
-              <button class="copy-btn" onclick="copyToClipboard('${fileUrl}', this)">复制</button>
+            <div class="card-actions" onclick="event.stopPropagation();">
+              <div class="copy-section">
+                <input type="text" class="copy-input" value="${escapeHtml(fileUrl)}" readonly>
+                <button class="copy-btn" onclick="copyToClipboard('${fileUrl}', this)">复制</button>
+              </div>
             </div>
+            ${websiteUrl ? `<div class="info-alert"><span>${isOpenSource ? '此项目已开源，<a href="' + websiteUrl + '" target="_blank" rel="noopener" class="info-alert-link">自行部署</a>或联系群主' : '点击<a href="' + websiteUrl + '" target="_blank" rel="noopener" class="info-alert-link">注册账号</a>并创建 API Key，导入文件后填入即可使用'}</span></div>` : ''}
             <div class="vendor-stats">
               <div class="vendor-stat">
                 <div class="vendor-stat-value">${modelCount}</div>
@@ -1146,6 +1672,20 @@
       document.getElementById('modalId').textContent = `${vendor.id || '-'} · v${vendor.version || '1.0'} · ${item.folder}`;
 
       let bodyHtml = '';
+
+      // 官网注册入口
+      if (item.websiteUrl) {
+        const isOpenSourceModal = item.isOpenSource;
+        const alertText = isOpenSourceModal
+          ? `此项目已开源，<a href="${item.websiteUrl}" target="_blank" rel="noopener" class="info-alert-link">前往 GitHub 自行部署 →</a>或者联系群主`
+          : `使用该供应商接口，需要先注册账号获取 API Key。<a href="${item.websiteUrl}" target="_blank" rel="noopener" class="info-alert-link">前往官网注册 →</a>`;
+        bodyHtml += `
+          <div class="info-alert">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" class="info-alert-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span>${alertText}</span>
+          </div>
+        `;
+      }
 
       // 验证状态
       if (validation.errors?.length > 0 || validation.warnings?.length > 0) {
@@ -1260,6 +1800,15 @@
     function closeModal() {
       document.getElementById('modal').classList.remove('active');
       document.body.style.overflow = '';
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        alert(`群号 ${text} 已复制到剪贴板`);
+      } catch (err) {
+        prompt('请手动复制群号：', text);
+      }
     }
 
     async function copyToClipboard(text, btn) {
