@@ -139,7 +139,7 @@ const vendor: VendorConfig = {
   author: "四零二二",
   name: "JM-API",
   description:
-    "兼容JM2API项目的接口，支持文生图、图生图、普通视频与 SD2.0 多模态视频生成。\n\n 使用该方案，您需要先拥有一个JM的API服务，才能使用该适配器。\n\n 可以在github上搜索：例如：[jimeng-free-api-all](https://github.com/wwwzhouhui/jimeng-free-api-all)\n\n⚠️**警告：此类项目有违官方使用规则，该方案有可能会被封号，请慎重！！！建议使用官方接口。**\n\n更多供应商：https://tf.4022543.xyz/",
+    "兼容JM2API项目的接口，支持文生图、图生图、普通视频与 SD2.0 多模态视频生成。\n\n 使用该方案，您需要先拥有一个JM的API服务，才能使用该适配器。\n\n 可以在github上搜索：例如：[jimeng-free-api-all](https://github.com/wwwzhouhui/jimeng-free-api-all)\n\n⚠️**警告：此类项目有违官方使用规则，该方案有可能会被封号，请慎重！！！建议使用官方接口。**\n\n更多供应商：https://tf.kaipai.vip/",
   inputs: [
     { key: "apiKey", label: "SessionID / API密钥", type: "password", required: true },
     { key: "baseUrl", label: "基础URL", type: "url", required: true, placeholder: "例如 http://127.0.0.1:8000" },
@@ -585,7 +585,7 @@ const checkForUpdates = async (): Promise<{ hasUpdate: boolean; latestVersion: s
 
 const updateVendor = async (): Promise<string> => {
   try {
-    const remoteVendorUrl = `https://tf.4022543.xyz/store/${vendor.id}/${vendor.id}.ts`;
+    const remoteVendorUrl = `https://tf.kaipai.vip/store/${vendor.id}/${vendor.id}.ts`;
     const response = await axios.get(remoteVendorUrl, {
       timeout: 30000,
       headers: {

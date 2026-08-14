@@ -138,7 +138,7 @@ const vendor: VendorConfig = {
   version: "2.0",
   author: "四零二二",
   name: "AIClient2API接口",
-  description: "支持所有兼容AIClient2API中openai接口规范的API，仅支持文本\n\n欢迎使用我的其他插件：https://tf.4022543.xyz",
+  description: "支持所有兼容AIClient2API中openai接口规范的API，仅支持文本\n\n欢迎使用我的其他插件：https://tf.kaipai.vip",
   inputs: [
     { key: "apiKey", label: "API密钥", type: "password", required: true },
     { key: "baseUrl", label: "基础URL", type: "url", required: true, placeholder: "默认 https://127.0.0.1:3000/openai-qwen-oauth/v1" },
@@ -239,7 +239,7 @@ const checkForUpdates = async (): Promise<{ hasUpdate: boolean; latestVersion: s
 
 const updateVendor = async (): Promise<string> => {
   try {
-    const remoteVendorUrl = "https://tf.4022543.xyz/store/openai/aiclient2api.ts";
+    const remoteVendorUrl = "https://tf.kaipai.vip/store/openai/aiclient2api.ts";
     const response = await axios.get(remoteVendorUrl, {
       timeout: 30000,
       headers: {

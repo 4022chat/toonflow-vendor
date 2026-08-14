@@ -1,18 +1,18 @@
 {
   "meta": {
-    "generatedAt": "2026-08-02T03:25:02.021Z",
-    "totalFiles": 3,
-    "validVendors": 3,
+    "generatedAt": "2026-08-14T02:20:06.685Z",
+    "totalFiles": 4,
+    "validVendors": 4,
     "invalidVendors": 0,
-    "totalModels": 68
+    "totalModels": 76
   },
   "vendors": [
     {
-      "file": "oopc/oopc.ts",
-      "folder": "oopc",
+      "file": "opennex/opennex.ts",
+      "folder": "opennex",
       "hasVendorConfig": true,
       "isRecommended": true,
-      "websiteUrl": "https://i.ibb.co/C3b8w948/4.png",
+      "websiteUrl": "https://api.opennex.top/register?aff=gYGC",
       "isOpenSource": false,
       "validation": {
         "valid": true,
@@ -20,221 +20,20 @@
         "warnings": []
       },
       "stats": {
-        "total": 14,
-        "text": 8,
-        "image": 3,
-        "video": 3,
-        "tts": 0,
-        "thinkEnabled": 8,
-        "audioSupport": 3
-      },
-      "vendor": {
-        "id": "oopc",
-        "version": "2.0",
-        "name": "OOPC",
-        "author": "oopc",
-        "description": "gpt-image-2只需 4 分起！\\n\\ns-video最低只需1元/条。\\n\\n支持 OpenAI 兼容、Gemini 原生、Claude 原生文本对话，以及 Qwen Image 和 Nano Banana 图像生成。\\n\\n正在内测中，加微信 jxppro 获取 内测账号！",
-        "icon": null,
-        "inputs": [
-          {
-            "key": "apiKey",
-            "label": "默认API密钥",
-            "type": "password",
-            "required": true
-          },
-          {
-            "key": "textKey",
-            "label": "文本API密钥",
-            "type": "password",
-            "required": false
-          },
-          {
-            "key": "imageKey",
-            "label": "图像API密钥",
-            "type": "password",
-            "required": false
-          },
-          {
-            "key": "videoKey",
-            "label": "视频API密钥",
-            "type": "password",
-            "required": false
-          },
-          {
-            "key": "baseUrl",
-            "label": "基础URL",
-            "type": "url",
-            "required": false
-          }
-        ],
-        "inputValues": {
-          "apiKey": "",
-          "textKey": "",
-          "imageKey": "",
-          "videoKey": "",
-          "baseUrl": "https://api.oopc.top/v1"
-        },
-        "models": [
-          {
-            "name": "GPT Image 2",
-            "modelName": "gpt-image-2",
-            "type": "image",
-            "mode": [
-              "text",
-              "singleImage",
-              "multiReference"
-            ]
-          },
-          {
-            "name": "Gemini 3 pro image",
-            "modelName": "gemini-3-pro-image",
-            "type": "image",
-            "mode": [
-              "text",
-              "singleImage",
-              "multiReference"
-            ]
-          },
-          {
-            "name": "Gemini 3.1 Flash Image",
-            "modelName": "gemini-3.1-flash-image",
-            "type": "image",
-            "mode": [
-              "text",
-              "singleImage",
-              "multiReference"
-            ]
-          },
-          {
-            "name": "GPT-5.5",
-            "modelName": "gpt-5.5",
-            "type": "text",
-            "think": true
-          },
-          {
-            "name": "GPT 5.6 Terra",
-            "modelName": "gpt-5.6-terra",
-            "type": "text",
-            "think": true
-          },
-          {
-            "name": "GPT 5.6 Sol",
-            "modelName": "gpt-5.6-sol",
-            "type": "text",
-            "think": true
-          },
-          {
-            "name": "Claude Opus 4.8",
-            "modelName": "claude-opus-4-8",
-            "type": "text",
-            "think": true
-          },
-          {
-            "name": "Claude Opus 5.0",
-            "modelName": "claude-opus-5-0",
-            "type": "text",
-            "think": true
-          },
-          {
-            "name": "Claude Sonnet 5",
-            "modelName": "claude-sonnet-5",
-            "type": "text",
-            "think": true
-          },
-          {
-            "name": "Gemini 3.1 Pro",
-            "modelName": "gemini-3.1-pro-preview",
-            "type": "text",
-            "think": true
-          },
-          {
-            "name": "Gemini 3.5 Flash",
-            "modelName": "gemini-3.5-flash",
-            "type": "text",
-            "think": true
-          },
-          {
-            "name": "S-Video",
-            "modelName": "s-video-v1",
-            "type": "video",
-            "mode": [
-              "text",
-              "endFrameOptional",
-              [
-                "imageReference:8"
-              ]
-            ],
-            "audio": true,
-            "durationResolutionMap": []
-          },
-          {
-            "name": "Firefly Video v2 Fast",
-            "modelName": "firefly-video-v2-fast",
-            "type": "video",
-            "mode": [
-              "text",
-              "singleImage",
-              "startEndRequired",
-              "endFrameOptional",
-              "startFrameOptional",
-              [
-                "imageReference:9",
-                "videoReference:3",
-                "audioReference:3"
-              ]
-            ],
-            "audio": true,
-            "durationResolutionMap": []
-          },
-          {
-            "name": "Firefly Video v2",
-            "modelName": "firefly-video-v2",
-            "type": "video",
-            "mode": [
-              "text",
-              "singleImage",
-              "startEndRequired",
-              "endFrameOptional",
-              "startFrameOptional",
-              [
-                "imageReference:9",
-                "videoReference:3",
-                "audioReference:3"
-              ]
-            ],
-            "audio": true,
-            "durationResolutionMap": []
-          }
-        ]
-      }
-    },
-    {
-      "file": "4022/best.ts",
-      "folder": "4022",
-      "hasVendorConfig": true,
-      "isRecommended": false,
-      "websiteUrl": "https://api.4022543.xyz/register?aff=3Y0U",
-      "isOpenSource": false,
-      "validation": {
-        "valid": true,
-        "errors": [],
-        "warnings": []
-      },
-      "stats": {
-        "total": 43,
-        "text": 15,
-        "image": 8,
+        "total": 49,
+        "text": 20,
+        "image": 9,
         "video": 20,
         "tts": 0,
-        "thinkEnabled": 10,
+        "thinkEnabled": 13,
         "audioSupport": 19
       },
       "vendor": {
-        "id": "best",
+        "id": "opennex",
         "version": "2.7.7",
-        "name": "最强组合-四零二二API",
-        "author": "四零二二",
-        "description": "最强组合，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\\n\\n四零二二API中转站，支持所有的模型接入，一个 key 搞定所有。\\n\\n源头供货，稳定价低，支持[免费试用](https://api.4022543.xyz/register?aff=3Y0U)\\n\\n邀请好友可返点。[点这里去注册](https://api.4022543.xyz/register?aff=3Y0U)\\n\\n如遇bug请联系微信：jxppro",
+        "name": "OpenNex API",
+        "author": "opennex",
+        "description": "4022升级版，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\\n\\nOpenNex API中转站，支持所有的模型接入，一个 key 搞定所有。\\n\\n源头供货，稳定价低。邀请好友可返点。[点这里去注册](https://api.opennex.top/register?aff=gYGC)\\n\\n如遇bug请联系微信：jxppro",
         "icon": null,
         "inputs": [
           {
@@ -287,6 +86,16 @@
             ]
           },
           {
+            "name": "GPT-image-2-c",
+            "modelName": "gpt-image-2-c",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
             "name": "豆包 Seedream 5.0",
             "modelName": "doubao-seedream-5-0-260128",
             "type": "image",
@@ -327,8 +136,32 @@
             ]
           },
           {
+            "name": "GPT 5.6 Sol",
+            "modelName": "gpt-5.6-sol",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "GPT 5.6 Terra",
+            "modelName": "gpt-5.6-terra",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "Deepseek-v4-flash-0731",
+            "modelName": "deepseek-v4-flash-0731",
+            "type": "text",
+            "think": true
+          },
+          {
             "name": "Deepseek-v4-flash",
             "modelName": "deepseek-v4-flash",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "Deepseek-v4-pro-0813",
+            "modelName": "deepseek-v4-pro-0813",
             "type": "text",
             "think": true
           },
@@ -341,18 +174,6 @@
           {
             "name": "GPT-5.5",
             "modelName": "gpt-5.5",
-            "type": "text",
-            "think": true
-          },
-          {
-            "name": "GPT-5.4",
-            "modelName": "gpt-5.4",
-            "type": "text",
-            "think": true
-          },
-          {
-            "name": "GPT-5.4-pro",
-            "modelName": "gpt-5.4-pro",
             "type": "text",
             "think": true
           },
@@ -407,6 +228,12 @@
             "think": true
           },
           {
+            "name": "Gemini-3.6-flash",
+            "modelName": "gemini-3.6-flash",
+            "type": "text",
+            "think": false
+          },
+          {
             "name": "gemini-3.5-flash",
             "modelName": "gemini-3.5-flash",
             "type": "text",
@@ -419,14 +246,20 @@
             "think": true
           },
           {
-            "name": "claude-opus-4-8",
-            "modelName": "claude-opus-4-8",
+            "name": "Claude Sonnet 5.0",
+            "modelName": "claude-sonnet-5",
             "type": "text",
             "think": true
           },
           {
-            "name": "Claude-opus-4.7",
-            "modelName": "claude-opus-4-7",
+            "name": "Claude-opus-5",
+            "modelName": "claude-opus-5",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "claude-opus-4-8",
+            "modelName": "claude-opus-4-8",
             "type": "text",
             "think": true
           },
@@ -439,6 +272,12 @@
           {
             "name": "kimi-k2.5",
             "modelName": "kimi-k2.5",
+            "type": "text",
+            "think": false
+          },
+          {
+            "name": "grok-4.6",
+            "modelName": "grok-4.6",
             "type": "text",
             "think": false
           },
@@ -711,6 +550,226 @@
       }
     },
     {
+      "file": "oopc/oopc.ts",
+      "folder": "oopc",
+      "hasVendorConfig": true,
+      "isRecommended": true,
+      "websiteUrl": "https://api.oopc.top/sign-up?aff=4rtN",
+      "isOpenSource": false,
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      },
+      "stats": {
+        "total": 15,
+        "text": 8,
+        "image": 3,
+        "video": 4,
+        "tts": 0,
+        "thinkEnabled": 8,
+        "audioSupport": 4
+      },
+      "vendor": {
+        "id": "oopc",
+        "version": "2.0",
+        "name": "OOPC",
+        "author": "oopc",
+        "description": "gpt-image-2 ¥0.04/张！\\n\\nMiniMax-H3 ¥0.2/秒！\\n\\ns-video1元/条起。\\n\\n支持 OpenAI 兼容、Gemini 原生、Claude 原生文本对话，以及 Qwen Image 和 Nano Banana 图像生成。\\n\\n正在内测中，加微信 jxppro 获取 内测账号！",
+        "icon": null,
+        "inputs": [
+          {
+            "key": "apiKey",
+            "label": "默认API密钥",
+            "type": "password",
+            "required": true
+          },
+          {
+            "key": "textKey",
+            "label": "文本API密钥",
+            "type": "password",
+            "required": false
+          },
+          {
+            "key": "imageKey",
+            "label": "图像API密钥",
+            "type": "password",
+            "required": false
+          },
+          {
+            "key": "videoKey",
+            "label": "视频API密钥",
+            "type": "password",
+            "required": false
+          },
+          {
+            "key": "baseUrl",
+            "label": "基础URL",
+            "type": "url",
+            "required": false
+          }
+        ],
+        "inputValues": {
+          "apiKey": "",
+          "textKey": "",
+          "imageKey": "",
+          "videoKey": "",
+          "baseUrl": "https://api.oopc.top/v1"
+        },
+        "models": [
+          {
+            "name": "MiniMax-H3",
+            "modelName": "MiniMax-H3",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional",
+              [
+                "imageReference:5",
+                "videoReference:1",
+                "audioReference:1"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "GPT Image 2",
+            "modelName": "gpt-image-2",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "Gemini 3 pro image",
+            "modelName": "gemini-3-pro-image",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "Gemini 3.1 Flash Image",
+            "modelName": "gemini-3.1-flash-image",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "GPT-5.5",
+            "modelName": "gpt-5.5",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "GPT 5.6 Terra",
+            "modelName": "gpt-5.6-terra",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "GPT 5.6 Sol",
+            "modelName": "gpt-5.6-sol",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "Claude Opus 4.8",
+            "modelName": "claude-opus-4-8",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "Claude Opus 5.0",
+            "modelName": "claude-opus-5-0",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "Claude Sonnet 5",
+            "modelName": "claude-sonnet-5",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "Gemini 3.1 Pro",
+            "modelName": "gemini-3.1-pro-preview",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "Gemini 3.5 Flash",
+            "modelName": "gemini-3.5-flash",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "S-Video",
+            "modelName": "s-video-v1",
+            "type": "video",
+            "mode": [
+              "text",
+              "endFrameOptional",
+              [
+                "imageReference:8"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "Firefly Video v2 Fast",
+            "modelName": "firefly-video-v2-fast",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional",
+              [
+                "imageReference:9",
+                "videoReference:3",
+                "audioReference:3"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "Firefly Video v2",
+            "modelName": "firefly-video-v2",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional",
+              [
+                "imageReference:9",
+                "videoReference:3",
+                "audioReference:3"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          }
+        ]
+      }
+    },
+    {
       "file": "grok/grok.ts",
       "folder": "grok",
       "hasVendorConfig": true,
@@ -830,6 +889,75 @@
             "type": "video",
             "mode": [
               "text"
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          }
+        ]
+      }
+    },
+    {
+      "file": "minimax/minimax.ts",
+      "folder": "minimax",
+      "hasVendorConfig": true,
+      "isRecommended": false,
+      "websiteUrl": "https://platform.minimaxi.com/console/access",
+      "isOpenSource": false,
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      },
+      "stats": {
+        "total": 1,
+        "text": 0,
+        "image": 0,
+        "video": 1,
+        "tts": 0,
+        "thinkEnabled": 0,
+        "audioSupport": 1
+      },
+      "vendor": {
+        "id": "minimax-h3",
+        "version": "2.0",
+        "name": "MiniMax H3",
+        "author": "MiniMax",
+        "description": "MiniMax-H3 视频生成接口，支持文生视频、首尾帧及图片/视频/音频参考。\\n\\nAPI 申请渠道：\\n\\n官网：[https://www.minMaxi.com](https://platform.minimaxi.com/console/access)",
+        "icon": null,
+        "inputs": [
+          {
+            "key": "apiKey",
+            "label": "API密钥",
+            "type": "password",
+            "required": true
+          },
+          {
+            "key": "baseUrl",
+            "label": "请求地址",
+            "type": "url",
+            "required": true
+          }
+        ],
+        "inputValues": {
+          "apiKey": "",
+          "baseUrl": "https://api.minimaxi.com/v2"
+        },
+        "models": [
+          {
+            "name": "MiniMax-H3",
+            "modelName": "minimax-h3",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional",
+              [
+                "imageReference:5",
+                "videoReference:1",
+                "audioReference:1"
+              ]
             ],
             "audio": true,
             "durationResolutionMap": []

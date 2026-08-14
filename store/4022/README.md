@@ -11,12 +11,12 @@
 ## 供应商导入
 
 ```ts
-https://tf.4022543.xyz/store/4022/best.ts
+https://tf.kaipai.vip/store/4022/best.ts
 ```
 
 ---
 
-更多供应商在线浏览：[https://tf.4022543.xyz/](https://tf.4022543.xyz/)
+更多供应商在线浏览：[https://tf.kaipai.vip/](https://tf.kaipai.vip/)
 
 ## 更新日志
 

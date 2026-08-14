@@ -135,7 +135,7 @@ const vendor: VendorConfig = {
   version: "2.0",
   author: "oopc",
   name: "OOPC",
-  description: "gpt-image-2只需 4 分起！\n\ns-video最低只需1元/条。\n\n支持 OpenAI 兼容、Gemini 原生、Claude 原生文本对话，以及 Qwen Image 和 Nano Banana 图像生成。\n\n正在内测中，加微信 jxppro 获取 内测账号！",
+  description: "gpt-image-2 ¥0.04/张！\n\nMiniMax-H3 ¥0.2/秒！\n\ns-video1元/条起。\n\n支持 OpenAI 兼容、Gemini 原生、Claude 原生文本对话，以及 Qwen Image 和 Nano Banana 图像生成。\n\n正在内测中，加微信 jxppro 获取 内测账号！",
   inputs: [
     { key: "apiKey", label: "默认API密钥", type: "password", required: true, placeholder: "未填写专用密钥时使用，推荐使用 auto 自动分组" },
     { key: "textKey", label: "文本API密钥", type: "password", required: false, placeholder: "不填则使用默认API密钥" },
@@ -145,6 +145,7 @@ const vendor: VendorConfig = {
   ],
   inputValues: { apiKey: "", textKey: "", imageKey: "", videoKey: "", baseUrl: "https://api.oopc.top/v1" },
   models: [
+    { name: "MiniMax-H3", modelName: "MiniMax-H3", type: "video", mode: ["text", "singleImage", "startEndRequired", "endFrameOptional", "startFrameOptional", ["imageReference:5", "videoReference:1", "audioReference:1"]], audio: true, durationResolutionMap: [{ duration: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], resolution: ["2K", "768P"] }] },
     { name: "GPT Image 2", modelName: "gpt-image-2", type: "image", mode: ["text", "singleImage", "multiReference"] },
     { name: "Gemini 3 pro image", modelName: "gemini-3-pro-image", type: "image", mode: ["text", "singleImage", "multiReference"] },
     { name: "Gemini 3.1 Flash Image", modelName: "gemini-3.1-flash-image", type: "image", mode: ["text", "singleImage", "multiReference"] },
@@ -363,6 +364,75 @@ const requestVideoGenerations = async (
   }
 };
 
+const requestMinimaxH3VideoGeneration = async (
+  apiKey: string,
+  config: VideoConfig,
+  model: VideoModel,
+): Promise<string> => {
+  try {
+    const references = config.referenceList ?? [];
+    const images = references.filter((reference) => reference.type === "image");
+    const videos = references.filter((reference) => reference.type === "video");
+    const audios = references.filter((reference) => reference.type === "audio");
+    const isStartEndMode = config.mode.includes("startEndRequired") || config.mode.includes("endFrameOptional") || config.mode.includes("startFrameOptional");
+    if (isStartEndMode && images.length > 2) throw new Error("首尾帧模式最多支持 2 张图片");
+    if (config.mode.includes("startEndRequired") && images.length !== 2) throw new Error("首尾帧模式需要 2 张参考图");
+    if (config.mode.includes("singleImage") && !isStartEndMode && images.length !== 1) throw new Error("单图模式需要 1 张参考图");
+    if (audios.length > 0 && images.length + videos.length === 0) throw new Error("音频参考必须同时提供图片或视频参考");
+
+    const content: any[] = [{ type: "text", text: config.prompt }];
+    if (isStartEndMode) {
+      if (images[0]) content.push({ type: "image_url", image_url: { url: images[0].base64 }, role: "first_frame" });
+      if (images[1]) content.push({ type: "image_url", image_url: { url: images[1].base64 }, role: "last_frame" });
+    } else {
+      images.forEach((reference) => content.push({ type: "image_url", image_url: { url: reference.base64 }, role: "reference_image" }));
+    }
+    videos.forEach((reference) => content.push({ type: "video_url", video_url: { url: reference.base64 }, role: "reference_video" }));
+    audios.forEach((reference) => content.push({ type: "audio_url", audio_url: { url: reference.base64 }, role: "reference_audio" }));
+
+    const headers = { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" };
+    const baseUrl = `${getApiOrigin()}/v1`;//为了兼容修改的，后期可能会按照官方格式调整
+    logger("提交 MiniMax-H3 视频生成任务" + `${baseUrl}/videos`);
+    logger(JSON.stringify({
+      model: model.modelName,
+      resolution: config.resolution,
+      duration: config.duration,
+      ratio: config.aspectRatio,
+      prompt: config.prompt,//为了兼容增加的，特殊匹配字段，后期可能删除
+    }));
+
+    const createResponse = await axios.post(`${baseUrl}/videos`, {
+      model: model.modelName,
+      resolution: config.resolution,
+      duration: config.duration,
+      ratio: config.aspectRatio,
+      prompt: config.prompt,//为了兼容增加的，特殊匹配字段，后期可能删除
+      content,
+    }, { headers });
+    logger(createResponse.data);
+    const taskId = createResponse.data?.task_id || createResponse.data?.task?.id || createResponse.data?.id;
+    if (!taskId) throw new Error(`视频任务创建失败: ${JSON.stringify(createResponse.data)}`);
+
+    const result = await pollTask(async () => {
+      const queryData = (await axios.get(`${baseUrl}/videos/${encodeURIComponent(taskId)}`, { headers })).data;
+      logger("查询 MiniMax-H3 视频任务状态" + `${baseUrl}/videos/${taskId}`);
+      const task = queryData?.task || queryData;
+      const status = String(task?.status || "").toLowerCase();
+      logger(`MiniMax-H3 视频任务状态: ${status || "unknown"}`);
+      // logger("查询 MiniMax-H3 视频查询结果" + JSON.stringify(task));
+      if (["success", "completed", "succeeded"].includes(status)) return { completed: true, data: task?.download_url || task?.content?.url };
+      if (["failed", "cancelled", "expired"].includes(status)) return { completed: true, error: task?.error?.message || "视频生成失败" };
+      return { completed: false };
+    }, 5000, 60 * 60 * 1000);
+
+    if (result.error) throw new Error(result.error);
+    if (!result.data) throw new Error("视频任务完成，但未返回可用下载地址");
+    return result.data;
+  } catch (error) {
+    throw new Error(`MiniMax-H3 视频请求失败：${getErrorMessage(error)}`);
+  }
+};
+
 const requestMultipartVideoGeneration = async (
   baseUrl: string,
   apiKey: string,
@@ -440,6 +510,9 @@ const videoRequest = async (config: VideoConfig, model: VideoModel): Promise<str
   const headers = { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" };
   const references = config.referenceList ?? [];
 
+  if (model.modelName === "MiniMax-H3" || model.modelName === "minimax-h3") {
+    return requestMinimaxH3VideoGeneration(apiKey, config, model);
+  }
   if (model.modelName.startsWith("firefly-video-v2")) {
     return requestMultipartVideoGeneration(baseUrl, apiKey, config, model.modelName);
   }

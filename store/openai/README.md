@@ -15,29 +15,29 @@
 
 - CPA
 ```ts
-https://tf.4022543.xyz/store/openai/cpa.ts
+https://tf.kaipai.vip/store/openai/cpa.ts
 ```
 
 - AIClient-2-API
 ```ts
-https://tf.4022543.xyz/store/openai/ac2api.ts
+https://tf.kaipai.vip/store/openai/ac2api.ts
 ```
 - OpenAI API
 ```ts
-https://tf.4022543.xyz/store/openai/openai.ts
+https://tf.kaipai.vip/store/openai/openai.ts
 ```
 
 
 ## 更多供应商列表
 
-- 【首推】4022低价API：
-只需要在[4022中转站](https://api.4022543.xyz/register?aff=3Y0U)网站上注册一个账号即可使用全网的模型。
-支持免费使用，注册即送金额，充0.6💰=1🔪使用金额。
-模型全，配置易，一个 KEY 即可搞定全部。
-Nano banana 生图 最低低至 5 分钱。
+- 【稳定推荐】OpenNexAPI：
+最强组合模型组合，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts
+支持所有的模型接入，一个 key 搞定所有。
+只需要在[OpenNexAPI](https://api.opennex.top/register?aff=gYGC)网站上注册一个账号即可使用全网的模型。
+速度快，服务稳定，模型超全，配置易，一个 KEY 即可搞定全部。
 
 ```ts
-https://tf.4022543.xyz/store/4022/4022_best.ts  
+https://tf.kaipai.vip/store/opennex/opennex.ts  
 ```
 
 
@@ -45,8 +45,8 @@ https://tf.4022543.xyz/store/4022/4022_best.ts
 > 支持即梦官网账号的调用，老会员=免费5.0生图。seedance2.0 只要 45 积分。
 
 ```ts
-https://tf.4022543.xyz/store/jimeng/jimeng.ts
+https://tf.kaipai.vip/store/jimeng/jimeng.ts
 ```
 
 
-更多供应商在线浏览：[https://tf.4022543.xyz/](https://tf.4022543.xyz/)
+更多供应商在线浏览：[https://tf.kaipai.vip/](https://tf.kaipai.vip/)

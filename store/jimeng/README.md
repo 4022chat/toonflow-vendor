@@ -17,21 +17,22 @@
 
 
 ```ts
-https://tf.4022543.xyz/store/jimeng/jimeng.ts
+https://tf.kaipai.vip/store/jimeng/jimeng.ts
 ```
 
 
 ## 更多供应商列表
-【首推】4022低价API：
-只需要在[4022中转站](https://api.4022543.xyz/register?aff=3Y0U)网站上注册一个账号即可使用全网的模型。
-支持免费使用，注册即送金额，充0.6💰=1🔪使用金额。
-模型全，配置易，一个 KEY 即可搞定全部。
-Nano banana 生图 最低低至 5 分钱。
+
+- 【稳定推荐】OpenNexAPI：
+最强组合模型组合，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts
+支持所有的模型接入，一个 key 搞定所有。
+只需要在[OpenNexAPI](https://api.opennex.top/register?aff=gYGC)网站上注册一个账号即可使用全网的模型。
+速度快，服务稳定，模型超全，配置易，一个 KEY 即可搞定全部。
 
 
 ```ts
-https://tf.4022543.xyz/store/4022/4022_best.ts
+https://tf.kaipai.vip/store/opennex/opennex.ts
 ```
 
 
-更多供应商在线浏览：[https://tf.4022543.xyz/](https://tf.4022543.xyz/)
+更多供应商在线浏览：[https://tf.kaipai.vip/](https://tf.kaipai.vip/)

@@ -8,7 +8,7 @@ Toonflow 是一款 AI 短剧漫剧工具，能够利用 AI 技术将小说自动
 支持一键复制供应商文件 URL导入到 Toonflow 中。
 
 - 【内测尝鲜】OOPC API：
-只需要在[OOPC](https://www.oopc.top)网站上注册一个账号即可使用全网的模型。
+只需要在[OOPC](https://api.oopc.top)网站上注册一个账号即可使用全网的模型。
 支持免费试用，注册即送2🔪使用金额。可免费做50张gpt-image-2。
 模型全，配置易，一个 KEY 即可搞定全部。
 多渠道接入，稳定可靠。价格实惠！
@@ -17,21 +17,20 @@ Nano banana 生图 最低只要 1 毛钱。
 
 > 新站内测中，暂不开放注册，联系微信`jxppro`获取内测账号。
 
-- 【稳定推荐】4022低价API：
-只需要在[4022低价API](https://api.4022543.xyz/register?aff=3Y0U)网站上注册一个账号即可使用全网的模型。
-支持免费试用，注册即送金额，最低充0.6💰=1🔪使用金额。
-模型全，配置易，一个 KEY 即可搞定全部。
-gpt-image-2 生图 最低只要 1 分钱。
-Nano banana 生图 最低只要 1 毛钱。
+- 【稳定推荐】OpenNexAPI：
+最强组合模型组合，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts
+支持所有的模型接入，一个 key 搞定所有。
+只需要在[OpenNexAPI](https://api.opennex.top/register?aff=gYGC)网站上注册一个账号即可使用全网的模型。
+速度快，服务稳定，模型超全，配置易，一个 KEY 即可搞定全部。
 
 
 ## 供应商列表
 
 供应商文件储存在`/store`目录下。目前已经开发的供应商有：
 
-- [4022低价API](./store/4022)【稳定供应商】
+- [OpenNexAPI](./store/opennex)【稳定供应商】
 
-更多供应商在线浏览：[https://tf.4022543.xyz/](https://tf.4022543.xyz/)
+更多供应商在线浏览：[https://tf.kaipai.vip/](https://tf.kaipai.vip/)
 
 ## 相关推荐
 

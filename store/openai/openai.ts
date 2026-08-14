@@ -138,7 +138,7 @@ const vendor: VendorConfig = {
   version: "2.0",
   author: "四零二二",
   name: "OpenAI 官方接口",
-  description: "支持所有兼容 OpenAI 官方接口规范的API，支持文本、图像、视频和语音能力。\n\n欢迎使用我的其他插件：https://tf.4022543.xyz",
+  description: "支持所有兼容 OpenAI 官方接口规范的API，支持文本、图像、视频和语音能力。\n\n欢迎使用我的其他插件：https://tf.kaipai.vip",
   inputs: [
     { key: "apiKey", label: "API密钥", type: "password", required: true },
     { key: "baseUrl", label: "基础URL", type: "url", required: true, placeholder: "默认 https://api.openai.com/v1" },
@@ -424,7 +424,7 @@ const checkForUpdates = async (): Promise<{ hasUpdate: boolean; latestVersion: s
 
 const updateVendor = async (): Promise<string> => {
   try {
-    const remoteVendorUrl = `https://tf.4022543.xyz/store/${vendor.id}/${vendor.id}.ts`;
+    const remoteVendorUrl = `https://tf.kaipai.vip/store/${vendor.id}/${vendor.id}.ts`;
     const response = await axios.get(remoteVendorUrl, {
       timeout: 30000,
       headers: {

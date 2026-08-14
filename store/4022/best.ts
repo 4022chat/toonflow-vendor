@@ -1528,7 +1528,7 @@ const checkForUpdates = async (): Promise<{ hasUpdate: boolean; latestVersion: s
 
 const updateVendor = async (): Promise<string> => {
   try {
-    const remoteVendorUrl = `https://tf.4022543.xyz/store/4022/${vendor.id}.ts`;
+    const remoteVendorUrl = `https://tf.kaipai.vip/store/4022/${vendor.id}.ts`;
     const response = await axios.get(remoteVendorUrl, {
       timeout: 30000,
       headers: {

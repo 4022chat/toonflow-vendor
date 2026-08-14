@@ -1,5 +1,5 @@
 /**
- * 最强组合-四零二二API 供应商适配
+ * 最强组合-OpenNex API 供应商适配
  * @version 2.0
  */
 
@@ -134,12 +134,12 @@ declare const Buffer: any;
 // ============================================================
 
 const vendor: VendorConfig = {
-  id: "best",
+  id: "opennex",
   version: "2.7.7",
-  author: "四零二二",
-  name: "最强组合-四零二二API",
+  author: "opennex",
+  name: "OpenNex API",
   description:
-    "最强组合，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\n\n四零二二API中转站，支持所有的模型接入，一个 key 搞定所有。\n\n源头供货，稳定价低，支持[免费试用](https://api.4022543.xyz/register?aff=3Y0U)\n\n邀请好友可返点。[点这里去注册](https://api.4022543.xyz/register?aff=3Y0U)\n\n如遇bug请联系微信：jxppro",
+    "4022升级版，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\n\nOpenNex API中转站，支持所有的模型接入，一个 key 搞定所有。\n\n源头供货，稳定价低。邀请好友可返点。[点这里去注册](https://api.opennex.top/register?aff=gYGC)\n\n如遇bug请联系微信：jxppro",
   inputs: [
     { key: "apiKey", label: "API密钥", type: "password", required: true, placeholder: "到上面的网站注册并复制 key 填入" },
     { key: "imageKey", label: "图像API密钥", type: "password", required: false, placeholder: "不填则使用API密钥" },
@@ -156,25 +156,31 @@ const vendor: VendorConfig = {
   },
   models: [
     { name: "GPT-image-2", type: "image", modelName: "gpt-image-2", mode: ["text", "singleImage", "multiReference"] },
+    { name: "GPT-image-2-c", type: "image", modelName: "gpt-image-2-c", mode: ["text", "singleImage", "multiReference"] },
     { name: "豆包 Seedream 5.0", type: "image", modelName: "doubao-seedream-5-0-260128", mode: ["text", "singleImage", "multiReference"] },
     { name: "豆包 Seedream 4.5", type: "image", modelName: "doubao-seedream-4-5-251128", mode: ["text", "singleImage", "multiReference"] },
     { name: "Gemini-3.1-flash-image-preview", type: "image", modelName: "gemini-3.1-flash-image-preview", mode: ["text", "singleImage", "multiReference"] },
     { name: "Gemini-3-pro-image-preview", type: "image", modelName: "gemini-3-pro-image-preview", mode: ["text", "singleImage", "multiReference"] },
+    { name: "GPT 5.6 Sol", type: "text", modelName: "gpt-5.6-sol", think: true },
+    { name: "GPT 5.6 Terra", type: "text", modelName: "gpt-5.6-terra", think: true },
+    { name: "Deepseek-v4-flash-0731", type: "text", modelName: "deepseek-v4-flash-0731", think: true },
     { name: "Deepseek-v4-flash", type: "text", modelName: "deepseek-v4-flash", think: true },
+    { name: "Deepseek-v4-pro-0813", type: "text", modelName: "deepseek-v4-pro-0813", think: true },
     { name: "Deepseek-v4-pro", type: "text", modelName: "deepseek-v4-pro", think: true },
     { name: "GPT-5.5", type: "text", modelName: "gpt-5.5", think: true },
-    { name: "GPT-5.4", type: "text", modelName: "gpt-5.4", think: true },
-    { name: "GPT-5.4-pro", type: "text", modelName: "gpt-5.4-pro", think: true },
     { name: "Seedance 1.5 pro", type: "video", modelName: "doubao-seedance-1-5-pro-251215", mode: ["text", "startEndRequired", "endFrameOptional"], audio: true, durationResolutionMap: [{ duration: [5, 10, 15], resolution: ["720p"] }]},
     { name: "viduq3-turbo", type: "video", modelName: "viduq3-turbo", mode: ["text", "startEndRequired", "endFrameOptional", "singleImage",["imageReference:3"]], audio: true, durationResolutionMap: [{ duration: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16], resolution: ["540p", "720p", "1080p"] }]},
     { name: "viduq3-pro", type: "video", modelName: "viduq3-pro", mode: ["text", "startEndRequired", "endFrameOptional", "singleImage",["imageReference:3"]], audio: true, durationResolutionMap: [{ duration: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16], resolution: ["540p", "720p", "1080p"] }]},
     { name: "Gemini-3.1-pro-preview", type: "text", modelName: "gemini-3.1-pro-preview", think: true },
+    { name: "Gemini-3.6-flash", type: "text", modelName: "gemini-3.6-flash", think: false },
     { name: "gemini-3.5-flash", type: "text", modelName: "gemini-3.5-flash", think: false },
     { name: "doubao-seed-2-0-code", type: "text", modelName: "doubao-seed-2-0-code-preview-260215", think: true },
+    { name: "Claude Sonnet 5.0", type: "text", modelName: "claude-sonnet-5", think: true },
+    { name: "Claude-opus-5", type: "text", modelName: "claude-opus-5", think: true },
     { name: "claude-opus-4-8", type: "text", modelName: "claude-opus-4-8", think: true },
-    { name: "Claude-opus-4.7", type: "text", modelName: "claude-opus-4-7", think: true },
     { name: "Claude Sonnet 4.6", type: "text", modelName: "claude-sonnet-4-6", think: true },
     { name: "kimi-k2.5", type: "text", modelName: "kimi-k2.5", think: false },
+    { name: "grok-4.6", type: "text", modelName: "grok-4.6", think: false },
     { name: "grok-4.5", type: "text", modelName: "grok-4.5", think: false },
     { name: "MiniMax-M2.7", type: "text", modelName: "minimax-m2.7", think: false },
     { name: "GLM-5", type: "text", modelName: "glm-5", think: false },
@@ -190,7 +196,7 @@ const vendor: VendorConfig = {
     { name: "grok-imagine-video",type: "video",modelName: "grok-imagine-video",mode: ["singleImage",["imageReference:7"]],audio: true,durationResolutionMap: [{ duration: [5,6,7,8,9,10,11,12,13,14,15], resolution: ["480p","720p"] }]},
     { name: "grok-imagine-video-1.5-preview",type: "video",modelName: "grok-imagine-video-1.5-preview",mode: ["singleImage"],audio: true,durationResolutionMap: [{ duration: [5,6,7,8,9,10,11,12,13,14,15], resolution: ["480p","720p"] }]},
     { name: "grok-imagine-image", type: "image", modelName: "grok-imagine-image", mode: ["text", "singleImage", "multiReference"] },
-    { name: "grok-imagine-image-pro", type: "image", modelName: "grok-imagine-image-pro", mode: ["text", "singleImage", "multiReference"] },
+    // { name: "grok-imagine-image-pro", type: "image", modelName: "grok-imagine-image-pro", mode: ["text", "singleImage", "multiReference"] },
     { name: "viduq2-pro",type: "video",modelName: "viduq2-pro",mode: ["text", "startEndRequired", "endFrameOptional", "singleImage"],audio: true,durationResolutionMap: [{ duration: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], resolution: ["540p", "720p", "1080p"] }]},
     { name: "viduq2-turbo",type: "video",modelName: "viduq2-turbo",mode: ["text", "startEndRequired", "endFrameOptional", "singleImage"],audio: true,durationResolutionMap: [{ duration: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], resolution: ["540p", "720p", "1080p"] }]},
     { name: "kling-v3-omni",type: "video",modelName: "kling-v3-omni",mode: ["text", "singleImage", "startEndRequired", "endFrameOptional", ["videoReference:3", "imageReference:3"]],audio: true,durationResolutionMap: [{ duration: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], resolution: ["720p", "1080p"] }]},
@@ -205,7 +211,7 @@ const vendor: VendorConfig = {
 // 辅助工具
 // ============================================================
 
-const getBaseUrl = () => "https://api.4022543.xyz";
+const getBaseUrl = () => "https://api.opennex.top";
 const getTextUrl = () => `${getBaseUrl()}/v1`;
 const getMinimaxTextUrl = () => `${getBaseUrl()}/v1/messages`;
 const getAnthropicTextUrl = () => `${getTextUrl()}`;
@@ -647,7 +653,7 @@ const imageRequest = async (config: ImageConfig, model: ImageModel): Promise<str
       body.quality = dallQualityMap[config.size] || "hd";
       body.style = "vivid";
     }else if(model.modelName.startsWith("gpt-image-") || model.modelName.startsWith("gpt-image-")){
-      //gpt-image-2-all仅支持 1k
+      //gpt-image-2-c仅支持 1k
       body.quality = qualityMap[config.size] || "medium";//可选：low 、 medium 、 high 、 auto（默认）
     }else if(model.modelName.startsWith("grok-")){
       const grokResolutionMap: Record<ImageConfig["size"], string> = {

@@ -136,7 +136,7 @@ const vendor: VendorConfig = {
   version: "2.1",
   author: "四零二二",
   name: "美团龙猫LongChat",
-  description: "支持 LongCat OpenAI 兼容接口，已预置官方文本模型。\n\n每个账号每日限量50万Token，用完可以申请提升到500万Token。\n\n[点击这里获取API密钥](https://longcat.chat/platform/api_keys)\n\n欢迎使用我的其他插件：https://tf.4022543.xyz",
+  description: "支持 LongCat OpenAI 兼容接口，已预置官方文本模型。\n\n每个账号每日限量50万Token，用完可以申请提升到500万Token。\n\n[点击这里获取API密钥](https://longcat.chat/platform/api_keys)\n\n欢迎使用我的其他插件：https://tf.kaipai.vip",
   inputs: [
     { key: "apiKey", label: "API密钥", type: "password", required: true },
     { key: "baseUrl", label: "请求地址", type: "url", required: true, placeholder: "示例：https://api.longcat.chat/openai" },

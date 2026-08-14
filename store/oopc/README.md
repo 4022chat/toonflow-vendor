@@ -13,12 +13,12 @@ Nano banana 生图 最低只要 1 毛钱。
 ## 供应商导入
 
 ```ts
-https://tf.4022543.xyz/store/oopc/oopc.ts
+https://tf.kaipai.vip/store/oopc/oopc.ts
 ```
 
 ---
 
-更多供应商在线浏览：[https://tf.4022543.xyz/](https://tf.4022543.xyz/)
+更多供应商在线浏览：[https://tf.kaipai.vip/](https://tf.kaipai.vip/)
 
 ## 更新日志
 
