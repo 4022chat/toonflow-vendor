@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-14T02:22:49.467Z",
+    "generatedAt": "2026-08-14T02:30:02.429Z",
     "totalFiles": 4,
     "validVendors": 4,
     "invalidVendors": 0,
@@ -897,8 +897,8 @@
       }
     },
     {
-      "file": "minimax/minimax.ts",
-      "folder": "minimax",
+      "file": "minimax-h3/minimax-h3.ts",
+      "folder": "minimax-h3",
       "hasVendorConfig": true,
       "isRecommended": false,
       "websiteUrl": "https://platform.minimaxi.com/console/access",
