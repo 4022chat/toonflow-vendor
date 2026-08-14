@@ -1,12 +1,16 @@
 # 使用说明
 
-- 【内测尝鲜】OOPC API：
-只需要在[OOPC](https://www.oopc.top)网站上注册一个账号即可使用全网的模型。
-支持免费试用，注册即送2🔪使用金额。可免费做50张gpt-image-2。
-模型全，配置易，一个 KEY 即可搞定全部。
-多渠道接入，稳定可靠。价格实惠！
-gpt-image-2 生图 最低只要 4 分钱。
-Nano banana 生图 最低只要 1 毛钱。
+## OOPC API
+
+- 覆盖多类模型，一个 Key 即可接入
+- 注册赠送 `2` 🔪试用额度，可免费生成 `50` 张 GPT Image 2 图片
+- 多渠道接入，价格实惠
+- GPT Image 2 生图低至 `0.04` 元/张
+- Nano Banana 生图低至 `0.1` 元/张
+
+前往 [OOPC API](https://api.oopc.top) 注册账号后即可使用。
+
+> **提示**：暂不对外开放注册；可联系微信 `jxppro` 获取内测账号。
 
 交流 QQ 群号：[383888651](https://qm.qq.com/q/ybHgJDm6mQ)
 
@@ -18,7 +22,7 @@ https://tf.kaipai.vip/store/oopc/oopc.ts
 
 ---
 
-更多供应商在线浏览：[https://tf.kaipai.vip/](https://tf.kaipai.vip/)
+更多供应商在线浏览：[https://tf.kaipai.vip](https://tf.kaipai.vip)
 
 ## 更新日志
 

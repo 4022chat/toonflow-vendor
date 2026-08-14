@@ -30,11 +30,13 @@ https://tf.kaipai.vip/store/openai/openai.ts
 
 ## 更多供应商列表
 
-- 【稳定推荐】OpenNexAPI：
-最强组合模型组合，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts
-支持所有的模型接入，一个 key 搞定所有。
-只需要在[OpenNexAPI](https://api.opennex.top/register?aff=gYGC)网站上注册一个账号即可使用全网的模型。
-速度快，服务稳定，模型超全，配置易，一个 KEY 即可搞定全部。
+### 稳定推荐：OpenNexAPI
+
+- 覆盖模型：Gemini、ChatGPT、Claude、Nano Banana、Seedance、Index TTS 等
+- 一个 Key 即可接入多类模型
+- 速度快、服务稳定、配置简单
+
+前往 [OpenNexAPI](https://api.opennex.top/register?aff=gYGC) 注册账号后即可使用。
 
 ```ts
 https://tf.kaipai.vip/store/opennex/opennex.ts  
