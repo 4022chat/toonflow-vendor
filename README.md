@@ -23,8 +23,8 @@
 - 覆盖多类模型，一个 Key 即可接入
 - 注册赠送 `2` 🔪试用额度，可免费生成 `50` 张 GPT Image 2 图片
 - 多渠道接入，价格实惠
-- GPT Image 2 生图低至 `0.04` 元/张
-- Nano Banana 生图低至 `0.1` 元/张
+- GPT Image 2 生图低至 `0.04`/张
+- Nano Banana 生图低至 `0.1`/张
 
 前往 [OOPC API](https://api.oopc.top) 注册账号后即可使用。
 

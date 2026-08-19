@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-14T02:44:20.175Z",
+    "generatedAt": "2026-08-19T12:50:30.361Z",
     "totalFiles": 4,
     "validVendors": 4,
     "invalidVendors": 0,
@@ -228,14 +228,14 @@
             "think": true
           },
           {
-            "name": "Gemini-3.6-flash",
-            "modelName": "gemini-3.6-flash",
+            "name": "Gemini-3.7-flash",
+            "modelName": "gemini-3.7-flash",
             "type": "text",
             "think": false
           },
           {
-            "name": "gemini-3.5-flash",
-            "modelName": "gemini-3.5-flash",
+            "name": "Gemini-3.6-flash",
+            "modelName": "gemini-3.6-flash",
             "type": "text",
             "think": false
           },
@@ -980,6 +980,26 @@
       "description": "聚集 AI漫剧创作爱好者，分享漫剧行业动态",
       "joinUrl": "https://qm.qq.com/q/Q6PkVHd56e",
       "badge": "热"
+    }
+  ],
+  "toolWebsites": [
+    {
+      "name": "生图工作台",
+      "description": "适合漫剧改图，做封面，角色人物捏脸造型, 支持 gpt-image-2 和 nano banana生图",
+      "websiteUrl": "https://img.opennex.top",
+      "badge": "推荐"
+    },
+    {
+      "name": "OPC 工具导航",
+      "description": "探索 AI 创作与开发相关工具",
+      "websiteUrl": "https://www.oopc.top",
+      "badge": "推荐"
+    },
+    {
+      "name": "开拍漫剧导航",
+      "description": "发现 AI 漫剧创作相关资源与服务",
+      "websiteUrl": "https://www.kaipai.vip",
+      "badge": "推荐"
     }
   ]
 }
