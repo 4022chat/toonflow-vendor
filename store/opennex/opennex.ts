@@ -135,7 +135,7 @@ declare const Buffer: any;
 
 const vendor: VendorConfig = {
   id: "opennex",
-  version: "2.7.7",
+  version: "2.7.9",
   author: "opennex",
   name: "OpenNex API",
   description:
@@ -155,6 +155,8 @@ const vendor: VendorConfig = {
     ttsKey: "",
   },
   models: [
+    { name: "Seedance 2.0", type: "video", modelName: "doubao-seedance-2-0-260128", mode: ["text", "startEndRequired", "endFrameOptional",["imageReference:9","videoReference:3","audioReference:3"]], audio: true, durationResolutionMap: [{ duration: [5, 10, 15], resolution: ["720p"] }]},
+    { name: "Seedance 2.0 Fast", type: "video", modelName: "doubao-seedance-2-0-fast-260128", mode: ["text", "startEndRequired", "endFrameOptional",["imageReference:9","videoReference:3","audioReference:3"]], audio: true, durationResolutionMap: [{ duration: [5, 10, 15], resolution: ["720p"] }]},
     { name: "GPT-image-2", type: "image", modelName: "gpt-image-2", mode: ["text", "singleImage", "multiReference"] },
     { name: "GPT-image-2-c", type: "image", modelName: "gpt-image-2-c", mode: ["text", "singleImage", "multiReference"] },
     { name: "豆包 Seedream 5.0", type: "image", modelName: "doubao-seedream-5-0-260128", mode: ["text", "singleImage", "multiReference"] },
@@ -1224,8 +1226,11 @@ const klingVideoRequest = async (config: VideoConfig, model: VideoModel): Promis
 
 // ==================== 豆包视频生成 ====================
 const doubaoVideoRequest = async (config: VideoConfig, model: VideoModel): Promise<string> => {
-  // 从 referenceList 提取图片
-  const imageRefs = (config.referenceList ?? []).filter((r) => r.type === "image").map((r) => r.base64);
+  // 从 referenceList 提取图片、视频和音频
+  const references = config.referenceList ?? [];
+  const imageRefs = references.filter((r) => r.type === "image").map((r) => r.base64);
+  const videoRefs = references.filter((r) => r.type === "video").map((r) => r.base64);
+  const audioRefs = references.filter((r) => r.type === "audio").map((r) => r.base64);
 
   // 构建参数字符串（追加到提示词后面）
   const params: string[] = [];
@@ -1284,6 +1289,21 @@ const doubaoVideoRequest = async (config: VideoConfig, model: VideoModel): Promi
         });
       }
     }
+  }
+
+  for (const videoRef of videoRefs) {
+    content.push({
+      type: "video_url",
+      video_url: { url: videoRef },
+      role: "reference_video",
+    });
+  }
+  for (const audioRef of audioRefs) {
+    content.push({
+      type: "audio_url",
+      audio_url: { url: audioRef },
+      role: "reference_audio",
+    });
   }
 
   const createBody: Record<string, any> = {
@@ -1479,7 +1499,7 @@ const videoRequest = async (config: VideoConfig, model: VideoModel): Promise<str
     return viduVideoRequest(config, model);
   } else if (modelName.startsWith("kling")) {
     return klingVideoRequest(config, model);
-  } else if (modelName.startsWith("doubao-seedance-1")) {
+  } else if (modelName.startsWith("doubao-seedance-")) {
     return doubaoVideoRequest(config, model);
   } else if (modelName.startsWith("happyhorse")) {
     return happyhorseVideoRequest(config, model);

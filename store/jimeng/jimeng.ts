@@ -66,6 +66,7 @@ type ReferenceList =
 
 interface ImageConfig {
   prompt: string;
+  negativePrompt?: string;
   referenceList?: Extract<ReferenceList, { type: "image" }>[];
   size: "1K" | "2K" | "4K";
   aspectRatio: `${number}:${number}`;
@@ -90,33 +91,13 @@ interface TTSConfig {
   referenceList?: Extract<ReferenceList, { type: "audio" }>[];
 }
 
-interface PollResult {
-  completed: boolean;
-  data?: string;
-  error?: string;
-}
-
 // ============================================================
 // 全局声明
 // ============================================================
 
 declare const axios: any;
 declare const logger: (msg: string) => void;
-declare const jsonwebtoken: any;
-declare const zipImage: (base64: string, size: number) => Promise<string>;
-declare const zipImageResolution: (base64: string, w: number, h: number) => Promise<string>;
-declare const mergeImages: (base64Arr: string[], maxSize?: string) => Promise<string>;
 declare const urlToBase64: (url: string) => Promise<string>;
-declare const pollTask: (fn: () => Promise<PollResult>, interval?: number, timeout?: number) => Promise<PollResult>;
-declare const createOpenAI: any;
-declare const createDeepSeek: any;
-declare const createZhipu: any;
-declare const createQwen: any;
-declare const createAnthropic: any;
-declare const createOpenAICompatible: any;
-declare const createXai: any;
-declare const createMinimax: any;
-declare const createGoogleGenerativeAI: any;
 declare const exports: {
   vendor: VendorConfig;
   textRequest: (m: TextModel, t: boolean, tl: 0 | 1 | 2 | 3) => any;
@@ -139,59 +120,85 @@ const vendor: VendorConfig = {
   author: "四零二二",
   name: "JM-API",
   description:
-    "兼容JM2API项目的接口，支持文生图、图生图、普通视频与 SD2.0 多模态视频生成。\n\n 使用该方案，您需要先拥有一个JM的API服务，才能使用该适配器。\n\n 可以在github上搜索：例如：[jimeng-free-api-all](https://github.com/wwwzhouhui/jimeng-free-api-all)\n\n⚠️**警告：此类项目有违官方使用规则，该方案有可能会被封号，请慎重！！！建议使用官方接口。**\n\n更多供应商：https://tf.kaipai.vip/",
+    "兼容JM2API项目的接口，支持文生图、图生图、普通视频与 SD2.0 多模态视频生成。\n\n 使用该方案，您需要先拥有一个JM的API服务，才能使用该适配器。\n\n 可以在github上搜索：例如：[jimeng-free-api-all](https://github.com/zhizinan1997/jimeng-free-api-all)\n\n⚠️**警告：此类项目有违官方使用规则，该方案有可能会被封号，请慎重！！！建议使用官方接口。**\n\n更多供应商：https://tf.kaipai.vip/",
   inputs: [
-    { key: "apiKey", label: "SessionID / API密钥", type: "password", required: true },
+    { key: "apiKey", label: "API 密钥", type: "password", required: true },
     { key: "baseUrl", label: "基础URL", type: "url", required: true, placeholder: "例如 http://127.0.0.1:8000" },
     { key: "image", label: "图片接口", type: "url", required: false, placeholder: "默认为 {baseUrl}/v1/images/generations" },
-    { key: "video", label: "视频接口", type: "url", required: false, placeholder: "默认为 {baseUrl}/v1/videos/generations/async" },
-    { key: "videoQuery", label: "通用视频任务查询", type: "url", required: false, placeholder: "默认为 {baseUrl}/v1/videos/generations/async/{id}" },
+    { key: "video", label: "视频接口", type: "url", required: false, placeholder: "默认为 {baseUrl}/v1/videos/generations" },
   ],
   inputValues: {
     apiKey: "",
     baseUrl: "http://127.0.0.1:8000",
     image: "",
     video: "",
-    videoQuery: "",
   },
   models: [
     {
-      name: "jm 5.0",
+      name: "图片 5.0 Pro",
       type: "image",
-      modelName: "jimeng-5.0",
+      modelName: "jimeng-image-5.0-pro",
       mode: ["text", "singleImage", "multiReference"],
       associationSkills: "",
     },
     {
-      name: "jm 4.6",
+      name: "图片 5.0 Lite",
       type: "image",
-      modelName: "jimeng-4.6",
+      modelName: "jimeng-image-5.0-lite",
       mode: ["text", "singleImage", "multiReference"],
       associationSkills: "",
     },
     {
-      name: "jm 4.5",
+      name: "图片 4.7",
       type: "image",
-      modelName: "jimeng-4.5",
+      modelName: "jimeng-image-4.7",
       mode: ["text", "singleImage", "multiReference"],
       associationSkills: "",
     },
     {
-      name: "jm 4.1",
+      name: "图片 4.6",
       type: "image",
-      modelName: "jimeng-4.1",
+      modelName: "jimeng-image-4.6",
       mode: ["text", "singleImage", "multiReference"],
       associationSkills: "",
     },
     {
-      name: "jm 4.0",
+      name: "图片 4.5",
       type: "image",
-      modelName: "jimeng-4.0",
+      modelName: "jimeng-image-4.5",
       mode: ["text", "singleImage", "multiReference"],
       associationSkills: "",
     },
     {
-      name: "SD 2.0",
+      name: "图片 4.1",
+      type: "image",
+      modelName: "jimeng-image-4.1",
+      mode: ["text", "singleImage", "multiReference"],
+      associationSkills: "",
+    },
+    {
+      name: "图片 4.0",
+      type: "image",
+      modelName: "jimeng-image-4.0",
+      mode: ["text", "singleImage", "multiReference"],
+      associationSkills: "",
+    },
+    {
+      name: "图片 3.1",
+      type: "image",
+      modelName: "jimeng-image-3.1",
+      mode: ["text", "singleImage"],
+      associationSkills: "",
+    },
+    {
+      name: "图片 3.0",
+      type: "image",
+      modelName: "jimeng-image-3.0",
+      mode: ["text", "singleImage"],
+      associationSkills: "",
+    },
+    {
+      name: "Seedance 2.0",
       type: "video",
       modelName: "jimeng-video-seedance-2.0",
       mode: [
@@ -206,13 +213,13 @@ const vendor: VendorConfig = {
       audio: true,
       durationResolutionMap: [
         {
-          duration: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-          resolution: ["720p", "1080p"],
+          duration: [10],
+          resolution: ["720p"],
         },
       ],
     },
     {
-      name: "SD 2.0 Fast",
+      name: "Seedance 2.0 Fast VIP",
       modelName: "jimeng-video-seedance-2.0-fast",
       type: "video",
       mode: [
@@ -227,15 +234,15 @@ const vendor: VendorConfig = {
       audio: true,
       durationResolutionMap: [
         {
-          duration: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-          resolution: ["720p", "1080p"],
+          duration: [10],
+          resolution: ["720p"],
         },
       ],
     },
     {
-      name: "SD 2.0 VIP",
+      name: "Seedance 2.0 VIP",
       type: "video",
-      modelName: "jimeng-video-seedance-2.0-vip",
+      modelName: "jimeng-video-seedance-2.0-pro",
       mode: [
         "singleImage",
         "startEndRequired",
@@ -248,42 +255,77 @@ const vendor: VendorConfig = {
       audio: true,
       durationResolutionMap: [
         {
-          duration: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-          resolution: ["720p", "1080p"],
+          duration: [10],
+          resolution: ["720p", "1080p", "4k"],
         },
       ],
     },
     {
-      name: "SD 2.0 Fast VIP",
-      modelName: "jimeng-video-seedance-2.0-fast-vip",
+      name: "Seedance 2.5",
+      modelName: "jimeng-video-seedance-2.5",
       type: "video",
-      mode: [
-        "singleImage",
-        "startEndRequired",
-        "endFrameOptional",
-        "startFrameOptional",
-        "text",
-        ["videoReference:9", "imageReference:9", "audioReference:3"],
-      ],
-      associationSkills: "",
-      audio: true,
-      durationResolutionMap: [
-        {
-          duration: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-          resolution: ["720p", "1080p"],
-        },
-      ],
-    },
-    {
-      name: "SD 1.5",
-      modelName: "jimeng-video-3.5-pro",
-      type: "video",
-      mode: ["text", "startEndRequired"],
+      mode: ["text", "singleImage"],
       associationSkills: "",
       audio: false,
       durationResolutionMap: [
         {
-          duration: [5, 10, 12],
+          duration: [10],
+          resolution: ["720p"],
+        },
+      ],
+    },
+    {
+      name: "Seedance 2.0 Mini",
+      modelName: "jimeng-video-seedance-2.0-mini",
+      type: "video",
+      mode: ["text", "singleImage"],
+      associationSkills: "",
+      audio: false,
+      durationResolutionMap: [
+        {
+          duration: [10],
+          resolution: ["720p"],
+        },
+      ],
+    },
+    {
+      name: "Seedance 1.5 Pro",
+      modelName: "jimeng-video-seedance-1.5-pro",
+      type: "video",
+      mode: ["text", "singleImage"],
+      associationSkills: "",
+      audio: false,
+      durationResolutionMap: [
+        {
+          duration: [10],
+          resolution: ["720p"],
+        },
+      ],
+    },
+    {
+      name: "Seedance 1.0",
+      modelName: "jimeng-video-3.0-pro",
+      type: "video",
+      mode: ["text", "singleImage"],
+      associationSkills: "",
+      audio: false,
+      durationResolutionMap: [
+        {
+          duration: [10],
+          resolution: ["1080p"],
+        },
+      ],
+    },
+    {
+      name: "Seedance 1.0 Fast",
+      modelName: "jimeng-video-3.0-fast",
+      type: "video",
+      mode: ["text", "singleImage"],
+      associationSkills: "",
+      audio: false,
+      durationResolutionMap: [
+        {
+          duration: [10],
           resolution: ["720p", "1080p"],
         },
       ],
@@ -297,12 +339,24 @@ const vendor: VendorConfig = {
 
 const getBaseUrl = () => vendor.inputValues.baseUrl.replace(/\/+$/, "");
 const getImageUrl = () => vendor.inputValues.image || `${getBaseUrl()}/v1/images/generations`;
-const getVideoUrl = () => vendor.inputValues.video || `${getBaseUrl()}/v1/videos/generations/async`;
-const getVideoQueryUrl = () => vendor.inputValues.videoQuery || `${getBaseUrl()}/v1/videos/generations/async/{id}`;
+const getVideoUrl = () => vendor.inputValues.video || `${getBaseUrl()}/v1/videos/generations`;
+
+const imageResolutions: Record<string, string[]> = {
+  "jimeng-image-5.0-pro": ["4k", "2k", "1.5k"],
+  "jimeng-image-5.0-lite": ["4k", "2k"],
+  "jimeng-image-4.7": ["4k", "2k"],
+  "jimeng-image-4.6": ["4k", "2k"],
+  "jimeng-image-4.5": ["4k", "2k"],
+  "jimeng-image-4.1": ["4k", "2k"],
+  "jimeng-image-4.0": ["4k", "2k"],
+  "jimeng-image-3.1": ["2k", "1k"],
+  "jimeng-image-3.0": ["2k", "1k"],
+  "jimeng-image-2.0-pro": ["1k"],
+};
 
 const getAuthorization = () => {
   if (!vendor.inputValues.apiKey) throw new Error("未填写 SessionID / API密钥");
-  return vendor.inputValues.apiKey.startsWith("Bearer ") ? vendor.inputValues.apiKey : `Bearer ${vendor.inputValues.apiKey}`;
+  return /^Bearer\s+/i.test(vendor.inputValues.apiKey) ? vendor.inputValues.apiKey : `Bearer ${vendor.inputValues.apiKey}`;
 };
 
 const normalizeBase64 = (completeBase64: string) => completeBase64.replace(/^data:[^;]+;base64,/, "");
@@ -339,20 +393,25 @@ const appendBase64Files = (formData: any, fieldName: string, files: string[], fi
   });
 };
 
-const extractResult = (data: any): string | undefined => {
+const extractResult = (data: any): { value: string; isUrl: boolean } | undefined => {
   const candidates = [
-    data?.data?.[0]?.url,
-    data?.data?.[0]?.b64_json,
-    data?.data?.[0]?.video_url,
-    data?.data?.url,
-    data?.data?.b64_json,
-    data?.data?.result_url,
-    data?.url,
-    data?.b64_json,
-    data?.result_url,
-    data?.video_url,
+    { value: data?.data?.[0]?.url, isUrl: true },
+    { value: data?.data?.[0]?.b64_json, isUrl: false },
+    { value: data?.data?.[0]?.video_url, isUrl: true },
+    { value: data?.data?.url, isUrl: true },
+    { value: data?.data?.b64_json, isUrl: false },
+    { value: data?.data?.result_url, isUrl: true },
+    { value: data?.url, isUrl: true },
+    { value: data?.b64_json, isUrl: false },
+    { value: data?.result_url, isUrl: true },
+    { value: data?.video_url, isUrl: true },
   ];
-  return candidates.find((item) => typeof item === "string" && item.length > 0);
+  return candidates.find((candidate) => typeof candidate.value === "string" && candidate.value.length > 0);
+};
+
+const toBase64Result = async (result: { value: string; isUrl: boolean }, mimeType: string) => {
+  if (result.isUrl) return urlToBase64(result.value);
+  return result.value.startsWith("data:") ? result.value : `data:${mimeType};base64,${result.value}`;
 };
 
 const parseJsonResponse = async (response: any) => {
@@ -372,171 +431,120 @@ const textRequest = (model: TextModel, think: boolean, thinkLevel: 0 | 1 | 2 | 3
   throw new Error("不支持文本请求，可以更换其他供应商");
 };
 
-const imageRequest = async (config: ImageConfig, model: ImageModel): Promise<string> => {
-  const headers = { Authorization: getAuthorization() };
-  const imageRefs = (config.referenceList ?? []).map((r) => r.base64);
-  const hasImages = imageRefs.length > 0;
+const getImageResolution = (modelName: string, size: ImageConfig["size"]) => {
+  const requestedResolution = size.toLowerCase();
+  const supportedResolutions = imageResolutions[modelName] || ["1k"];
 
-  let resolution = config.size.toLowerCase();
-  if (resolution === "1k") {
-    resolution = "2k";
+  if (modelName === "jimeng-image-5.0-pro" && requestedResolution === "1k") {
+    return "1.5k";
   }
+  if (requestedResolution === "1k" && supportedResolutions.includes("2k")) {
+    return "2k";
+  }
+  if (supportedResolutions.includes(requestedResolution)) return requestedResolution;
+  if (supportedResolutions.includes("2k")) return "2k";
+  return "1k";
+};
 
-  if (hasImages) {
-    const images = imageRefs.map((base64) => {
-      const normalized = normalizeBase64(base64);
-      const meta = getFileMeta(base64, "image");
-      return `data:${meta.mimeType};base64,${normalized}`;
-    });
+const imageRequest = async (config: ImageConfig, model: ImageModel): Promise<string> => {
+  const resolution = getImageResolution(model.modelName, config.size);
+  const authorization = getAuthorization();
+  const references = config.referenceList ?? [];
+  let response: any;
 
-    logger(`[imageRequest] 提交图生图任务，模型: ${model.modelName}`);
-    const response = await fetch(getImageUrl(), {
+  logger(`[imageRequest] 提交图片生成请求，模型: ${model.modelName}`);
+  if (references.length === 0) {
+    response = await fetch(getImageUrl(), {
       method: "POST",
-      headers: { ...headers, "Content-Type": "application/json" },
+      headers: { Authorization: authorization, "Content-Type": "application/json" },
       body: JSON.stringify({
         model: model.modelName,
         prompt: config.prompt,
+        negative_prompt: config.negativePrompt,
         ratio: config.aspectRatio,
         resolution,
         response_format: "url",
-        sample_strength: 0.5,
-        images,
       }),
     });
+  } else {
+    const formData = new FormData();
+    formData.append("model", model.modelName);
+    formData.append("prompt", config.prompt);
+    if (config.negativePrompt) formData.append("negative_prompt", config.negativePrompt);
+    formData.append("ratio", config.aspectRatio);
+    formData.append("resolution", resolution);
+    formData.append("response_format", "url");
+    appendBase64Files(formData, "image", [references[0].base64], "reference");
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`图片请求失败，状态码: ${response.status}, 错误信息: ${errorText}`);
+    response = await axios.post(getImageUrl(), formData, {
+      headers: { Authorization: authorization, ...formData.getHeaders?.() },
+      validateStatus: () => true,
+    });
+    if (response.status < 200 || response.status >= 300) {
+      throw new Error(`图片请求失败，状态码: ${response.status}, 错误信息: ${JSON.stringify(response.data)}`);
     }
-
-    const data = await parseJsonResponse(response);
-    const result = extractResult(data);
-    if (!result) throw new Error(`图片生成成功但未返回可用结果: ${JSON.stringify(data)}`);
-    return result;
+    const result = extractResult(response.data);
+    if (!result) throw new Error(`图片生成成功但未返回可用结果: ${JSON.stringify(response.data)}`);
+    return await toBase64Result(result, "image/png");
   }
-
-  logger(`[imageRequest] 提交文生图任务，模型: ${model.modelName}`);
-  const response = await fetch(getImageUrl(), {
-    method: "POST",
-    headers: { ...headers, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      model: model.modelName,
-      prompt: config.prompt,
-      ratio: config.aspectRatio,
-      resolution,
-      response_format: "url",
-    }),
-  });
 
   if (!response.ok) {
     const errorText = await response.text();
     throw new Error(`图片请求失败，状态码: ${response.status}, 错误信息: ${errorText}`);
   }
-
   const data = await parseJsonResponse(response);
   const result = extractResult(data);
   if (!result) throw new Error(`图片生成成功但未返回可用结果: ${JSON.stringify(data)}`);
-  return result;
+  return await toBase64Result(result, "image/png");
 };
 
 const videoRequest = async (config: VideoConfig, model: VideoModel): Promise<string> => {
-  const headers = { Authorization: getAuthorization() };
+  const authorization = getAuthorization();
+  const references = config.referenceList ?? [];
+  let data: any;
 
-  const imageRefs = (config.referenceList ?? []).filter((r) => r.type === "image").map((r) => r.base64);
-  const videoRefs = (config.referenceList ?? []).filter((r) => r.type === "video").map((r) => r.base64);
-  const audioRefs = (config.referenceList ?? []).filter((r) => r.type === "audio").map((r) => r.base64);
-  const allRefs = [...imageRefs, ...videoRefs, ...audioRefs];
-  const hasFiles = allRefs.length > 0;
-
-  let taskId: string;
-
-  if (hasFiles) {
-    const formData = new FormData();
-    formData.append("model", model.modelName);
-    if (config.prompt) formData.append("prompt", config.prompt);
-    formData.append("ratio", config.aspectRatio);
-    formData.append("resolution", config.resolution);
-    formData.append("duration", String(config.duration));
-    appendBase64Files(formData, "files", allRefs, "material");
-
-    logger(`[videoRequest] 提交视频任务（含参考文件），模型: ${model.modelName}`);
-    const response = await axios.post(getVideoUrl(), formData, {
-      headers: { ...headers, ...(typeof formData.getHeaders === "function" ? formData.getHeaders() : {}) },
-    });
-    const data = response.data;
-    taskId = data?.task_id ?? data?.taskId ?? data?.id;
-    if (!taskId) throw new Error(`视频任务提交失败: ${JSON.stringify(data)}`);
-  } else {
-    logger(`[videoRequest] 提交文本生视频任务，模型: ${model.modelName}`);
+  logger(`[videoRequest] 提交视频生成请求，模型: ${model.modelName}`);
+  if (references.length === 0) {
     const response = await fetch(getVideoUrl(), {
       method: "POST",
-      headers: { ...headers, "Content-Type": "application/json" },
+      headers: { Authorization: authorization, "Content-Type": "application/json" },
       body: JSON.stringify({
         model: model.modelName,
         prompt: config.prompt,
         ratio: config.aspectRatio,
         resolution: config.resolution,
         duration: config.duration,
+        response_format: "url",
       }),
     });
-
     if (!response.ok) {
       const errorText = await response.text();
       throw new Error(`视频请求失败，状态码: ${response.status}, 错误信息: ${errorText}`);
     }
+    data = await parseJsonResponse(response);
+  } else {
+    const formData = new FormData();
+    formData.append("model", model.modelName);
+    formData.append("prompt", config.prompt);
+    formData.append("ratio", config.aspectRatio);
+    formData.append("resolution", config.resolution);
+    formData.append("duration", String(config.duration));
+    formData.append("response_format", "url");
+    appendBase64Files(formData, "file", references.map((reference) => reference.base64), "reference");
 
-    const data = await parseJsonResponse(response);
-    taskId = data?.task_id ?? data?.taskId ?? data?.id;
-    if (!taskId) throw new Error(`视频任务提交失败: ${JSON.stringify(data)}`);
+    const response = await axios.post(getVideoUrl(), formData, {
+      headers: { Authorization: authorization, ...formData.getHeaders?.() },
+      validateStatus: () => true,
+    });
+    if (response.status < 200 || response.status >= 300) {
+      throw new Error(`视频请求失败，状态码: ${response.status}, 错误信息: ${JSON.stringify(response.data)}`);
+    }
+    data = response.data;
   }
 
-  logger(`[videoRequest] 任务ID: ${taskId}，开始轮询`);
-  const queryUrl = getVideoQueryUrl();
-  const res = await pollTask(async () => {
-    const queryResponse = await fetch(queryUrl.replace("{id}", taskId), {
-      method: "GET",
-      headers: { ...headers, "Content-Type": "application/json" },
-    });
-
-    if (!queryResponse.ok) {
-      const errorText = await queryResponse.text();
-      throw new Error(`查询任务失败，状态码: ${queryResponse.status}, 错误信息: ${errorText}`);
-    }
-
-    const queryData = await parseJsonResponse(queryResponse);
-    const status = queryData?.status;
-
-    switch (status) {
-      case "succeeded":
-      case "completed":
-      case "SUCCESS":
-      case "success": {
-        const result = extractResult(queryData);
-        if (result) {
-          return { completed: true, data: result };
-        }
-        const url = queryData?.data?.[0]?.url ?? queryData?.data?.url ?? queryData?.result_url;
-        if (url) {
-          return { completed: true, data: url };
-        }
-        return { completed: false };
-      }
-      case "failed":
-      case "FAILURE":
-      case "failure": {
-        const errorMsg = queryData?.error ?? queryData?.data?.error ?? queryData?.message ?? "视频生成失败";
-        return { completed: true, error: errorMsg };
-      }
-      case "processing":
-      case "pending":
-      default:
-        return { completed: false };
-    }
-  });
-
-  if (res.error) throw new Error(res.error);
-  if (!res.data) throw new Error("视频生成超时或返回结果为空");
-  return res.data;
+  const result = extractResult(data);
+  if (!result) throw new Error(`视频生成成功但未返回可用结果: ${JSON.stringify(data)}`);
+  return await toBase64Result(result, "video/mp4");
 };
 
 const ttsRequest = async (config: TTSConfig, model: TTSModel): Promise<string> => {

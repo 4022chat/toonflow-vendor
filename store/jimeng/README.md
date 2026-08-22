@@ -1,11 +1,11 @@
 # 使用说明
 
-使用该供应商，需要提前部署 [Jimeng Free API All](https://github.com/wwwzhouhui/jimeng-free-api-all) 项目。
+使用该供应商，需要提前部署 [Jimeng Free API All](https://github.com/zhizinan1997/jimeng-free-api-all) 项目。
 
 
 ## API KEY
 
-根据 [Jimeng Free API All](https://github.com/wwwzhouhui/jimeng-free-api-all) 项目的使用说明，获取sessionid作为 API KEY。
+根据 [Jimeng Free API All](https://github.com/zhizinan1997/jimeng-free-api-all) 项目的使用说明，设置 API KEY。
 
 
 ## 供应商一键导入
@@ -13,7 +13,7 @@
 支持一键复制供应商文件 URL导入到 Toonflow 中。
 
 - jimeng2api：
-> 支持即梦官网账号的调用，老会员=免费5.0生图。seedance2.0 只要 45 积分。
+> 支持即梦官网账号的调用，老会员=免费5.0生图。seedance2.0 最低只要 45 积分。
 
 
 ```ts

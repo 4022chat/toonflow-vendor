@@ -298,6 +298,24 @@
       gap: 16px;
     }
 
+    .vendors-toggle {
+      display: block;
+      margin: 20px auto 0;
+      padding: 8px 16px;
+      border: 1px solid hsl(var(--border));
+      border-radius: 6px;
+      background: hsl(var(--background));
+      color: hsl(var(--foreground));
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .vendors-toggle:hover {
+      border-color: hsl(var(--ring));
+      background: hsl(var(--secondary));
+    }
+
     .vendor-card {
       background: hsl(var(--card));
       border: 1px solid hsl(var(--border));
@@ -1034,65 +1052,65 @@
     }
 
     .tutorial-section {
-      margin-top: 32px;
+      margin-top: 24px;
       background: hsl(var(--card));
       border: 1px solid hsl(var(--border));
-      border-radius: 12px;
-      padding: 24px;
+      border-radius: 8px;
+      padding: 16px;
     }
 
     .tutorial-title {
-      font-size: 18px;
+      font-size: 15px;
       font-weight: 600;
       color: hsl(var(--foreground));
-      margin-bottom: 20px;
+      margin-bottom: 12px;
     }
 
     .tutorial-steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      gap: 8px;
     }
 
     .tutorial-step {
       position: relative;
-      padding: 20px 16px 16px;
+      padding: 12px;
       border: 1px solid hsl(var(--border));
-      border-radius: 10px;
+      border-radius: 6px;
       background: hsl(var(--background));
       transition: border-color 0.15s, box-shadow 0.15s;
     }
 
     .tutorial-step:hover {
       border-color: hsl(var(--primary));
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     .tutorial-step-header {
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
+      gap: 6px;
+      margin-bottom: 6px;
     }
 
     .tutorial-step-badge {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       background: hsl(var(--primary));
       color: hsl(var(--primary-foreground));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       flex-shrink: 0;
     }
 
     .tutorial-step-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
       background: hsl(var(--secondary));
       color: hsl(var(--secondary-foreground));
       display: flex;
@@ -1102,21 +1120,21 @@
     }
 
     .tutorial-step-icon svg {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
     }
 
     .tutorial-step-title {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       color: hsl(var(--foreground));
-      line-height: 1.4;
+      line-height: 1.3;
     }
 
     .tutorial-step-desc {
-      font-size: 12px;
+      font-size: 11px;
       color: hsl(var(--muted-foreground));
-      line-height: 1.5;
+      line-height: 1.4;
     }
 
     /* QQ 交流群卡片 */
@@ -1138,6 +1156,22 @@
     .qq-group-card:hover {
       border-color: hsl(var(--primary));
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .qq-group-card.recommended {
+      border-color: #f59e0b;
+      background: #fffbeb;
+      box-shadow: 0 2px 10px rgba(245, 158, 11, 0.18);
+    }
+
+    .qq-group-card.recommended:hover {
+      border-color: #d97706;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.28);
+    }
+
+    .qq-group-card.recommended .qq-group-badge {
+      color: #92400e;
+      background: #fde68a;
     }
 
     .qq-group-header {
@@ -1369,13 +1403,13 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             首页
           </a>
-          <a href="https://www.oopc.top" class="sidebar-link" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
-            OPC工具导航
-          </a>
           <a href="https://www.kaipai.vip" class="sidebar-link" target="_blank">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
             开拍·漫剧导航
+          </a>
+          <a href="https://www.oopc.top" class="sidebar-link" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+            OPC工具导航
           </a>
         </div>
         <div class="sidebar-section">
@@ -1396,7 +1430,7 @@
         </div>
         <div class="sidebar-section">
           <div class="sidebar-section-title">资源</div>
-          <a href="https://my.feishu.cn/wiki/TXE1wM0PfiDtRzkbWrocRibJnud?from=from_copylink" target="_blank" class="sidebar-link">
+          <a href="https://github.com/zhizinan1997/jimeng-free-api-all" target="_blank" class="sidebar-link">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
             seedance2.0即梦API
           </a>
@@ -1411,12 +1445,12 @@
         </div>
         <!-- 群二维码卡片 -->
         <div class="sidebar-section sidebar-qr-section">
-          <div class="sidebar-section-title">加入交流</div>
+          <div class="sidebar-section-title">合作交流</div>
           <div class="sidebar-qr-card">
-            <img src="https://free.boltp.com/2026/07/30/6a6ae2dc67c33.webp" alt="扫码加入交流群" class="sidebar-qr-img">
+            <img src="https://free.boltp.com/2026/07/30/6a6ae2dc67c33.webp" alt="扫码洽谈合作交流" class="sidebar-qr-img">
             <div class="sidebar-qr-text">
-              <div class="sidebar-qr-title">扫码进群</div>
-              <div class="sidebar-qr-desc">备注「漫剧群」</div>
+              <div class="sidebar-qr-title">扫码洽谈合作交流</div>
+              <div class="sidebar-qr-desc">漫剧相关从业者交流</div>
             </div>
           </div>
           <div class="sidebar-qr-tip">没有 API 账号？扫码备注「内测申请」</div>
@@ -1469,9 +1503,6 @@
             <div class="tutorial-step">
               <div class="tutorial-step-header">
                 <div class="tutorial-step-badge">1</div>
-                <div class="tutorial-step-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                </div>
                 <div class="tutorial-step-title">打开供应商网站注册</div>
               </div>
               <div class="tutorial-step-desc">选择您需要的供应商，点击卡片上的链接跳转至对应平台完成账号注册</div>
@@ -1479,9 +1510,6 @@
             <div class="tutorial-step">
               <div class="tutorial-step-header">
                 <div class="tutorial-step-badge">2</div>
-                <div class="tutorial-step-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
-                </div>
                 <div class="tutorial-step-title">创建 API Key</div>
               </div>
               <div class="tutorial-step-desc">登录后进入控制台，在 API 管理页面创建新的 API 密钥并妥善保存</div>
@@ -1489,9 +1517,6 @@
             <div class="tutorial-step">
               <div class="tutorial-step-header">
                 <div class="tutorial-step-badge">3</div>
-                <div class="tutorial-step-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                </div>
                 <div class="tutorial-step-title">复制 TS 文件链接</div>
               </div>
               <div class="tutorial-step-desc">在本页面供应商卡片上点击「复制」按钮，获取供应商配置文件的完整 URL</div>
@@ -1499,9 +1524,6 @@
             <div class="tutorial-step">
               <div class="tutorial-step-header">
                 <div class="tutorial-step-badge">4</div>
-                <div class="tutorial-step-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                </div>
                 <div class="tutorial-step-title">打开软件导入</div>
               </div>
               <div class="tutorial-step-desc">启动 ToonFlow 客户端，在供应商管理中粘贴链接并填入 API Key 即可使用</div>
@@ -1554,6 +1576,7 @@
     let qqGroupsData = [];
     let toolWebsitesData = [];
     let currentFilter = 'all';
+    let vendorsExpanded = false;
 
     const qrFloat = document.getElementById('qrFloat');
     const qrFloatButton = document.getElementById('qrFloatButton');
@@ -1614,7 +1637,7 @@
       if (!container || !qqGroupsData?.length) return;
 
       container.innerHTML = qqGroupsData.map(group => `
-        <div class="qq-group-card">
+        <div class="qq-group-card${group.badge === '荐' ? ' recommended' : ''}">
           <div class="qq-group-header">
             <div class="qq-group-avatar">
               <svg t="1785573366137" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5853" width="180" height="180"><path d="M706.519 1000.53c-67.857 0-129.229-16.711-164.195-44.674-1.447-1.147-3.509-1.815-5.707-1.815-22.118 1.434-36.673 1.434-57.235 0-3.126 0.014-4.875 0.56-6.431 1.815-35.061 27.989-96.461 44.674-164.277 44.674-111.056 0-194.805-42.954-194.805-99.902 0-32.276 27.511-61.331 75.489-79.708 2.102-0.819 3.632-2.281 4.11-3.946 0.492-1.747-0.259-3.126-0.97-3.959-14.063-16.603-26.583-34.42-37.205-53.003-1.078-1.898-3.509-3.291-6.144-3.55-3.659 0.245-6.13 0.928-7.66 2.608-22.405 24.931-45.289 34.571-65.291 28.208-7.987-2.54-19.47-9.202-28.262-26.474-19.948-39.213-17.599-112.503 5.871-182.381 18.446-55.077 54.695-97.089 81.852-122.635 0.697-0.655 1.911-2.13 1.584-4.014-1.161-6.854-1.721-13.189-1.721-19.415 0-26.528 8.206-52.469 24.371-77.087 0.56-0.847 0.791-1.761 0.723-2.717-0.164-2.471-0.301-4.983-0.301-7.455 0-180.115 155.921-326.67 347.573-326.67 191.665 0 347.586 146.541 347.586 326.67 0 2.307-0.123 4.602-0.301 6.895-0.041 0.791 0.191 1.693 0.737 2.498 16.493 24.726 24.863 50.913 24.863 77.878 0 6.608-0.601 13.189-1.829 20.125-0.355 1.966 0.833 3.399 1.57 4.11 26.883 25.463 62.723 67.257 81.033 121.91 23.456 69.823 25.819 143.087 5.871 182.326-8.793 17.285-20.261 23.948-28.331 26.501a41.074 41.074 0 0 1-12.165 1.843c-21.408 0-40.619-16.247-52.947-29.873-1.516-1.693-3.782-2.622-6.267-2.622-3.959 0.314-6.308 1.666-7.401 3.578-10.732 18.665-23.293 36.468-37.328 52.934-0.518 0.628-1.488 2.13-0.97 3.973 0.45 1.584 2.034 3.113 4.205 3.946 48.429 18.691 75.121 46.954 75.121 79.571 0 56.894-83.749 99.834-194.819 99.834z m-169.902-87.449c11.373 0 22.474 3.809 31.212 10.718 27.198 21.763 81.593 35.772 138.69 35.772 93.921 0 153.859-34.898 153.859-58.914 0-13.653-19.211-29.887-48.947-41.37-14.049-5.447-24.821-17.012-28.822-30.953-4.068-14.513-0.655-30.037 9.107-41.643 12.507-14.663 23.606-30.393 33.055-46.859 7.714-13.462 21.886-22.419 37.86-23.893 1.556-0.177 3.317-0.259 5.066-0.259 14.117 0 27.484 5.899 36.7 16.165 10.758 11.892 19.524 16.343 22.514 16.343 10.117-5.762 25.273-68.881-4.219-156.686-15.633-46.654-46.871-82.944-70.342-105.171-11.36-10.718-16.507-26.118-13.735-41.165 0.779-4.397 1.174-8.642 1.174-12.82 0-18.719-6.035-37.26-17.954-55.105-5.598-8.356-8.206-18.091-7.537-28.14 0.109-1.447 0.191-2.731 0.191-4.028 0-157.532-137.557-285.71-306.626-285.71S201.25 187.54 201.25 345.073c0 1.53 0.096 3.1 0.205 4.588 0.71 9.953-1.829 19.661-7.359 28.071-11.701 17.845-17.641 36.209-17.641 54.613 0 3.905 0.369 8.001 1.133 12.521 2.554 14.828-2.622 30.051-13.83 40.673-23.797 22.391-55.392 58.874-71.134 105.895-29.505 87.873-14.336 151.006-3.741 156.905 1.829-0.109 9.953-3.1 22.214-16.753 10.459-11.497 25.996-17.449 41.875-15.92 15.892 1.474 30.065 10.431 37.834 23.934 9.407 16.452 20.48 32.208 32.918 46.899 9.83 11.591 13.258 27.156 9.134 41.629-3.959 13.995-14.759 25.614-28.863 31.007-29.873 11.455-49.18 27.716-49.18 41.466 0 24.044 59.924 58.942 153.845 58.942 57.071 0 111.507-14.009 138.704-35.717 9.995-8.001 22.201-11.782 35.226-10.636 17.872 1.229 31.744 1.257 50.517-0.028a70.953 70.953 0 0 1 3.509-0.082z" p-id="5854" fill="#ffffff"></path></svg>
@@ -1668,6 +1691,7 @@
           tabs.forEach(t => t.classList.remove('active'));
           tab.classList.add('active');
           currentFilter = tab.dataset.filter;
+          vendorsExpanded = false;
           document.getElementById('filterBadge').textContent = tab.textContent;
           renderVendors();
         });
@@ -1692,11 +1716,24 @@
         return;
       }
 
+      const visibleVendors = vendorsExpanded ? filtered : filtered.slice(0, 4);
+      const toggleButton = filtered.length > 4 ? `
+        <button class="vendors-toggle" type="button" onclick="toggleVendors()" aria-expanded="${vendorsExpanded}">
+          ${vendorsExpanded ? '收起供应商' : `展开全部供应商（共 ${filtered.length} 个）`}
+        </button>
+      ` : '';
+
       document.getElementById('content').innerHTML = `
         <div class="vendors-grid">
-          ${filtered.map((item, index) => renderVendorCard(item, vendorsData.indexOf(item))).join('')}
+          ${visibleVendors.map(item => renderVendorCard(item, vendorsData.indexOf(item))).join('')}
         </div>
+        ${toggleButton}
       `;
+    }
+
+    function toggleVendors() {
+      vendorsExpanded = !vendorsExpanded;
+      renderVendors();
     }
 
     function renderVendorCard(item, index) {

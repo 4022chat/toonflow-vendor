@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-08-19T12:50:30.361Z",
-    "totalFiles": 4,
-    "validVendors": 4,
+    "generatedAt": "2026-08-22T16:12:50.417Z",
+    "totalFiles": 5,
+    "validVendors": 5,
     "invalidVendors": 0,
-    "totalModels": 76
+    "totalModels": 95
   },
   "vendors": [
     {
@@ -20,17 +20,17 @@
         "warnings": []
       },
       "stats": {
-        "total": 49,
+        "total": 51,
         "text": 20,
         "image": 9,
-        "video": 20,
+        "video": 22,
         "tts": 0,
         "thinkEnabled": 13,
-        "audioSupport": 19
+        "audioSupport": 21
       },
       "vendor": {
         "id": "opennex",
-        "version": "2.7.7",
+        "version": "2.7.9",
         "name": "OpenNex API",
         "author": "opennex",
         "description": "4022升级版，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\\n\\nOpenNex API中转站，支持所有的模型接入，一个 key 搞定所有。\\n\\n源头供货，稳定价低。邀请好友可返点。[点这里去注册](https://api.opennex.top/register?aff=gYGC)\\n\\n如遇bug请联系微信：jxppro",
@@ -75,6 +75,40 @@
           "ttsKey": ""
         },
         "models": [
+          {
+            "name": "Seedance 2.0",
+            "modelName": "doubao-seedance-2-0-260128",
+            "type": "video",
+            "mode": [
+              "text",
+              "startEndRequired",
+              "endFrameOptional",
+              [
+                "imageReference:9",
+                "videoReference:3",
+                "audioReference:3"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "Seedance 2.0 Fast",
+            "modelName": "doubao-seedance-2-0-fast-260128",
+            "type": "video",
+            "mode": [
+              "text",
+              "startEndRequired",
+              "endFrameOptional",
+              [
+                "imageReference:9",
+                "videoReference:3",
+                "audioReference:3"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
           {
             "name": "GPT-image-2",
             "modelName": "gpt-image-2",
@@ -554,7 +588,7 @@
       "folder": "oopc",
       "hasVendorConfig": true,
       "isRecommended": true,
-      "websiteUrl": "https://api.oopc.top/sign-up?aff=4rtN",
+      "websiteUrl": "https://api.oopc.top/about",
       "isOpenSource": false,
       "validation": {
         "valid": true,
@@ -897,6 +931,287 @@
       }
     },
     {
+      "file": "jimeng/jimeng.ts",
+      "folder": "jimeng",
+      "hasVendorConfig": true,
+      "isRecommended": false,
+      "websiteUrl": "https://github.com/zhizinan1997/jimeng-free-api-all",
+      "isOpenSource": true,
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      },
+      "stats": {
+        "total": 17,
+        "text": 0,
+        "image": 9,
+        "video": 8,
+        "tts": 0,
+        "thinkEnabled": 0,
+        "audioSupport": 3
+      },
+      "vendor": {
+        "id": "jimeng",
+        "version": "2.0",
+        "name": "JM-API",
+        "author": "四零二二",
+        "description": "兼容JM2API项目的接口，支持文生图、图生图、普通视频与 SD2.0 多模态视频生成。\\n\\n 使用该方案，您需要先拥有一个JM的API服务，才能使用该适配器。\\n\\n 可以在github上搜索：例如：[jimeng-free-api-all](https://github.com/zhizinan1997/jimeng-free-api-all)\\n\\n⚠️**警告：此类项目有违官方使用规则，该方案有可能会被封号，请慎重！！！建议使用官方接口。**\\n\\n更多供应商：https://tf.kaipai.vip/",
+        "icon": null,
+        "inputs": [
+          {
+            "key": "apiKey",
+            "label": "API 密钥",
+            "type": "password",
+            "required": true
+          },
+          {
+            "key": "baseUrl",
+            "label": "基础URL",
+            "type": "url",
+            "required": true
+          },
+          {
+            "key": "image",
+            "label": "图片接口",
+            "type": "url",
+            "required": false
+          },
+          {
+            "key": "video",
+            "label": "视频接口",
+            "type": "url",
+            "required": false
+          }
+        ],
+        "inputValues": {
+          "apiKey": "",
+          "baseUrl": "http://127.0.0.1:8000",
+          "image": "",
+          "video": ""
+        },
+        "models": [
+          {
+            "name": "图片 5.0 Pro",
+            "modelName": "jimeng-image-5.0-pro",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "associationSkills": ""
+          },
+          {
+            "name": "图片 5.0 Lite",
+            "modelName": "jimeng-image-5.0-lite",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "associationSkills": ""
+          },
+          {
+            "name": "图片 4.7",
+            "modelName": "jimeng-image-4.7",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "associationSkills": ""
+          },
+          {
+            "name": "图片 4.6",
+            "modelName": "jimeng-image-4.6",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "associationSkills": ""
+          },
+          {
+            "name": "图片 4.5",
+            "modelName": "jimeng-image-4.5",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "associationSkills": ""
+          },
+          {
+            "name": "图片 4.1",
+            "modelName": "jimeng-image-4.1",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "associationSkills": ""
+          },
+          {
+            "name": "图片 4.0",
+            "modelName": "jimeng-image-4.0",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "associationSkills": ""
+          },
+          {
+            "name": "图片 3.1",
+            "modelName": "jimeng-image-3.1",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage"
+            ],
+            "associationSkills": ""
+          },
+          {
+            "name": "图片 3.0",
+            "modelName": "jimeng-image-3.0",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage"
+            ],
+            "associationSkills": ""
+          },
+          {
+            "name": "Seedance 2.0",
+            "modelName": "jimeng-video-seedance-2.0",
+            "type": "video",
+            "mode": [
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional",
+              "text",
+              [
+                "videoReference:1",
+                "imageReference:9",
+                "audioReference:1"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": [],
+            "associationSkills": ""
+          },
+          {
+            "name": "Seedance 2.0 Fast VIP",
+            "modelName": "jimeng-video-seedance-2.0-fast",
+            "type": "video",
+            "mode": [
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional",
+              "text",
+              [
+                "videoReference:9",
+                "imageReference:9",
+                "audioReference:3"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": [],
+            "associationSkills": ""
+          },
+          {
+            "name": "Seedance 2.0 VIP",
+            "modelName": "jimeng-video-seedance-2.0-pro",
+            "type": "video",
+            "mode": [
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              "startFrameOptional",
+              "text",
+              [
+                "videoReference:9",
+                "imageReference:9",
+                "audioReference:3"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": [],
+            "associationSkills": ""
+          },
+          {
+            "name": "Seedance 2.5",
+            "modelName": "jimeng-video-seedance-2.5",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage"
+            ],
+            "audio": false,
+            "durationResolutionMap": [],
+            "associationSkills": ""
+          },
+          {
+            "name": "Seedance 2.0 Mini",
+            "modelName": "jimeng-video-seedance-2.0-mini",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage"
+            ],
+            "audio": false,
+            "durationResolutionMap": [],
+            "associationSkills": ""
+          },
+          {
+            "name": "Seedance 1.5 Pro",
+            "modelName": "jimeng-video-seedance-1.5-pro",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage"
+            ],
+            "audio": false,
+            "durationResolutionMap": [],
+            "associationSkills": ""
+          },
+          {
+            "name": "Seedance 1.0",
+            "modelName": "jimeng-video-3.0-pro",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage"
+            ],
+            "audio": false,
+            "durationResolutionMap": [],
+            "associationSkills": ""
+          },
+          {
+            "name": "Seedance 1.0 Fast",
+            "modelName": "jimeng-video-3.0-fast",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage"
+            ],
+            "audio": false,
+            "durationResolutionMap": [],
+            "associationSkills": ""
+          }
+        ]
+      }
+    },
+    {
       "file": "minimax-h3/minimax-h3.ts",
       "folder": "minimax-h3",
       "hasVendorConfig": true,
@@ -968,17 +1283,17 @@
   ],
   "qqGroups": [
     {
-      "name": "OPC API 交流群",
-      "number": "383888651",
-      "description": "聚集 OPC 创业者，分享开发心得与行业动态",
-      "joinUrl": "https://qm.qq.com/q/ybHgJDm6mQ",
-      "badge": "热"
-    },
-    {
       "name": "AI漫剧交流群",
       "number": "392244123",
       "description": "聚集 AI漫剧创作爱好者，分享漫剧行业动态",
       "joinUrl": "https://qm.qq.com/q/Q6PkVHd56e",
+      "badge": "荐"
+    },
+    {
+      "name": "OPC API 交流群",
+      "number": "383888651",
+      "description": "聚集 OPC 创业者，分享开发心得与行业动态",
+      "joinUrl": "https://qm.qq.com/q/ybHgJDm6mQ",
       "badge": "热"
     }
   ],
@@ -990,15 +1305,21 @@
       "badge": "推荐"
     },
     {
-      "name": "OPC 工具导航",
-      "description": "探索 AI 创作与开发相关工具",
-      "websiteUrl": "https://www.oopc.top",
+      "name": "开拍·漫剧导航",
+      "description": "发现 AI 漫剧创作相关资源与服务",
+      "websiteUrl": "https://www.kaipai.vip",
       "badge": "推荐"
     },
     {
-      "name": "开拍漫剧导航",
-      "description": "发现 AI 漫剧创作相关资源与服务",
-      "websiteUrl": "https://www.kaipai.vip",
+      "name": "造剧·精品漫剧提示词库",
+      "description": "开源的精品漫剧提示词。学AI漫剧，就来造剧！",
+      "websiteUrl": "https://www.zaoju.vip",
+      "badge": "推荐"
+    },
+    {
+      "name": "OPC·工具导航",
+      "description": "探索 AI 创作与开发相关工具",
+      "websiteUrl": "https://www.oopc.top",
       "badge": "推荐"
     }
   ]
