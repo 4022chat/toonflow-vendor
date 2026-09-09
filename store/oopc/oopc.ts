@@ -124,6 +124,8 @@ declare const exports: {
   imageRequest: (c: ImageConfig, m: ImageModel) => Promise<string>;
   videoRequest: (c: VideoConfig, m: VideoModel) => Promise<string>;
   ttsRequest: (c: TTSConfig, m: TTSModel) => Promise<string>;
+  checkForUpdates?: () => Promise<{ hasUpdate: boolean; latestVersion: string; notice: string }>;
+  updateVendor?: () => Promise<string>;
 };
 
 // ============================================================
@@ -135,7 +137,7 @@ const vendor: VendorConfig = {
   version: "2.0",
   author: "oopc",
   name: "OOPC",
-  description: "gpt-image-2 ¥0.04/张！\n\nMiniMax-H3 ¥0.2/秒！\n\ns-video1元/条起。\n\n支持 OpenAI 兼容、Gemini 原生、Claude 原生文本对话，以及 Qwen Image 和 Nano Banana 图像生成。\n\n正在内测中，加微信 jxppro 获取 内测账号！",
+  description: "gpt-image-2.5 ¥0.04/张！\n\nMiniMax-H3 ¥0.2/秒！\n\ns-video1元/条起。\n\n支持 OpenAI 兼容、Gemini 原生、Claude 原生文本对话，以及 Qwen Image 和 Nano Banana 图像生成。\n\n正在内测中，加微信 jxppro 获取 内测账号！",
   inputs: [
     { key: "apiKey", label: "默认API密钥", type: "password", required: true, placeholder: "未填写专用密钥时使用，推荐使用 auto 自动分组" },
     { key: "textKey", label: "文本API密钥", type: "password", required: false, placeholder: "不填则使用默认API密钥" },
@@ -146,17 +148,21 @@ const vendor: VendorConfig = {
   inputValues: { apiKey: "", textKey: "", imageKey: "", videoKey: "", baseUrl: "https://api.oopc.top/v1" },
   models: [
     { name: "MiniMax-H3", modelName: "MiniMax-H3", type: "video", mode: ["text", "singleImage", "startEndRequired", "endFrameOptional", "startFrameOptional", ["imageReference:5", "videoReference:1", "audioReference:1"]], audio: true, durationResolutionMap: [{ duration: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], resolution: ["2K", "768P"] }] },
+    { name: "GPT Image 2.5 Flare", modelName: "gpt-image-2.5-flare", type: "image", mode: ["text", "singleImage", "multiReference"] },
+    { name: "GPT Image 2.5 Sunburst", modelName: "gpt-image-2.5-sunburst", type: "image", mode: ["text", "singleImage", "multiReference"] },
     { name: "GPT Image 2", modelName: "gpt-image-2", type: "image", mode: ["text", "singleImage", "multiReference"] },
     { name: "Gemini 3 pro image", modelName: "gemini-3-pro-image", type: "image", mode: ["text", "singleImage", "multiReference"] },
     { name: "Gemini 3.1 Flash Image", modelName: "gemini-3.1-flash-image", type: "image", mode: ["text", "singleImage", "multiReference"] },
     { name: "GPT-5.5", modelName: "gpt-5.5", type: "text", think: true },
     { name: "GPT 5.6 Terra", modelName: "gpt-5.6-terra", type: "text", think: true },
     { name: "GPT 5.6 Sol", modelName: "gpt-5.6-sol", type: "text", think: true },
+    { name: "Claude Fable 5-1", modelName: "claude-fable-5-1", type: "text", think: true },
+    { name: "Claude Fable 5", modelName: "claude-fable-5", type: "text", think: true },
     { name: "Claude Opus 4.8", modelName: "claude-opus-4-8", type: "text", think: true },
     { name: "Claude Opus 5.0", modelName: "claude-opus-5-0", type: "text", think: true },
     { name: "Claude Sonnet 5", modelName: "claude-sonnet-5", type: "text", think: true },
     { name: "Gemini 3.1 Pro", modelName: "gemini-3.1-pro-preview", type: "text", think: true },
-    { name: "Gemini 3.5 Flash", modelName: "gemini-3.5-flash", type: "text", think: true },
+    { name: "Gemini 3.6 Flash", modelName: "gemini-3.6-flash", type: "text", think: true },
     { name: "S-Video", modelName: "s-video-v1", type: "video", mode: ["text", "endFrameOptional", ["imageReference:8"]], audio: true, durationResolutionMap: [{ duration: [5, 10, 15], resolution: ["720p"] }] },
     { name: "Firefly Video v2 Fast", modelName: "firefly-video-v2-fast", type: "video", mode: ["text", "singleImage", "startEndRequired", "endFrameOptional", "startFrameOptional", ["imageReference:9", "videoReference:3", "audioReference:3"]], audio: true, durationResolutionMap: [{ duration: [5, 10, 15], resolution: ["480p", "720p"] }] },
     { name: "Firefly Video v2", modelName: "firefly-video-v2", type: "video", mode: ["text", "singleImage", "startEndRequired", "endFrameOptional", "startFrameOptional", ["imageReference:9", "videoReference:3", "audioReference:3"]], audio: true, durationResolutionMap: [{ duration: [5, 10, 15], resolution: ["480p", "720p", "1080p"] }] },
@@ -546,6 +552,74 @@ const ttsRequest = async (config: TTSConfig, model: TTSModel): Promise<string> =
   return "";
 };
 
+const checkForUpdates = async (): Promise<{ hasUpdate: boolean; latestVersion: string; notice: string }> => {
+  try {
+    const apiVendorUrl = `https://tf-api.4022543.xyz/api/vendor/${vendor.id}`;
+    const response = await axios.get(apiVendorUrl, {
+      timeout: 10000,
+      headers: {
+        "Accept": "application/json",
+        "Cache-Control": "no-cache"
+      }
+    });
+
+    const data = response.data;
+
+    if (!data || !data.success || !data.vendor) {
+      // throw new Error("API 返回数据格式错误");
+      return {
+        hasUpdate: false,
+        latestVersion: vendor.version,
+        notice: ""
+      };
+    }
+
+    const remoteVersion = data.vendor.version;
+    const currentVersion = vendor.version;
+    const hasUpdate = remoteVersion !== currentVersion;
+
+    return {
+      hasUpdate,
+      latestVersion: remoteVersion,
+      notice: hasUpdate ? `发现新版本 ${remoteVersion}，当前版本 ${currentVersion}` : "已是最新版本"
+    };
+  } catch (error: any) {
+    return {
+      hasUpdate: false,
+      latestVersion: vendor.version,
+      notice: `检查更新失败: ${error.message || "未知错误"}`
+    };
+  }
+};
+
+const updateVendor = async (): Promise<string> => {
+  try {
+    const remoteVendorUrl = `https://tf.kaipai.vip/store/oopc/${vendor.id}.ts`;
+    const response = await axios.get(remoteVendorUrl, {
+      timeout: 30000,
+      headers: {
+        "Accept": "text/plain",
+        "Cache-Control": "no-cache"
+      }
+    });
+
+    const remoteCode = response.data as string;
+
+    if (!remoteCode || remoteCode.length < 100) {
+      throw new Error("获取到的代码内容无效");
+    }
+
+    // 验证代码基本结构
+    if (!remoteCode.includes("const vendor:") || !remoteCode.includes("exports.vendor")) {
+      throw new Error("获取到的代码结构不完整");
+    }
+
+    return remoteCode;
+  } catch (error: any) {
+    throw new Error(`更新失败: ${error.message || "未知错误"}`);
+  }
+};
+
 // ============================================================
 // 导出
 // ============================================================
@@ -555,5 +629,6 @@ exports.textRequest = textRequest;
 exports.imageRequest = imageRequest;
 exports.videoRequest = videoRequest;
 exports.ttsRequest = ttsRequest;
-
+exports.checkForUpdates = checkForUpdates;
+exports.updateVendor = updateVendor;
 export { };

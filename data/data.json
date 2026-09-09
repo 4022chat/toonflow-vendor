@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-08-29T10:27:07.981Z",
-    "totalFiles": 5,
-    "validVendors": 5,
+    "generatedAt": "2026-09-09T14:30:45.304Z",
+    "totalFiles": 6,
+    "validVendors": 6,
     "invalidVendors": 0,
-    "totalModels": 95
+    "totalModels": 120
   },
   "vendors": [
     {
@@ -20,17 +20,17 @@
         "warnings": []
       },
       "stats": {
-        "total": 51,
-        "text": 20,
-        "image": 9,
-        "video": 22,
+        "total": 61,
+        "text": 25,
+        "image": 13,
+        "video": 23,
         "tts": 0,
-        "thinkEnabled": 13,
+        "thinkEnabled": 16,
         "audioSupport": 21
       },
       "vendor": {
         "id": "opennex",
-        "version": "2.7.9",
+        "version": "2.8.0",
         "name": "OpenNex API",
         "author": "opennex",
         "description": "4022升级版，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\\n\\nOpenNex API中转站，支持所有的模型接入，一个 key 搞定所有。\\n\\n源头供货，稳定价低。邀请好友可返点。[点这里去注册](https://api.opennex.top/register?aff=gYGC)\\n\\n如遇bug请联系微信：jxppro",
@@ -110,8 +110,18 @@
             "durationResolutionMap": []
           },
           {
-            "name": "GPT-image-2",
-            "modelName": "gpt-image-2",
+            "name": "GPT-image-2.5-sunburst-c",
+            "modelName": "gpt-image-2.5-sunburst-c",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "GPT-image-2.5-flare-c",
+            "modelName": "gpt-image-2.5-flare-c",
             "type": "image",
             "mode": [
               "text",
@@ -122,6 +132,36 @@
           {
             "name": "GPT-image-2-c",
             "modelName": "gpt-image-2-c",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "GPT-image-2.5-sunburst",
+            "modelName": "gpt-image-2.5-sunburst",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "GPT-image-2.5-flare",
+            "modelName": "gpt-image-2.5-flare",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "GPT-image-2",
+            "modelName": "gpt-image-2",
             "type": "image",
             "mode": [
               "text",
@@ -168,6 +208,12 @@
               "singleImage",
               "multiReference"
             ]
+          },
+          {
+            "name": "GPT 6 Astra",
+            "modelName": "gpt-6-astra",
+            "type": "text",
+            "think": true
           },
           {
             "name": "GPT 5.6 Sol",
@@ -268,14 +314,26 @@
             "think": false
           },
           {
-            "name": "Gemini-3.6-flash",
-            "modelName": "gemini-3.6-flash",
+            "name": "Gemini-3.8-flash",
+            "modelName": "gemini-3.8-flash",
             "type": "text",
             "think": false
           },
           {
             "name": "doubao-seed-2-0-code",
             "modelName": "doubao-seed-2-0-code-preview-260215",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "claude-fable-5-1",
+            "modelName": "claude-fable-5-1",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "claude-fable-5",
+            "modelName": "claude-fable-5",
             "type": "text",
             "think": true
           },
@@ -304,6 +362,12 @@
             "think": true
           },
           {
+            "name": "kimi-k3",
+            "modelName": "kimi-k3",
+            "type": "text",
+            "think": false
+          },
+          {
             "name": "kimi-k2.5",
             "modelName": "kimi-k2.5",
             "type": "text",
@@ -322,14 +386,20 @@
             "think": false
           },
           {
-            "name": "MiniMax-M2.7",
-            "modelName": "minimax-m2.7",
+            "name": "MiniMax-M3",
+            "modelName": "MiniMax-M3",
             "type": "text",
             "think": false
           },
           {
-            "name": "GLM-5",
-            "modelName": "glm-5",
+            "name": "GLM-5.3-flash",
+            "modelName": "glm-5.3-flash",
+            "type": "text",
+            "think": false
+          },
+          {
+            "name": "GLM-5.3",
+            "modelName": "glm-5.3",
             "type": "text",
             "think": false
           },
@@ -579,6 +649,21 @@
             ],
             "audio": false,
             "durationResolutionMap": []
+          },
+          {
+            "name": "HappyHorse 1.1",
+            "modelName": "happyhorse-1.1",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              [
+                "imageReference:9",
+                "videoReference:1"
+              ]
+            ],
+            "audio": false,
+            "durationResolutionMap": []
           }
         ]
       }
@@ -706,6 +791,182 @@
             ],
             "audio": true,
             "durationResolutionMap": []
+          }
+        ]
+      }
+    },
+    {
+      "file": "jimeng/dreamina2api.ts",
+      "folder": "jimeng",
+      "hasVendorConfig": true,
+      "isRecommended": false,
+      "websiteUrl": "https://my.feishu.cn/wiki/TXE1wM0PfiDtRzkbWrocRibJnud",
+      "isOpenSource": false,
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      },
+      "stats": {
+        "total": 11,
+        "text": 0,
+        "image": 7,
+        "video": 4,
+        "tts": 0,
+        "thinkEnabled": 0,
+        "audioSupport": 2
+      },
+      "vendor": {
+        "id": "dreamina2api",
+        "version": "2.0",
+        "name": "即梦 CLI",
+        "author": "四零二二",
+        "description": "对接本地即梦CLI生成服务，支持图片生成、图片编辑及异步视频生成。\\n\\n 需要搭配DreamQueue软件才可使用。[查看详情](https://my.feishu.cn/wiki/TXE1wM0PfiDtRzkbWrocRibJnud)",
+        "icon": null,
+        "inputs": [
+          {
+            "key": "apiKey",
+            "label": "API 密钥",
+            "type": "password",
+            "required": true
+          },
+          {
+            "key": "baseUrl",
+            "label": "服务地址",
+            "type": "url",
+            "required": true
+          }
+        ],
+        "inputValues": {
+          "apiKey": "",
+          "baseUrl": "http://127.0.0.1:3000"
+        },
+        "models": [
+          {
+            "name": "Seedance 2.0 VIP",
+            "modelName": "seedance2.0_vip",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              "startEndRequired",
+              [
+                "imageReference:9",
+                "videoReference:3",
+                "audioReference:3"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "Seedance 2.0 Fast VIP",
+            "modelName": "seedance2.0fast_vip",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              "startEndRequired",
+              [
+                "imageReference:9",
+                "videoReference:3",
+                "audioReference:3"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "Seedance 2.0 Mini",
+            "modelName": "seedance2.0mini",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage"
+            ],
+            "audio": false,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "Seedance 2.5",
+            "modelName": "seedance2.5",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage"
+            ],
+            "audio": false,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "即梦图片 4.0",
+            "modelName": "4.0",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "即梦图片 4.1",
+            "modelName": "4.1",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "即梦图片 4.5",
+            "modelName": "4.5",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "即梦图片 4.6",
+            "modelName": "4.6",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "即梦图片 4.7",
+            "modelName": "4.7",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "即梦图片 5.0",
+            "modelName": "5.0",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "即梦图片 5.0 Pro",
+            "modelName": "5.0Pro",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
           }
         ]
       }
@@ -1073,12 +1334,12 @@
         "warnings": []
       },
       "stats": {
-        "total": 15,
-        "text": 8,
-        "image": 3,
+        "total": 19,
+        "text": 10,
+        "image": 5,
         "video": 4,
         "tts": 0,
-        "thinkEnabled": 8,
+        "thinkEnabled": 10,
         "audioSupport": 4
       },
       "vendor": {
@@ -1086,7 +1347,7 @@
         "version": "2.0",
         "name": "OOPC",
         "author": "oopc",
-        "description": "gpt-image-2 ¥0.04/张！\\n\\nMiniMax-H3 ¥0.2/秒！\\n\\ns-video1元/条起。\\n\\n支持 OpenAI 兼容、Gemini 原生、Claude 原生文本对话，以及 Qwen Image 和 Nano Banana 图像生成。\\n\\n正在内测中，加微信 jxppro 获取 内测账号！",
+        "description": "gpt-image-2.5 ¥0.04/张！\\n\\nMiniMax-H3 ¥0.2/秒！\\n\\ns-video1元/条起。\\n\\n支持 OpenAI 兼容、Gemini 原生、Claude 原生文本对话，以及 Qwen Image 和 Nano Banana 图像生成。\\n\\n正在内测中，加微信 jxppro 获取 内测账号！",
         "icon": null,
         "inputs": [
           {
@@ -1148,6 +1409,26 @@
             "durationResolutionMap": []
           },
           {
+            "name": "GPT Image 2.5 Flare",
+            "modelName": "gpt-image-2.5-flare",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
+            "name": "GPT Image 2.5 Sunburst",
+            "modelName": "gpt-image-2.5-sunburst",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
             "name": "GPT Image 2",
             "modelName": "gpt-image-2",
             "type": "image",
@@ -1196,6 +1477,18 @@
             "think": true
           },
           {
+            "name": "Claude Fable 5-1",
+            "modelName": "claude-fable-5-1",
+            "type": "text",
+            "think": true
+          },
+          {
+            "name": "Claude Fable 5",
+            "modelName": "claude-fable-5",
+            "type": "text",
+            "think": true
+          },
+          {
             "name": "Claude Opus 4.8",
             "modelName": "claude-opus-4-8",
             "type": "text",
@@ -1220,8 +1513,8 @@
             "think": true
           },
           {
-            "name": "Gemini 3.5 Flash",
-            "modelName": "gemini-3.5-flash",
+            "name": "Gemini 3.6 Flash",
+            "modelName": "gemini-3.6-flash",
             "type": "text",
             "think": true
           },
