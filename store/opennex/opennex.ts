@@ -135,11 +135,11 @@ declare const Buffer: any;
 
 const vendor: VendorConfig = {
   id: "opennex",
-  version: "2.8.0",
+  version: "2.8.1",
   author: "opennex",
   name: "OpenNex API",
   description:
-    "4022升级版，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\n\nOpenNex API中转站，支持所有的模型接入，一个 key 搞定所有。\n\n源头供货，稳定价低。邀请好友可返点。[点这里去注册](https://api.opennex.top/register?aff=gYGC)\n\n如遇bug请联系微信：jxppro",
+    "4022升级版，seedance2.5 + gpt-image-2.5 已支持，Gemini/ChatGPT/Claude + nano banana + index-tts\n\nOpenNex API中转站，支持所有的模型接入，一个 key 搞定所有。\n\n源头供货，稳定价低。邀请好友可返点。[点这里去注册](https://api.opennex.top/register?aff=gYGC)\n\n如遇bug请联系微信：jxppro",
   inputs: [
     { key: "apiKey", label: "API密钥", type: "password", required: true, placeholder: "到上面的网站注册并复制 key 填入" },
     { key: "imageKey", label: "图像API密钥", type: "password", required: false, placeholder: "不填则使用API密钥" },
@@ -155,14 +155,17 @@ const vendor: VendorConfig = {
     ttsKey: "",
   },
   models: [
-    { name: "Seedance 2.0", type: "video", modelName: "doubao-seedance-2-0-260128", mode: ["text", "startEndRequired", "endFrameOptional", ["imageReference:9", "videoReference:3", "audioReference:3"]], audio: true, durationResolutionMap: [{ duration: [5, 10, 15], resolution: ["720p"] }] },
-    { name: "Seedance 2.0 Fast", type: "video", modelName: "doubao-seedance-2-0-fast-260128", mode: ["text", "startEndRequired", "endFrameOptional", ["imageReference:9", "videoReference:3", "audioReference:3"]], audio: true, durationResolutionMap: [{ duration: [5, 10, 15], resolution: ["720p"] }] },
+    { name: "WAN3.0 Video(阿里万象3)", type: "video", modelName: "wan3.0-video", mode: ["text", "startEndRequired", "endFrameOptional", ["imageReference:9", "videoReference:3", "audioReference:3"]], audio: true, durationResolutionMap: [{ duration: [4, 5, 8, 10, 15, 20, 25, 30], resolution: ["480p", "720p", "1080p"] }] },
+    { name: "Seedance 2.5", type: "video", modelName: "doubao-seedance-2-5-260628", mode: ["text", "startEndRequired", "endFrameOptional", ["imageReference:9", "videoReference:3", "audioReference:3"]], audio: true, durationResolutionMap: [{ duration: [4, 5, 8, 10, 15, 20, 25, 30], resolution: ["720p", "1080p"] }] },
+    { name: "Seedance 2.0", type: "video", modelName: "doubao-seedance-2-0-260128", mode: ["text", "startEndRequired", "endFrameOptional", ["imageReference:9", "videoReference:3", "audioReference:3"]], audio: true, durationResolutionMap: [{ duration: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], resolution: ["720p", "1080p", "4k"] }] },
+    { name: "Seedance 2.0 Fast", type: "video", modelName: "doubao-seedance-2-0-fast-260128", mode: ["text", "startEndRequired", "endFrameOptional", ["imageReference:9", "videoReference:3", "audioReference:3"]], audio: true, durationResolutionMap: [{ duration: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], resolution: ["720p"] }] },
     { name: "GPT-image-2.5-sunburst-c", type: "image", modelName: "gpt-image-2.5-sunburst-c", mode: ["text", "singleImage", "multiReference"] },
     { name: "GPT-image-2.5-flare-c", type: "image", modelName: "gpt-image-2.5-flare-c", mode: ["text", "singleImage", "multiReference"] },
     { name: "GPT-image-2-c", type: "image", modelName: "gpt-image-2-c", mode: ["text", "singleImage", "multiReference"] },
     { name: "GPT-image-2.5-sunburst", type: "image", modelName: "gpt-image-2.5-sunburst", mode: ["text", "singleImage", "multiReference"] },
     { name: "GPT-image-2.5-flare", type: "image", modelName: "gpt-image-2.5-flare", mode: ["text", "singleImage", "multiReference"] },
     { name: "GPT-image-2", type: "image", modelName: "gpt-image-2", mode: ["text", "singleImage", "multiReference"] },
+    { name: "豆包 Seedream 5.0 Pro", type: "image", modelName: "doubao-seedream-5-0-pro-260628", mode: ["text", "singleImage", "multiReference"] },
     { name: "豆包 Seedream 5.0", type: "image", modelName: "doubao-seedream-5-0-260128", mode: ["text", "singleImage", "multiReference"] },
     { name: "豆包 Seedream 4.5", type: "image", modelName: "doubao-seedream-4-5-251128", mode: ["text", "singleImage", "multiReference"] },
     { name: "Gemini-3.1-flash-image-preview", type: "image", modelName: "gemini-3.1-flash-image-preview", mode: ["text", "singleImage", "multiReference"] },
@@ -170,12 +173,11 @@ const vendor: VendorConfig = {
     { name: "GPT 6 Astra", type: "text", modelName: "gpt-6-astra", think: true },
     { name: "GPT 5.6 Sol", type: "text", modelName: "gpt-5.6-sol", think: true },
     { name: "GPT 5.6 Terra", type: "text", modelName: "gpt-5.6-terra", think: true },
+    { name: "Deepseek-v4.1-flash", type: "text", modelName: "deepseek-v4.1-flash", think: true },
     { name: "Deepseek-v4-flash-0731", type: "text", modelName: "deepseek-v4-flash-0731", think: true },
-    { name: "Deepseek-v4-flash", type: "text", modelName: "deepseek-v4-flash", think: true },
     { name: "Deepseek-v4-pro-0813", type: "text", modelName: "deepseek-v4-pro-0813", think: true },
     { name: "Deepseek-v4-pro", type: "text", modelName: "deepseek-v4-pro", think: true },
     { name: "GPT-5.5", type: "text", modelName: "gpt-5.5", think: true },
-    { name: "Seedance 1.5 pro", type: "video", modelName: "doubao-seedance-1-5-pro-251215", mode: ["text", "startEndRequired", "endFrameOptional"], audio: true, durationResolutionMap: [{ duration: [5, 10, 15], resolution: ["720p"] }] },
     { name: "viduq3-turbo", type: "video", modelName: "viduq3-turbo", mode: ["text", "startEndRequired", "endFrameOptional", "singleImage", ["imageReference:3"]], audio: true, durationResolutionMap: [{ duration: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], resolution: ["540p", "720p", "1080p"] }] },
     { name: "viduq3-pro", type: "video", modelName: "viduq3-pro", mode: ["text", "startEndRequired", "endFrameOptional", "singleImage", ["imageReference:3"]], audio: true, durationResolutionMap: [{ duration: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], resolution: ["540p", "720p", "1080p"] }] },
     { name: "Gemini-3.1-pro-preview", type: "text", modelName: "gemini-3.1-pro-preview", think: true },
@@ -229,6 +231,7 @@ const getMinimaxTextUrl = () => `${getBaseUrl()}/v1`;
 const getAnthropicTextUrl = () => `${getTextUrl()}`;
 const getImageUrl = () => `${getBaseUrl()}/v1/images/generations`;
 const getImageEditUrl = () => `${getBaseUrl()}/v1/images/edits`;
+const getDoubaoImageUrl = () => `${getBaseUrl()}/api/v3/images/generations`;
 
 // 视频接口配置 - 不同模型使用不同接口
 
@@ -263,12 +266,16 @@ const getKlingImage2VideoQueryUrl = (taskId: string) => `${getBaseUrl()}/kling/v
 const getKlingMultiImage2VideoQueryUrl = (taskId: string) => `${getBaseUrl()}/kling/v1/videos/multi-image2video/${taskId}`;
 const getKlingOmniVideoQueryUrl = (taskId: string) => `${getBaseUrl()}/kling/v1/videos/omni-video/${taskId}`;
 
-const getDoubaoVideoCreateUrl = () => `${getBaseUrl()}/volc/v1/contents/generations/tasks`;
-const getDoubaoVideoQueryUrl = (taskId: string) => `${getBaseUrl()}/volc/v1/contents/generations/tasks/${taskId}`;
+const getDoubaoVideoCreateUrl = () => `${getBaseUrl()}/api/v3/contents/generations/tasks`;
+const getDoubaoVideoQueryUrl = (taskId: string) => `${getBaseUrl()}/api/v3/contents/generations/tasks/${taskId}`;
 
 // HappyHorse 视频接口配置
 const getHappyHorseVideoCreateUrl = () => `${getBaseUrl()}/alibailian/api/v1/services/aigc/video-generation/video-synthesis`;
 const getHappyHorseVideoQueryUrl = (taskId: string) => `${getBaseUrl()}/alibailian/api/v1/tasks/${taskId}`;
+
+// WAN 视频接口配置（与 HappyHorse 共用端点）
+const getWanVideoCreateUrl = () => `${getBaseUrl()}/alibailian/api/v1/services/aigc/video-generation/video-synthesis`;
+const getWanVideoQueryUrl = (taskId: string) => `${getBaseUrl()}/alibailian/api/v1/tasks/${taskId}`;
 
 const getApiKey = (type?: "image" | "video" | "text" | "tts"): string => {
   const keyMap: Record<string, string> = {
@@ -317,6 +324,72 @@ const getFileMeta = (completeBase64: string, defaultName: string) => {
     mimeType,
     filename: `${defaultName}.${extensionMap[mimeType] || "bin"}`,
   };
+};
+
+/**
+ * 将图片 Buffer 上传到中转图床，返回公开访问 URL。
+ * 接口：POST https://imageproxy.zhongzhuan.chat/api/upload  (multipart/form-data, field: file)
+ * 响应：{ url: "https://imageproxy.zhongzhuan.chat/api/proxy/image/<hash>", created: ... }
+ * 失败自动重试，最多 3 次；成功返回 string URL，全部失败返回 null。
+ */
+const uploadToImageProxy = async (imageBuffer: any, mimeType: string, tag?: string): Promise<string | null> => {
+  const UPLOAD_URL = "https://imageproxy.zhongzhuan.chat/api/upload";
+  const extMap: Record<string, string> = {
+    "image/jpeg": "jpg",
+    "image/png": "png",
+    "image/webp": "webp",
+    "image/gif": "gif",
+  };
+  const ext = extMap[mimeType] || "jpg";
+  const filename = `ref_${Date.now()}.${ext}`;
+  const MAX_ATTEMPTS = 3;
+
+  logger(`[图床上传] ▶ 开始` + JSON.stringify({ tag, filename, size_kb: Math.round(imageBuffer.length / 1024) }));
+
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    const t0 = Date.now();
+    try {
+      const boundary = "imgproxy_" + Date.now() + "_" + Math.random().toString(36).slice(2, 8);
+      const headerLine = `--${boundary}\r\nContent-Disposition: form-data; name="file"; filename="${filename}"\r\nContent-Type: ${mimeType}\r\n\r\n`;
+      const footerLine = `\r\n--${boundary}--\r\n`;
+      const body = Buffer.concat([
+        Buffer.from(headerLine, "utf-8"),
+        imageBuffer,
+        Buffer.from(footerLine, "utf-8"),
+      ]);
+
+      const res = await fetch(UPLOAD_URL, {
+        method: "POST",
+        headers: { "Content-Type": `multipart/form-data; boundary=${boundary}` },
+        body,
+      });
+
+      const raw = await res.text();
+      const ms = Date.now() - t0;
+
+      if (!res.ok) {
+        logger(`[图床上传] 失败` + JSON.stringify({ tag, attempt, status: res.status, ms, body: raw.slice(0, 200) }));
+        if (attempt < MAX_ATTEMPTS) continue;
+        return null;
+      }
+
+      const data = JSON.parse(raw);
+      const url = data?.url || null;
+      if (url) {
+        logger(`[图床上传] ✓ 成功` + JSON.stringify({ tag, attempt, url, ms }));
+        return url;
+      }
+
+      logger(`[图床上传] 响应无 url 字段` + JSON.stringify({ tag, attempt, ms, raw: raw.slice(0, 200) }));
+      if (attempt < MAX_ATTEMPTS) continue;
+      return null;
+    } catch (err: any) {
+      logger(`[图床上传] 请求异常` + JSON.stringify({ tag, attempt, ms: Date.now() - t0, err: err.message }));
+      if (attempt < MAX_ATTEMPTS) continue;
+      return null;
+    }
+  }
+  return null;
 };
 
 const parseJsonResponse = async (response: any) => {
@@ -588,6 +661,12 @@ const imageRequest = async (config: ImageConfig, model: ImageModel): Promise<str
   const imageRefs = (config.referenceList ?? []).filter(isValidBase64Ref).map((r) => r.base64);
 
   logger(`[imageRequest] 提交图像生成任务，模型: ${model.modelName}`);
+
+  // 豆包 Seedream 系列使用专门的接口
+  if (model.modelName.startsWith("doubao-seedream-")) {
+    return doubaoImageRequest(config, model, imageRefs);
+  }
+
   if (model.modelName.startsWith("gemini-") && model.modelName.includes("image")) {
     return geminiImageRequest(config, model, imageRefs);
   }
@@ -646,17 +725,8 @@ const imageRequest = async (config: ImageConfig, model: ImageModel): Promise<str
     prompt: config.prompt,
   };
 
-  if (model.modelName.startsWith("doubao-")) {
-    body.size = getDoubaoImageSize(config, model.modelName);
-    body.watermark = false;
-    if (model.modelName === "doubao-seedream-5-0-260128") {
-      body.output_format = "png";
-    }
-    const imageInput = getImageInput(imageRefs, model);
-    if (imageInput) body.image = imageInput;
-    if (["doubao-seedream-5-0-260128", "doubao-seedream-4-5-251128", "doubao-seedream-4-0-250828"].includes(model.modelName)) {
-      body.sequential_image_generation = "disabled";
-    }
+  if (false) {
+    // doubao 模型已由 doubaoImageRequest 处理
   } else {
     body.size = getGenericImageSize(config, model.modelName);
     body.n = 1;
@@ -701,6 +771,55 @@ const imageRequest = async (config: ImageConfig, model: ImageModel): Promise<str
   const data = await parseJsonResponse(response);
   const result = extractResult(data);
   if (!result) throw new Error(`图片生成成功但未返回可用结果: ${JSON.stringify(data)}`);
+  return result;
+};
+
+// ==================== 豆包 Seedream 图像生成 ====================
+const doubaoImageRequest = async (config: ImageConfig, model: ImageModel, imageRefs: string[]): Promise<string> => {
+  logger(`[doubaoImageRequest] 提交豆包图像生成任务，模型: ${model.modelName}`);
+
+  const body: Record<string, any> = {
+    model: model.modelName,
+    prompt: config.prompt,
+    size: getDoubaoImageSize(config, model.modelName),
+    watermark: false,
+  };
+
+  // 处理参考图
+  if (imageRefs.length > 0) {
+    if (imageRefs.length === 1) {
+      body.image = imageRefs[0];
+    } else {
+      body.image = imageRefs;
+      body.sequential_image_generation = "disabled";
+    }
+  }
+
+  // 特定模型的额外配置
+  if (model.modelName === "doubao-seedream-5-0-260128" || model.modelName.startsWith("doubao-seedream-5-0-pro")) {
+    body.output_format = "png";
+    body.response_format = "url";
+  }
+
+  if (["doubao-seedream-5-0-260128", "doubao-seedream-4-5-251128", "doubao-seedream-4-0-250828"].includes(model.modelName)) {
+    if (imageRefs.length > 1) {
+      body.sequential_image_generation = "disabled";
+    }
+  }
+
+  const response = await fetch(getDoubaoImageUrl(), {
+    method: "POST",
+    headers: {
+      Authorization: getAuthorization("image"),
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body),
+  });
+  await throwIfNotOk(response, "豆包图片生成");
+
+  const data = await parseJsonResponse(response);
+  const result = extractResult(data);
+  if (!result) throw new Error(`豆包图片生成成功但未返回可用结果: ${JSON.stringify(data)}`);
   return result;
 };
 
@@ -1242,28 +1361,30 @@ const doubaoVideoRequest = async (config: VideoConfig, model: VideoModel): Promi
   const videoRefs = references.filter((r) => r.type === "video").map((r) => r.base64);
   const audioRefs = references.filter((r) => r.type === "audio").map((r) => r.base64);
 
-  // 构建参数字符串（追加到提示词后面）
-  const params: string[] = [];
-  if (config.resolution) {
-    params.push(`--resolution ${config.resolution.toLowerCase()}`);
-  }
-  if (config.aspectRatio) {
-    params.push(`--ratio ${config.aspectRatio}`);
-  }
-  if (config.duration) {
-    params.push(`--duration ${config.duration}`);
-  }
-  params.push("--watermark false");
+  // 构建参数字符串（追加到提示词后面）已废弃
+  // const params: string[] = [];
+  // if (config.resolution) {
+  //   params.push(`--resolution ${config.resolution.toLowerCase()}`);
+  // }
+  // if (config.aspectRatio) {
+  //   params.push(`--ratio ${config.aspectRatio}`);
+  // }
+  // if (config.duration) {
+  //   params.push(`--duration ${config.duration}`);
+  // }
+  // params.push("--watermark false");
 
   // 构建 content 数组
   const content: any[] = [
     {
       type: "text",
-      text: `${config.prompt} ${params.join(" ")}`.trim(),
+      text: config.prompt,
     },
   ];
+
   const activeMode = Array.isArray(config.mode) ? config.mode[0] : config.mode;
-  // 添加图片到 content
+
+  // 添加图片到 content（先上传到图床）
   if (imageRefs.length > 0) {
     const isStartEndMode = (
       activeMode === "startEndRequired" ||
@@ -1271,30 +1392,48 @@ const doubaoVideoRequest = async (config: VideoConfig, model: VideoModel): Promi
       activeMode === "startFrameOptional"
     );
 
-    if (isStartEndMode && imageRefs.length == 2) {
+    // 将 base64 图片上传到图床
+    const uploadedImageUrls: string[] = [];
+    for (let i = 0; i < imageRefs.length; i++) {
+      const imageRef = imageRefs[i];
+      const { mimeType } = getFileMeta(imageRef, `image-${i}`);
+      const normalized = normalizeBase64(imageRef);
+      const buffer = base64ToBuffer(normalized);
+
+      const uploadedUrl = await uploadToImageProxy(buffer, mimeType, `doubao-img-${i}`);
+      if (uploadedUrl) {
+        uploadedImageUrls.push(uploadedUrl);
+      } else {
+        // 如果上传失败，使用原始 base64（作为降级方案）
+        logger(`[豆包视频] 图片 ${i} 上传图床失败，使用原始 base64`);
+        uploadedImageUrls.push(imageRef);
+      }
+    }
+
+    if (isStartEndMode && uploadedImageUrls.length == 2) {
       // 首尾帧模式：首帧需要 role: "first_frame"，尾帧需要 role: "last_frame"
       content.push({
         type: "image_url",
-        image_url: { url: imageRefs[0] },
+        image_url: { url: uploadedImageUrls[0] },
         role: "first_frame",
       });
       content.push({
         type: "image_url",
-        image_url: { url: imageRefs[1] },
+        image_url: { url: uploadedImageUrls[1] },
         role: "last_frame",
       });
-    } else if (imageRefs.length === 1) {
+    } else if (uploadedImageUrls.length === 1) {
       // 单图模式：首帧（不需要 role 字段）
       content.push({
         type: "image_url",
-        image_url: { url: imageRefs[0] },
+        image_url: { url: uploadedImageUrls[0] },
       });
-    } else if (imageRefs.length >= 1) {
+    } else if (uploadedImageUrls.length >= 1) {
       // 参考图模式：reference_image
-      for (const imageRef of imageRefs) {
+      for (const imageUrl of uploadedImageUrls) {
         content.push({
           type: "image_url",
-          image_url: { url: imageRef },
+          image_url: { url: imageUrl },
           role: "reference_image",
         });
       }
@@ -1319,23 +1458,27 @@ const doubaoVideoRequest = async (config: VideoConfig, model: VideoModel): Promi
   const createBody: Record<string, any> = {
     model: model.modelName,
     content: content,
+    ratio: config.aspectRatio,
+    duration: config.duration,
+    watermark: false,
   };
+
   if (typeof config.audio === "boolean") {
-    createBody.generate_audio = config.audio
+    createBody.generate_audio = config.audio;
   }
+
   const createResponse = await fetch(getDoubaoVideoCreateUrl(), {
     method: "POST",
     headers: {
       Authorization: getAuthorization("video"),
       "Content-Type": "application/json",
-      Accept: "application/json",
     },
     body: JSON.stringify(createBody),
   });
   await throwIfNotOk(createResponse, "豆包视频任务创建");
 
   const createData = await parseJsonResponse(createResponse);
-  const taskId = createData?.id || createData?.task_id;
+  const taskId = createData?.data?.task_id || createData?.id || createData?.task_id;
   if (!taskId) {
     throw new Error(`${model.modelName}视频任务创建失败: ${JSON.stringify(createData)}`);
   }
@@ -1345,8 +1488,6 @@ const doubaoVideoRequest = async (config: VideoConfig, model: VideoModel): Promi
       method: "GET",
       headers: {
         Authorization: getAuthorization("video"),
-        "Content-Type": "application/json",
-        Accept: "application/json",
       },
     });
     await throwIfNotOk(queryResponse, "豆包视频查询");
@@ -1355,7 +1496,7 @@ const doubaoVideoRequest = async (config: VideoConfig, model: VideoModel): Promi
     const status = String(queryData?.status || "").toLowerCase();
 
     // 豆包响应格式: content.video_url
-    const videoUrl = queryData?.content?.video_url;
+    const videoUrl = queryData?.content?.video_url || (queryData?.fail_reason?.startsWith("http") ? queryData?.fail_reason : "");
 
     if (videoUrl && status === "succeeded") {
       return { completed: true, data: videoUrl };
@@ -1364,7 +1505,7 @@ const doubaoVideoRequest = async (config: VideoConfig, model: VideoModel): Promi
       return { completed: true, data: videoUrl || taskId };
     }
     if (["failed", "failure", "error"].includes(status)) {
-      return { completed: false, error: queryData?.fail_reason || `${model.modelName}视频生成失败` };
+      return { completed: true, error: queryData?.fail_reason || `${model.modelName}视频生成失败` };
     }
     return { completed: false };
   }, 5000, 10 * 60 * 1000);
@@ -1374,6 +1515,126 @@ const doubaoVideoRequest = async (config: VideoConfig, model: VideoModel): Promi
     throw new Error(`${model.modelName}视频任务完成，但未返回可用下载地址`);
   }
   return result.data;
+};
+
+// ==================== WAN3.0 视频生成 ====================
+const wanVideoRequest = async (config: VideoConfig, model: VideoModel): Promise<string> => {
+  const imageRefs = (config.referenceList ?? []).filter((r) => r.type === "image").map((r) => r.base64);
+  const videoRefs = (config.referenceList ?? []).filter((r) => r.type === "video").map((r) => r.base64);
+  const audioRefs = (config.referenceList ?? []).filter((r) => r.type === "audio").map((r) => r.base64);
+  const activeMode = Array.isArray(config.mode) ? config.mode[0] : config.mode;
+
+  // 构建 media 数组
+  const media: any[] = [];
+
+  // 判断是否为首尾帧模式
+  const isStartEndMode = activeMode === "startEndRequired" || activeMode === "endFrameOptional";
+  const isMultiReferenceMode = Array.isArray(activeMode);
+
+  if (isStartEndMode && imageRefs.length >= 1) {
+    // 首尾帧模式
+    if (imageRefs.length >= 1) {
+      media.push({
+        type: "first_frame",
+        url: imageRefs[0],
+      });
+    }
+    if (imageRefs.length >= 2) {
+      media.push({
+        type: "last_frame",
+        url: imageRefs[1],
+      });
+    }
+  } else if (isMultiReferenceMode || imageRefs.length > 0) {
+    // 多参考模式：所有图片作为 reference_image
+    for (const imageRef of imageRefs) {
+      media.push({
+        type: "reference_image",
+        url: imageRef,
+      });
+    }
+  }
+
+  // 添加视频参考
+  for (const videoRef of videoRefs) {
+    media.push({
+      type: "reference_video",
+      url: videoRef,
+    });
+  }
+
+  // 添加音频参考
+  for (const audioRef of audioRefs) {
+    media.push({
+      type: "reference_audio",
+      url: audioRef,
+    });
+  }
+
+  const body: Record<string, any> = {
+    model: model.modelName,
+    input: {
+      prompt: config.prompt,
+    },
+    parameters: {
+      resolution: config.resolution === "1080p" ? "1080P" : config.resolution === "720p" ? "720P" : "480P",
+      ratio: config.aspectRatio,
+      duration: config.duration,
+    },
+  };
+
+  // 如果有参考素材，添加到 input.media
+  if (media.length > 0) {
+    body.input.media = media;
+  }
+
+  // 添加音频生成参数（如果配置了）
+  if (typeof config.audio === "boolean" && config.audio) {
+    body.parameters.audio_setting = "auto";
+  }
+
+  const response = await fetch(getWanVideoCreateUrl(), {
+    method: "POST",
+    headers: {
+      Authorization: getAuthorization("video"),
+      "Content-Type": "application/json",
+      "X-DashScope-Async": "enable",
+    },
+    body: JSON.stringify(body),
+  });
+  await throwIfNotOk(response, "WAN3.0视频任务创建");
+
+  const data = await parseJsonResponse(response);
+  const taskId = data?.output?.task_id;
+  if (!taskId) {
+    throw new Error(`${model.modelName}视频任务创建失败: ${JSON.stringify(data)}`);
+  }
+
+  const result = await pollTask(async () => {
+    const queryResponse = await fetch(getWanVideoQueryUrl(taskId), {
+      method: "GET",
+      headers: { Authorization: getAuthorization("video") },
+    });
+    await throwIfNotOk(queryResponse, "WAN3.0视频查询");
+
+    const queryData = await parseJsonResponse(queryResponse);
+    const status = String(queryData?.output?.task_status || "").toUpperCase();
+
+    if (status === "SUCCEEDED") {
+      const videoUrl = queryData?.output?.video_url;
+      return { completed: true, data: videoUrl };
+    }
+    if (status === "FAILED") {
+      return { completed: true, error: queryData?.output?.message || `${model.modelName}视频生成失败` };
+    }
+    return { completed: false };
+  }, 5000, 10 * 60 * 1000);
+
+  if (result.error) throw new Error(result.error);
+  if (!result.data) {
+    throw new Error(`${model.modelName}视频任务完成，但未返回可用下载地址`);
+  }
+  return await urlToBase64(result.data);
 };
 
 // ==================== HappyHorse 视频生成 ====================
@@ -1514,6 +1775,8 @@ const videoRequest = async (config: VideoConfig, model: VideoModel): Promise<str
     return klingVideoRequest(config, model);
   } else if (modelName.startsWith("doubao-seedance-")) {
     return doubaoVideoRequest(config, model);
+  } else if (modelName.startsWith("wan3.0") || modelName.startsWith("wan-")) {
+    return wanVideoRequest(config, model);
   } else if (modelName.startsWith("happyhorse")) {
     return happyhorseVideoRequest(config, model);
   }

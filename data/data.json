@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-09-09T14:30:45.304Z",
+    "generatedAt": "2026-09-20T07:15:22.509Z",
     "totalFiles": 6,
     "validVendors": 6,
     "invalidVendors": 0,
-    "totalModels": 120
+    "totalModels": 122
   },
   "vendors": [
     {
@@ -20,20 +20,20 @@
         "warnings": []
       },
       "stats": {
-        "total": 61,
+        "total": 63,
         "text": 25,
-        "image": 13,
-        "video": 23,
+        "image": 14,
+        "video": 24,
         "tts": 0,
         "thinkEnabled": 16,
-        "audioSupport": 21
+        "audioSupport": 22
       },
       "vendor": {
         "id": "opennex",
-        "version": "2.8.0",
+        "version": "2.8.1",
         "name": "OpenNex API",
         "author": "opennex",
-        "description": "4022升级版，Gemini/ChatGPT/Claude + nano banana + seedance + index-tts\\n\\nOpenNex API中转站，支持所有的模型接入，一个 key 搞定所有。\\n\\n源头供货，稳定价低。邀请好友可返点。[点这里去注册](https://api.opennex.top/register?aff=gYGC)\\n\\n如遇bug请联系微信：jxppro",
+        "description": "4022升级版，seedance2.5 + gpt-image-2.5 已支持，Gemini/ChatGPT/Claude + nano banana + index-tts\\n\\nOpenNex API中转站，支持所有的模型接入，一个 key 搞定所有。\\n\\n源头供货，稳定价低。邀请好友可返点。[点这里去注册](https://api.opennex.top/register?aff=gYGC)\\n\\n如遇bug请联系微信：jxppro",
         "icon": null,
         "inputs": [
           {
@@ -75,6 +75,40 @@
           "ttsKey": ""
         },
         "models": [
+          {
+            "name": "WAN3.0 Video(阿里万象3)",
+            "modelName": "wan3.0-video",
+            "type": "video",
+            "mode": [
+              "text",
+              "startEndRequired",
+              "endFrameOptional",
+              [
+                "imageReference:9",
+                "videoReference:3",
+                "audioReference:3"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
+          {
+            "name": "Seedance 2.5",
+            "modelName": "doubao-seedance-2-5-260628",
+            "type": "video",
+            "mode": [
+              "text",
+              "startEndRequired",
+              "endFrameOptional",
+              [
+                "imageReference:9",
+                "videoReference:3",
+                "audioReference:3"
+              ]
+            ],
+            "audio": true,
+            "durationResolutionMap": []
+          },
           {
             "name": "Seedance 2.0",
             "modelName": "doubao-seedance-2-0-260128",
@@ -170,6 +204,16 @@
             ]
           },
           {
+            "name": "豆包 Seedream 5.0 Pro",
+            "modelName": "doubao-seedream-5-0-pro-260628",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ]
+          },
+          {
             "name": "豆包 Seedream 5.0",
             "modelName": "doubao-seedream-5-0-260128",
             "type": "image",
@@ -228,14 +272,14 @@
             "think": true
           },
           {
-            "name": "Deepseek-v4-flash-0731",
-            "modelName": "deepseek-v4-flash-0731",
+            "name": "Deepseek-v4.1-flash",
+            "modelName": "deepseek-v4.1-flash",
             "type": "text",
             "think": true
           },
           {
-            "name": "Deepseek-v4-flash",
-            "modelName": "deepseek-v4-flash",
+            "name": "Deepseek-v4-flash-0731",
+            "modelName": "deepseek-v4-flash-0731",
             "type": "text",
             "think": true
           },
@@ -256,18 +300,6 @@
             "modelName": "gpt-5.5",
             "type": "text",
             "think": true
-          },
-          {
-            "name": "Seedance 1.5 pro",
-            "modelName": "doubao-seedance-1-5-pro-251215",
-            "type": "video",
-            "mode": [
-              "text",
-              "startEndRequired",
-              "endFrameOptional"
-            ],
-            "audio": true,
-            "durationResolutionMap": []
           },
           {
             "name": "viduq3-turbo",
