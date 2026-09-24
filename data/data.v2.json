@@ -1,0 +1,747 @@
+{
+  "meta": {
+    "generatedAt": "2026-09-24T08:09:16.685Z",
+    "schemaVersion": "2.0",
+    "sourceDir": "./media",
+    "totalFiles": 2,
+    "validVendors": 2,
+    "invalidVendors": 0,
+    "totalModels": 22
+  },
+  "vendors": [
+    {
+      "file": "media/opennex/opennex.ts",
+      "folder": "opennex",
+      "schemaVersion": "2.0",
+      "hasProviderConfig": true,
+      "isRecommended": true,
+      "websiteUrl": "https://api.opennex.top/register?aff=gYGC",
+      "isOpenSource": false,
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "warnings": [
+          "models[11] (video) audio 字段值不正确",
+          "models[12] (video) audio 字段值不正确",
+          "models[13] (video) audio 字段值不正确",
+          "models[14] (video) audio 字段值不正确"
+        ]
+      },
+      "stats": {
+        "total": 15,
+        "text": 0,
+        "image": 11,
+        "video": 4,
+        "tts": 0,
+        "thinkEnabled": 0,
+        "audioSupport": 0
+      },
+      "vendor": {
+        "id": "opennex",
+        "version": "2.0.0",
+        "name": "OpenNex API",
+        "author": "",
+        "description": "4022升级版，支持 Seedance 2.5、GPT-Image 2.5、Gemini、ChatGPT、Claude 等多种模型。 OpenNex API 中转站，支持所有的模型接入，一个 key 搞定所有。 源头供货，稳定价低。邀请好友可返点。[点这里去注册](https://api.opennex.top/register?aff=gYGC) 如遇 bug 请联系微信：jxppro",
+        "icon": null,
+        "inputs": [
+          {
+            "key": "apiKey",
+            "label": "API Key",
+            "type": "password",
+            "required": true
+          }
+        ],
+        "inputValues": {
+          "apiKey": ""
+        },
+        "models": [
+          {
+            "name": "GPT-Image 2.5 Sunburst",
+            "modelName": "gpt-image-2.5-sunburst",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "imageSizes": [
+              "1K",
+              "2K",
+              "4K"
+            ],
+            "imageRatios": [
+              "1:1",
+              "16:9",
+              "9:16",
+              "4:3",
+              "3:4",
+              "3:2",
+              "2:3",
+              "21:9",
+              "9:21"
+            ]
+          },
+          {
+            "name": "GPT-Image 2.5 Flare",
+            "modelName": "gpt-image-2.5-flare",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "imageSizes": [
+              "1K",
+              "2K",
+              "4K"
+            ],
+            "imageRatios": [
+              "1:1",
+              "16:9",
+              "9:16",
+              "4:3",
+              "3:4",
+              "3:2",
+              "2:3",
+              "21:9",
+              "9:21"
+            ]
+          },
+          {
+            "name": "GPT-Image 2",
+            "modelName": "gpt-image-2",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "imageSizes": [
+              "1K",
+              "2K"
+            ],
+            "imageRatios": [
+              "1:1",
+              "16:9",
+              "9:16",
+              "4:3",
+              "3:4",
+              "3:2",
+              "2:3",
+              "21:9",
+              "9:21"
+            ]
+          },
+          {
+            "name": "豆包 Seedream 5.0 Pro",
+            "modelName": "doubao-seedream-5-0-pro-260628",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "imageSizes": [
+              "2K",
+              "4K"
+            ],
+            "imageRatios": [
+              "1:1",
+              "16:9",
+              "9:16",
+              "4:3",
+              "3:4",
+              "3:2",
+              "2:3"
+            ]
+          },
+          {
+            "name": "豆包 Seedream 5.0",
+            "modelName": "doubao-seedream-5-0-260128",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "imageSizes": [
+              "2K",
+              "4K"
+            ],
+            "imageRatios": [
+              "1:1",
+              "16:9",
+              "9:16",
+              "4:3",
+              "3:4",
+              "3:2",
+              "2:3"
+            ]
+          },
+          {
+            "name": "豆包 Seedream 4.5",
+            "modelName": "doubao-seedream-4-5-251128",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "imageSizes": [
+              "2K",
+              "4K"
+            ],
+            "imageRatios": [
+              "1:1",
+              "16:9",
+              "9:16",
+              "4:3",
+              "3:4",
+              "3:2",
+              "2:3"
+            ]
+          },
+          {
+            "name": "Gemini 3.1 Flash Image Preview",
+            "modelName": "gemini-3.1-flash-image-preview",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "imageSizes": [
+              "1K",
+              "2K",
+              "4K"
+            ],
+            "imageRatios": [
+              "1:1",
+              "16:9",
+              "9:16",
+              "3:2",
+              "2:3",
+              "4:3",
+              "3:4"
+            ]
+          },
+          {
+            "name": "Gemini 3 Pro Image Preview",
+            "modelName": "gemini-3-pro-image-preview",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "imageSizes": [
+              "1K",
+              "2K",
+              "4K"
+            ],
+            "imageRatios": [
+              "1:1",
+              "16:9",
+              "9:16",
+              "3:2",
+              "2:3",
+              "4:3",
+              "3:4"
+            ]
+          },
+          {
+            "name": "Gemini 3.1 Flash Image",
+            "modelName": "gemini-3.1-flash-image",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "imageSizes": [
+              "1K",
+              "2K",
+              "4K"
+            ],
+            "imageRatios": [
+              "1:1",
+              "16:9",
+              "9:16",
+              "3:2",
+              "2:3",
+              "4:3",
+              "3:4"
+            ]
+          },
+          {
+            "name": "Gemini 3 Pro Image",
+            "modelName": "gemini-3-pro-image",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "imageSizes": [
+              "1K",
+              "2K",
+              "4K"
+            ],
+            "imageRatios": [
+              "1:1",
+              "16:9",
+              "9:16",
+              "3:2",
+              "2:3",
+              "4:3",
+              "3:4"
+            ]
+          },
+          {
+            "name": "Grok Imagine Image",
+            "modelName": "grok-imagine-image",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "imageSizes": [
+              "960x960",
+              "1280x720",
+              "720x1280"
+            ],
+            "imageRatios": [
+              "1:1",
+              "16:9",
+              "9:16"
+            ]
+          },
+          {
+            "name": "WAN 3.0 Video (阿里万象3)",
+            "modelName": "wan3.0-video",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              [
+                "imageReference:9",
+                "videoReference:3",
+                "audioReference:3"
+              ]
+            ],
+            "durationResolutionMap": [
+              {
+                "duration": [
+                  4,
+                  5,
+                  8,
+                  10,
+                  15,
+                  20,
+                  25,
+                  30
+                ],
+                "resolution": [
+                  "480p",
+                  "720p",
+                  "1080p"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Seedance 2.5",
+            "modelName": "doubao-seedance-2-5-260628",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              [
+                "imageReference:9",
+                "videoReference:3",
+                "audioReference:3"
+              ]
+            ],
+            "durationResolutionMap": [
+              {
+                "duration": [
+                  4,
+                  5,
+                  8,
+                  10,
+                  15,
+                  20,
+                  25,
+                  30
+                ],
+                "resolution": [
+                  "720p",
+                  "1080p"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Seedance 2.0",
+            "modelName": "doubao-seedance-2-0-260128",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              [
+                "imageReference:9",
+                "videoReference:3",
+                "audioReference:3"
+              ]
+            ],
+            "durationResolutionMap": [
+              {
+                "duration": [
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15
+                ],
+                "resolution": [
+                  "720p",
+                  "1080p"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Seedance 2.0 Fast",
+            "modelName": "doubao-seedance-2-0-fast-260128",
+            "type": "video",
+            "mode": [
+              "text",
+              "singleImage",
+              "startEndRequired",
+              "endFrameOptional",
+              [
+                "imageReference:9",
+                "videoReference:3",
+                "audioReference:3"
+              ]
+            ],
+            "durationResolutionMap": [
+              {
+                "duration": [
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15
+                ],
+                "resolution": [
+                  "720p",
+                  "1080p"
+                ]
+              }
+            ]
+          }
+        ],
+        "protocol": null,
+        "apiUrl": null,
+        "readme": "# OpenNex API\n\n4022升级版，支持 Seedance 2.5、GPT-Image 2.5、Gemini、ChatGPT、Claude 等多种模型。\n\nOpenNex API 中转站，支持所有的模型接入，一个 key 搞定所有。\n\n源头供货，稳定价低。邀请好友可返点。[点这里去注册](https://api.opennex.top/register?aff=gYGC)\n\n如遇 bug 请联系微信：jxppro",
+        "hasGenerate": {
+          "image": true,
+          "video": true,
+          "audio": false
+        },
+        "hasUpdateCheck": false
+      }
+    },
+    {
+      "file": "media/oopc/oopc.ts",
+      "folder": "oopc",
+      "schemaVersion": "2.0",
+      "hasProviderConfig": true,
+      "isRecommended": false,
+      "websiteUrl": "https://api.oopc.top/about",
+      "isOpenSource": false,
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      },
+      "stats": {
+        "total": 7,
+        "text": 0,
+        "image": 7,
+        "video": 0,
+        "tts": 0,
+        "thinkEnabled": 0,
+        "audioSupport": 0
+      },
+      "vendor": {
+        "id": "oopc",
+        "version": "2.0.0",
+        "name": "OOPC API",
+        "author": "",
+        "description": "gpt-image-2.5-sunburst 最低只需¥0.04/张！ 支持 OpenAI 兼容、Gemini 原生图像生成。 正在内测中，加微信 jxppro 获取apikey！",
+        "icon": null,
+        "inputs": [
+          {
+            "key": "apiKey",
+            "label": "API Key",
+            "type": "password",
+            "required": true
+          }
+        ],
+        "inputValues": {
+          "apiKey": ""
+        },
+        "models": [
+          {
+            "name": "GPT Image 2.5 Flare",
+            "modelName": "gpt-image-2.5-flare",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "imageSizes": [
+              "1K",
+              "2K",
+              "4K"
+            ],
+            "imageRatios": [
+              "1:1",
+              "16:9",
+              "9:16",
+              "4:3",
+              "3:4",
+              "3:2",
+              "2:3",
+              "21:9",
+              "9:21"
+            ]
+          },
+          {
+            "name": "GPT Image 2.5 Sunburst",
+            "modelName": "gpt-image-2.5-sunburst",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "imageSizes": [
+              "1K",
+              "2K",
+              "4K"
+            ],
+            "imageRatios": [
+              "1:1",
+              "16:9",
+              "9:16",
+              "4:3",
+              "3:4",
+              "3:2",
+              "2:3",
+              "21:9",
+              "9:21"
+            ]
+          },
+          {
+            "name": "GPT Image 2",
+            "modelName": "gpt-image-2",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "imageSizes": [
+              "1K",
+              "2K",
+              "4K"
+            ],
+            "imageRatios": [
+              "1:1",
+              "16:9",
+              "9:16",
+              "4:3",
+              "3:4",
+              "3:2",
+              "2:3",
+              "21:9",
+              "9:21"
+            ]
+          },
+          {
+            "name": "Gemini 3 Pro Image",
+            "modelName": "gemini-3-pro-image",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "imageSizes": [
+              "1K",
+              "2K",
+              "4K"
+            ],
+            "imageRatios": [
+              "1:1",
+              "16:9",
+              "9:16",
+              "3:2",
+              "2:3",
+              "4:3",
+              "3:4"
+            ]
+          },
+          {
+            "name": "Gemini 3.1 Flash Image",
+            "modelName": "gemini-3.1-flash-image",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "imageSizes": [
+              "1K",
+              "2K",
+              "4K"
+            ],
+            "imageRatios": [
+              "1:1",
+              "16:9",
+              "9:16",
+              "3:2",
+              "2:3",
+              "4:3",
+              "3:4"
+            ]
+          },
+          {
+            "name": "Gemini 3 Pro Image Preview",
+            "modelName": "gemini-3-pro-image-preview",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "imageSizes": [
+              "1K",
+              "2K",
+              "4K"
+            ],
+            "imageRatios": [
+              "1:1",
+              "16:9",
+              "9:16",
+              "3:2",
+              "2:3",
+              "4:3",
+              "3:4"
+            ]
+          },
+          {
+            "name": "Gemini 3.1 Flash Image Preview",
+            "modelName": "gemini-3.1-flash-image-preview",
+            "type": "image",
+            "mode": [
+              "text",
+              "singleImage",
+              "multiReference"
+            ],
+            "imageSizes": [
+              "1K",
+              "2K",
+              "4K"
+            ],
+            "imageRatios": [
+              "1:1",
+              "16:9",
+              "9:16",
+              "3:2",
+              "2:3",
+              "4:3",
+              "3:4"
+            ]
+          }
+        ],
+        "protocol": null,
+        "apiUrl": null,
+        "readme": "# OOPC API\n\ngpt-image-2.5-sunburst 最低只需¥0.04/张！\n\n支持 OpenAI 兼容、Gemini 原生图像生成。\n\n正在内测中，加微信 jxppro 获取apikey！",
+        "hasGenerate": {
+          "image": true,
+          "video": false,
+          "audio": false
+        },
+        "hasUpdateCheck": false
+      }
+    }
+  ],
+  "qqGroups": [
+    {
+      "name": "AI漫剧交流群",
+      "number": "392244123",
+      "description": "聚集 AI漫剧创作爱好者，分享漫剧行业动态",
+      "joinUrl": "https://qm.qq.com/q/Q6PkVHd56e",
+      "badge": "荐"
+    },
+    {
+      "name": "OPC API 交流群",
+      "number": "383888651",
+      "description": "聚集 OPC 创业者，分享开发心得与行业动态",
+      "joinUrl": "https://qm.qq.com/q/ybHgJDm6mQ",
+      "badge": "热"
+    }
+  ],
+  "toolWebsites": [
+    {
+      "name": "生图工作台",
+      "description": "适合漫剧改图，做封面，角色人物捏脸造型, 支持 gpt-image-2 和 nano banana生图",
+      "websiteUrl": "https://img.opennex.top",
+      "badge": "推荐"
+    },
+    {
+      "name": "开拍·漫剧导航",
+      "description": "发现 AI 漫剧创作相关资源与服务",
+      "websiteUrl": "https://www.kaipai.vip",
+      "badge": "推荐"
+    },
+    {
+      "name": "造剧·精品漫剧提示词库",
+      "description": "开源的精品漫剧提示词。学AI漫剧，就来造剧！",
+      "websiteUrl": "https://www.zaoju.vip",
+      "badge": "推荐"
+    },
+    {
+      "name": "OPC·工具导航",
+      "description": "探索 AI 创作与开发相关工具",
+      "websiteUrl": "https://www.oopc.top",
+      "badge": "推荐"
+    }
+  ]
+}

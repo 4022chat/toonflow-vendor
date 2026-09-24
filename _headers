@@ -16,8 +16,16 @@
 /store/*.ts
   Content-Disposition: attachment
 
+# ToonFlow 2.0 供应商适配文件（media .ts）同样强制下载
+/media/*.ts
+  Content-Disposition: attachment
+
 # 主页面
 /index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# 旧版主页面
+/legacy.html
   Cache-Control: public, max-age=0, must-revalidate
 
 # 安全响应头

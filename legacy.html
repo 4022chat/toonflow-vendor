@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ToonFlow 2.0 供应商</title>
+  <title>ToonFlow 供应商（旧版 1.1.8 系统）</title>
   <style>
     * {
       margin: 0;
@@ -184,125 +184,6 @@
       color: hsl(var(--muted-foreground));
     }
 
-    .sidebar-link.active {
-      background: hsl(var(--accent));
-      font-weight: 600;
-    }
-
-    .sidebar-link.active svg {
-      color: hsl(var(--foreground));
-    }
-
-    /* Version */
-    .version-banner {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 12px 14px;
-      margin-bottom: 16px;
-      border: 1px solid hsl(var(--border));
-      border-radius: 8px;
-      background: hsl(var(--secondary));
-      font-size: 13px;
-      line-height: 1.7;
-    }
-
-    .version-banner-tag {
-      flex-shrink: 0;
-      font-size: 11px;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 9999px;
-      border: 1px solid hsl(var(--border));
-      background: hsl(var(--background));
-      color: hsl(var(--foreground));
-      margin-top: 2px;
-      white-space: nowrap;
-    }
-
-    .version-banner-text {
-      color: hsl(var(--muted-foreground));
-      min-width: 0;
-    }
-
-    .version-banner-text strong {
-      color: hsl(var(--foreground));
-      font-weight: 600;
-    }
-
-    .version-banner code {
-      background: hsl(var(--background));
-      border: 1px solid hsl(var(--border));
-      border-radius: 4px;
-      padding: 1px 5px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 12px;
-      word-break: break-all;
-    }
-
-    .version-switch {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      padding: 4px 10px;
-      border: 1px solid hsl(var(--border));
-      border-radius: 9999px;
-      color: hsl(var(--foreground));
-      text-decoration: none;
-      background: hsl(var(--background));
-      white-space: nowrap;
-      transition: background 0.15s;
-    }
-
-    .version-switch:hover {
-      background: hsl(var(--accent));
-    }
-
-    /* Key-value grid (2.0 适配信息) */
-    .kv-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .kv-item {
-      background: hsl(var(--secondary));
-      border: 1px solid hsl(var(--border));
-      border-radius: 6px;
-      padding: 10px;
-      min-width: 0;
-    }
-
-    .kv-label {
-      font-size: 11px;
-      color: hsl(var(--muted-foreground));
-      margin-bottom: 4px;
-    }
-
-    .kv-value {
-      font-size: 12px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      word-break: break-all;
-    }
-
-    .capability-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 20px;
-    }
-
-    .capability-chip {
-      font-size: 11px;
-      padding: 3px 10px;
-      border-radius: 9999px;
-      border: 1px solid hsl(var(--border));
-      background: hsl(var(--secondary));
-      color: hsl(var(--foreground));
-    }
-
     .sidebar-footer {
       padding: 12px 16px;
       border-top: 1px solid hsl(var(--border));
@@ -419,6 +300,51 @@
     .topbar-stat-value {
       font-weight: 600;
       color: hsl(var(--foreground));
+    }
+
+    /* ── 版本提示条（旧版页面专属） ── */
+    .version-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 14px;
+      margin-bottom: 20px;
+      border: 1px solid hsl(var(--border));
+      border-left: 3px solid hsl(var(--primary));
+      border-radius: 8px;
+      background: hsl(var(--secondary) / 0.5);
+      font-size: 12px;
+      line-height: 1.7;
+      color: hsl(var(--muted-foreground));
+    }
+
+    .version-banner strong {
+      color: hsl(var(--foreground));
+    }
+
+    .version-banner code {
+      font-size: 11px;
+      padding: 1px 5px;
+      border-radius: 4px;
+      border: 1px solid hsl(var(--border));
+      background: hsl(var(--background));
+      color: hsl(var(--foreground));
+    }
+
+    .version-banner a {
+      color: hsl(var(--primary));
+      text-decoration: underline;
+    }
+
+    .version-banner-tag {
+      flex: none;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      background: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      white-space: nowrap;
     }
 
     /* Content Area */
@@ -1625,8 +1551,8 @@
           <div class="sidebar-qr-tip">没有 API 账号？扫码备注「内测申请」</div>
         </div>
       </div>
-      <div class="sidebar-footer" id="sidebarFooter">
-        ToonFlow v1.0.0
+      <div class="sidebar-footer">
+        旧版供应商 · 1.1.8 系统 · .ts
       </div>
     </aside>
 
@@ -1636,11 +1562,11 @@
       <header class="topbar">
         <div class="topbar-left">
           <nav class="version-switcher" aria-label="供应商版本切换">
-            <a href="./" class="version-switcher-item is-active" id="navVersionV2" aria-current="page" title="ToonFlow 2.0 供应商（存放于 media，.ts 适配文件）">
+            <a href="./" class="version-switcher-item" title="ToonFlow 2.0 供应商（存放于 media，.ts 适配文件）">
               新版供应商
               <span class="version-switcher-tag">2.0</span>
             </a>
-            <a href="legacy.html" class="version-switcher-item" id="navVersionLegacy" title="旧版供应商（1.1.8 系统，.ts 适配文件）">
+            <a href="legacy.html" class="version-switcher-item is-active" aria-current="page" title="旧版供应商（1.1.8 系统，.ts 适配文件）">
               旧版供应商
               <span class="version-switcher-tag">1.1.8</span>
             </a>
@@ -1657,8 +1583,15 @@
 
       <!-- Content -->
       <div class="content">
-        <!-- 版本提示 -->
-        <div id="versionBanner"></div>
+        <div class="version-banner">
+          <span class="version-banner-tag">旧版供应商</span>
+          <div>
+            本页收录 ToonFlow <strong>1.1.8 及更早版本</strong>使用的 <strong>.ts</strong> 供应商适配文件，导入链接形如
+            <code>/store/{供应商 ID}/{供应商 ID}.ts</code>。
+            注意：2.0 供应商后缀同样是 <strong>.ts</strong>，但内部结构不同、存放在 <code>/media</code>，请勿混用。
+            已升级到 ToonFlow 2.0？<a href="./">查看 2.0 供应商 →</a>
+          </div>
+        </div>
 
         <!-- Filter Tabs -->
         <div class="filter-tabs" id="filterTabs">
@@ -1677,8 +1610,40 @@
           </div>
         </div>
 
-        <!-- 使用教程（按版本动态渲染） -->
-        <div class="tutorial-section" id="tutorialSection"></div>
+        <!-- 使用教程 -->
+        <div class="tutorial-section">
+          <div class="tutorial-title">📖 使用教程</div>
+          <div class="tutorial-steps">
+            <div class="tutorial-step">
+              <div class="tutorial-step-header">
+                <div class="tutorial-step-badge">1</div>
+                <div class="tutorial-step-title">打开供应商网站注册</div>
+              </div>
+              <div class="tutorial-step-desc">选择您需要的供应商，点击卡片上的链接跳转至对应平台完成账号注册</div>
+            </div>
+            <div class="tutorial-step">
+              <div class="tutorial-step-header">
+                <div class="tutorial-step-badge">2</div>
+                <div class="tutorial-step-title">创建 API Key</div>
+              </div>
+              <div class="tutorial-step-desc">登录后进入控制台，在 API 管理页面创建新的 API 密钥并妥善保存</div>
+            </div>
+            <div class="tutorial-step">
+              <div class="tutorial-step-header">
+                <div class="tutorial-step-badge">3</div>
+                <div class="tutorial-step-title">复制 TS 文件链接</div>
+              </div>
+              <div class="tutorial-step-desc">在本页面供应商卡片上点击「复制」按钮，获取供应商配置文件的完整 URL</div>
+            </div>
+            <div class="tutorial-step">
+              <div class="tutorial-step-header">
+                <div class="tutorial-step-badge">4</div>
+                <div class="tutorial-step-title">打开软件导入</div>
+              </div>
+              <div class="tutorial-step-desc">启动 ToonFlow 客户端，在供应商管理中粘贴链接并填入 API Key 即可使用</div>
+            </div>
+          </div>
+        </div>
         <!-- QQ 交流群 -->
         <div id="qqGroupsContainer"></div>
         <!-- 工具网站 -->
@@ -1721,62 +1686,6 @@
   </div>
 
   <script>
-    // ────────────────────────────────────────────────────────────
-    // 版本配置
-    //   本页 index.html      = ToonFlow 2.0 供应商（.ts 适配文件）
-    //   旧版页面 legacy.html = 旧版供应商（1.1.8 系统的 .ts 适配文件），入口 /legacy
-    //   两份配置保留在此，供页面标题、提示条与切换入口引用
-    // ────────────────────────────────────────────────────────────
-    const VERSION_CONFIG = {
-      v2: {
-        key: 'v2',
-        dataUrl: '/data/data.v2.json',
-        name: 'ToonFlow 2.0',
-        fileExt: '.ts',
-        storeDir: 'media',
-        expectedSchema: '2.0',
-        route: '/',
-        clientHint: '适用于 ToonFlow 2.0 客户端',
-        title: 'ToonFlow 2.0 供应商列表',
-        docTitle: 'ToonFlow 2.0 供应商',
-        footer: 'ToonFlow 2.0 供应商 · .ts',
-        otherKey: 'legacy',
-        otherLabel: '查看旧版供应商',
-        otherName: '旧版（1.1.8 系统）',
-      },
-      legacy: {
-        key: 'legacy',
-        dataUrl: '/data/data.json',
-        name: '旧版供应商',
-        fileExt: '.ts',
-        storeDir: 'store',
-        expectedSchema: null,
-        route: 'legacy.html',
-        clientHint: '适用于 ToonFlow 1.1.8 及更早版本',
-        docTitle: 'ToonFlow 旧版供应商',
-        footer: 'ToonFlow 旧版供应商 · .ts',
-        otherKey: 'v2',
-        otherName: 'ToonFlow 2.0',
-      },
-    };
-
-    // 本页固定承载 ToonFlow 2.0 视图，不做按路径切换。
-    // 旧版供应商（1.1.8 系统 · .ts）由独立页面 legacy.html 承载，入口为 /legacy。
-    const currentVersionKey = 'v2';
-
-    // 兜底：若部署环境没有把 /legacy 转发到 legacy.html（例如某些本地静态服务器），
-    // 这里主动跳一次，保证旧版入口在任何环境下都能打开。
-    if (/^\/(legacy|1\.0|1\.1|1\.1\.8|v1)(\/|$)/i.test(window.location.pathname || '')) {
-      window.location.replace('legacy.html');
-    }
-    const VERSION = VERSION_CONFIG[currentVersionKey];
-    const OTHER_VERSION = VERSION_CONFIG[VERSION.otherKey];
-
-    // 2.0 用 audio 表示语音模型，UI 层归一到旧版的 tts 分类，复用同一个筛选与统计
-    function uiType(type) {
-      return type === 'audio' ? 'tts' : type;
-    }
-
     let vendorsData = [];
     let qqGroupsData = [];
     let toolWebsitesData = [];
@@ -1799,105 +1708,12 @@
       }
     });
 
-    function renderVersionUI() {
-      document.title = VERSION.docTitle;
-
-      document.getElementById('sidebarFooter').textContent = VERSION.footer;
-
-      // 顶栏版本切换器：高亮当前版本
-      const versionItems = [
-        [document.getElementById('navVersionV2'), 'v2'],
-        [document.getElementById('navVersionLegacy'), 'legacy'],
-      ];
-      versionItems.forEach(([el, key]) => {
-        if (!el) return;
-        const isActive = currentVersionKey === key;
-        el.classList.toggle('is-active', isActive);
-        if (isActive) el.setAttribute('aria-current', 'page');
-        else el.removeAttribute('aria-current');
-      });
-
-      const isV2 = currentVersionKey === 'v2';
-      const banner = document.getElementById('versionBanner');
-      if (banner) {
-        banner.innerHTML = `
-          <div class="version-banner">
-            <span class="version-banner-tag">${escapeHtml(VERSION.name)}</span>
-            <div class="version-banner-text">
-              ${escapeHtml(VERSION.clientHint)}。本页收录 <strong>ToonFlow 2.0 系统格式</strong>的供应商适配文件，后缀为 <strong>${escapeHtml(VERSION.fileExt)}</strong>，导入链接形如
-              <code>/${escapeHtml(VERSION.storeDir)}/{供应商 ID}/{供应商 ID}${escapeHtml(VERSION.fileExt)}</code>。
-              ${isV2
-                ? `注意：2.0 与旧版适配文件后缀同为 <strong>.ts</strong>，内部结构不同，请勿混用。旧版客户端请<a href="${OTHER_VERSION.route}">切换到旧版供应商 →</a>`
-                : `已升级到 ToonFlow 2.0？<a href="${OTHER_VERSION.route}">查看 2.0 供应商 →</a>`}
-            </div>
-          </div>
-        `;
-      }
-    }
-
-    function renderTutorial() {
-      const container = document.getElementById('tutorialSection');
-      if (!container) return;
-
-      const isV2 = currentVersionKey === 'v2';
-      const steps = [
-        {
-          title: '打开供应商网站注册',
-          desc: '选择您需要的供应商，点击卡片上的链接跳转至对应平台完成账号注册',
-        },
-        {
-          title: '创建 API Key',
-          desc: '登录后进入控制台，在 API 管理页面创建新的 API 密钥并妥善保存',
-        },
-        {
-          title: `复制 ${VERSION.fileExt} 文件链接`,
-          desc: `在本页面供应商卡片上点击「复制」按钮，获取供应商适配文件（${VERSION.fileExt}）的完整 URL`,
-        },
-        {
-          title: '打开软件导入',
-          desc: isV2
-            ? '启动 ToonFlow 2.0 客户端，在供应商管理中粘贴链接并填入 API Key 即可使用'
-            : '启动 ToonFlow 1.1.8 或更早版本的客户端，在供应商管理中粘贴链接并填入 API Key 即可使用',
-        },
-      ];
-
-      container.innerHTML = `
-        <div class="tutorial-title">📖 使用教程</div>
-        <div class="tutorial-steps">
-          ${steps.map((step, index) => `
-            <div class="tutorial-step">
-              <div class="tutorial-step-header">
-                <div class="tutorial-step-badge">${index + 1}</div>
-                <div class="tutorial-step-title">${escapeHtml(step.title)}</div>
-              </div>
-              <div class="tutorial-step-desc">${escapeHtml(step.desc)}</div>
-            </div>
-          `).join('')}
-        </div>
-      `;
-    }
-
-    function renderLoadFailed(error) {
-      const isV2 = currentVersionKey === 'v2';
-      document.getElementById('content').innerHTML = `
-        <div class="empty-state">
-          <div>${isV2 ? 'ToonFlow 2.0 供应商清单尚未生成' : '加载失败'}</div>
-          <div style="color: hsl(var(--muted-foreground)); font-size: 12px; margin-top: 4px;">
-            ${isV2 ? `${escapeHtml(error.message)}，可先运行 <code>node data.v2.js</code> 生成` : escapeHtml(error.message)}
-          </div>
-          <div style="margin-top: 16px;">
-            <a class="version-switch" href="${OTHER_VERSION.route}">查看${escapeHtml(OTHER_VERSION.otherName)}供应商 →</a>
-          </div>
-        </div>
-      `;
-    }
-
     async function loadData() {
       try {
-        const response = await fetch(VERSION.dataUrl);
-        if (!response.ok) throw new Error('无法加载 ' + VERSION.dataUrl);
+        const response = await fetch('/data/data.json');
+        if (!response.ok) throw new Error('无法加载数据文件');
         const data = await response.json();
-        // 数据结构：{ meta: {...}, vendors: [...] }
+        // 适配新的数据结构：{ meta: {...}, vendors: [...] }
         vendorsData = data.vendors || data;
         qqGroupsData = data.qqGroups || [];
         toolWebsitesData = data.toolWebsites || [];
@@ -1907,7 +1723,12 @@
         renderToolWebsites();
         setupFilters();
       } catch (error) {
-        renderLoadFailed(error);
+        document.getElementById('content').innerHTML = `
+          <div class="error">
+            <div>加载失败</div>
+            <div style="color: hsl(var(--muted-foreground)); font-size: 12px; margin-top: 4px;">${error.message}</div>
+          </div>
+        `;
       }
     }
 
@@ -1921,7 +1742,7 @@
 
     function getVendorTypes(vendor) {
       const types = new Set();
-      vendor.models?.forEach(m => types.add(uiType(m.type)));
+      vendor.models?.forEach(m => types.add(m.type));
       return Array.from(types);
     }
 
@@ -2000,27 +1821,10 @@
       }
 
       if (filtered.length === 0) {
-        const isV2 = currentVersionKey === 'v2';
-        const noDataAtAll = vendorsData.length === 0;
-
-        let headline = '暂无数据';
-        let hint = '没有找到符合条件的供应商';
-        let action = '';
-
-        if (noDataAtAll && isV2) {
-          headline = 'ToonFlow 2.0 供应商正在接入中';
-          hint = '2.0 适配文件（.ts）还在陆续上架，可先查看现有的旧版供应商';
-          action = `<div style="margin-top: 16px;"><a class="version-switch" href="${OTHER_VERSION.route}">查看旧版供应商（1.1.8 系统 · .ts）→</a></div>`;
-        } else if (!noDataAtAll) {
-          headline = '没有找到符合条件的供应商';
-          hint = '换个筛选标签试试';
-        }
-
         document.getElementById('content').innerHTML = `
           <div class="empty-state">
-            <div>${headline}</div>
-            <div style="color: hsl(var(--muted-foreground)); font-size: 12px; margin-top: 4px;">${hint}</div>
-            ${action}
+            <div>暂无数据</div>
+            <div style="color: hsl(var(--muted-foreground)); font-size: 12px; margin-top: 4px;">没有找到符合条件的供应商</div>
           </div>
         `;
         return;
@@ -2053,7 +1857,7 @@
       const rawDesc = (vendor.description || '暂无描述').replace(/\\n/g, ' ').replace(/\n/g, ' ');
       const shortDesc = rawDesc.length > 80 ? rawDesc.substring(0, 80) + '...' : rawDesc;
       const protocolAndHost = window.location.protocol + "//" + window.location.host;
-      const fileUrl = `${protocolAndHost}/${item.file}`;
+      const fileUrl = `${protocolAndHost}/store/${item.file}`;
       const isRecommended = item.isRecommended;
       const hasValidation = item.validation && !item.validation.valid;
       const websiteUrl = item.websiteUrl;
@@ -2065,7 +1869,7 @@
             <div class="vendor-icon">${firstLetter}</div>
             <div class="vendor-title-group">
               <div class="vendor-name">${escapeHtml(vendor.name)}${isRecommended ? '<span class="vendor-recommended-badge">推荐</span>' : ''}${hasValidation ? '<span class="vendor-invalid-badge">配置错误</span>' : ''}</div>
-              <div class="vendor-id">${escapeHtml(vendor.id)} · v${escapeHtml(vendor.version || '1.0')}${currentVersionKey === 'v2' ? ' · .ts' : ''}</div>
+              <div class="vendor-id">${escapeHtml(vendor.id)} · v${escapeHtml(vendor.version || '1.0')}</div>
             </div>
             <a href="${escapeHtml(item.websiteUrl)}" target="_blank" class="copy-btn">${item.isOpenSource ? '自行部署' : '注册账号'}</a>
           </div>
@@ -2106,7 +1910,7 @@
 
       document.getElementById('modalIcon').textContent = firstLetter;
       document.getElementById('modalTitle').textContent = vendor.name || '-';
-      document.getElementById('modalId').textContent = `${vendor.id || '-'} · v${vendor.version || '1.0'} · ${item.folder} · ${VERSION.fileExt}`;
+      document.getElementById('modalId').textContent = `${vendor.id || '-'} · v${vendor.version || '1.0'} · ${item.folder}`;
 
       let bodyHtml = '';
 
@@ -2121,25 +1925,6 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" class="info-alert-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
             <span>${alertText}</span>
           </div>
-        `;
-      }
-
-      // 2.0 适配信息
-      if (vendor.protocol || vendor.apiUrl || vendor.hasGenerate) {
-        const capabilities = [];
-        if (vendor.hasGenerate?.image) capabilities.push('图像生成');
-        if (vendor.hasGenerate?.video) capabilities.push('视频生成');
-        if (vendor.hasGenerate?.audio) capabilities.push('语音生成');
-        if (vendor.hasUpdateCheck) capabilities.push('支持在线更新');
-
-        bodyHtml += `
-          <div class="section-title">2.0 适配信息</div>
-          <div class="kv-grid">
-            ${vendor.apiUrl ? `<div class="kv-item"><div class="kv-label">接口地址</div><div class="kv-value">${escapeHtml(vendor.apiUrl)}</div></div>` : ''}
-            ${vendor.protocol ? `<div class="kv-item"><div class="kv-label">协议</div><div class="kv-value">${escapeHtml(vendor.protocol)}</div></div>` : ''}
-            <div class="kv-item"><div class="kv-label">适配文件</div><div class="kv-value">${escapeHtml(item.file)}</div></div>
-          </div>
-          ${capabilities.length ? `<div class="capability-row">${capabilities.map(c => `<span class="capability-chip">${c}</span>`).join('')}</div>` : ''}
         `;
       }
 
@@ -2248,8 +2033,6 @@
             </div>
           ` : ''}
           ${model.voices?.length ? `<div class="model-voices">${model.voices.length} 种声音</div>` : ''}
-          ${model.imageSizes?.length ? `<div class="model-duration">尺寸：${model.imageSizes.map(s => escapeHtml(String(s))).join(' / ')}</div>` : ''}
-          ${model.imageRatios?.length ? `<div class="model-duration">比例：${model.imageRatios.map(s => escapeHtml(String(s))).join(' / ')}</div>` : ''}
           ${model.durationResolutionMap?.length ? `<div class="model-duration">支持 ${model.durationResolutionMap.length} 种时长/分辨率配置</div>` : ''}
         </div>
       `;
@@ -2339,8 +2122,6 @@
       if (e.key === 'Escape') closeModal();
     });
 
-    renderVersionUI();
-    renderTutorial();
     loadData();
   </script>
 </body>

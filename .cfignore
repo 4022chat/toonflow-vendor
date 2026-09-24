@@ -1,5 +1,7 @@
 # Cloudflare Pages 忽略文件
-# 部署时跳过 workers 目录
+# 部署时跳过本地脚本与工作目录
 workers/
 data.js
+data.v2.js
 push.sh
+.workbuddy/
