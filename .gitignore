@@ -1,5 +1,6 @@
 # Data
 data.js
+data.v2.js
 store/demo/
 push.sh
 
@@ -49,3 +50,9 @@ coverage/
 .cache/
 temp/
 tmp/
+
+# Agent
+.workbuddy/
+.agent/
+docs/
+AGENTS.md
