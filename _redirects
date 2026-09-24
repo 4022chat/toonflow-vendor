@@ -1,19 +1,14 @@
 # Cloudflare Pages Redirects Configuration
 # https://developers.cloudflare.com/pages/configuration/redirects/
 #
-# 注意：规则按顺序匹配，命中即停。
-# 旧版页面的规则必须写在 SPA 兜底 /* 之前，否则会被兜底吃掉。
+# 注意：
+# 1. Pages 自带 Pretty URLs：/legacy 会直接返回 legacy.html，而 /legacy.html 会被 308 到 /legacy。
+#    因此不能写 /legacy /legacy.html 200，否则 /legacy → legacy.html → 308 /legacy，形成死循环。
+# 2. 没有 404.html 时，Pages 会把未匹配的路径默认返回 index.html（SPA），不需要 /* 兜底规则；
+#    写了 /* 反而会先于静态文件命中，把 /legacy 也吃掉。
 
-# 静态 HTML 文件直接访问（避免被 SPA 兜底吃掉）
-/legacy.html  /legacy.html  200
-/index.html   /index.html   200
-
-# 旧版供应商页面（1.1.8 系统 · .ts）
-/legacy   /legacy.html  200
-/1.0      /legacy.html  200
-/1.1      /legacy.html  200
-/1.1.8    /legacy.html  200
-/v1       /legacy.html  200
-
-# 其余路由都指向 index.html（ToonFlow 2.0 首页 / SPA 支持）
-/* /index.html 200
+# 旧版供应商页面别名（1.1.8 系统 · .ts）
+/1.0      /legacy  200
+/1.1      /legacy  200
+/1.1.8    /legacy  200
+/v1       /legacy  200

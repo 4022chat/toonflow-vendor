@@ -1767,7 +1767,7 @@
     // 兜底：若部署环境没有把 /legacy 转发到 legacy.html（例如某些本地静态服务器），
     // 这里主动跳一次，保证旧版入口在任何环境下都能打开。
     if (/^\/(legacy|1\.0|1\.1|1\.1\.8|v1)(\/|$)/i.test(window.location.pathname || '')) {
-      window.location.replace('legacy.html');
+      window.location.replace('/legacy.html');
     }
     const VERSION = VERSION_CONFIG[currentVersionKey];
     const OTHER_VERSION = VERSION_CONFIG[VERSION.otherKey];

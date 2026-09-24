@@ -51,7 +51,7 @@
 | 2.0 首页 | [`index.html`](./index.html) | `/` | ToonFlow 2.0 供应商（`.ts`） |
 | 旧版页 | [`legacy.html`](./legacy.html) | `/legacy`、`/1.0`、`/1.1`、`/1.1.8`、`/v1` | 旧版供应商（`.ts`） |
 
-`/legacy` 等路由由 [`_redirects`](./_redirects) 转发到 `legacy.html`；页面内的版本切换链接一律使用相对路径（`legacy.html` / `./`），因此即使转发规则未生效，旧版入口依然可以打开。
+`/legacy` 由 Cloudflare Pages 的 Pretty URLs 直接对应 `legacy.html`，`/1.0` 等别名由 [`_redirects`](./_redirects) 转发到 `/legacy`；页面内的版本切换链接一律使用相对路径（`legacy.html` / `./`），因此即使转发规则未生效，旧版入口依然可以打开。
 
 ### ToonFlow 2.0（`media`）
 
