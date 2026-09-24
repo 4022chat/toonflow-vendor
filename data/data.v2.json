@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-24T08:41:18.370Z",
+    "generatedAt": "2026-09-24T08:55:13.920Z",
     "schemaVersion": "2.0",
     "sourceDir": "./media",
     "totalFiles": 2,
@@ -20,12 +20,7 @@
       "validation": {
         "valid": true,
         "errors": [],
-        "warnings": [
-          "models[11] (video) audio 字段值不正确",
-          "models[12] (video) audio 字段值不正确",
-          "models[13] (video) audio 字段值不正确",
-          "models[14] (video) audio 字段值不正确"
-        ]
+        "warnings": []
       },
       "stats": {
         "total": 15,
